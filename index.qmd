@@ -1,5 +1,78 @@
-# Preface {.unnumbered}
+## Preface {.unnumbered}
 
-This is a Quarto book.
+### Achieve Mastery Over the Art of Financial Risk Management {.unnumbered}
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+Ever wondered how financial institutions remain stable even in the stormiest of
+economic climates? The answer lies in effective risk management. Our course,
+"Risk Management and Financial Institutions", is a detailed, practical, and
+comprehensive exploration of this critical field. 
+
+Through this course, you will acquire a deep understanding of the sources of
+risk, and how financial institutions identify, measure, and manage these risks.
+It provides a clear and complete overview of risk management's significant
+aspects, spanning interest rate risk, market risk, credit risk, operational
+risk, and climate risk, among others. 
+
+### Here’s what we'll explore in our journey: {.unnumbered}
+
+1. **Introduction to Risk Management:** We'll delve into various sources of
+risk, setting a strong foundation for the rest of the course.
+2. **Interest Rate Risk and Derivatives Greeks:** Understand how interest rate
+changes affect financial institutions and learn about the intricate dynamics of
+financial derivatives.
+3. **Risk Management Applications of Forwards and Futures:** We’ll dissect
+forward and futures contracts and their use in protecting against potential
+losses.
+4. **Risk Management Applications of Options:** Understand the mechanism behind
+options and how they are used as effective hedging tools in risk management.
+5. **Risk Management Applications of Swaps:** We will explore how swaps,
+especially interest rate and currency swaps, can be a powerful hedge against
+various risks.
+6. **Market Risk I:** Delve deep into the complexities of market risk, its
+components, measurement techniques, and management strategies.
+7. **Reading Week:** Take some rest and revise the first six topics.
+8. **Market Risk II:** Delve even deeper into the complexities of market risk,
+its components, measurement techniques, and management strategies.
+9. **Credit Risk:** Learn to evaluate and manage credit risk, an essential
+aspect of risk management.
+10. **Operational Risk, Liquidity Risk, and Model Risk:** Understand the
+different operational risks financial institutions face, liquidity risk
+management, and the potential pitfalls of financial modeling.
+11. **Climate Risk and Enterprise Risk Management:** Explore the emerging field
+of climate risk management and understand the holistic approach of enterprise
+risk management.
+12. **Regulation, Economic Capital, and RAROC:** Get an in-depth understanding
+of the regulatory environment, how economic capital is calculated, and the
+importance of Risk-Adjusted Return on Capital.
+13. **Financial Innovation and Risk Management Mistakes:** Learn about the role
+of innovation in risk management and explore common risk management mistakes. 
+
+Finally, we will review the entire course and ensure you're prepared to apply
+your new skills and knowledge in the real world. 
+
+### Why Enroll in this Course? {.unnumbered}
+
+- Learn from the best: Our curriculum is designed based on Hull (2023) and Pirie and
+Kritzman (2017), offering you top-notch content.
+- Practical focus: We emphasize real-world applications of theoretical concepts,
+arming you with practical skills to handle real-life scenarios.
+- Dynamic and engaging: Our course is far from dry textbook material. We make
+learning enjoyable and engaging through interactive exercises and relatable
+examples.
+- End-to-end understanding: From the basics of risk management to advanced
+strategies, our course covers everything you need to master risk management in
+financial institutions.
+- Empowering knowledge: Upon completion, you'll be equipped to make sound
+financial decisions, manage various risks effectively, and drive success in your
+or any financial institution.
+
+**Take the step and transform your understanding of risk management!**
+
+### References {.unnumbered}
+
+The whole course is based on the following textbooks:
+
+- Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+- Pirie, W. L., and M. P. Kritzman. 2017. Derivatives. CFA Institute Investment Series.
+
+The course was created using a support of the ChatGPT.
