@@ -1,0 +1,539 @@
+---
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+# Forward and Futures Strategies
+
+**References:**
+
+- Pirie, W. L., and M. P. Kritzman. 2017. Derivatives. CFA Institute Investment Series.
+    - Chapter 7 - Risk Management Applications of Forward and Futures Strategies 
+
+**Learning outcomes:**
+
+- Show how to use equity futures contracts for achieving a desired portfolio
+beta and calculate the necessary number of futures contracts.
+- Create a synthetic stock index fund using cash and stock index futures.
+- Describe the conversion of a long stock position into synthetic cash using
+stock index futures.
+- Use equity and bond futures to rebalance a portfolio between equity and debt.
+- Use futures to reallocate a portfolio across equity sectors.
+- Define exchange rate risk and demonstrate the use of forward contracts to
+mitigate risk associated with future foreign currency transactions.
+- Discuss the challenges and possible strategies for hedging the exchange rate
+risk of a foreign market portfolio.
+
+
+## Introduction
+
+::: {.callout-tip}
+# Definition of forward an futures
+
+- Forward and futures contracts are commitments for one party to buy and the other to
+sell an underlying instrument at a future date at a pre-agreed price.
+- Forward contracts are customized agreements, while futures contracts are standardized,
+created on a futures exchange, and subject to federal regulation.
+:::
+
+- The material provides scenarios where these contracts are used for risk management.
+- Businesses manage a variety of risks, often through hedging, which involves taking a
+market position to protect against unfavorable outcomes.
+- Instead of just hedging, the broader concept of "risk management" will be emphasized.
+
+## Managing Interest Rate Risk
+
+- Financial institutions face interest rate risk, affecting profitability and stability
+due to lending and borrowing activities.
+- Interest rate risk impacts net income, asset values, and balance sheets, requiring
+effective risk management.
+- Other companies also face interest rate risk in planning borrowing, including with
+fixed-rate loans, necessitating careful management to avoid unexpected cash demands.
+
+### Managing the Interest Rate Risk of a Loan Using a FRA
+
+::: {.callout-tip}
+# Definition of FRA
+
+- A FRA or Forward Rate Agreement is a financial contract between two parties to
+exchange interest payments for a notional principal amount on a future, pre-agreed date.
+- In a "6x18" FRA, "6" denotes the time (in months) until the loan's start, and "18"
+denotes the time until its end.
+- So a "6x18" FRA means a one-year loan starting in six months.
+:::
+
+- Lenders can lock in future loan rates by shorting a FRA, but this is risky due to
+borrowers' unpredictable needs and the possibility of losses if they decide not to take
+the loan.
+- Banks offering floating-rate credit lines may use FRAs, but to mitigate risks, some
+choose options where the worst-case scenario is losing the option premium.
+
+#### Single-Payment Loan
+
+- XYZ Corporation, planning to borrow $10 million in six months for a year to finance
+business expansion, is concerned about potential rising interest rates.
+- They enter into a 6x18 FRA with a bank at a rate of 5.5% to hedge the risk.
+- Outcome scenarios:
+  1. If rates rise to 7%, the corporation borrows at 7% but the bank pays the
+  difference, offsetting the increased cost (hedge was beneficial).
+  2. If rates fall to 4%, the corporation pays the bank the difference, resulting in a
+  cost (hedge wasn't beneficial).
+- A FRA allows XYZ Corporation to lock in a maximum interest rate, hedging against
+rising interest rates.
+- It provides certainty but can result in missed opportunities if rates fall.
+
+\br
+
+- The payoff of a FRA at maturity can be calculated as follows:
+
+$$
+\text{FRA Payoff} = \text{Notional Principal} \times \frac{ (\text{Rate at Maturity} -
+\text{FRA Rate}) \times \frac{\text{Days}}{360}}{1 + \text{Rate at Maturity} \times
+\frac{\text{Days}}{360}}
+$$
+
+- Where:
+  - **Notional Principal** is the hypothetical amount of money that the FRA is based on.
+  - **Rate at Maturity** is the actual market interest rate when the FRA matures.
+  - **FRA Rate** is the interest rate agreed upon in the FRA contract.
+  - **Days** is the number of days for which the contract is in effect.
+- Note that this payoff is calculated assuming a 360-day year, which is a common
+convention for FRAs.
+- The formula is based on the difference between the **FRA Rate** and the **Rate at
+Maturity**.
+- Plugging these numbers into the FRA payoff formula, we get:
+
+$$
+\text{FRA Payoff} = \$10,000,000 \times \frac{(0.07 - 0.055) \times \frac{360}{360}}{1 +
+0.07 \times \frac{360}{360}} = \$140,187
+$$
+
+
+$$
+\text{Pay back} = (\$10,000,000 - \$140,187) \times (1 + 0.07 \times \frac{360}{360}) =
+\$10,550,000
+$$
+
+$$
+\text{Effective rate} = \left(\frac{\$10,550,000}{\$10,000,000} - 1 \right) \times
+\frac{360}{360} \approx 5.5\%
+$$
+
+#### Floating-Rate Loan
+
+- Floating-rate loans, with fluctuating interest rates, pose risk for borrowers.
+- Borrowers can manage this through a series of FRAs aligned with the loan's rate reset
+dates, or futures contracts, though the latter may not match the reset periods.
+- Financial institutions may use sophisticated methods to manage futures volatility, but
+these might not suit regular borrowers.
+- Swaps could be a more accessible solution, and understanding FRAs helps in applying
+swaps for interest rate risk management.
+
+### Strategies and Applications for Managing Bond Portfolio Risk
+
+- Longer-term loans pose bond market risk for borrowers and lenders.
+- Managing government bond portfolios helps firms mitigate interest rate risk.
+- Using futures on government bonds is a strategy for managing interest rate risk.
+- The approach is similar to managing $\beta$ in the equity portfolio, only the bond
+duration is used instead of $\beta$.
+
+## Managing Equity Market Risk
+
+- Stock market volatility poses greater risk compared to bond market volatility.
+- The stock market is generally more liquid than the bond market.
+- Futures contracts can help manage the risk associated with stock market volatility.
+- Futures contracts are typically based on stock market indices, rather than individual
+stocks.
+- Diversified investors manage risk at the portfolio level and prefer futures on
+broad-based indices.
+
+### Measuring and Managing the Risk of Equities
+
+- Beta ($\beta$) is a measure of a stock's or a portfolio's volatility in relation to
+the market.
+- It represents the tendency of a security's returns to respond to swings in the market.
+- $\beta$ is used in the capital asset pricing model (CAPM), which calculates the expected
+return of an asset based on its beta and expected market returns.
+- The formula for $\beta$ is:
+
+$$
+\beta_{i} = \frac {Cov(R_{i}, R_{m})} {Var(R_{m})}
+$$
+
+- Where:
+  - $\beta_{i}$ is the beta of the stock or portfolio ($i$).
+  - $Cov(R_{i}, R_{m})$ is the covariance between the return of the stock/portfolio
+  ($R_{i}$) and the return of the market ($R_{m}$).
+  - $Var(R_{m})$ is the variance of the return of the market.
+
+\br
+
+- If $\beta$ is:
+  - 1, the security's price will move with the market
+  - less than 1, the security will be less volatile than the market
+  - greater than 1, the security's price will be more volatile than the market. 
+
+\br
+
+- The number of futures contracts ($N$) needed to adjust $\beta$ is:
+
+$$
+N = \frac{(\text{Target Beta} - \text{Current Beta}) \times \text{Portfolio
+Value}}{\text{Futures Price} \times \text{Futures Beta}}
+$$
+
+- Let's break down the elements of this formula:
+  - **Target Beta**: The desired beta of the portfolio after hedging.
+  - **Current Beta**: The beta of the portfolio before the adjustment.
+  - **Portfolio Value**: The total value of the portfolio that you want to hedge.
+  - **Futures Price**: The price of one futures contract.
+  - **Futures Beta**: The beta of the futures contract relative to the market.
+
+\br
+
+- If the result of this formula is positive, it means you should buy futures contracts.
+- Conversely, if the result is negative, it means you should sell futures contracts. 
+- The calculation assumes that the futures contract and the portfolio are based on
+closely correlated assets.
+
+### Numerical Example of Managing $\beta$
+
+- Current Portfolio Beta: $1.2$
+- Target Beta: $0.8$
+- Portfolio Value: $\$1,000,000$
+- Futures Price: $\$50,000$
+- Futures Beta: $0.95$
+
+$$
+N = \frac{(0.8 - 1.2) \times \$1,000,000}{\$50,000 \times 0.95} \approx -8
+$$
+
+- We need to short 8 futures contracts in order to adjust the portfolio beta to the
+target of 0.8. 
+- A negative value indicates shorting futures contracts because we want to decrease the
+portfolio's market risk.
+
+\br
+
+- Later, the market increases by 3.7\% and the portfolio increases by 3.45\%. 
+- Determine the overall value of the position and the effective $\beta$.
+$$
+\text{Portfolio value} = \$1,000,000 \times 1.037 = \$1,037,000 
+$$
+
+$$
+\text{Futures value} = -8 \times (\$50,000 \times 1.0345 - \$50,000) = -\$13,800
+$$
+
+$$
+\text{Total return} = \frac{\$1,037,000 + (-\$13,800)}{\$1,000,000} - 1 = 0.0232  
+$$
+
+$$
+\text{Effective beta} = \frac{0.0232}{0.037} = 0.627
+$$
+
+- The effective $\beta = 0.627$ is pretty far from the target $0.8$, because optimal
+number of contracts was $-8.421$. 
+
+### Creating Equity out of Cash
+
+- Stock index futures help create synthetic equity positions, reducing transaction costs
+and conserving liquidity.
+- A relationship between futures/forwards and the asset is established using a formula
+connecting the risk-free interest rate and dividends.
+- Synthetic replication of the asset is beneficial in creating a synthetic stock index
+fund or converting cash into equity while retaining liquidity.
+
+$$
+\text{Long Stock} + \text{Short Futures} = \text{Long Risk-Free Bond}
+$$
+
+- Risk-free bonds and futures can be combined to "equitize" cash, converting it into an
+equity position while retaining liquidity.
+- This strategy may be used by funds that wish to invest in equities but are constrained
+by the need for quick liquidation or regulatory restrictions.
+- Despite these limitations, the fund can still gain equity exposure without significant
+risk of loss or difficulty in liquidation.
+
+#### Synthetic Index Fund
+
+$$
+\text{Long Stock} = \text{Long Risk-Free Bond} + \text{Long Futures}
+$$
+- It is created by combining risk-free bonds and futures on the desired index.
+- To calculate the number of futures contracts, we use:
+$$
+N = \frac{V(1 + r)^t}{qf}
+$$
+
+- Where:
+  - $V$ = amount of money to be invested.
+  - $f$ = futures price.
+  - $t$ = time to expiration of futures.
+  - $r$ = risk-free rate.
+  - $q$ = multiplier.
+  - $\delta$ = dividend yield on the index.
+
+\br
+
+- On 1st January, an investment firm wants to construct a synthetic index fund of \$200
+million invested in US stock.
+- The index is the S\&P 500, with a dividend yield of 1.5\%.
+- A futures contract on the S\&P 500 is priced at \$3,000 with a multiplier of \$50.
+- The position will be held for three months, after which it will be renewed.
+- The US risk-free rate is 2\%, and both the risk-free rate and dividend yield are
+compounded annually.
+
+$$
+N = \frac{V(1 + r)^t}{qf} = \frac{\$200,000,000(1.02)^{0.25}}{\$50 \times \$3,000} =
+1,339.95
+$$
+
+- We can only buy whole futures contracts, so we round up to $1,340$ contracts.
+
+$$
+\frac{1,340 \times \$50 \times \$3,000}{1.02^{0.25}} = \$200,007,377
+$$
+
+- We're effectively investing \$200,007,377 in the stock, and we put this much money
+into risk-free bonds.
+- After three months the amount grows to $\$200,007,377 \times 0.02^{0.25} = \$201,000,000$.
+- The number of units of stock that we have effectively purchased at the start is:
+
+$$
+\frac{N \times q}{(1 + \delta)^t} = \frac{1,340 \times \$50}{1.015^{0.25}} = 66,751.08
+$$
+
+- If the stock were actually purchased, dividends would be reinvested into additional
+shares, so the number of shares would grow to $66,751,08 \times 1.015^{0.25} =
+69,574.35$.
+- When the futures contract expires at price $S_T$, the futures contracts will have a
+payoff:
+
+$$
+\text{Futures payoff} = 1,340 \times \$50 \times (S_T - \$3,000) = 69,574.35 \times S_T
+- \$201,000,000
+$$
+
+### Creating Cash out of Equity
+
+- Converting a long stock position into synthetic cash involves selling futures.
+- This can minimize transaction costs and help avoid the sale of a large volume of
+stocks at once. 
+
+$$
+\text{Long Risk-Free Bond} = \text{Long Stock} + \text{Short Futures}
+$$
+
+- The approach is simillar to the creation of synthetic index fund from the previous example.
+- There are only two modifications in the equation:
+  1. Minus at the beginning becasue we are selling futures.
+  2. $V$ is the market value of our stock investment.
+
+$$
+N = - \frac{V(1 + r)^t}{qf}
+$$
+
+- This approach is comparable to changing $\beta$ to zero.
+- In this example the stock portfolio has to be indentical to the index (the same
+$\beta$) and it is a full hedge.
+- The formula for managing $\beta$ is more general approach to eliminate the systematic
+risk on any portfolio.
+- The number of futures contracts needed for transforming stocks into a risk-free asset
+might not match those required to nullify portfolio $\beta$.
+- Eliminating systematic risk doesn't imply a complete absence of risk in the portfolio;
+diversifiable risk may persist.
+- Both $\beta$ reduction and full hedging formulas align when applied to a portfolio
+identical to the index on which the futures are based.
+- Derivatives provide a cost-effective and flexible solution for $\beta$ adjustments,
+especially for temporary adjustments.
+
+## Asset Allocation with Futures
+
+### Adjusting the Allocation among Asset Classes
+
+- Suppose that our current portfolio is worth \$300 million allocated to 80% stock
+(\$240 million) and 20% bonds (\$60 million).
+- Our goal is to change allocation to 50% stock (\$150 million) and 50% bonds (\$150
+million).
+- We need to reduce stock allocation by \$90 million and increase bond allocation by
+\$90 million.
+- Solution:
+  - Sell stock index futures contracts to eliminate beta on \$90 million of stock,
+  effectively converting it to cash.
+  - Purchase bond futures contracts to increase the duration on the cash to desired
+  level.
+
+### Pre-Investing in an Asset Class 
+
+- Pre-investing via futures contracts allows investors to enter the market without
+immediate cash.
+- It is effectively borrowing against the cash that will be received in the future and
+investing in the underlying.
+invested in the underlying
+- The strategy involves taking long positions in futures with correct beta and duration,
+aligning the results closely with direct investment.
+
+$$
+\text{Long Stock} = \text{Long Futures} + \text{Long Risk-Free Bond}
+$$
+
+$$
+\text{Long Stock} + \text{Short Risk-Free Bond }= \text{Long Futures}
+$$
+
+- $\text{Short Risk-Free Bond}$ is equivalent to a loan.
+- Upon receipt of the anticipated cash, the futures are closed, and cash is invested,
+equating to paying off the implicit loan.
+- This speculative strategy involves potential risks if the market doesn't perform
+adequately to cover borrowing costs.
+
+## Managing Foreign Currency Risk
+
+- Companies engaging in international business face exchange rate risks that impact
+planning, income targets, and balance sheets.
+- **Transaction exposure** arises when future cash flows require conversion from foreign
+to domestic currency.
+- **Translation exposure** occurs when foreign subsidiary balance sheets are
+consolidated into the company's domestic currency balance sheet.
+- **Economic exposure** refers to the impact of exchange rate changes on a company's
+competitiveness. Even companies not dealing in foreign markets may be affected, for
+instance, if a strong domestic currency lowers inbound tourism.
+- The management of these risks requires different approaches: forward contracts for
+transaction exposure, accounting knowledge for translation exposure, and demand
+forecasting for economic exposure.
+- Companies often use forward contracts to manage single cash flow conversions from one
+currency to another as futures contracts may be too standardized for their needs.
+
+### Managing the Risk of a Foreign Currency Receipt/Payment
+
+- When a company expects to receive cash flows in a foreign currency, it is considered
+"long" on that currency.
+- If the domestic currency increases in value while waiting for the cash flow, the
+company will receive fewer units of the domestic currency for the given amount of
+foreign currency.
+- To manage this risk, the company should consider selling the foreign currency in the
+forward market by going "short" on a currency forward contract.
+- The process for hedging a foreign currency cash outflow using a forward contract is
+similar to hedging a cash inflow but in reverse.
+
+### Managing the Risk of a Foreign-Market Asset Portfolio
+
+- Foreign currency risk is a crucial consideration when investing abroad.
+- It is challenging to hedge both the foreign market risk and the foreign currency risk
+simultaneously.
+- Estimating the future portfolio value helps in determining hedging strategies.
+- It is generally not possible to hedge the currency risk while leaving the local equity
+market exposed.
+- Companies can choose to hedge the local market return or leave both the local market
+and currency risks unhedged.
+- If only the foreign market returns is hedged, the gain is equal to foreign risk-free
+rate.
+- If foreign market returns and exchange rate are hedged, the gain is equal to domestic
+risk-free rate.
+- Neither strategy makes much sense for the long run.
+- In the short run, however, this strategy can be a good tactic for investors who are
+already in foreign markets and who wish to temporarily take a more defensive position
+without liquidating the portfolio and converting it to cash.
+
+## Final Comments
+
+- Betas and durations are unstable and difficult to measure, making it difficult to
+accurately assess risk sensitivities in stocks and bonds.
+- Derivatives shouldn't be blamed if they don't yield the exact hedging results
+expected, and they should not be maligned for their speculative use due to their
+valuable hedging uses.
+- Futures and forwards typically offer much lower transaction costs compared to stock
+indices, a major reason for their existence and survival as risk management products.
+- Futures and forwards are less disruptive to portfolio managers and can be used to
+effectively change the risk profile or asset allocation of a portfolio.
+- Despite requiring less capital to trade, futures and forwards are not immune to
+liquidity issues, particularly for contracts with long-term expirations.
+- Organizations may have varying policies regarding the use of futures, forwards, and
+options, often based on leverage and credit-risk considerations.
+- Futures and forward contracts have zero value at the start and offer linear payoffs,
+unlike options which require a cash investment at the start and offer non-linear
+payoffs.
+
+## Practice Questions and Problems
+
+1. An investment management firm wishes to increase the beta for one of its portfolios
+under management from 0.90 to 1.15 for a four-month period. The portfolio has a market
+value of \$250,000,000. The investment firm plans to use a futures contract priced at
+\$120,000 in order to adjust the portfolio beta. The futures contract has a beta of
+1.02.
+     - A. Calculate the number of futures contracts that should be bought or sold to
+     achieve an increase in the portfolio beta.
+     - B. At the end of four months, the overall equity market is up 6.2%. The stock
+     portfolio under management is up 5.8%. The futures contract is priced at \$127,000.
+     Calculate the value of the overall position and the effective beta of the
+     portfolio.
+2. Consider an asset manager who wishes to create a fund with exposure to the S&P 500
+stock index. The initial amount to be invested is \$400,000,000. The fund will be
+constructed using the S&P 500 index futures contract, priced at 2705.25 with a \$250
+multiplier. The contract expires in six months. The underlying index has a dividend
+yield of 1.25%, and the risk-free rate is 1.95% per year.
+     - A. Indicate how the money manager would go about constructing this synthetic
+     index using futures.
+     - B. Assume that at expiration, the S&P 500 is at 2812.40. Show how the synthetic
+     position produces the same result as investment in the actual stock index.
+3. An investment management firm has a client who would like to temporarily reduce her
+exposure to equities by converting a \$30 million equity position to cash for a period
+of five months. The client would like this reduction to take place without liquidating
+her equity position. The investment management firm plans to create a synthetic cash
+position using an equity futures contract. This futures contract is priced at 1265.80,
+has a multiplier of \$200, and expires in five months. The dividend yield on the
+underlying index is 1.50%, and the risk-free rate is 2.25%.
+     - A. Calculate the number of futures contracts required to create synthetic cash.
+     - B. Determine the effective amount of money committed to this risk-free
+     transaction and the effective number of units of the stock index that are converted
+     to cash.
+     - C. Assume that the stock index is at 1190 when the futures contract expires. Show
+     how this strategy is equivalent to investing in the risk-free asset, cash.
+4. Consider a portfolio with a 60% allocation to stocks and 40% to bonds. The portfolio
+has a market value of \$150 million. The beta of the stock position is 1.10, and the
+modified duration of the bond position is 5.50. The portfolio manager wishes to increase
+the stock allocation to 80% and reduce the bond allocation to 20% for a period of four
+months. In addition to altering asset allocations, the manager would also like to
+increase the beta on the stock position to 1.25 and increase the modified duration of
+the bonds to 7.50. A stock index futures contract that expires in four months is priced
+at \$145,000 and has a beta of 0.90. A bond futures contract that expires in four months
+is priced at \$104,000 and has an implied modified duration of 4.75. The stock futures
+contract has a multiplier of one.
+     - A. Show how the portfolio manager can achieve her goals by using stock index and
+     bond futures. Indicate the number of contracts and whether the manager should go
+     long or short.
+     - B. After four months, the stock portfolio is up 4% and bonds are up 1.10%. The
+     stock futures price is \$150,800 and the bond futures price is $105,040. Compare
+     the market value of the portfolio in which the allocation is adjusted using futures
+     to the market value of the portfolio in which the allocation is adjusted by
+     directly trading stocks and bonds.
+5. A hedge fund manager expects to receive a cash inflow of \$60,000,000 in four months
+and wants to use futures contracts to take a \$20,000,000 synthetic position in stocks
+and \$40,000,000 in bonds today. The stock would have a beta of 1.20 and the bonds a
+modified duration of 6.50. A stock index futures contract with a beta of 0.88 is priced
+at \$192,500. A bond futures contract with a modified duration of 4.75 is priced at
+\$110,000.
+     - A. Calculate the number of stock and bond futures contracts the fund manager
+     would have to trade in order to synthetically take the desired position in stocks
+     and bonds today. Indicate whether the futures positions are long or short.
+     - B. When the futures contracts expire in four months, stocks have declined by 4.3%
+     and bonds have declined by 2.85%. Stock index futures are priced at \$184,372, and
+     bond futures are priced at \$107,115. Show that profits on the futures positions
+     are essentially the same as the change in the value of stocks and bonds during the
+     four-month period.
+6. Consider a US company, StreamTech, that exports technology to the European Union.
+StreamTech has just closed a sale worth €250,000,000. The amount will be received in
+three months. Because it will be paid in euros, the US company bears the exchange risk.
+In order to hedge this risk, StreamTech intends to use a forward contract that is priced
+at \$1.1725 per euro. Indicate how the company would go about constructing the hedge.
+Explain what happens when the forward contract expires in three months.
+7. MegaCorp is a US-based company that frequently imports electronics components from
+Japan. It has just entered into a contract to purchase ¥3,000,000,000 worth of
+semiconductor chips, to be paid in two months. MegaCorp fears that the Japanese yen will
+strengthen, thereby raising the US dollar cost. A forward contract is available and is
+priced at \$0.0091 per Japanese yen. Indicate how MegaCorp would go about constructing a
+hedge. Explain what happens when the forward contract expires in two months.
