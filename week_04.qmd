@@ -1,0 +1,635 @@
+---
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+# Option Strategies
+
+**References:**
+
+- Pirie, W. L., and M. P. Kritzman. 2017. Derivatives. CFA Institute Investment Series.
+    - Chapter 8 - Risk Management Applications of Option Strategies 
+
+**Learning outcomes:**
+
+- Compare the use of covered calls and protective puts for risk management.
+- Calculate/interpret values for option strategies including bull spread, bear spread,
+butterfly spread, collar, straddle, box spread.
+- Determine the effective annual rate for an anticipated loan managed with interest rate
+options.
+- Calculate payoffs for a floating rate loan combined with an interest rate cap, floor,
+or collar.
+- Explain delta hedging for dealers, including adjustments and why delta changes.
+- Interpret the gamma of a delta-hedged portfolio and explain how gamma changes with
+options moving toward expiration.
+
+## Introduction
+
+::: {.callout-tip}
+# Definition of options
+
+Options are contracts that give the buyer the right, but not the obligation, to buy (in
+the case of a call option) or sell (in the case of a put option) an underlying asset at
+a predetermined price, known as the strike price, within a specified time frame. The
+seller of the option, in turn, has the obligation to fulfill the transaction if the
+buyer decides to exercise the option.
+:::
+
+- Options have non-linear payoffs and require upfront payment.
+- Options allow benefiting from favorable movements and minimizing harm from unfavorable
+movements.
+- Sellers of options face potential large losses and must be adequately compensated.
+
+### Notation and Assumptions
+
+- Assumptions:
+  - Option user has a view on underlying movements or volatility.
+  - Options are customized and European-style.
+  - No early termination of strategies.
+- Time notation:
+  - Time $0$ is the time at which the strategy is initiated.
+  - Time $t$ is the time the option expires, stated as a fraction of a year.
+- Time until expiration: $t - 0 = t$, which is $\frac{\text{Days to expiration}}{365}$.
+- Symbol definitions:
+  - $c_0, c_t$ $\dots$ Price of the call option at time $0$ and time $t$.
+  - $p_0, p_t$ $\dots$ Price of the put option at time $0$ and time $t$.
+  - $X$ $\dots$ Exercise price.
+  - $S_0, S_t$ $\dots$ Price of the underlying at time $0$ and time $t$.
+  - $V_0, V_t$ $\dots$ Value of the position at time $0$ and time $t$.
+  - $\Pi$ $\dots$ Profit from the transaction, calculated as $V_t - V_0$.
+  - $r$ $\dots$ Risk-free rate.
+
+## Option Strategies for Equity Portfolios
+
+- The following strategies can be applied to variety of asset classes.
+- However, they are primarily explained and understood within the context of investing
+in equities or equity indices.
+
+### Standard Long and Short Positions
+
+- Based on the course "Financial Derivatives" you should be able to define the
+following:
+  - Long position in a stock and short position in a stock.
+  - Long call and short call options.
+  - Long put and short put options.
+  - Calculate profit and value of the option.
+  - Determine the maximum profit or loss for each position.
+
+### Risk Management Strategies with Options and the Underlying
+
+#### Covered Call
+
+- Covered call strategy involves owning the underlying asset (like stocks) and then
+selling call options on that same asset.
+- The goal is to generate additional income from the option premium, which the investor
+gets to keep regardless of whether the option is exercised or not.
+- Covered calls reduce the risk of a position, contradicting beliefs that options
+inherently increase risk.
+- While they decrease risk, covered calls also reduce expected returns compared to only
+holding the stock.
+- This strategy may limit gains in bull markets but provides a cushion against losses in
+bear markets through the option premium.
+- To summarize the covered call, we have the following:
+$$
+V_t = S_t - \max(0, S_t - X)
+$$
+
+$$
+\Pi = V_t - S_0 + c_0
+$$
+
+$$
+\text{Maximum profit} = X - S_0 + c_0
+$$
+
+$$
+\text{Maximum loss} = S_0 - c_0
+$$
+
+$$
+\text{Breakeven} = S_t = S_0 - c_0
+$$
+
+
+#### Covered Call Example
+
+- This example illustrates how a covered call strategy can generate income and
+potentially increase profits, but it also shows that the strategy can limit upside
+potential if the underlying asset's price increases significantly.
+- Suppose you own 100 shares of Company XYZ, which are currently trading at \$50 per
+share.
+- You decide to implement a covered call strategy by selling one call option (equivalent
+to 100 shares) with a strike price of \$55 for a premium of \$2 per share.
+- If the price of the shares rises to $60, the option will be exercised:
+
+$$
+\text{Profit} = \text{Profit from shares} + \text{Profit from option}
+$$
+
+$$
+\text{Profit} = (\$60 - \$50) \times 100 + (-\$300) = \$1000 - \$300 = \$700
+$$
+
+- If the price of the shares stays below \$55, the option will not be exercised:
+
+$$
+\text{Profit} = (\$2 \times 100) + ((\$55 - \$50) \times 100) = \$200 + \$0 = \$200
+$$
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Variables
+stock_price = 50
+strike_price = 55
+premium = 2
+shares = 100
+
+# Stock price range for the graph
+stock_price_range = np.arange(40, 70, 1)
+
+# Underlying stock payoff calculation
+stock_payoff = stock_price_range - stock_price
+
+# Call option payoff calculation (for short position)
+call_payoff = np.where(
+    stock_price_range <= strike_price,
+    premium,
+    premium - (stock_price_range - strike_price),
+)
+
+# Covered call payoff calculation
+covered_call_payoff = stock_payoff + call_payoff
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.plot(stock_price_range, stock_payoff, label="Underlying Stock", color="blue")
+plt.plot(stock_price_range, call_payoff, label="Short Call Option", color="red")
+plt.plot(
+    stock_price_range,
+    covered_call_payoff,
+    label="Covered Call Strategy",
+    color="green",
+    linewidth=3,
+)
+plt.axhline(y=0, color="black", linewidth=1.2)
+plt.xlabel("Stock Price at Expiration")
+plt.ylabel("Profit/Loss")
+plt.title("Covered Call Strategy Payoff")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+#### Protective Put
+
+- A protective put strategy involves buying an asset (like stocks) and buying a put
+option for the same asset.
+- The goal of this strategy is to limit the downside risk of owning the asset.
+- If the asset's price falls, the put option increases in value, offsetting the loss
+from the asset.
+- A protective put strategy offers downside protection with upside potential, but it's
+important to consider the costs and trade-offs.
+- Protection against downside loss is expensive and the buyer of a protective put must
+give up considerable upside potential.
+- The protective put strategy is often viewed as a form of insurance.
+- To summarize the protective put, we have the following:
+
+$$
+V_t = S_t + \max(0, X - S_t)
+$$
+
+$$
+\Pi = V_t - S_0 - p_0
+$$
+
+$$
+\text{Maximum profit} = \infty
+$$
+
+$$
+\text{Maximum loss} = S_0 + p_0 - X
+$$
+
+$$
+\text{Breakeven} = S_t = S_0 + p_0
+$$
+
+#### Protective Put Example
+
+- Suppose you own 100 shares of Company XYZ, which are currently trading at \$50 per
+share.
+- You decide to implement a protective put strategy by buying one put option (equivalent
+to 100 shares) with a strike price of \$45 for a premium of \$2 per share.
+- If the price of the shares rises to $60, the option will not be exercised:
+
+$$
+\text{Profit} = \text{Profit from shares} + \text{Profit from option}
+$$
+
+$$
+\text{Profit} = (\$60 - \$50) \times 100 + (-\$2) \times 100 = \$1000 - \$200 = \$800
+$$
+
+- If the price of the shares drops to \$40, the option will be exercised:
+
+$$
+\text{Profit} = (\$40 - \$50) \times 100  + (-\$2) \times 100 + (\$45 - \$40) \times 100 
+$$
+
+$$
+\text{Profit} = -\$1000 - \$200 + \$500 = -\$700
+$$
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Variables
+stock_price = 50
+strike_price = 45
+premium = 2
+shares = 100
+
+# Stock price range for the graph
+stock_price_range = np.arange(40, 60, 1)
+
+# Underlying stock payoff calculation
+stock_payoff = stock_price_range - stock_price
+
+# Put option payoff calculation (for long position)
+put_payoff = (
+    np.where(stock_price_range <= strike_price, strike_price - stock_price_range, 0)
+    - premium
+)
+
+# Protective put payoff calculation
+protective_put_payoff = stock_payoff + put_payoff
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.plot(stock_price_range, stock_payoff, label="Underlying Stock", color="blue")
+plt.plot(stock_price_range, put_payoff, label="Long Put Option", color="red")
+plt.plot(
+    stock_price_range,
+    protective_put_payoff,
+    label="Protective Put Strategy",
+    color="green",
+    linewidth=3,
+)
+plt.axhline(y=0, color="black", linewidth=1.2)
+plt.xlabel("Stock Price at Expiration")
+plt.ylabel("Profit/Loss")
+plt.title("Protective Put Strategy Payoff")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+### Money Spreads
+
+- In options trading, "money spreads" or "spreads" refer to strategies that involve
+simultaneously buying and selling options of the same class (e.g., calls or puts) on the
+same underlying asset but with different strike prices and/or expiration dates.
+- These strategies are often used to reduce risk and can also be a way to reduce the
+initial cost of entering a position.
+- Spreads are categorized based on how they make or lose money, and below are some
+common types:
+
+1. **Vertical Spreads**:
+    - **Bull Call Spread**: Buying a call option with a lower strike price and selling
+    another call option with a higher strike price, both with the same expiration date.
+    - **Bull Put Spread**: Selling a put option with a higher strike price and buying a
+    put option with a lower strike price. 
+    - **Bear Put Spread**: Buying a put option with a higher strike price and selling
+    - **Bear Call Spread**: Selling a call option with a lower strike price and buying a
+    call option with a higher strike price.
+2. **Horizontal Spreads** (also known as **Calendar Spreads**):
+   - Involves options with the same strike price but different expiration dates.
+3. **Diagonal Spreads**:
+   - Combines elements of both vertical and horizontal spreads, involving different
+   strike prices and different expiration dates.
+4. **Iron Condor**:
+   - A combination of two vertical spreads (one using calls, the other using puts) with
+   the same expiration date but different strike prices.
+5. **Butterfly Spread**:
+   - A combination of three strike prices, usually involving both calls and puts. It can
+   be constructed using all calls (call butterfly) or all puts (put butterfly).
+
+- The profit and loss of these strategies depend on the underlying asset's price at
+expiration, relative to the strike prices of the options used in the spread.
+- Money spreads help traders target a specific range of potential price movement, and
+they often involve less risk than outright buying or selling single options.
+- The tradeoff, generally speaking, is that they also offer more limited profit
+potential.
+
+### Combinations of Calls and Puts
+
+#### Collars
+
+- A collar option strategy is a defensive strategy that investors use when they have a
+long position in the underlying asset and want to protect against potential losses.
+- It consists of three components:
+  1. **Owning the Underlying Asset**: The investor holds shares of a stock or another
+  underlying asset.
+  2. **Buying a Put Option**: The investor buys a put option with a strike price below
+  the current price of the underlying asset. This put option serves as insurance,
+  providing the right to sell the underlying asset at the strike price if the asset's
+  price falls significantly. It defines a floor on potential losses.
+  3. **Selling a Call Option**: At the same time, the investor sells (or "writes") a
+  call option with a strike price above the current price of the underlying asset. This
+  generates premium income, which can offset the cost of buying the put option. However,
+  it also caps the potential profit if the underlying asset's price rises above the
+  call's strike price, as the call buyer will have the right to buy the asset at that
+  price.
+
+\br
+
+- The combination of these three elements forms a "collar" around the potential profit
+and loss from the underlying asset:
+  - **Protection from Loss**: If the underlying asset's price falls, the put option
+  compensates for the loss, limiting the downside risk.
+  - **Limitation on Profit**: If the underlying asset's price rises above the strike
+  price of the sold call, the profit is capped, as the asset may be called away at that
+  price.
+  - **Cost Mitigation**: The premium received from selling the call option can offset
+  the cost of buying the put, potentially creating a cost-neutral or low-cost hedge.
+
+\br
+
+- The collar strategy is often used by investors who have significant gains in the
+underlying asset and want to protect those gains without selling the asset.
+- It can be tailored to the investor's outlook by choosing different strike prices and
+expiration dates for the options, balancing the level of protection, profit potential,
+and cost.
+
+#### Straddle
+
+- A straddle option strategy is a neutral options strategy that involves simultaneously
+buying or selling a call option and a put option with the same strike price and
+expiration date on the same underlying asset.
+- It's used when an investor expects a significant price movement but is uncertain about the direction of the movement (up or down). There are two main variations of the straddle strategy:
+- **Long Straddle**: Suitable for investors who anticipate significant price volatility
+but are uncertain about the direction. The cost is the premium paid for both options,
+and the profit potential is unlimited.
+- **Short Straddle**: Suitable for investors who anticipate little to no price movement
+in the underlying asset. The profit is limited to the premiums received, and the risk
+can be substantial if the asset price moves sharply.
+- **Strangle**: Similar to a straddle but uses different strike prices for the call and
+put, usually with the call's strike price above and the put's strike price below the
+current asset price. It can be implemented as a long or short strategy.
+- The straddle strategy is commonly used around significant news events, earnings
+announcements, or other situations where substantial price swings are possible. It
+allows investors to potentially profit from volatility itself, rather than having to
+correctly predict price direction.
+
+## Interest Rate Option Strategies
+
+- Underlying asset is an interest rate, usually on a 90- or 180-day underlying
+instrument.
+- The purpose is a protection against changes in interest rates.
+- Call option is exercised if the underlying interest rate is above the exercise rate.
+- Put option is exercised if the underlying interest rate is below the exercise rate.
+- Notional principal determines the payoff when the option is exercised.
+- Payoff is delayed by a period corresponding to the life of the underlying instrument.
+- The rate is determined on one day, the option expiration, and payment is made $m$ days
+later.
+- This practice is standard in floating-rate loans and thus is used with interest rate
+options, which are designed to manage the risk of floating-rate loans.
+
+\br
+
+- **Payoff for Interest Rate Call Option**:
+
+$$
+\text{Notional principal} \times \max(0, \text{Underlying rate at expiration} - \text{Exercise rate}) \times \frac{\text{Days in underlying rate}}{360}
+$$
+
+- **Payoff for Interest Rate Put Option**:
+
+$$
+\text{Notional principal} \times \max(0, \text{Exercise rate} - \text{Underlying rate at expiration}) \times \frac{\text{Days in underlying rate}}{360}
+$$
+
+- $\text{Days in underlying}$ refers to the maturity of the instrument from which the
+underlying rate is taken.
+
+### Using Interest Rate Calls with Borrowing - Example 
+
+| Loan Details        | Value                       |
+|:-------------------:|:---------------------------:|
+| Loan Amount         | \$40,000,000                |
+| Underlying          | 180-day LIBOR               |
+| Spread              | 200 basis points over LIBOR |
+| Current LIBOR       | 5.5%                        |
+| Expiration          | 128 days later              |
+| Exercise Rate       | 5%                          |
+| Call Premium        | \$100,000                   |
+| LIBOR at expiration | 8%                          |
+
+- **Call Payoff at Expiration** (received 180 days later):
+
+$$
+\$40,000,000 \times \max(0, 0.08 - 0.05) \times \frac{180}{360} = \$600,000
+$$
+
+- **Premium Compounded** from option initiation to option expiration (128 days) at
+original LIBOR of 5.5% plus 200 basis points:
+
+$$
+\$100,000 \times \left[1 + (0.055 + 0.02) \times \frac{128}{360}\right] = \$102,667
+$$
+
+- **Effective Loan Proceeds**: 
+
+$$
+\$40,000,000 - \$102,667 = \$39,897,333
+$$
+
+- **Loan Interest**:
+
+$$
+\$40,000,000 \times (0.08 + 0.02) \times \frac{180}{360} = \$2,000,000
+$$
+
+- **Effective Interest**: Loan interest minus the call payoff
+- **Effective Rate on the Loan**:
+
+$$
+\left(\frac{\$40,000,000 + \$2,000,000 - \$600,000}{\$39,897,333}\right)^{365/180} - 1 = 7.79\%
+$$
+
+- For various LIBOR rates at option expiration, the highest possible effective rate is
+7.79% (if the option is exercised). If the option is not exercised, the effective rate
+decreases.
+- The similar analysis can be used **for lending** by using interest rate **put options**. 
+- A lender can buy a put that pays off if the interest rate falls below a chosen level.
+- The put payoff then compensates the lender for the lower interest rate on the loan.
+- The equations have to be slightly adjusted for put options, everything else is
+similar.
+
+### Floating-Rate Cap, Floor, and Collar
+
+- Many corporate loans are floating-rate loans that have periodic interest payments with regularly scheduled rate resets, causing multiple distinct risks.
+
+- **Interest Rate Calls (Caplets)**: 
+  - Borrowers might use multiple call options (caplets) to set a ceiling on borrowing
+  rates.
+  - Each caplet has its own expiration date; exercise rates are typically the same.
+  - A combination of these options is called **a cap**.
+- **Interest Rate Puts (Floorlets)**: 
+  - Lenders like may be concerned about falling rates and can buy puts expiring on rate
+  reset dates.
+  - This combination is known as **a floor**, with individual options called floorlets.
+- **Interest Rate Collars**: 
+  - Combines a long position in a cap with a short position in a floor.
+  - Zero-Cost collar means that exercise rate on the floor matches the cap premium,
+  seeming to have no "cost," but the borrower gives up gains from potential falling
+  rates.
+  - Borrowers often buy caps and sell floors, while lenders might buy floors and sell
+  caps.
+  - Most interest rate collars are initiated by borrowers, to protect against varying
+  interest rates.
+
+## Option Portfolio Risk Management Strategies
+
+- Dealers provide liquidity in options, taking on risk and hedging positions to earn the
+bid-ask spread without taking on the risk themselves.
+- When a customer wants to buy a call option, the dealer quotes a price and sells it,
+but this creates a dangerous short call position.
+- Ideally, the dealer would find someone to take the opposite position or use put-call
+parity to hedge the risk.
+- However, this often isn't practical, so dealers often resort to delta hedging.
+
+### Delta Hedging
+
+- Delta is a ratio expressing how the option price changes relative to the underlying
+price, typically between 0.0 and 1.0.
+- A long position in the underlying asset can offset a short call position; the size of
+the long position depends on the option's delta.
+- If the dealer sells a given number of calls, they need to own a number of shares equal
+to the number of underlying shares in the options times the delta.
+
+\br
+
+- **Challenges with Delta Hedging**:
+  - **Delta as an Approximation**: Delta is only an approximate measure, and it changes
+  as the ***underlying price or time changes***, meaning the hedged position can quickly
+  become unhedged.
+  - **Rounding Off**: The number of underlying units per option has to be rounded,
+  leading to imprecision in balancing the two positions.
+  - **Continuous Monitoring Required**: Constant adjustments are needed to maintain the
+  delta-hedged position, especially when the underlying changes significantly.
+  
+### Gamma Hedging
+
+- Gamma measures the rate of change in the delta with respect to the change in the
+underlying asset's price.
+- It reflects the deviation between the exact option price change and the price change
+approximated by delta, making it a measure of the delta's sensitivity.
+- **Role in Delta-Hedging**:
+  - If a delta-hedged position were risk-free, its gamma would be zero.
+  - A large gamma indicates a greater deviation from being risk-free.
+  - The larger the gamma, the more the position is affected by rapid movements in the
+  delta.
+- Gamma is the largest for at-the-money and near-expiration options.
+- Deep in-the-money or out-of-the-money options have slow delta movements and pose fewer
+problems for hedgers.
+- Gamma hedging requires adding another option and combining it with the underlying and
+existing options to make both delta and gamma zero.
+
+### Vega and Volatility Risk
+
+- Vega measures the sensitivity of an option's price to changes in the volatility of the
+underlying asset.
+- Volatility is the only unobservable variable required to value an option, making it a
+critical factor.
+- An option's price is highly sensitive to changes in the underlying asset's volatility.
+- Changes in volatility can have a significant impact on a dealer's position, even if
+it's delta-hedged with zero or insignificant gamma.
+- An increase in volatility can raise the value of options, potentially leading to
+substantial losses for a dealer holding the underlying and selling options to delta
+hedge.
+- An option price is more sensitive to volatility when it is at-the-money.
+- Dealers attempt to measure and monitor vega, and in some cases, hedge it by taking a
+position in another option.
+- The dealer must jointly monitor and manage the risks associated with delta, gamma, and
+vega.
+
+## Practice Questions and Problems
+
+### Case Study
+
+Stanley Singh, CFA, is the risk manager at SS Asset Management. Singh works with
+individual clients to manage their investment portfolios. One client, Sherman Hopewell,
+is worried about how short-term market fluctuations over the next three months might
+impact his equity position in Walnut Corporation. While Hopewell is concerned about
+short-term downside price movements, he wants to remain invested in Walnut shares as he
+remains positive about its long-term performance. Hopewell has asked Singh to recommend
+an option strategy that will keep him invested in Walnut shares while protecting against
+a short-term price decline. Singh gathers the information in the following table to
+explore various strategies to address Hopewell’s concerns.
+
+- **Current stock Price**: \$67.79 
+- **Walnut Corporation European options:**
+
+| Exercise Price | Market Call Price | Call Delta | Market Put Price | Put Delta |
+|:--------------:|:-----------------:|:----------:|:----------------:|:---------:|
+| \$55.00        | \$12.83           | 4.7        | $0.24            | –16.7     |
+| \$65.00        | \$3.65            | 12.0       | $1.34            | –16.9     |
+| \$67.50        | \$1.99            | 16.5       | $2.26            | –15.3     |
+| \$70.00        | \$0.91            | 22.2       | $3.70            | –12.9     |
+| \$80.00        | \$0.03            | 35.8       | $12.95           | –5.0      |
+
+> **Note:** Each option has 106 days remaining until expiration.
+
+Another client, Nigel French, is a trader who does not currently own shares of Walnut
+Corporation. French has told Singh that he believes that Walnut shares will experience a
+large move in price after the upcoming quarterly earnings release in two weeks. However,
+French tells Singh he is unsure which direction the stock will move. French asks Singh
+to recommend an option strategy that would allow him to profit should the share price
+move in either direction.
+
+A third client, Wanda Tills, does not currently own Walnut shares and has asked Singh to
+explain the profit potential of three strategies using options in Walnut: a bull call
+spread, a straddle, and a butterfly spread. In addition, Tills asks Singh to explain the
+gamma of a call option. In response, Singh prepares a memo to be shared with Tills that
+provides a discussion of gamma and presents his analysis on three option strategies:
+
+- **Strategy 1:** A straddle position at the \$67.50 strike option
+- **Strategy 2:** A bull call spread using the \$65 and \$70 strike options
+- **Strategy 3:** A butterfly spread using the \$65, \$67.50, and \$70 strike call
+options
+
+1. The option strategy Singh is most likely to recommend to Hopewell is a:
+    - a. collar.
+    - b. covered call.
+    - c. protective put.
+2. The option strategy that Singh is most likely to recommend to French is a:
+    - a. straddle.
+    - b. butterfly.
+    - c. box spread.
+3. Based upon the table, strategy 1 is profitable when the share price at expiration is
+*closest* to:
+    - a. \$63.24.
+    - b. \$65.24.
+    - c. \$69.49.
+4. Based upon the table, the maximum profit, on a per share basis, from investing in
+strategy 2, is *closest* to:
+    - a. \$2.26.
+    - b. \$2.74.
+    - c. \$5.00.
+5. Based upon the table, and assuming the market price of Walnut's shares at expiration
+is \$66, the profit or loss, on a per share basis, from investing in strategy 3, is
+*closest* to:
+    - a. –\$1.57.
+    - b. \$0.42.
+    - c. \$1.00.
+6. Based on the data in the table, Singh would advise Tills that the call option with
+the largest gamma would have a strike price *closest* to:
+    - a. \$55.
+    - b. \$67.50.
+    - c. \$80.
