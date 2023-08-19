@@ -1,0 +1,491 @@
+---
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+# Market Risk II
+
+**References:**
+
+- Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+    - Chapter 12 - Historical Simulation and Extreme Value Theory
+    - Chapter 13 - Model-Building Approach
+- Pirie, W. L., and M. P. Kritzman. 2017. Derivatives. CFA Institute Investment Series.
+    - Chapter 6 - Risk Management
+
+**Learning outcomes:**
+
+- Understand the concept of Value at Risk (VaR) and Expected Shortfall (ES) as a measure
+of portfolio risk, and the importance of different estimation methods.
+- Understand the Historical Simulation method VaR and ES estimation.
+- Recognize the benefits and limitations of using historical data to estimate future
+portfolio risk.
+- Learn Parametric Approach to VaR and ES estimation.
+- Understand the limitations of assuming a normal distribution of returns.
+- Acquire knowledge of the Monte Carlo Simulation method.
+- Understand the computational intensity and the assumptions involved in the Monte Carlo
+simulation method.
+- Develop the ability to critically evaluate and compare the advantages and
+disadvantages of each of these methods in different investment contexts and scenarios.
+
+## Introduction
+
+There are several estimation methods for calculating Value at Risk (VaR):
+
+1. **Historical Simulation**: This method involves using historical data to simulate the
+potential changes in the value of a portfolio. VaR is then calculated based on the worst
+losses observed in the historical data for a given confidence level.
+2. **Parametric (Analytical) Approach**: This method assumes that returns on the assets
+in a portfolio are normally distributed, and uses the mean and standard deviation of the
+returns to calculate VaR. It can be used for individual assets as well as portfolios,
+taking into account the correlations between assets.
+3. **Monte Carlo Simulation**: This method uses random number generation to simulate
+thousands of possible price paths for the assets in a portfolio. VaR is then calculated
+based on the distribution of simulated portfolio losses.
+4. **Extreme Value Theory (EVT)**: This method focuses on modeling the tail of the loss
+distribution, which can be useful for calculating VaR at very high confidence levels.
+
+## Historical Simulation
+
+- The historical simulation method for VaR uses the current portfolio and revalues it
+using actual historical changes in key factors experienced during a lookback period.
+- The process starts by decomposing the portfolio into risk factors and collecting
+historical returns of each factor over the lookback period.
+- The current portfolio is repriced using returns from each day of the lookback period,
+and results are sorted from largest loss to greatest gain.
+- To estimate a one-day VaR at a 5% confidence interval, a point is chosen on the
+distribution beyond which 5% of the outcomes result in larger losses.
+- To calculate **expected shortfall** using historical simulation, we average the losses
+that are worse than VaR.
+
+### Historical Simulation Example
+
+**General Procedure:**
+
+1. Collect historical price data for the asset.
+2. Calculate the returns or the percentage change for each period.
+3. Sort these returns in ascending order.
+4. Identify the return at the (100 - confidence level)% quantile.
+5. Identify VaR and ES
+
+- Consider the last 500 daily returns for `SPY` ETF. What is daily VaR and ES with 99% confidence level? Below is the worst 20 returns during selected time priod.
+- 
+```{python}
+
+import numpy as np
+import pandas as pd
+import yfinance as yf
+
+# Step 1: Download historical data
+data = yf.download("SPY", period="3y", progress=False)
+data.index = data.index.date
+
+# Step 2: Calculate the log returns
+data["Log Returns"] = np.log(data["Adj Close"] / data["Adj Close"].shift(1))
+
+# Remove any NA values that might have been resulted from the log return calculation
+data = data.dropna()
+
+# Keep only the last 500 observations
+data = data.iloc[-500:].copy()
+
+# Step 3: Sort these returns
+sorted_returns = data["Log Returns"].sort_values()
+
+print(pd.DataFrame(sorted_returns).head(10))
+```
+
+- 1% from 500 observations is 5.
+- VaR is the 5th worst loss.
+- ES is the average of the 4 worst losses.
+
+```{python}
+
+print("The 1-day 99% VaR is:", round(sorted_returns[4], 6))
+print("The 1-day 99% ES is:", round(sorted_returns[:4].round(6).mean(), 6))
+```
+
+### Stressed VaR and Stressed ES
+
+- Historical simulation for calculating VaR and ES typically uses the most recent data,
+referred to as current VaR and current ES.
+- Stressed VaR and ES, introduced by regulators, use data from a chosen 251-day period
+that's particularly stressful for the current portfolio.
+- The chosen period data creates 250 scenarios, each based on market variable changes
+between consecutive days.
+- One-day 99% stressed VaR is the midpoint loss between the second and third worst
+scenarios, while one-day 99% ES is the average of the two worst losses.
+
+### Accuracy of VaR
+
+- The historical simulation approach to Value-at-Risk (VaR) estimates the distribution
+of portfolio changes from a finite number of observations, making it subject to error.
+- The standard error of the estimate for the $q$-percentile of the distribution,
+estimated as $x$, is given by the formula:
+  
+$$
+\text{Standard Error} = \frac{1}{f(x)} \sqrt{\frac{(1 - q)q}{n}}
+$$
+
+- where $n$ is the number of observations and $f(x)$ is an estimate of the probability
+density function of the loss evaluated at $x$.
+- Standard error of a VaR estimated using historical simulation is typically high,
+decreasing with lower VaR confidence level or larger sample size.
+- Losses typically have heavier tails than the normal distribution, so a Pareto
+distribution for $f(x)$ may provide better standard error estimates.
+
+#### Example
+
+1. Suppose we want to estimate the 99th percentile of a loss distribution from 500
+observations, so $n = 500$ and $q = 0.99$.
+2. We assume a normal distribution with a mean of 0 and a standard deviation of \$10
+million.
+3. Using Excel, the 99th percentile is $\text{NORMINV}(0.99,0,10) = 23.26$.
+4. The value of $f(x)$ is $\text{NORMDIST}(23.26,0,10,\text{FALSE}) = 0.0027$.
+5. The standard error of the estimate is:
+
+$$
+\frac{1}{0.0027} \times \sqrt{\frac{0.01 \times 0.99}{500}} = 1.67
+$$
+
+6. If the estimate of the 99th percentile using historical simulation is \$25 million, a
+95\% confidence interval is from $25 - 1.96 \times 1.67$ to $25 + 1.96 \times 1.67$, or
+from \$21.7 million to \$28.3 million.
+
+### Extensions and Computational Issues
+
+- VaR and ES are calculated using recent historical data, assuming that this is a good
+guide to future behavior.
+- The basic historical simulation approach gives equal weight to each day in the past.
+- **Weighting of Observations**: Recent observations could be weighted more heavily,
+reflecting current volatilities and macroeconomic conditions. Exponential weighting,
+where weights decline exponentially, is a natural choice.
+- **Volatility Scaling for Market Variables**: It is possible incorporating volatility
+estimates into historical simulation. A variation is to use the Exponentially Weighted
+Moving Average (EWMA) to monitor the standard deviation of the simulated losses.
+- **Bootstrap Method**: Creating many new similar data sets by sampling observations
+with replacement.
+
+\br
+
+- Historical simulation is a method used to value the entire portfolio of a financial
+institution, often involving multiple simulations (e.g., 500 times).
+- This approach can be computationally intensive, especially when certain instruments in
+the portfolio are valued using Monte Carlo simulation, leading to a "simulation within a
+simulation" problem.
+- To reduce computation time, financial institutions sometimes use an approximation
+method based on the Taylor series expansion.
+
+### Extreme Value Theory
+
+- Extreme Value Theory (EVT) is a scientific method used to estimate the tails of a
+distribution.
+- EVT is based on the power law and can be used to improve Value at Risk (VaR) or
+Expected Shortfall (ES) estimates, particularly for very high confidence levels.
+- EVT smooths and extrapolates the tails of an empirical distribution, providing better
+estimates of VaR and ES that reflect the entire shape of the tail.
+- EVT can be applied to the probability distribution of portfolio daily changes derived
+from historical simulation, avoiding calculation uncertainties.
+- Even with limited data (e.g., 500 days), EVT can provide estimates of VaR or ES for
+confidence levels as high as 99.9%.
+
+### Advantages of Historical Simulation Method
+
+- The method is easy to understand and implement, as it relies on actual historical data
+to simulate possible future scenarios.
+- Unlike other methods, historical simulation does not assume a specific parametric
+distribution (like normal distribution) for the returns, making it more robust in the
+presence of non-normal returns.
+- By using actual historical data, this method naturally incorporates periods of high
+volatility, which can provide a more realistic estimate of VaR during turbulent times.
+- The method is based on empirical evidence rather than theoretical assumptions, making
+it more reliable for estimating the risk of extreme events.
+- Historical simulation can be easily modified to consider different time horizons,
+confidence levels, or other variations to suit specific risk management needs.
+- As new historical data becomes available, it can be easily incorporated into the
+simulation, allowing the method to adapt to changing market conditions.
+- It can accomodate options, unlike the parametric method.
+
+## Parametric Approach
+
+- The parametric method, also known as the analytical, variance-covariance method or
+model-building approach, is an alternative to historical simulation for estimating risk
+measures like VaR and ES.
+- The method assumes normal distribution for return distributions of portfolio risk factors.
+- The normal distribution requires two parameters, expected value and standard
+deviation, to describe the distribution.
+- Historical data is used to estimate these parameters, with adjustments to make them
+consistent with long-run values.
+- It's ideal when the portfolio's value change is linearly dependent on market variable
+changes, and if these changes are assumed to be multivariate normal, it's
+computationally faster than historical simulation.
+- This approach extends Harry Markowitz's portfolio theory.
+- It is not suitable for portfolios with non-linear derivatives.
+- Other distributions with additional parameters can be used, but they add complexity to
+VaR estimation.
+- It is also possible to calculate Stressed Measures by selecting appropriate historical
+data for estimating volatilities and correlations.
+
+### The Basic Methodology
+
+- Assuming a normal distribution of returns, VaR and ES are calculated using the
+equations from the previous chapter:
+
+$$
+\text{VaR} = \mu + \sigma \times \sqrt{T} \times N^{-1}(X)
+$$
+
+$$
+\text{ES} = \mu + \sigma \times \sqrt{T} \times \frac{e^{-Y^2/2}}{\sqrt{2\pi} (1 - X)}
+$$
+
+- Where:
+    - $\mu$ is the mean of returns, usually assumed as zero.
+    - $\sigma$ is the standard deviation of returns.
+    - $X$ is the confidence level.
+    - $N^{-1}(\cdot)$ is the inverse cumulative normal distribution.
+    - $Y$ is the $X$th percentile point of the standard normal distribution.
+    - $T$ is the time horizon in days, for longer time horizons it is better to use
+    appriate return frequency directly.
+
+- Standard deviation of multi-asset portfolio is calculated as follows:
+
+$$
+\sigma_P = \sqrt{\sum_{i=1}^{n} \sum_{j=1}^{n} \rho_{ij} \delta_i \delta_j \sigma_i
+\sigma_j}
+$$
+
+- This equation can also be written as:
+
+$$
+\sigma_P = \sqrt{\sum_{i=1}^n \delta^2 \sigma^2 + \sum_{i \neq j} \rho_{ij} \delta_i
+\delta_j \sigma_i \sigma_j}
+$$
+
+#### Asset A
+
+- Consider one-share portfolio of asset A valued at \$10 million.
+- Time horizon of 10 days and a 99% confidence level for VaR.
+- Daily volatility is 2% (\$200,0000).
+- The expected change in a market variable over the considered time period is assumed to
+be zero in the model-building approach.
+- Change in value is assumed to be normally distributed, with a standard deviation of
+\$200,000 and a mean of zero.
+
+\br
+
+- One-day 99% VaR is $2.326 \times \$200,000 = \$465,300$.
+- 10-day 99% VaR is $\2.326 \times \$200,000 \times \sqrt{10} = \$1,471,300$.
+- 10-day 99% ES is: 
+
+$$
+\text{ES} = \$200,000 \times \sqrt{10} \times \frac{e^{-2.326^2/2}}{\sqrt{2\pi} (1 -
+0.99)} = \$1,686,00
+$$
+
+#### Asset B
+
+- Consider one-share portfolio of asset B valued at \$5 million.
+- Time horizon of 10 days and a 99% confidence level for VaR.
+- Daily volatility is 1% (\$50,0000).
+- The expected change in a market variable over the considered time period is assumed to
+be zero in the model-building approach.
+- Change in value is assumed to be normally distributed, with a standard deviation of
+\$50,000 and a mean of zero.
+
+\br
+
+- One-day 99% VaR is $2.326 \times \$50,000 = \$116,300$.
+- 10-day 99% VaR is $\2.326 \times \$50,000 \times \sqrt{10} = \$367,800$.
+- 10-day 99% ES is: 
+
+$$
+\text{ES} = \$50,000 \times \sqrt{10} \times \frac{e^{-2.326^2/2}}{\sqrt{2\pi} (1 -
+0.99)} = \$421,400
+$$
+
+#### Two-Asset Case
+
+- Assume a correlation of 0.3 between asset A and asset B.
+- The standard deviation of the sum of two variables $X$ and $Y$, given their standard deviations ($\sigma_X$ and $\sigma_Y$) and the coefficient of correlation between them ($\rho$):
+
+$$
+\sigma_{X+Y} = \sqrt{\sigma_X^2 + \sigma_Y^2 + 2 \rho \sigma_X \sigma_Y}
+$$
+
+- Using values from the previous example for asset A and asset B:
+
+$$
+\sigma_{A+B} =\sqrt{200,000^2 + 50,000^2 + 2 \times 0.3 \times 200,000 \times 50,000} =
+\$220,227
+$$
+
+- One-day 99% VaR is $\$2.326 \times \$220,227 = \$512,300$.
+- 10-day 99% VaR is $\$512,300 \times \sqrt{10} = \$1,620,100$. 
+- 10-day 99% ES is:
+$$
+\text{ES} = \$220,227 \times \sqrt{10} \times \frac{e^{-2.326^2/2}}{\sqrt{2\pi} (1 -
+0.99)} = \$1,856,100
+$$
+
+#### Benefits of Diversification
+
+- The 10-day 99% VaR for the portfolio of asset A is \$1,471,300.
+- The 10-day 99% VaR for the portfolio of asset B is \$367,800.
+- The 10-day 99% VaR for the portfolio of both assets is \$1,620,100.
+
+$$
+(\$1,471,300 + \$367,800) - \$1,620,100 = \$219,000
+$$
+
+- The difference of \$219,000 represents the benefits of diversification.
+- If both assets were perfectly correlated, the VaR for the combined portfolio would
+equal the sum of the individual VaRs.
+- Less than perfect correlation results in some risk being diversified away, true for
+both ES and VaR.
+
+> For non-normal distributions, the VaR of two portfolios considered jointly can be
+greater than the sum of their VaRs. ES does not have this disadvantage.
+
+### Parametric Approach vs. Historical Simulation
+
+- **Advantages of Parametric Approach**: 
+  - Results can be produced quickly.
+  - Can be used easily with volatility and correlation updating procedures.
+  - Volatility changes can be incorporated into the historical simulation approach, but
+  in a more artificial way.
+
+- **Disadvantages of Parametric Approach**: 
+  - The change in the value of the portfolio is linearly related to the proportional or
+  actual changes in the risk factors.
+  - The daily changes in the risk factors are assumed to have a multivariate normal
+  distribution.
+  - Daily changes in risk factors often have distributions that differ from normal
+  distribution.
+  - Parametric method is very sensitive to parameter estimates, particularly covariances
+  (when assuming a portfolio).
+  - It is difficult to use when dealing with portfolios containing options due to their
+  non-linear pay-off structure.
+
+## Monte Carlo Simulation
+
+- This method lets users develop their own assumptions about distribution statistics to
+generate random hypothetical returns for a portfolio.
+- Widely used in various fields to estimate statistical distributions, especially for
+complex investments with uncertain variables or pricing complex options.
+- Can handle portfolios with multiple assets, complex risk interactions, and doesn't
+require normal distribution assumptions.
+- Users must decide the number of random values to generate, with more values increasing
+reliability but taking more time.
+- Monte Carlo simulation also requires accounting for the correlation between variables,
+so it can't simply simulate two random variables independently.
+- The method involves simulating the returns of risk factors, repricing portfolio
+exposures under a range of simulated returns, sorting these results, and then selecting
+a percentile as the VaR.
+- The method's flexibility allows it to accommodate any distribution, making it more
+accurate for option positions or bonds with embedded options compared to parametric
+methods.
+
+### Numerical Example in Python
+
+**General Approach:**
+
+1. Define the probability distribution of the returns of the asset. This is typically
+done by fitting the historical returns of the asset to a certain probability
+distribution (normal, lognormal, etc.). 
+2. Generate a large number of random outcomes from the defined distribution. Each random
+outcome represents a possible future return of the asset.
+3. Reprice the asset using each random outcome and record the result. This will give a
+distribution of possible future asset values.
+4. Sort the recorded results from worst to best.
+5. Calculate VaR and ES.
+
+```{python}
+import yfinance as yf
+import numpy as np
+import pandas as pd
+
+# Download stock data
+ticker = "SPY"
+stock_data = yf.download(ticker, period="3y", progress=False)
+price_data = stock_data["Adj Close"]
+
+## Calculate historical volatility and mean return
+daily_returns = price_data.pct_change().dropna()
+sigma = daily_returns.std()
+mu = daily_returns.mean()
+
+# Monte Carlo simulation
+simulations = 10000
+initial_price = price_data[-1]
+
+random_shocks = np.random.normal(0, 1, simulations)
+
+# Simplified Geomeetric Brownian motion (log-normal distribution)
+simulated_prices = initial_price * np.exp(
+    (mu - 0.5 * sigma**2) + sigma * random_shocks
+)
+
+# Calculate 1% VaR and ES
+confidence_level = 1  # for 1% VaR and ES
+percentile = np.percentile(simulated_prices, confidence_level)
+VaR = initial_price - percentile
+
+below_VaR = simulated_prices[simulated_prices <= percentile]
+ES = np.mean(initial_price - below_VaR)
+
+print(f"1-day 99% VaR is ${VaR:.2f}")
+print(f"1-day 99% ES is ${ES:.2f}")
+```
+
+## Practice Questions and Problems
+
+### Historical Simulation
+
+1. What assumption is being made when VaR is calculated using the historical simulation
+approach and 500 days of data?
+2. Suppose we estimate the one-day 95\% VaR from 1,000 observations (in millions of
+dollars) as 5. By fitting a standard distribution to the observations, the probability
+density function of the loss distribution at the 95\% point is estimated to be 0.01.
+What is the standard error of the VaR estimate?
+3. Download the lates data for selected ETFs (e.g. S\&P 500, NASDAQ, Bonds, Gold) and
+calculate:
+    - (a) the 95\%, 97\%, and 99\% one-day VaR, 
+    - (b) the 95\%, 97\%, and 99\% one-day ES, 
+    - (c) repeat the (a) and (b) for 5-day VaR and ES
+    - (d) repeat (a), (b), (c) for a stock-bond portfolio (choose your allocation)
+
+### Parametric Approach
+
+1. Consider a position consisting of a \$100,000 investment in asset A and a \$100,000
+investment in asset B. Assume that the daily volatilities of both assets are 1\% and
+that the coefficient of correlation between their returns is 0.3. What are the five-day
+97\% VaR and ES for the portfolio?
+2. A financial institution owns a portfolio of instruments dependent on the U.S.
+dollar–sterling exchange rate. The delta of the portfolio with respect to percentage
+changes in the exchange rate is 3.9. If the daily volatility of the exchange rate is
+0.7\% and a linear model is assumed, estimate the 10-day 99\% VaR.
+3. Explain why the linear model can provide only approximate estimates of VaR for a
+portfolio containing options.
+
+### Summary
+
+Use excel file 'daily_returns.xlsx' containing daily percentage returns in % for selected ETFs and calculate/show:
+
+1. Show distribution of daily returns for each asset for the whole period.
+2. Use historical simulation approach:
+    - Calculate 95% and 99% one-day VaR for the whole period.
+    - Calculate 95% and 99% one-day ES for the whole period.
+    - Convert VaR and ES to 10-day estimates.
+    - Repeat the calculations for the last 500 days.
+3. Use variance-covariance (parametric) approach:
+    - Calculate 95% and 99% one-day VaR for the whole period.
+    - Calculate 95% and 99% one-day ES for the whole period.
+    - Convert VaR and ES to 10-day estimates.
+    - Repeat the calculations for the last 500 days.
+4. Create your own portfolio (combination of given assets):
+    - Calculate 95% and 99% one-day VaR for the last 500 days.
+    - Calculate 95% and 99% one-day ES for the last 500 days.
+5. ***Bonus.*** Try to find 95% stressed VaR and ES (251-days) for each asset. 
