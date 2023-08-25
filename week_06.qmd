@@ -11,6 +11,9 @@ jupyter: python3
 
 - Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
     - Chapter 11 - Value at Risk and Expected Shortfall
+    - Chapter 14 - Interest Rate Risk
+    - Chapter 15 - Derivatives Risk
+    - Chapter 16 - Scenario Analysis and Stress Testing
 - Pirie, W. L., and M. P. Kritzman. 2017. Derivatives. CFA Institute Investment Series.
     - Chapter 6 - Risk Management
 
@@ -368,6 +371,58 @@ historical data.
 exceptions.
 - Regulators may increase market risk capital requirements if back-testing results over
 250 days are unsatisfactory.
+
+## Additional Topics
+
+### Interest Rate Risk
+
+- Financial institutions have exposures to different yield curves, requiring calculation
+of VaR and ES.
+- Two approaches for this: considering each rate as a separate risk factor or using
+principal components analysis.
+- Bank's net interest margin measures the excess of earned interest over paid interest;
+asset/liability management ensures constancy.
+- Duration is key in interest rate markets, measuring portfolio sensitivity to shifts in
+the zero-coupon yield curve.
+- Convexity of the portfolio adds precision for large parallel shifts, but not for
+nonparallel shifts.
+- Several duration or delta measures quantify different ways the yield curve can change.
+- Principal components analysis can be an alternative to multiple deltas, effectively
+hedging against standard shifts in yield curves.
+
+### Derivatives Risk
+
+- A trader monitors Greek letters (such as delta, gamma, vega) to keep them within
+specified limits.
+- Delta ($\Delta$) is the rate of change in portfolio value concerning the underlying
+asset's price; delta hedging aims to create a delta-neutral position.
+- Hedging involves taking a position of $-\Delta$ in the underlying asset, and complex
+portfolios require periodic rebalancing.
+- After achieving delta neutrality, traders often look at gamma (curvature of the
+relationship) and vega (rate of change with respect to volatility).
+- Gamma and vega can be altered by trading options on the asset.
+- Derivatives traders typically rebalance daily to maintain delta neutrality;
+maintaining gamma and vega neutrality regularly is usually infeasible.
+- Corrective action or trading curtailment may occur if gamma and vega measures get too
+large.
+
+### Scenario Analysis and Stress Testing
+
+- Stress testing is crucial in risk management, considering impacts of extreme scenarios
+usually ignored by VaR or ES analysis.
+- It allows understanding and mitigation of risks and can uncover potential systemic
+problems.
+- Scenarios generation methods include:
+  - Examining extreme movements in one market variable.
+  - Using historical market variables from extreme shock periods.
+  - A committee of senior management and economists generating plausible extremes.
+  - Reverse stress testing using algorithms to find large loss scenarios.
+- Scenarios should consider knock-on effects; market turmoil may lead to significant
+consequences like flight to quality or liquidity shortage.
+- Regulators in the US, EU, and UK develop stress scenarios for large financial
+institutions, possibly leading to capital raising requirements.
+- Integrating stress testing with VaR through subjective probabilities is an idea not
+widely adopted by financial institutions or regulators.
 
 ## Practice Questions and Problems
 
