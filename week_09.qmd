@@ -1,0 +1,582 @@
+---
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+# Credit Risk
+
+**References:**
+
+- Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+    - Chapter 17 - Estimating Default Probabilities
+    - Chapter 18 - xVAs
+    - Chapter 19 - Credit Value at Risk
+
+**Learning outcomes:**
+
+- Understand the importance of estimating default probabilities and recovery rates in
+risk management.
+- Recognize credit ratings and statistics from rating agencies as sources for estimating
+default rates.
+- Learn about the credit default swap (CDS) market and its role in estimating credit
+spreads.
+- Distinguish between real-world and risk-neutral default probabilities.
+- Grasp the concept of recovery rate.
+- Identify different methods for inferring default probabilities from credit spreads.
+- Understand the concept of Credit Value Adjustment (CVA) and how it measures the
+expected future loss from counterparty default.
+- Recognize the computational complexities in estimating CVA.
+- Grasp the idea of wrong-way and right-way risk in CVA calculations.
+- Learn about the risks associated with CVA.
+- Understand Debit Value Adjustment (DVA) and its impact on the dealer.
+- Understand the definition of Credit Value at Risk (VaR) and its similarity to market
+risk VaR.
+- Familiarize with three key models for calculating Credit VaR.
+- Learn methods to calculate VaR or Expected Shortfall  for credit-sensitive
+instruments.
+
+## Estimating Default Probabilities
+
+### Credit Ratings
+
+- **Rating Agencies (e.g., Moody's, S&P, Fitch):**
+  - Provide credit ratings for corporate bonds, indicating creditworthiness.
+  - Focus on stability, so ratings change infrequently to avoid frequent reversals.
+  - May "rate through the cycle," ignoring short-term economic changes.
+- **Other Companies (e.g., Moody’s KMV, Kamakura):**
+  - Provide estimates of default probabilities based on equity price and other
+  variables.
+  - More responsive to market information, not focusing on stability.
+- **Internal Credit Ratings in Banks:**
+  - Used for small and medium-sized companies without publicly traded debt.
+  - Utilize profitability ratios and balance sheet ratios, like return on assets and
+  debt to equity.
+  - Estimate cash flow statements to analyze a company's ability to service its debt.
+- **Altman's Z-Score:**
+  - A statistical technique to predict default using accounting ratios.
+
+  $$
+  Z = 1.2 X_1 + 1.4 X_2 + 3.3 X_3 + 0.6 X_4 + 0.999 X_5
+  $$
+
+  - **Variables:**
+    - $X_1$: Working capital/Total assets
+    - $X_2$: Retained earnings/Total assets
+    - $X_3$: Earnings before interest and taxes/Total assets
+    - $X_4$: Market value of equity/Book value of total liabilities
+    - $X_5$: Sales/Total assets
+  - **Interpretation:**
+    - $Z > 3.0$: Unlikely to default
+    - $2.7 < Z < 3.0$: On alert
+    - $1.8 < Z < 2.7$: Good chance of default
+    - $Z < 1.8$: Very high probability of financial embarrassment.
+
+### Historical Default Probabilities
+
+- Ratings agencies produce data to show default experience over time based on credit
+ratings.
+- For investment-grade bonds (BBB and above), default probability tends to increase over
+time. For poor-rated bonds, it may decrease.
+- Both unconditional and conditional default probabilities can be computed from the
+data.
+
+\br
+
+- Table presents the historical default probabilities for bonds of various credit
+ratings from 1981 to 2020.
+- The table assists in understanding the risk profiles associated with bonds of
+different credit ratings, reflecting the perceived creditworthiness of issuers over time
+and allowing risk management in financial decisions.
+- Investment-grade bonds have rating BBB and above.
+- **Example**: A bond initially rated BBB has a 0.16% chance of defaulting in the first
+year, 0.43% in the second year, etc.
+- **Yearly Probability Calculation**: The probability of defaulting in a specific year
+can be calculated by subtraction. E.g., for the second year, $0.43\% - 0.16\% = 0.27\%$.
+
+| Time (years) |  1   |  2   |  3   |  4   |  5   |  7   | 10   | 15   |
+|:------------:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+|     AAA      | 0.00 | 0.03 | 0.13 | 0.24 | 0.34 | 0.51 | 0.70 | 0.90 |
+|      AA      | 0.02 | 0.06 | 0.11 | 0.21 | 0.30 | 0.49 | 0.70 | 0.99 |
+|       A      | 0.05 | 0.13 | 0.22 | 0.33 | 0.46 | 0.76 | 1.20 | 1.84 |
+|     BBB      | 0.16 | 0.43 | 0.75 | 1.14 | 1.54 | 2.27 | 3.24 | 4.54 |
+|      BB      | 0.63 | 1.93 | 3.46 | 4.99 | 6.43 | 8.89 |11.64 |14.65 |
+|       B      | 3.34 | 7.80 |11.75 |14.89 |17.35 |20.99 |24.62 |28.24 |
+|    CCC/C     |28.30 |38.33 |43.42 |46.36 |48.58 |50.75 |52.76 |54.76 |
+
+- **Unconditional Default Probability**:
+  - The probability of default during a specific year as seen at the initial time (time
+  zero).
+  - The unconditional default probability of a CCC/C bond during the third year is
+  calculated as $43.42\% - 38.33\% = 5.09\%$.
+- **Conditional Default Probability**:
+  - The probability that a bond will default during a specific year, given that no
+  earlier default has occurred.
+  - **Calculation**:
+    1. Probability of surviving until the end of year two: $100\% - 38.33\% = 61.67\%$.
+    2. Conditional probability of default during the third year: $\frac{5.09\%}{61.67\%}
+    = 8.25\%$.
+  - The conditional default probability considers the probability of survival until a
+  specific point, then calculates the probability of default from that point onwards.
+- Conditional probabilities are often more relevant for ongoing risk management as they
+reflect updated information and context, whereas unconditional probabilities provide a
+broader, initial view of risk.
+
+#### Hazard Rates
+
+- **Hazard Rate (λ(t))** is a measure of default intensity over a short time period,
+conditional on no prior default.
+- The hazard rate is a useful tool for understanding the risk of default over time,
+taking into consideration both conditional and unconditional probabilities.
+- It accounts for the possibility of survival and provides insights into the company's
+creditworthiness.
+- **Formula**: 
+    - Conditional Probability: 
+    $$ \frac{V(t) - V(t + \Delta t)}{V(t)} = \lambda(t) \Delta t$$ 
+    - Cumulative Survival: $$V(t) = e^{-\int_{0}^{t} \lambda(\tau)d\tau}$$
+    - Cumulative Default Probability: $$Q(t) = 1 - e^{-\int_{0}^{t} \lambda(\tau)d\tau}
+    = 1 - e^{-\lambda(t) t}$$
+- **Example**:
+  - Constant hazard rate 1.5% per year.
+  - Probabilities:
+    - 1st Year: $1 - e^{-0.015 \times 1} = 0.0149$
+    - 2nd Year: $1 - e^{-0.015 \times 2} = 0.0296$
+    - 3rd Year: 0.0440
+    - 4th Year: 0.0582
+    - 5th Year: 0.0723
+  - Unconditional Probability in 4th Year: $0.0582 - 0.0440 = 0.0142$
+  - Conditional Probability in 4th Year: $\frac{0.0142}{1 - 0.0440} = 0.0149$
+
+### Recovery Rates
+
+- Recovery rate for a bond refers to the price at which it trades approximately one
+month after default as a percentage of its principal amount.
+- Creditors may agree to partial payments, or assets are sold to meet claims. Some
+claims have priorities over others.
+- Recovery rates vary among different bond categories, ranging from 54.6% for first lien
+bonds to 22.3% for junior subordinated bonds.
+- The average recovery rate is negatively related to the default rate.
+- Higher recovery rates during good economic conditions, and lower during poor
+conditions.
+- A bad year for defaults can lead to both higher defaults and lower recovery rates,
+intensifying the negative impact for lenders.
+
+### Credit Default Swaps
+
+- A CDS is a financial contract that functions as a form of insurance against the risk
+of credit default.
+- Involves two parties - the buyer pays periodic premiums to the seller (often
+quarterly), and the seller agrees to compensate the buyer if a specified credit event,
+such as default, occurs.
+- Can be linked to corporate bonds, government bonds, or other credit instruments.
+- Provides the buyer with protection against the risk that the issuer of the underlying
+credit instrument might default.
+- Pricing is determined by factors such as the creditworthiness of the reference entity,
+market conditions, and the maturity of the swap.
+- Plays a role in price discovery for credit risk and can influence overall market
+liquidity and stability.
+
+#### CDS Spread
+
+- The CDS spread is the annual amount, usually expressed in basis points (bps), that the
+protection buyer pays to the protection seller over the length of the contract.
+- Typically calculated as a percentage of the notional amount of the underlying credit
+instrument paid per year.
+- A wider spread often indicates a higher perceived risk of default for the underlying
+credit entity, whereas a narrower spread suggests a lower perceived risk.
+- **Example**: If the CDS spread for a particular corporate bond is 200 bps, the buyer
+would pay the seller 2% of the notional amount annually for the protection.
+- The CDS spread serves as a valuable indicator of credit risk and market sentiment for
+the referenced credit entity.
+
+\br
+
+- Credit indices are benchmarks that track the performance of a basket of credit
+instruments such as bonds or credit default swaps.
+- They include a diversified portfolio of credit instruments, often representing various
+sectors, credit ratings, or geographic regions.
+- Used to gauge the overall health and trends in the credit market, providing insights
+into credit risk, liquidity, and investor sentiment.
+- **Examples**: Popular credit indices include the Markit iTraxx in Europe, and the CDX
+in North America, tracking credit default swap spreads across various categories of
+issuers.
+- They often enhance liquidity in the credit market by creating standardized products
+that can be traded more easily.
+
+### Credit Spreads
+
+- The credit spread is the extra rate of interest per annum required by investors for
+bearing a particular credit risk.
+- It can be measured by CDS spreads or bond yield spreads (Bond yield - risk-free bond).
+- A CDS can hedge a corporate bond, essentially converting it into a risk-free bond.
+- N-year CDS spread should approximate the yield difference between an N-year corporate
+bond and an N-year risk-free bond.
+- Liquidity constraints can limit the effectiveness of arbitrage between CDS and bonds.
+
+\br
+
+- CDSs provide a direct estimate of credit spread.
+- Risk-free rates are generally derived from Treasury bonds.
+- Implied risk-free rates often found to be higher than Treasury rates.
+- Asset swaps give direct estimates of excess bond yields over a floating reference
+rate.
+
+#### CDS–Bond Basis
+
+- The excess of the CDS spread over the bond yield spread.
+
+$$
+\text{CDS-Bond Basis} = \text{CDS Spread} - \text{Bond Yield Spread}
+$$
+
+- Various factors like counterparty default risk and bond prices can cause deviations
+from zero.
+- The CDS-bond basis was positive before the 2007 market turmoil but has since usually
+been small and negative.
+
+### Estimating Default Probabilities from Credit Spreads
+
+- Objective is to estimate default probabilities using credit spreads like CDS spread,
+bond yield spread, or asset swap spread.
+
+#### Approximate Calculation
+
+- **Scenario**: 5-year credit spread is 240 basis points; recovery rate is 40%.
+- **Formula**: 
+    $$
+    \overline{\lambda} = \frac{s(T)}{1-R}
+    $$
+- where $s(T)$ is the credit spread for a maturity $T$, $R$ is the recovery rate, and
+$\overline{\lambda}$ is the average hazard rate between time zero and time $T$.
+
+    $$
+    \overline{\lambda} = \frac{0.024}{1 - 0.4} = 4\%
+    $$
+
+- Works well for CDS, bond yield, and asset swap spreads.
+- Assumes bond price close to par value.
+
+#### A More Exact Calculation
+
+- Suitable for bonds with prices significantly deviating from par value.
+- **General Idea**: Incorporates bond price, coupon rate, and yield for more precise
+estimates.
+- **Calculation Steps**: 
+  - Compare prices of corporate and similar risk-free bonds.
+  - Calculate expected loss from default.
+  - Equate this to present value of future default losses.
+  - Solve for default probability $Q$.
+- **Advantages**: Higher degree of accuracy; accounts for complex market conditions.
+
+### Comparison of Default Probability Estimates
+
+- Real world (historical data) vs. risk-neutral world (credit spreads).
+- Hazard rates from credit spreads are generally higher than those from historical data.
+- Differences in rates increase as credit quality declines.
+- Multiple reasons for these differences:
+  - Illiquidity of corporate bonds.
+  - Systematic risk due to correlated defaults.
+  - Non-systematic risk harder to diversify in bonds.
+
+\br
+
+- When **valuing** credit derivatives or estimating the impact of default risk on the
+pricing of instruments, we should use **risk-neutral default probabilities**. 
+- When carrying out **scenario analyses** to calculate potential future losses from
+defaults, we should use **real-world default probabilities**. 
+
+> - Merton 1974, model for calculating default probabilities.
+> - Equity of a company is a call option on the value of the assets of the company with
+a strike price equal to the repayment required on the debt.
+
+## xVAs
+
+- Over-the-counter derivatives are cleared either through Central Clearing Parties
+(CCPs) or bilateral agreements.
+- Regulatory changes mandate standardized derivatives to be cleared via CCPs.
+- Bilaterally cleared transactions involve more collateral to mitigate credit risk.
+- In both cases, there is very little credit risk.
+- However, there are transactions to which regulations do not apply (e.g., OTC
+transactions with non-financial end users).
+- Credit risk assessment for derivatives is more complicated than for loans.
+- Unlike fixed loan exposures, the future exposure in derivatives is uncertain, and the
+potential loss could be theoretically infinite.
+
+\br
+
+- Credit Value Adjustment (CVA) and Debit Value Adjustment (DVA) are risk management
+tools used in the valuation of counterparty risk. 
+- **xVAs**: Credit Value Adjustment (CVA) and Debit Value Adjustment (DVA) are key
+metrics among xVAs, which also include Funding Value Adjustment (FVA), Margin Value
+Adjustment (MVA), and Capital Value Adjustment (KVA). These quantify different aspects
+of credit risk costs or benefits in derivatives.
+- The chapter concentrates on CVA as a primary tool for quantifying the dealer’s credit
+risk in bilaterally cleared transactions.
+
+### Credit Exposure on Derivatives
+
+- Example: one transaction, cleared bilaterally and no collateral is posted.
+- **Three Credit Exposure Scenarios**: 
+  1. The derivative is a liability (e.g., short option): No credit exposure for the
+  dealer.
+  2. The derivative is an asset (e.g., long option): Dealer has credit exposure.
+  3. The derivative can be either(e.g., forward, swap): Exposure varies over time.
+
+\br
+
+- In multiple transactions between a dealer and a counterparty, exposures are netted.
+- The dealer's net exposure is $\text{max}(V, 0)$, where $V$ is the net market value of
+all transactions.
+- In calculating its credit risk, the dealer is interested in both its credit exposure
+today and what that exposure might be in the future.
+
+### Credit Value Adjustment (CVA)
+
+- Credit Value Adjustment (CVA) estimates expected loss from counterparty default in OTC
+derivatives.
+- CVA impacts balance sheet and profits (increase CVA = decrease profits).
+- Dealer calculates it for each counterparty.
+  
+#### Calculations
+
+- Time $T$ is the life of the longest derivative.
+- Divide $[0, T]$ into intervals $[t_{i-1}, t_i]$.
+- Variables:
+  - $q_i$: Risk-neutral probability of default during $i$th interval.
+  - $v_i$: Present value of net exposure at $i$th interval's midpoint.
+  - $R$: Estimated recovery rate.
+  - $s_i$: An estimate of the counterparty’s credit spread for a maturity of $t_i$. 
+- CVA Equation, total expected loss from a default:
+$$
+\text{CVA} = \sum_{i=1}^{n} (1 - R) q_i v_i
+$$
+
+$$
+q_i = \exp \left( \frac{ - s_{i-1} t_{i-1}}{1 - R} \right) - \exp \left( \frac{- s_i
+t_i}{1 - R} \right)
+$$
+
+- $v_i$ usually calculated using Monte Carlo simulation.
+
+#### Collateral and Cure Periods
+
+- Collateral agreements are integrated into the calculation of $v_i$.
+- **Exposure, $E$**: Defined as $E = \max(V - C, 0)$, where $V$ is the market value of
+outstanding transactions and $C$ is the collateral posted at the time of default.
+- **Cure Period**: Usually 10 days. Time lapse between a counterparty ceasing to post
+collateral and the transaction close-out. Affects the collateral value at the time of
+default.
+- It must be taken into account in the Monte Carlo simulation.
+
+#### Peak Exposure and Downgrade Triggers
+
+- **Peak Exposure**: - Calculated at the midpoint of each interval, representing a high
+percentile (e.g., 97.5%) of exposures in Monte Carlo simulations.
+- It should use real-world, not risk-neutral world, simulations, but for short time
+periods the difference is small.
+  
+\br
+
+- **Downgrade Triggers**: Clauses in ISDA master agreements that require more collateral
+or termination if one party's credit rating falls below a specified level.
+- Downgrade triggers can lead to significant liquidity crises if a company cannot meet
+collateral demands, potentially resulting in bankruptcy (e.g., if it is overused).
+- They offer limited protection against drastic changes in credit rating.
+- Examples include AIG, Enron, Xerox, and Ambac.
+
+### The Impact of a New Transaction
+
+- Positive correlation with existing transactions increases CVA; negative correlation
+reduces it.
+- Companies may get favorable quotes from dealers with whom they already have
+transactions due to CVA/netting considerations.
+- Directly recalculating CVA for each new transaction is impractical due to
+computational intensity.
+- Stored values from previous Monte Carlo simulations can be used for efficient
+incremental CVA calculation.
+
+### CVA Risk and Wrong-Way Risk
+
+- CVA can be considered as a complex derivative.
+- A rise in CVA decreases dealer's income, hence the need to hedge CVAs in the same way
+as other derivatives (using Greek letters).
+- Computing Greek letters for CVA is computationally intensive. 
+- Incorporating risks from changes in credit spreads into market risk capital
+calculations is a required by regulators.
+
+\br
+
+- **Wrong-way risk** arises when probability of default and exposure are positively
+correlated.
+- **Right-way risk** is the opposite.
+-  Evaluating wrong-way or right-way risk requires insights into counterparty’s business
+and their other transactions.
+- Regulatory mechanism to adjust CVA for wrong-way risk using alpha multiplier (min. 1.2).
+
+### Debit Value Adjustment (DVA)
+
+- Debit Value Adjustment (DVA) is the counterparty's expected cost due to the dealer's
+possible default.
+- It is essentially the counterparty's CVA.
+- DVA is a benefit to the dealer, offsetting the dealer's own CVA. This is in line with
+the zero-sum nature of derivatives.
+- The book value of derivatives is calculated as $f_{nd} - CVA + DVA$, where $f_{nd}$ is
+the value of the derivatives assuming neither side will default.
+- An increase in a dealer’s credit spread leads to an increase in DVA and consequently
+boosts reported profits.
+- Due to the potential for inflated profits, regulators have excluded DVA gains and
+losses from the definition of common equity in regulatory capital calculations.
+
+## Credit Value at Risk
+
+- Value at Risk (VaR) is crucial for regulatory capital determination and internal
+credit risk management in both financial and nonfinancial firms.
+- Credit risk VaR is the potential credit loss over a specific time, not to be exceeded
+at a given confidence level.
+- It may consider default losses alone or include downgrade and credit spread changes.
+- Banks use Credit VaR for both regulatory and economic capital.
+- Longer horizon for credit risk VaR (often one year) compared to market risk VaR
+(usually one day).
+- Credit risk VaR requires more elaborate models than market risk VaR, which often uses
+historical simulation.
+- **Credit Correlation**: A key variable that accounts for the interdependence of
+defaults among different companies, important especially in economic downturns.
+- Increased credit correlation during stressed conditions raises the risk for financial
+institutions with credit portfolios.
+
+### Ratings Transition Matrices
+
+- Tools showing the likelihood of a company moving from one credit rating to another
+over a specified time, based on historical data.
+- **Example**: A firm with an 'A' rating has a 92.61% chance of maintaining that rating
+after one year, according to S&P’s one-year transition matrix.
+- One-year matrices can be extended to longer periods by matrix multiplication (e.g.,
+for five-year horizon take fifth power of the one-year matrix).
+- The model assumes rating changes are independent across periods, though this is not
+entirely accurate.
+- Recent downgrades make further downgrades more likely.
+
+\br
+
+- One-Year Ratings Transition Matrix, 1981–2020 (Source: S&P)
+- Probabilities Expressed as Percentages and Adjustments for Transition to the NR (not
+rated) Category
+
+| Initial Rating | AAA   | AA    | A     | BBB   | BB    | B     | CCC/C | D     |
+| :------------: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| AAA            | 89.85 | 9.35  | 0.55  | 0.05  | 0.11  | 0.03  | 0.05  | 0.00  |
+| AA             | 0.50  | 90.76 | 8.08  | 0.49  | 0.05  | 0.06  | 0.02  | 0.02  |
+| A              | 0.03  | 1.67  | 92.61 | 5.23  | 0.27  | 0.12  | 0.02  | 0.05  |
+| BBB            | 0.00  | 0.10  | 3.45  | 91.93 | 3.78  | 0.46  | 0.11  | 0.17  |
+| BB             | 0.01  | 0.03  | 0.12  | 5.03  | 86.00 | 7.51  | 0.61  | 0.70  |
+| B              | 0.00  | 0.02  | 0.08  | 0.17  | 5.18  | 85.09 | 5.66  | 3.81  |
+| CCC/C          | 0.00  | 0.00  | 0.12  | 0.20  | 0.65  | 14.72 | 50.90 | 33.42 |
+| D              | 0.00  | 0.00  | 0.00  | 0.00  | 0.00  | 0.00  | 0.00  | 100.00|
+
+### Methods for Calculating Credit VaR:
+
+- **Vasicek’s Model**:
+  - Utilizes a one-factor Gaussian copula model.
+  - Focuses on time to default for companies in a portfolio.
+  - Commonly used for regulatory capital determination.
+- **Credit Risk Plus**:
+  - Proposed by Credit Suisse in 1997.
+  - Similar to insurance industry approaches.
+  - Calculates default losses based on probabilities of individual company defaults.
+  - Incorporates uncertainty in default rates.
+- **CreditMetrics**:
+  - Proposed by JPMorgan in 1997.
+  - Uses a Gaussian copula model with a ratings transition matrix.
+  - Considers losses from both defaults and credit rating downgrades.
+
+\br
+
+- **CreditMetrics vs. Credit Risk Plus**: 
+  - Should predict the same long-term loss distribution if based on identical
+  assumptions.
+  - Differences arise in the timing, not the magnitude, of predicted losses.
+  - **Example Scenario**: Loan downgraded from A to BBB in Year 1, BBB to B in Year 2,
+  and defaults in Year 3.
+  - **Credit Risk Plus Approach**: Assumes no losses in Year 1 and Year 2; calculates
+  the loss only in Year 3.
+  - **CreditMetrics Approach**: Calculates separate revaluation losses in each of the
+  three years.
+  - The total losses calculated using the CreditMetrics approach should theoretically
+  equal those calculated using the Credit Risk Plus approach.
+  
+### Credit Spread Risk
+
+- Value of credit-sensitive products highly dependent on credit spreads.
+- VaR or ES calculated considering potential credit spread changes.
+- **Historical Simulation Approach**:
+  - Collect last 500 days (or other period) of credit spread changes.
+  - Limitations: Assumes no probability of default, may lack quality data.
+- **Alternative: CreditMetrics Approach**:
+  - Utilizes 10-day rating transitions matrix and Monte Carlo simulation.
+  - Samples from matrix and credit spread probability distribution.
+
+## Practice Questions and Problems
+
+### Estimating Default Probabilities
+
+1. What is a rating?
+2. What rating agencies exist and how many categories do they use for investment-grade
+bonds?
+3. What are the disadvantages of ratings with respect to credit risk for financial
+institutions?
+4. What are alternative methods for estimating credit risk?
+5. What is meant by a hazard rate?
+6. Calculate the average hazard rate for a B-rated company during the first year from
+the data in Table in the text.
+7. Calculate the average hazard rate for a BB-rated company during the third year from
+the data in Table in the text.
+8. A credit default swap requires a semiannual payment at the rate of 60 basis points
+per year. The principal is \$300 million and the credit default swap is settled in cash.
+A default occurs after four years and two months, and the calculation agent estimates
+that the price of the cheapest deliverable bond is 40% of its face value shortly after
+the default. List the cash flows and their timing for the seller of the credit default
+swap.
+9. Explain the two ways a credit default swap can be settled.
+10. Explain the difference between the default probabilities calculated from historical
+default experience and those calculated from credit spreads.
+10. The spread between the yield on a three-year corporate bond and the yield on a
+similar risk-free bond is 50 basis points. The recovery rate is 30%. Estimate the
+implied average hazard rate per year over the three-year period.
+11. The spread between the yield on a five-year bond issued by a company and the yield
+on a similar risk-free bond is 80 basis points. Assuming a recovery rate of 40%,
+estimate the implied average hazard rate per year over the five-year period.  If the
+spread is 70 basis points for a three-year bond, what do your results indicate about the
+implied average hazard rate in years 4 and 5?
+12. How are recovery rates usually defined?
+13. “The position of a buyer of a credit default swap is similar to the position of
+someone who is long a risk-free bond and short a corporate bond.” Explain this
+statement.
+14. Why is there a potential asymmetric information problem in credit default swaps?
+
+### xVAs
+
+1. Explain why a new transaction by a bank with a counterparty can have the effect of
+increasing or reducing the bank’s credit exposure to the counterparty.
+2. A company offers to post its own equity as collateral. How would you respond?
+3. Can the existence of default triggers increase default risk? Explain your answer.
+4. Give two examples of when (a) wrong-way risk and (b) right-way risk can be expected
+to be observed.
+5. Explain the term "cure period."
+6. "Netting means that CVA cannot be calculated on a transaction-by-transaction
+basis." Explain this statement.
+7. "DVA can improve the bottom line when a bank is experiencing financial difficulties."
+Explain why this is so.
+8. What part of CVA risk is considered a component of market risk by regulators?
+
+### Credit Value at Risk
+
+1. Explain the difference between Vasicek’s model, the Credit Risk Plus model, and
+CreditMetrics as far as the following are concerned: (a) when a credit loss is
+recognized and (b) the way in which default correlation is modeled.
+2. Explain what is meant by the constant level of risk assumption.
+3. Use the transition matrix from the text to calculate a transition matrix for three
+years. What is the probability of a company rated AAA being AAA at the end of two years?
+What is the probability of it moving to AA?
+4. How can historical simulation be used to calculate a one-day 99% VaR for the credit
+risk of bonds in the trading book? What are the disadvantages?
