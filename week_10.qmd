@@ -1,0 +1,544 @@
+---
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+# Operational Risk, Liquidity Risk, and Model Risk
+
+**References:**
+
+- Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+    - Chapter 20 - Operational Risk
+    - Chapter 21 - Liquidity Risk
+    - Chapter 22 - Model Risk Management
+
+**Learning outcomes:**
+
+- Recognize the evolution of capital charge for operational risk.
+- Comprehend the need for key risk indicators in operational risk management.
+- Learn how to allocate operational risk capital to business units.
+- Be aware of insurance options for mitigating operational risk and their limitations.
+- Acknowledge the evolving nature of operational risk management procedures.
+- Understand two types of liquidity risk: trading and funding.
+- Recognize factors affecting liquidity trading risk.
+- Know how to measure liquidity using bid–ask spread methods.
+- Understand the importance of forecasting cash needs in normal and stressed conditions.
+- Identify "liquidity black holes" and the need for diverse trading strategies.
+- Understand model risk as a form of operational risk.
+- Identify the unique challenges posed by financial models compared to physical science
+models.
+
+## Operational Risk
+
+- Regulators introduced operational risk capital requirements in 1999.
+- Cyber risk is a growing form of operational risk, necessitating advanced security
+measures and ongoing education.
+- Operational risk is harder to quantify and manage compared to credit or market risk.
+- Unlike insurance companies that can raise premiums to cover large losses, banks do not
+have this option as they operate in a competitive environment.
+
+### Defining Operational Risk
+
+- Basel Committee's 2001 definition: "The risk of loss resulting from inadequate or
+failed internal processes, people, and systems or from external events."
+- Legal risk is included, but reputation and strategic decision risks are excluded.
+- Operational risks affect bank costs and revenue, and can interact with credit and
+market risks.
+- E.g., natural disasters, political and regulatory risk, security breaches, and so on.
+
+### Types of Operational Risk
+
+- **Internal Fraud**: Intentional acts to defraud or circumvent law by internal parties.
+Examples include insider trading and rogue trading.
+- **External Fraud**: Fraudulent acts by third parties such as robbery and computer
+hacking.
+- **Employment Practices and Workplace Safety**: Violations related to employment laws,
+health and safety, including discrimination claims.
+- **Clients, Products, and Business Practices**: Failures to meet professional
+obligations or misuse of customer information. Examples include fiduciary breaches and
+money laundering.
+- **Damage to Physical Assets**: Losses from natural disasters or vandalism. Examples
+include fires and earthquakes.
+- **Business Disruption and System Failures**: Issues like hardware failures and utility
+outages disrupting business.
+- **Execution, Delivery, and Process Management**: Transaction failures, documentation
+issues, and vendor disputes.
+
+### Loss Severity and Loss Frequency
+
+- Loss frequency and loss severity are two fundamental distributions to estimate
+potential size of operational risks.
+- **Loss Frequency**: Distribution of the number of losses observed in one year.
+Commonly modeled using the Poisson distribution.
+$$
+P(n) = e^{-\lambda T} \frac{(\lambda T)^n}{n!}
+$$
+
+- Where $\lambda$ is the average number of losses per year.
+- **Loss Severity**: Distribution of the size of a loss, given that a loss occurs. Often
+modeled using the lognormal distribution.
+- **Monte Carlo Simulation**: Used to combine loss frequency and severity to determine a
+total loss distribution.
+
+\br
+
+- Banks often have limited internal data but may utilize data from other banks or
+vendors.
+- Losses from other banks must be adjusted to reflect size of the institution.
+- Publicly reported data, like that from vendors, is often skewed towards larger losses.
+- Scenario analysis is used to assess operational risks that have not yet been observed.
+- Committee estimates for loss frequency and severity are subjective.
+- Scenarios can be developed to think actively about potential adverse events and
+formulate responses.
+
+### The Standardized Measurement Approach
+
+- Defined by regulators in December 2017, see <www.bis.org/bcbs/publ/d424.pdf>.
+- Implementation date: January 2023
+- Its purpose was to standardize the calculation of capital for operational risk in
+banks.
+
+\br
+
+- **Business Indicator (BI)** to measures the bank's size and therefore its potential
+operational risk exposure:
+  - Interest Leases and Dividend Component (ILDC)
+  - Services Component (SC)
+  - Financial Component (FC)
+  - **Formula**: $\text{BI} = \text{ILDC} + \text{SC} + \text{FC}$
+
+\br
+
+- **Business Indicator Component (BIC)**:
+  - Small Banks: $BIC = 0.12 \times BI$
+  - BI between 1 and 30 billion euros: $BIC = 0.12 + 0.15 \times (BI-1)$
+  - BI above 30 billion euros**: $BIC = 4.47 + 0.18 \times (BI-30)$
+
+\br
+
+- **Internal Loss Multiplier (ILM)**:
+  - **Loss Component (LC)** is equal to 15 times average annual operational risk losses
+  over previous 10 years.
+  $$
+  ILM = \ln \left[ e - 1 + \left( \frac{LC}{BIC} \right)^{0.8} \right]
+  $$\)
+
+\br
+
+- **Operational Risk Capital**:
+- For Small Banks (BI < 1 billion euros): Equal to BIC.
+- For Other Banks: Equal to $BIC \times ILM$.
+- National Supervisors' Discretion: May set capital equal to BIC for all banks or use
+loss data for small banks.
+
+\br
+
+- If $LC = BIC$, then $ILM = 1$ and required capital is BIC.
+- Banks with operational risk losses higher than average will have $ILM > 1$.
+- Banks with losses lower than average will have $ILM < 1$.
+ 
+### Preventing Operational Risk Losses
+
+- Operational risk managers aim to prevent losses by studying failures at other banks.
+- Managers explore causal relationships between decisions and operational risk to
+identify preventive measures, such as modifying employee qualifications or upgrading
+systems.
+- Business unit managers identify operational risks, often using questionnaires and
+scorecards (risk control and self-assesment).
+- Key risk indicators act as early warning systems, tracking metrics like:
+    1. Staff turnover
+    2. Number of failed transactions
+    3. Number of positions filled by temps
+    4. Ratio of supervisors to staff
+    5. Number of open positions
+    6. Percentage of staff who did not take 10 days consecutive leave in the last 12 months
+
+### Allocation of Operational Risk Capital
+
+- Capital should be allocated in a way that motivates business units to manage
+operational risks effectively.
+- Reduction in operational risk should lead to less allocated capital, thereby
+increasing return on capital for the unit.
+- However, costs of reducing certain risks may outweigh the benefits.
+- Support from senior management and board oversight is critical.
+- Basel Committee on Banking Supervision recommends regular board reviews of risk
+management programs.
+
+### Insurance
+
+- **Moral Hazard**: Insuring against operational risks may encourage lax behavior in
+risk management.
+- **Adverse Selection**: Insurance companies may attract higher-risk clients, requiring
+rigorous assessment of bank controls.
+- Deductibles, coinsurance, and policy limits are used to manage these insurance risks.
+
+## Liquidity Risk
+
+- Elevated by the Global Financial Crisis of 2007.
+- **Solvency** refers to a company having more assets than liabilities, so that the value of its equity is positive. 
+- **Liquidity** refers to the ability of a company to make cash payments as they become due.
+- Financial institutions that are solvent can fail because of liquidity problems.
+- **Liquidity Funding Risk**: Risk associated with inability to meet short-term
+obligations.
+- **Liquidity Trading Risk**: Concerns bid-ask spreads and asset marketability.
+- Regulatory liquidity requirements aim to ensure worst-case scenario survival.
+- "Liquidity Black Holes": Extreme situations where market liquidity evaporates
+suddenly.
+
+### Liquidity Trading Risk
+
+- Factors Affecting Liquidity:
+    - Asset type (e.g., IBM shares vs. non-investment-grade bonds)
+    - Trade size
+    - Speed of liquidation
+    - Economic environment
+- Market makers may widen bid-ask spreads for large trades.
+- Without market makers, implicit bid-ask spreads exist, varying from 0.01% to 10% of
+mid-market price.
+- Market participants may anticipate large position unwinds, affecting liquidity.
+- Importance of maintaining confidentiality to avoid predatory trading.
+- Lack of transparency can lead to illiquid markets.
+- During the Global Financial Crisis, complex derivatives became illiquid due to lack of
+understanding.
+- "Liquidity Black Hole": liquidity evaporates when multiple institutions try to unwind
+similar positions simultaneously.
+
+### Measuring Market Liquidity
+
+- **Bid-Ask Spread**: Measures liquidity either as a cash amount or as a proportion of
+the asset price.
+- **Cash Bid-Ask Spread**: $p = \text{Ask price} - \text{Bid price}$
+- **Proportional Bid-Ask Spread**: $s = \frac{\text{Ask price} - \text{Bid
+price}}{\text{Mid-market price}}$
+- One measure of the liquidity of a book is how much it would cost to liquidate the book
+in normal market conditions within a certain time.
+- **Cost of Liquidation**: Estimates the cost to liquidate an asset or book of assets.
+  
+\br
+
+- **Cost of Liquidation (Normal Market)**:  
+$$
+\text{Cost} = \sum_{i=1}^{n} \frac{s_i \alpha_i}{2}
+$$
+
+- where $s_i$ is the proportional bid-ask spread and $\alpha_i$ is the value of the
+position.
+   
+\br
+
+- **Cost of Liquidation (Stressed Market)**:  
+$$
+\text{Cost} = \sum_{i=1}^{n} \frac{(\mu_i + \lambda \sigma_i) \alpha_i}{2}
+$$
+
+- $\mu_i$ is the mean of the proportional bid-offer spread for the ith financial
+instrument.
+- $\sigma_i$ is standard deviation of the proportional bid-offer spread for the ith
+financial instrument.
+- $\lambda$ gives the required confidence level for the spread.
+
+\br
+
+- Diversification doesn't necessarily reduce liquidity risk.
+- Monitoring liquidity regularly is crucial.
+- The measure is sensitive to the time period assumed for liquidation.
+- Holding many small positions rather than a few large positions therefore tends to
+entail less liquidity risk.
+- Setting limits to the size of any one position can therefore be one way of reducing
+liquidity trading risk.
+
+#### Additional Notes
+
+**Liquidity-Adjusted VaR**:
+    - It incorporates both market risk and liquidity risk into a single metric (Var plus
+    Cost of liquidation).
+    - It can be calculated using either normal market conditions or stressed market
+    conditions.
+
+\br
+
+- **Unwinding a Position Optimally**:
+    -  A dilemma exists between liquidating quickly (higher bid-ask spread, less market
+    risk) and liquidating slowly (lower bid-ask spread, higher market risk).
+    -   Almgren and Chriss (2001) provide a mathematical approach to optimize this
+    process.
+
+\br
+
+- **Other Measures of Market Liquidity**:
+    - Besides bid-ask spread, trading volume and price impact are also considered.
+    - A metric proposed by Amihud relates daily return to daily dollar volume,
+    suggesting that higher expected returns compensate for lower liquidity.
+    - **Amihud's Measure**: Average of 
+    $$ \frac{\text{Absolute value of daily return}}{\text{Daily dollar volume}} $$
+    - This is a simpler but similar measure to price impact.
+    - Amihud (2002) demonstrates that as liquidity decreases, an asset's expected return
+    increases, implying that investors are compensated for taking on liquidity risk.
+
+### Liquidity Funding Risk
+
+- Focuses on a financial institution’s capacity to meet cash needs.
+- Institutions can be solvent yet fail due to liquidity issues.
+- Causes of Liquidity Funding Problems:
+  1. **Economic Liquidity Stresses**: Reluctance from investors to fund any credit-risk
+  bearing activities.
+  2. **Aggressive Funding Decisions**: Tendency to fund long-term needs with short-term
+  instruments, causing liquidity mismatch.
+  3. **Poor Financial Performance**: Leads to loss of confidence, deposit withdrawal,
+  and funding difficulties.
+- Often, all three causes may contribute to severe liquidity problems.
+- **Managing Risk**: 
+  1. Predicting Cash Needs: Some are predictable (e.g., bond coupons), others less so
+  (e.g., deposit withdrawals).
+  2. Complex Financial Instruments: Increase unpredictability of cash needs due to
+  factors like downgrade triggers and counterparty defaults.
+- The key is to ensure cash needs can be met even in adverse scenarios.
+
+#### Sources of Liquidity
+
+1. **Cash and Treasury Securities**: Highly liquid but expensive, limiting the amount
+held.
+2. **Liquidating Trading Book**: Requires monitoring liquidity under stressed market
+conditions.
+3. **Ability to Borrow**: Easy during unstressed periods but difficult during market
+stress.
+4. **Retail and Wholesale Deposits**: Volatile and dependent on market-wide conditions.
+5. **Securitization**: Used to be reliable but became risky after 2007.
+6. **Central Bank Borrowing**: Lender of last resort, subject to collateral and haircut.
+
+- **Additional Considerations**:
+    1. **Stressed vs Normal Conditions**: Different liquidity sources function differently under stress.
+    2. **Collateral and Haircut**: Important when borrowing from central banks.
+    3. **Hedging Issues**: May result in liquidity problems due to margin requirements.
+
+### Reserve Requirements and Regulation
+
+- A set percentage of a bank's deposits must be kept in reserve.
+- Affects the money supply; varies by country.
+- Basel III Liquidity Risk Requirements:
+    - **LCR (Liquidity Coverage Ratio)**: High-quality liquid assets to net cash
+    outflows in a 30-day stress period should be $\leq$ 100%.
+    - **NSFR (Net Stable Funding Ratio)**: Amount of stable funding to required stable
+    funding should be $\leq$ 100%.
+    
+### Liquidity Black Holes
+
+- A situation where market liquidity dries up due to everyone wanting to sell and no one
+wanting to buy, or vice versa.
+- It is still possible to buy/sell assets but the bid-ask spread is huge.
+- Negative Feedback Traders: Buy when prices fall, sell when prices rise.
+- Positive Feedback Traders: Do the opposite, exacerbating price movements.
+- Dominance of positive feedback traders leads to unstable, illiquid markets.
+- Reasons for positive feedback trading:
+    1. **Trend Trading**: Buy or sell based on asset price trends.
+    2. **Stop-Loss Rules**: Automatic selling below certain price levels.
+    3. **Dynamic Hedging**: Can reduce market liquidity when large short option
+    positions are hedged.
+    4. **Synthetic Options**: Commercial programs for synthetic put options can cause
+    liquidity black holes.
+    5. **Margins**: Big market moves lead to margin calls, further destabilizing prices.
+    6. **Predatory Trading**: Knowing an investor must sell large quantities can drive
+    prices further down.
+    7. **LTCM Failure**: Example of how leveraging and margin calls can exacerbate
+    liquidity issues.
+
+\br
+
+- **Leveraging and Deleveraging**:
+    - Banks awash with liquidity make credit easily available, leading to increased
+    asset prices ("leveraging").
+    - Deleveraging is the opposite: reduced liquidity in banks results in tightened
+    credit and decreased asset prices.
+    - Hedge funds are particularly affected by leveraging-deleveraging cycles.
+
+\br
+
+- **Irrational Exuberance**:
+    - Term coined by Alan Greenspan in 1996 to describe overvaluation of asset prices.
+    - Often self-reinforcing due to high short-term profits.
+    - Leads to liquidity black holes and market crashes.
+
+\br
+
+- **The Impact of Regulation**:
+    - Uniform regulatory environment can lead to synchronous behavior among banks,
+    exacerbating market issues.
+    - Different financial cycles necessitate different capital requirements; uniformity
+    can be problematic.
+
+\br
+
+- **The Importance of Diversity**:
+    - Market participants often do not act independently, causing liquidity black holes.
+    - Different types of financial institutions should be regulated differently to
+    introduce market diversity.
+    - Contrarian investment strategies may offer benefits but are hard to implement
+    under short-term VaR-based risk management.
+
+## Model Risk Management
+
+- Models increasingly used for various applications like credit decisions, liquidity
+management, and risk assessment.
+- Advanced analytic techniques, including machine learning, automate tasks previously
+done by humans.
+- Large institutions require a model risk management function for appropriate use and
+validation.
+- Models are approximations, dependent on assumptions about the phenomena they
+represent.
+- Importance of understanding these assumptions and their limitations.
+- Model risk is considered a component of operational risk.
+- Banks must develop, validate, and use models in accordance with regulatory systems.
+
+### Regulatory Guidance
+
+- [SR 11-7](https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm) by the
+U.S. Board of Governors of the Federal Reserve System outlines principles for effective
+model risk management.
+- Model risk defined as adverse consequences from incorrect or misused models.
+- Model risk occurs primarily for two reasons:
+    1. The model may have fundamental errors (data, calculation)
+    2. The model may be used incorrectly or inappropriately (limitations and assumptions
+    of the model)
+
+\br
+
+- **Model Development**:
+  - Importance of thorough documentation for model continuity, regulatory scrutiny, and
+  validation.
+  - Testing should be rigorous, including out-of-sample tests and performance under
+  extreme conditions.
+
+\br
+
+- **Model Validation**:
+  - Model validation groups provide an independent check.
+  - Three core elements: conceptual soundness, ongoing monitoring, and outcomes
+  analysis.
+  - Importance of independence and corporate culture.
+
+\br
+
+- **Vendor Models**:
+  - Vendor models should undergo similar validation processes.
+  - Require documentation and ongoing monitoring from vendors.
+  - Contingency plans for vendor unavailability.
+
+### Models in Physics and Finance
+
+- Physical models are precise because they describe fundamental laws of nature.
+- Financial models are approximate, influenced by human behavior.
+- Parameters like gravitational pull in physics are constant.
+- Financial parameters like volatility change frequently.
+- Financial models can result in significant errors and losses.
+- Incorrect assumptions and lack of validation can be costly.
+- To manage model risk, monitoring trading patterns and competitiveness in various
+products is crucial.
+
+### Models for Pricing Actively Traded Products
+
+- A situation that is common in the over-the-counter market is one where a financial
+instrument that has to be valued is a standard product such as an option, but not
+exactly the same as one that trades in the market.
+- Actively traded financial instruments have market-determined prices.
+- Models like Black–Scholes–Merton are used for similar but non-standard products to
+ensure pricing consistency.
+- Models are primarily interpolation tools; changes in model usually don't affect prices
+significantly.
+- Model risk exists in extreme market conditions and must be validated.
+- Hedging focuses on both within-model and outside-model variables.
+- Portfolio value changes can be attributed to unhedged risks, model imperfections, and
+new trades.
+- Risk is often diversified away in large financial institutions, minimizing the impact
+of inaccurate hedging.
+
+### Models for Less Actively Traded Products
+
+- For actively traded products, calibrating models to market prices minimizes model
+risk.
+- For less-traded products, model choice significantly affects valuation and hedging.
+- Institutions often aim for relative, not absolute, valuation based on similar
+market-traded instruments.
+- Multiple models should be used for non-standard products to understand model risk.
+- Using multiple models can provide a range of possible prices. 
+- Institutions should charge at the higher end of this range and be conservative about
+recognizing profits.
+- Accounting standards categorize valuations as Level 1, 2, or 3 based on reliability
+and need for modeling assumptions.
+
+
+### Successful Pricing Models and Common Mistakes
+
+- The goal is to create models that aid in market understanding and decision-making
+without unnecessary complexity.
+
+\br
+
+- **Successful Pricing Models**:
+  1. Consistency: Aligns with observed market prices, useful for interpolation.
+  2. Communication: Facilitates stable, easier-to-understand metrics like implied
+  volatilities.
+  3. Simplicity: Intuitive enough for traders to develop a nuanced understanding.
+
+\br
+
+- **Model-Building Considerations**:
+  1. Avoid Over-fitting: Complex models may capture data well but lack utility and might
+  produce unrealistic outcomes.
+  2. Caution on Over-parameterization: Adding too many parameters complicates the model
+  and could fail during market regime changes.
+  3. Preference for Simplicity: Simple models are often preferred as they are easier to
+  understand and less of a 'black box.'
+
+## Practice Questions and Problems
+
+### Operational Risk
+
+1. What risks are included by regulators in their definition of operational risks? What
+risks are not included?
+2. Discuss how moral hazard and adverse selection are handled in car insurance.
+3. When is a trading loss classified as a market risk and when is it classified as an
+operational risk?
+4. Discuss whether there is (a) moral hazard and (b) adverse selection in life insurance
+contracts.
+5. Give two examples of key risk indicators that might be monitored by a central
+operational risk management group within a bank.
+6. onsider two banks, each with a BIC of 200 million euros. Bank A has suffered 10
+operational risk losses of 20 million euros in the past 10 years. Bank B has suffered
+one 200 million euro loss in the past 10 years. What is the operational risk regulatory
+capital for each bank under SMA?
+
+### Liquidity Risk
+
+1. An asset is quoted bid 50, offer 55. What does this mean? What is the proportional
+bid–offer spread?
+2. Suppose that an investor has shorted shares worth $5,000 of Company A and bought
+shares worth $3,000 of Company B. The proportional bid–offer spread for Company A is
+0.01 and the proportional bid–offer spread for Company B is 0.02. What does it cost the
+investor to unwind the portfolio?
+3. Suppose that in Problem 2. the bid–offer spreads for the two companies are normally
+distributed. For Company A the bid–offer spread has a mean of 0.01 and a standard
+deviation of 0.01. For Company B the bid–offer spread has a mean of 0.02 and a standard
+deviation of 0.03. What is the cost of unwinding that the investor is 95% confident will
+not be exceeded?
+4. Explain the difference between the liquidity coverage ratio (LCR) and the net stable
+funding ratio (NSFR).
+5. Why is it risky to rely on wholesale deposits for funding?
+6. What is meant by (a) positive feedback trading and (b) negative feedback trading?
+Which is liable to lead to liquidity problems?
+7. What is meant by liquidity-adjusted VaR?
+8. Explain how liquidity black holes occur. How can regulation lead to liquidity black
+holes?
+9. Why is it beneficial to the liquidity of markets for traders to follow diverse
+trading strategies?
+
+### Model Risk Management
+
+1. How is a financial institution likely to find that it is using a model different from
+its competitors for valuing a particular type of derivatives product?
+2. Distinguish between within-model and outside-model hedging.
+3. What is meant by P&L decomposition?
+4. What is meant by over-fitting and over-parameterization in model building?
+5. "For structured products, traders mark to model. They do not mark to market." Explain
+this remark.
