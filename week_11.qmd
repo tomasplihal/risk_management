@@ -1,0 +1,277 @@
+---
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+# Operational Risk, Liquidity Risk, and Model Risk
+
+**References:**
+
+- Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+    - Chapter 23 - Climate Risk, ESG, and Sustainability
+    - Chapter 24 - Enterprise Risk Management
+
+**Learning outcomes:**
+
+- Understand the growing importance of environmental risks in risk management practices.
+- Recognize the terms ESG, sustainability, greenwashing.
+- Understand the holistic approach of Enterprise Risk Management (ERM).
+- Recognize the importance of integrating business units into an enterprise-wide risk
+management system.
+- Distinguish between quantitative and qualitative aspects of risk appetite.
+- Emphasize the significance of a strong risk culture, especially in medium- to
+long-term risk assessment.
+- Be aware of the potential pitfalls in focusing solely on short-term profits, as
+evident from historical crises.
+
+# Climate Risk and Enterprise Risk Management
+
+## Climate Risk, ESG, and Sustainability
+
+- Environmental risks pose a threat to Earth's habitability for future generations.
+- Companies and financial institutions are under increasing societal pressure to address
+these risks.
+- The prominence of environmental risks is expected to rise in the coming years.
+- Climate risk is identified as the most significant environmental risk.
+
+### Climate Risk
+
+- Climate risk is one of the most pressing environmental concern.
+- Human activities emit tens of billions of tons of greenhouse gases annually.
+- Greenhouse gases, primarily CO2, persist for hundreds of years, exacerbating global
+warming.
+- Paris Agreement (2015) and Glasgow Climate Pact (2021) aim for net-zero emissions by
+2050.
+- Uncertainties exist in achieving these goals due to varying global policy responses.
+- Difficulty in balancing current emissions with future environmental damage (trade-off
+between emissions today and damage in the future).
+- Major sectors contributing to greenhouse gas emissions in the US are transportation,
+electricity, and industry.
+- China, U.S., and India as major emitters, with per capita disparities.
+<https://www.worldometers.info/co2-emissions/co2-emissions-by-country/>
+- Climate change causes rising sea levels due to ice melt and water expansion.
+- Increase in extreme weather events like storms, heatwaves, and hurricanes.
+- Extreme events already cost billions; e.g., Hurricane Ida cost \$75 billion in 2021.
+
+#### Physical and Transition Risks
+
+- Analysts differentiate between physical and transition climate risks.
+- **Physical risks** involve costs from extreme climate events like floods and
+hurricanes.
+- **Transition risks** are linked to policies for lower emissions, such as carbon taxes.
+- Companies may need to shut down fossil fuel plants earlier due to transition risks.
+- Lower emissions also present new business opportunities in green technologies.
+- Estimated \$100–150 trillion needed for economic transition over next 30 years.
+- **Carbon tax** and **cap-and-trade** systems as tools to regulate emissions, varying
+adoption globally.
+
+#### Insurance Companies
+
+- Climate change significantly impacts the insurance industry by affecting risk
+correlations.
+- Traditional "law of large numbers" less applicable due to correlated climate-related
+disasters.
+- Short-term contracts allow pricing adjustments.
+- Life insurance less adaptable to climate risks.
+- Resource allocation needed for better climate risk understanding and regulatory
+compliance.
+- Companies increasingly reluctant to insure high-risk areas for natural disasters.
+
+#### Banks
+
+- Banks actively quantify climate change effects through forums like PCAF (Partnership
+for Carbon Accounting Financials).
+- Regulatory bodies launch climate stress tests for banks.
+- Climate risks impact multiple traditional risk categories: 
+    - **Credit Risk**: Climate risk can impair debt service and collateral value.
+    - **Market Risk**: Asset prices may decline due to climate effects.
+    - **Liquidity Risk**: Market changes may limit access to stable funding.
+    - **Operational Risk**: Legal and compliance risks may rise.
+    - **Reputational Risk**: Public sentiment can heighten reputational risks.
+- Mortgages vulnerable to long-term climate change impacts on real estate values.
+- Severe climate events can reduce corporate profitability, raising credit risk.
+- Mass migrations and agricultural changes expected, affecting economic stability.
+- Sovereign debt increasingly risky, particularly in less-developed countries.
+- Transition to low-carbon economy creates winners and losers, affecting lending.
+- Reputational risks make banks cautious in lending to carbon emitters.
+
+#### Institutional Investors
+
+- Increasing focus on incorporating climate risk in portfolios.
+- Companies incentivized to align with emission targets to attract institutional
+investments.
+- **Green Bonds**: Innovative financial instruments designated for climate-friendly
+investments, underwritten by investment banks.
+- Multiple organizations aim to standardize climate-related financial reporting, but
+efforts are still in progress.
+- Asset managers like BlackRock are proactive, while others like Berkshire Hathaway are
+resistant.
+- **Political Counterpressures**: Legislation proposals and requests to ignore
+environmental factors in state pension investments.
+- Despite political setbacks, focus on emissions and climate risk disclosure is growing.
+
+### ESG
+
+- Shift from profit-centric approach to incorporating environmental, social, and
+governance (ESG) factors.
+- **Social Aspect**: Addresses diversity, equity, inclusion, and worker well-being.
+Metrics still under development.
+- **Governance Aspect**: Focuses on transparent accounting and accountability to
+shareholders. Avoids conflicts of interest and unethical behavior.
+- Multiple ESG data providers exist, often yielding conflicting reports.
+- Absence of regulated ESG reporting standards allows companies to shop for favorable
+scores, creating risk for investors.
+
+### Sustainability
+
+- **Sustainability Defined**: Meets current needs without jeopardizing future
+generations.
+- **Examples of Nonsustainability**: Greenhouse gas emissions, ocean pollution, soil and
+water contamination.
+- Sustainability Accounting Standards Board (SASB) and Global Reporting Initiative
+provide guidelines.
+- **Three Pillars**: 
+  - Environmental Sustainability: Resource conservation.
+  - Economic Sustainability: Long-term stability with social and environmental care.
+  - Social Sustainability: Supports healthy, livable communities for current and future
+  generations.
+- Sustainable investment funds aim to invest in companies with good ESG or
+sustainability practices.
+- No significant outperformance compared to traditional funds, despite increased demand.
+<https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12841>
+- Some reports overstate benefits, suggest high returns with low risks contrary to
+finance theory.
+
+### Greenwashing
+
+- **Greenwashing Concept**: Companies misleadingly claim ecological responsibility to
+attract consumers.
+- **Examples**: 
+  - Innocent drinks: False claims about recyclable plastics.
+  - Keurig: Misleading recycling claims led to a $3 million fine.
+  - IKEA: Used illegally sourced wood despite good sustainability credentials.
+  - Ryanair: Unsubstantiated claim of being Europe's "lowest emissions airline."
+- **Financial Institutions**: Deutsche Bank's DWS exaggerated green credentials, leading
+to CEO's resignation.
+- **Implications**: Considered a serious offense, impacting consumer trust and corporate
+credibility.
+
+## Enterprise Risk Management
+
+- Risk managers must evaluate risks and adopt a holistic view through Enterprise Risk
+Management (ERM).
+- Top-down and bottom-up approaches essential for effective risk management.
+  - Top-down sets overall risk appetite.
+  - Bottom-up assesses risks at the business unit level.
+- Shift from compliance orientation to strategic orientation in risk management is
+noted.
+
+### Risk Appetite
+
+- How much risk is the organization prepared to take in order to achieve its strategic
+objectives and business plans?
+- Risk appetite is an essential part of Enterprise Risk Management (ERM).
+
+\br
+
+- For fund managers, risk appetite is more straightforward to quantify using beta,
+expected return, and risk.
+- For fund managers it is possible to use $\beta$ that is consistent with a particular
+VaR objective. 
+
+$$
+\beta = \frac{R - R_F}{R_M - R_F + N^{-1} (1-p) \sigma_M}
+$$
+
+- $R$ is the return that has a probability $p$ of being exceeded in one year.
+- $R_M$ is the expected market return and $R_F$ is the risk-free rate.
+- Unfortunately, the available risk-return alternatives for a financial institution such
+as a bank or an insurance company cannot usually be quantified as easily as for a fund
+manager. 
+
+\br
+
+- VaR or expected shortfall often specify worst-case loss aspect of risk appetite.
+- Other elements like reputational risk, credit rating risk, legal risks, etc., may be
+qualitative.
+- Risk quantification can be:
+  1. Bottom-Up: Calculated by business units, then aggregated.
+  2. Top-Down: Set by the board, guiding risk limits for individual business lines.
+- Risk appetite should address **risk Concentration**: Limit exposure to sectors, market
+variables, companies.
+- Monitoring and adherence to set limits crucial for effectiveness.
+
+### Risk Culture
+
+- It is all about how decisions are made.
+- If the risk culture is good, all decisions are made in a disciplined way with a
+careful consideration of possible outcomes, weighing risks and rewards.
+- A strong risk culture should align with an institution's risk appetite and long-term
+objectives.
+- Short-term profits should not outweigh long-term risks.
+- The role of compensation in influencing decisions is crucial and is being revised to
+mitigate short-term focus.
+- E.g., spreading bonuses over years, clawback provisions for adverse outcomes.
+- Regulatory guidelines (Financial Stability Board) can assist in establishing a robust
+risk culture.
+
+### Identifying Major Risks
+
+- Core to ERM, similar to stress testing; consider historical and emerging trends.
+- Regulatory Changes: Banks face tighter regulations; shift of activities to
+less-regulated shadow banks.
+- Cognitive Biases:
+  - Wishful Thinking: Confusing desires with likely outcomes.
+  - Anchoring: Fixation on initial estimates, neglecting full range of outcomes.
+  - Availability: Overemphasis on recent information.
+  - Representativeness: Stereotyping situations based on past experiences.
+  - Sunk Costs Bias: Ignoring sunk costs critical for rational decision-making.
+- Underestimating tail risks due to cognitive biases; requires methods to improve
+estimations.
+- Inclusion of diverse views mitigates bias, improves risk identification.
+  
+### Strategic Risk Management
+
+- Focuses on assessing assumptions and potential failures in a company's strategy.
+  - Key Questions: Impact of competitors, customer reactions, and external events.
+  - Risk is tied to the poor performance under 'wrong' scenarios.
+- Courses of Action Once Risk Identified:
+  - Avoid: Terminate the business or investment.
+  - Reduce: Mitigate likelihood or impact of adverse events.
+  - Adjust: Modify plans to lower risks.
+  - Share/Insure: Transfer or share some risk.
+  - Accept: No action taken.
+- Choice of action varies by context but requires thorough consideration.
+
+## Practice Questions and Problems
+
+### Climate Risk, ESG, and Sustainability
+
+1. Why does the burning of fossil fuels lead to temperature rises?
+2. What is the goal that was agreed to in Paris in 2015?
+4. What is the difference between a carbon tax and a cap and trade system?
+5. What is the difference between physical risks and transition risks?
+6. What are the risks of climate change to insurance companies?
+7. What does ESG stand for?
+8. What is greenwashing?
+9. How can pension plans and mutual funds help solve the global warming problem?
+10. Give examples of activities covered by ESG and sustainability that are not climate
+risk issues.
+
+### Enterprise Risk Management
+
+1. Explain the difference between top-down and bottom-up approaches to risk management.
+Why are both necessary in ERM?
+2. "The risk culture at a bank should lead it to consider the longer-term implications
+of decisions as well as short-term profits." Discuss.
+3. What steps can a bank take to encourage employees to consider more than short-term
+profits?
+4. What distinguishes enterprise risk management from more traditional approaches to
+risk management?
+5. A fund’s risk appetite is such that it wants to be 90% certain that it will not lose
+more than 20% in any one year. Using the performance of the S&P 500 between 1970 and
+2016 (mean return 11.74%, standard deviation 18.86%), determine the beta the fund should
+have. Assume a risk-free rate of 3% per annum.
+6. Give three examples of cognitive biases in finance.
