@@ -1,0 +1,627 @@
+---
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+# Regulation, Economic Capital, and RAROC
+
+**References:**
+
+- Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+    - Chapter 25 - Basel I, Basel II, and Solvency II 
+    - Chapter 26 - Basel II.5, Basel III, and Other Post-Crisis Changes
+    - Chapter 27 - Fundamental Review of the Trading Book
+    - Chapter 28 - Economic Capital and RAROC
+
+**Learning outcomes:**
+
+- Trace bank capital requirements from the '80s to 2007.
+- Note Basel Accord's shift to risk-weighted assets in 1988.
+- Identify Basel II features: credit and operational risk.
+- Understand Solvency II for insurance; relate to Basel II.
+- Post-2007: grasp reasons for regulatory change.
+- Uncover Basel II.5 and Basel III changes.
+- Acknowledge Dodd–Frank's impact in the U.S.
+- Understand "unintended consequences" in regulations.
+- Note shift from VaR to ES in FRTB.
+- Identify Basel's two approaches: standardized, internal.
+- Grasp economic capital concept.
+- Identify risks considered in economic capital.
+- Understand enterprise-wide aggregation.
+- Explain RAROC's role in performance, strategy.
+
+## Basel I, Basel II, and Solvency II 
+
+- The Basel Accord of 1988 initiated international standards for bank regulation.
+- Regulatory evolution has seen new rules modify old ones while retaining certain
+approaches.
+- Understanding history is crucial for grasping the current regulatory landscape.
+- The chapter outlines Basel I, netting provisions, and the 1996 Amendment.
+- Basel II, introduced around 2007, significantly reformed the regulatory framework.
+- Solvency II, akin to Basel II, was adopted by the European Union in 2016 for insurance
+companies.
+
+### The Reasons for Regulating Banks
+
+- The primary aim of bank regulation is to ensure sufficient capital against risks.
+- Governments aim to minimize the probability of bank defaults for economic stability.
+- Self-regulation by banks is not historically supported; formal regulation enhances
+capital and risk awareness.
+- Deposit insurance programs, while protecting depositors, can inadvertently encourage
+risk-taking ("moral hazard").
+- Systemic risk is a major concern, as a default by one large bank can trigger a
+financial system collapse.
+- Governments face a dilemma between bailing out struggling institutions and risking
+systemic collapse.
+- The 2008 market turmoil involved both bailouts and allowed failures, exemplified by
+Lehman Brothers, to send market signals.
+
+### Bank Regulation Pre-1988
+
+- Pre-1988 bank regulation focused on setting minimum capital-to-asset ratios within
+individual countries.
+- Regulatory stringency and definitions varied globally, leading to competitive
+imbalances.
+- Major international loans and complex transactions, like OTC derivatives, exposed the
+inadequacy of existing capital requirements.
+- Basel Committee formed in 1974 to standardize regulations.
+- 1988 BIS Accord, later Basel I, was the Committee's first major output.
+
+### The 1988 BIS Accord
+
+- First international risk-based standards for capital adequacy.
+- Signed by all 12 Basel Committee members.
+- Increased resources for risk measurement and management in banks.
+- The Accord set the groundwork for modern risk management but faced criticisms for
+being too simplistic.
+- **Cooke Ratio**: Focused on total risk-weighted assets (credit risk exposures).
+- Categories of Credit Risk Exposures:
+  1. **On-Balance Sheet Assets**: Excludes derivatives.
+  2. **Off-Balance Sheet Items**: Excludes derivatives.
+  3. **Over-the-Counter Derivatives**: Includes swaps, forwards, etc.
+
+#### Key Equations:
+
+- **Risk-Weighted Assets (On-Balance)**: 
+$$
+\sum_{i=1}^{N} w_i L_i
+$$
+- where $L_i$ is the principal amount and $w_i$ is its risk weight.
+  
+\br
+
+- **Credit Equivalent Amount (Off-Balance)**:
+- Conversion factors applied to principal amounts of instruments like bankers’
+acceptances, guarantees, and loan commitments.
+
+\br
+
+- **Credit Equivalent Amount (Derivatives)**:
+$$
+\text{max}(V, 0) + aL
+$$
+- where $V$ is current value, $a$ is an add-on factor, and $L$ is the principal amount.
+
+\br
+
+- **Total Risk-Weighted Assets**: 
+$$
+\sum_{i=1}^{N} w_i L_i + \sum_{j=1}^{M} w^*_j C_j
+$$
+- where $C_j$ is the credit equivalent amount for off-balance-sheet items, and $w^*_j$
+is the risk weight of the counterparty.
+
+#### Capital Requirements
+
+- Required banks to maintain capital equal to at least 8% of total risk-weighted assets.
+- **Tier 1 Capital**: 
+  - Includes equity and noncumulative perpetual preferred stock.
+  - Goodwill is subtracted from equity.
+  - Must constitute at least 50% of required capital (i.e., 4% of risk-weighted assets).
+  - Must include 2% of risk-weighted assets as common equity.
+- **Tier 2 Capital**:
+  - Also known as Supplementary Capital.
+  - Includes cumulative perpetual preferred stock, certain 99-year debentures, and
+  subordinated debt with original life over five years.
+  - Provides cushion for depositors in case of insolvency.
+- Some countries and banks maintain capital ratios above the Basel Committee’s minimum
+requirements.
+
+### Netting
+
+- Standard in over-the-counter (OTC) derivatives markets.
+- Netting clause stating that all transactions are a single transaction in case of
+default.
+- Netting effectively reduces credit risk and modifies regulatory capital requirements.
+- **Basel Accords**: Modified in 1995 to include netting.
+- **Without Netting**: Loss to the bank = Sum of positive value transactions.
+  - Example: Bank's transactions worth +\$24M, -\$17M, +\$8M. Loss = \$24M + \$8M = \$32M.
+- **With Netting**: Loss to the bank = Sum of all transactions.
+  - Example: Loss = \$24M - \$17M + \$8M = \$15M.
+- **General Formula**:
+  - Without Netting: $\sum_{i=1}^{N} \max(V_i, 0)$
+  - With Netting: $\max(\sum_{i=1}^{N} V_i, 0)$
+
+### The 1996 Amendment
+
+- The 1996 Amendment to the 1988 Basel Accord added capital charges for market risks in
+trading activities.
+- It mandated fair value accounting, also known as marking to market, for a bank's
+trading book.
+- Two approaches for calculating market risk: standardized and internal model-based.
+- Value-at-risk (VaR) metrics and Specific Risk Charge (SRC) introduced.
+- Total capital combines credit and market risk, with Tier options.
+- Back-testing required; multiplier adjusted based on model performance.
+
+### Basel II
+
+- Follow-up to the 1988 Basel Accord to address its weaknesses.
+- **Overall Goal**: More sophisticated and comprehensive regulatory framework to manage
+risks in banking.
+- Initial proposal in June 1999, revised in January 2001 and April 2003.
+- Final rules published in June 2004, updated in November 2005.
+- Implementation started in 2007.
+- **U.S.**: Applies to internationally active banks; small banks follow Basel IA.
+- **EU**: Applies to all banks and securities companies.
+
+#### Three Pillars of Basel II
+
+1. **Minimum Capital Requirements**: 
+  - More risk-sensitive approach to credit risk.
+  - Operational risk included.
+  - Market risk remains unchanged.
+  - 8% of risk-weighted assets (RWA) still the base requirement.
+2. **Supervisory Review**: 
+  - Emphasizes qualitative and quantitative risk management.
+  - Regulatory flexibility but seeks global consistency.
+  - Focuses on early intervention.
+3. **Market Discipline**: 
+  - Greater disclosure requirements.
+  - Aims to improve risk management through transparency.
+
+$$
+\text{Total Capital} = 0.08 \times (\text{credit risk RWA} + \text{market risk RWA} +
+\text{operational risk RWA})
+$$
+
+### Solvency II
+
+- Solvency II is the regulatory framework for insurance companies in the European Union,
+replacing Solvency I in 2016.
+- Unlike Solvency I, which focused solely on underwriting risks, Solvency II also
+considers investment and operational risks.
+- Structure resembles Basel II with three pillars:
+  1. Pillar 1: Minimum Capital Requirements (MCR) and Solvency Capital Requirement (SCR)
+  calculated. Breach triggers supervisory intervention.
+  2. Pillar 2: Supervisory review process for internal capital adequacy.
+  3. Pillar 3: Disclosure of risk management information to the market.
+- SCR can be calculated using the standardized approach or internal models involving
+Value-at-Risk (VaR) with a one-year time horizon and 99.5% confidence limit.
+- SCR includes charges for investment risk (market and credit), underwriting risk (life,
+non-life, health), and operational risk.
+- Capital adequacy tests include various adverse event scenarios (e.g., 32% stock market
+decrease, 20% real estate price decrease).
+- Internal models must pass three tests: statistical quality, calibration, and use.
+- Types of capital:
+  1. Tier 1: Equity capital, retained earnings.
+  2. Tier 2: Liabilities subordinated to policyholders, available in wind-down
+  scenarios.
+  3. Tier 3: Liabilities subordinated to policyholders, not meeting Tier 2 criteria.
+- Capital composition rules are specified for Tier 1, Tier 1 + Tier 2, and Tier 1 + Tier
+2 + Tier 3.
+
+## Basel II.5, Basel III, and Other Post-Crisis Changes
+
+- Basel II's implementation roughly coincided with the onset of the Global Financial
+Crisis.
+- Critics argue Basel II encouraged self-regulation, allowing banks to use their own
+model inputs for regulatory capital.
+- Basel II may not be solely to blame:
+  - The origins of the crisis predate Basel II.
+  - U.S. was late in implementing Basel II, affecting capital levels.
+- Basel II.5 was introduced post-crisis to amend market risk capital calculations.
+  - Implementation date: December 31, 2011.
+- Basel III was a more comprehensive post-crisis regulatory overhaul.
+  - First set of regulations: December 2010.
+  - Finalized: December 2017.
+  - Implementation phased over several years.
+- Other post-2008 regulations:
+  - Dodd–Frank Act in the U.S., signed July 21, 2010.
+  - New rules in the European Union and the United Kingdom.
+
+### Basel II.5
+
+- Implemented on December 31, 2011, it introduced changes to the calculation of market
+risk capital.
+- **Three Main Changes**: 
+  1. Stressed Value-at-Risk (VaR)
+  2. Incremental Risk Charge (IRC)
+  3. Comprehensive Risk Measure (CRM)
+- **Impact**: Significantly increased the capital large banks need to hold for market risk.
+
+#### Details:
+
+- **Stressed VaR**:
+  - Originally based on 10-day, 99% VaR.
+  - Introduces a stressed VaR, based on 250-day stressed market conditions.
+  $$
+  \text{Total Capital Charge} = \max(VaR_{t-1}, m_c \times VaR_{\text{avg}}) +
+  \max(sVaR_{t-1}, m_s \times sVaR_{\text{avg}})
+  $$
+  - $VaR_{t-1}$ and $sVaR_{t-1}$ are the Value-at-Risk and stressed Value-at-Risk
+  calculated on the previous day with a 10-day time horizon and a 99% confidence level.
+  - $VaR_{\text{avg}}$ and $sVaR_{\text{avg}}$ are the averages of Value-at-Risk and
+  stressed Value-at-Risk calculated over the previous 60 days with the same confidence
+  level and time horizon.
+  - $m_c$ and $m_s$ are multiplicative factors determined by bank supervisors, with a
+  minimum value of three.
+  - Effect: At least doubles the previous capital requirement.
+
+\br
+
+- **Incremental Risk Charge (IRC)**:
+  - Addresses discrepancy between trading and banking book capital requirements.
+  - Calculates a one-year 99.9% VaR, considering both credit rating changes and
+  defaults.
+  - Includes a "liquidity horizon" for each instrument.
+  - Employs the "constant level of risk assumption."
+
+\br
+
+- **Comprehensive Risk Measure (CRM)**:
+  - Focuses on correlation-dependent instruments like ABSs and CDOs.
+  - Replaces the Incremental Risk Charge and specific risk charge for these instruments.
+  - Includes both standardized and internal model-based approaches.
+
+### Basel III
+
+- Introduced post-2007–2009 Global Financial Crisis to overhaul Basel II.
+- First set of regulations published in December 2010, finalized in 2017.
+- Implementation delayed to January 2023.
+- **Six Key Components**:
+  1. Capital Definition and Requirements
+  2. Capital Conservation Buffer
+  3. Countercyclical Buffer
+  4. Leverage Ratio
+  5. Liquidity Risk
+  6. Counterparty Credit Risk
+
+#### Capital Definition and Requirements
+
+- Consists of Tier 1 equity capital, Additional Tier 1 capital, and Tier 2 capital. No
+Tier 3 capital.
+- Each tier has different characteristics and is intended to absorb losses to varying
+degrees, thereby contributing to a bank's overall financial stability.
+
+1. **Tier 1 Equity Capital (Common Equity Tier 1 or CET1)**
+   - Includes share capital and retained earnings.
+   - Excludes goodwill, deferred tax assets, and defined benefit pension plan deficits.
+
+2. **Additional Tier 1 (AT1) Capital**
+   - Items like non-cumulative preferred stock.
+   - Previously considered Tier 1 but not common equity.
+
+3. **Tier 2 Capital**
+   - Includes subordinated debt with an original maturity of at least five years.
+  
+- **Capital Requirements**:
+  - Tier 1 equity capital: At least 4.5% of risk-weighted assets.
+  - Total Tier 1 capital: At least 6% of risk-weighted assets.
+  - Total capital (Tier 1 + Tier 2): At least 8% of risk-weighted assets.
+
+#### Capital Conservation Buffer
+
+- Further CET1 capital equal to 2.5% of risk-weighted assets.
+- Dividend restrictions based on capital ratios.
+
+- To ensure banks accumulate additional common equity Tier 1 (CET1) capital during
+normal economic conditions.
+- This buffer serves as a reserve for absorbing losses during financial stress.
+- Banks must maintain a CET1 capital conservation buffer equal to 2.5% of risk-weighted
+assets.
+- **Dividend Restrictions**: If the buffer is partially or wholly used, dividend payouts
+are constrained until the capital is replenished.
+
+#### Countercyclical Buffer
+
+- To counteract the cyclicality of bank earnings and protect the financial system during
+economic downturns.
+- The buffer can range from 0% to 2.5% of a bank's total risk-weighted assets and must
+be met with Tier 1 equity capital (CET1).
+- The implementation level is determined by each country's regulatory authorities,
+allowing for regional economic conditions.
+
+#### Leverage Ratio
+
+- **Purpose**: To limit banks' discretion in calculating risk-weighted assets and to
+provide additional information to regulators.
+- **Potential Issue**: Could encourage banks to hold riskier assets if this becomes the
+constraining ratio.
+- The leverage ratio is the ratio of Tier 1 capital to the exposure measure.
+- Basel III specifies a minimum leverage ratio of 3%.
+- **Capital Measure**: Total Tier 1 capital.
+- **Exposure Measure**: Sum of (a) on-balance-sheet exposures, (b) derivatives
+exposures, (c) securities financing transaction exposures, and (d) off-balance-sheet
+items.
+- No risk-weighting adjustments are made.
+- Some countries have proposed or implemented higher minimums.
+
+#### Liquidity Risk
+
+- Basel III introduces the Liquidity Coverage Ratio (LCR) and the Net Stable Funding
+Ratio (NSFR).
+- **LCR**: Focuses on a bank's ability to survive a 30-day liquidity disruption.
+$$
+\text{LCR} = \frac{\text{High-Quality Liquid Assets}}{\text{Net Cash Outflows in a
+30-Day Period}}
+$$
+- **NSFR**: Focuses on liquidity management over one year.
+$$
+\text{NSFR} = \frac{\text{Amount of Stable Funding}}{\text{Required Amount of Stable
+Funding}}
+$$
+- **Liquidity Management**: Designed to ensure that banks can survive liquidity
+pressures.
+
+#### Counterparty Credit Risk
+
+- Banks calculate a Credit Value Adjustment (CVA) for each derivatives counterparty.
+- CVA measures expected loss from counterparty default.
+- Changes in CVA can be due to shifts in risk factors or credit spreads.
+- Basel III includes CVA risk in market risk capital requirements.
+
+#### G-SIBs, SIFIs, and D-SIBs
+
+- Regulators aim to ensure that large, systemically important institutions hold
+sufficient capital.
+- G-SIBs: Global Systemically Important Banks
+- SIFIs: Systemically Important Financial Institutions (includes both banks and
+non-banks).
+- Importance is determined through scoring methodologies and other approaches like
+network theory.
+- G-SIBs required to hold extra Tier 1 equity capital, based on categorization.
+- Financial Stability Board publishes annual G-SIB list.
+- Total Loss-Absorbing Capacity (TLAC) rules have been set for G-SIBs.
+- Non-compliance with TLAC can limit a bank's dividend issuance.
+- Some countries impose stricter capital requirements (e.g., Switzerland).
+- Domestic Systemically Important Banks (D-SIBs) have their own sets of rules and
+capital requirements.
+
+### Contingent Convertible Bonds (CoCos)
+
+- CoCos are bonds that automatically convert into equity under certain conditions,
+generally when a bank faces financial difficulties.
+- Offer higher interest rates than regular debt.
+- Benefits for banks: High return on equity in normal times, and an equity cushion
+during financial stress.
+- Benefits for regulators: Reduces the need for public bailouts.
+- Specifying the trigger for conversion, often based on Tier 1 equity capital ratios.
+
+### Dodd–Frank Act
+
+- The Dodd-Frank Wall Street Reform and Consumer Protection Act was signed into U.S. law
+in July 2010.
+- Aimed to prevent future bailouts and protect consumers.
+- Its primary objectives are to:
+  - Enhance regulation and oversight of financial markets and institutions.
+  - Reduce systemic risks in the financial sector.
+  - Protect consumers through the creation of the Consumer Financial Protection Bureau
+  (CFPB).
+  - Increase transparency in financial products and services.
+
+## Fundamental Review of the Trading Book
+
+- FRTB was introduced by the Basel Committee in May 2012, final rules published in
+January 2019, implementation slated for January 2023, but delays are expected.
+- **Previous Approaches**:
+  - Basel I used Value at Risk (VaR) with a 99% confidence level.
+  - Basel II.5 added "stressed VaR" based on historical periods of financial stress.
+- **Key Features of FRTB**:
+- Shifts from VaR to Expected Shortfall (ES) with a 97.5% confidence level (and stressed ES).
+- Liquidity horizons introduced, varying from 10 to 120 days, based on the risk factor
+considered.
+- Stricter definitions to counter regulatory arbitrage between the trading book and the
+banking book.
+- The Basel Committee outlines two approaches for banks: Standardized Approach and
+Internal Models Approach.
+- Banks approved for Internal Models Approach must also implement the Standardized
+Approach.
+- Standardized Approach calculates regulatory capital using delta, vega, and gamma
+exposures in the trading book.
+- Internal Models Approach uses stressed expected shortfall for regulatory capital
+calculation.
+- Calculations are performed separately for each trading desk.
+
+### Standardized Approach
+
+- Capital requirement is a sum of risk charge, default risk charge, and residual risk
+add-on.
+- **Risk Charge**:
+  - Seven Risk Classes: General interest rate, foreign exchange, commodity, equity, and
+  three credit spread risks.
+  - Types of Risk Charges: Delta, Vega, and Curvature.
+- **Default Risk Charge**:
+  - Calculated by Loss Given Default (LGD) and a default risk weight.
+- **Residual Risk Add-On**:
+  - For risks not captured by delta/vega/curvature approach, e.g., exotic options.
+- **Simplified Approach**:
+  - For smaller banks; excludes vega and gamma risks.
+
+### Trading Book vs. Banking Book
+
+- **Trading Book**: Contains financial instruments intended for trading. Subject to
+market risk capital.
+- **Banking Book**: Consists of instruments intended to be held to maturity. Subject to
+credit risk capital.
+- Regulatory Arbitrage: Past practices allowed banks to choose book placement based on
+advantageous capital requirements.
+- FRTB aims to clarify and standardize criteria for book classification.
+- 'Intent to trade' insufficient; must be manageable on a trading desk and pose risks to
+solvency.
+- Instruments are initially assigned to a specific book with limited ability to transfer
+later.
+- Allow for book transfers, but any capital benefits from such moves are disallowed.
+
+## Economic Capital and RAROC
+
+- **Economic Capital**: Internal estimate of the capital a financial institution
+requires for its risk exposure.
+- It varies from regulatory capital, which follows standard rules.
+- Acts as a "currency" for risk-taking within an institution.
+  
+### Definition of Economic Capital
+
+- **Definition**: Amount of capital needed to absorb losses over one year at a specific
+confidence level, tailored to maintain credit ratings like AA or BBB.
+- Economic capital fills the gap between expected loss and unexpected loss.
+- **Case Example**: An AA-rated bank with expected annual losses of 1% and a one-year
+99.98% VaR of 5% would require \$4 in economic capital per \$100 of loans.
+- **Approaches to Measure Economic Capital**: 
+  - **Top-Down**: Uses asset volatility to estimate risk, often using Merton’s model.
+  - **Bottom-Up**: Aggregates loss distributions by risk types and business units.
+- **Risk-Adjusted Return on Capital (RAROC)**: 
+  - Measures profitability relative to allocated economic capital. 
+  - Used for assessing past and forecasting future performance, also aids in capital
+  allocation decisions.
+- **Types of Risks Considered**: 
+  - Regulatory Capital covers Credit, Market, and Operational risks.
+  - Some institutions also consider Business risk, which is not mandated for regulatory
+  capital.
+
+### Components of Economic Capital
+
+- **Market Risk Economic Capital**:
+  - Time horizon is usually one year; confidence level can go up to 99.98%.
+  - Standard deviation for one-year loss or gain derived from annualized daily metrics.
+- **Credit Risk Economic Capital**:
+  - Banks have freedom to choose their credit correlation models.
+  - Popular approaches include CreditMetrics and Credit Risk Plus.
+  - Can be conditional (cycle-specific) or unconditional (cycle-neutral) based on
+  economic conditions.
+- **Operational Risk Economic Capital**:
+  - Regulatory procedure often adopted; some banks use more advanced models.
+  - Aims to create a complete distribution of losses.
+- **Business Risk Economic Capital**:
+  - Involves strategic and reputational risks.
+  - Difficult to quantify, largely subjective.
+  - Quantification can inform the impact of new strategic initiatives on total risk.
+
+\br
+
+- Characteristics of Loss Distributions for Different Risk Types
+
+|                  | Standard Deviation | Skewness  | Kurtosis |
+|------------------|:------------------:|:---------:|:--------:|
+| Market risk      | High               | Zero      | Low      |
+| Credit risk      | Moderate           | Moderate  | Moderate |
+| Operational risk | Low                | High      | High     |
+
+### Aggregating Economic Capital
+
+- To calculate the total economic capital for a financial institution by aggregating
+various types of risks such as market, credit, and operational risks.
+
+1. **Simple Summation (Basel Committee Method)**
+    - Formula: $E_{\text{total}} = \sum_{i=1}^{n} E_i$
+    - Assumes perfect correlation between risks.
+    - Overestimates capital requirement by approx. 40%.
+2. **Normal Distributions**
+    - Formula: $\sigma_{\text{total}} = \sqrt{\sum_{i=1}^{n} \sum_{j=1}^{n} \sigma_i
+    \sigma_j \rho_{ij}}$
+    - Underestimates capital due to disregard for skewness and kurtosis.
+3. **Using Copulas**
+    - Maps loss distributions to a standard distribution.
+    - Gaussian copula as the simplest case.
+4. **Hybrid Approach**
+    - Formula: $E_{\text{total}} = \sqrt{\sum_{i=1}^{n} \sum_{j=1}^{n} E_i E_j
+    \rho_{ij}}$
+    - Offers a balance between underestimation and overestimation of capital.
+  
+### RAROC
+
+- Risk-adjusted performance measurement (RAPM) is crucial for assessing business units.
+- RAROC (Risk-Adjusted Return on Capital) is a widely-used approach.
+- Compares expected return with economic capital, adjusted for risk.
+
+$$
+\text{RAROC} = \frac{\text{Revenues} - \text{Costs} - \text{Expected
+losses}}{\text{Economic capital}}
+$$
+
+- Numerator can be pre-tax or post-tax.
+- An alternative includes adding a risk-free rate of return to the numerator.
+- Ex-ante calculations: For business expansion/contraction decisions.
+- Ex-post calculations: For performance evaluation and bonuses.
+- Decisions should not solely be based on ex-post results; consider long-term
+expectations.
+
+## Practice Questions and Problems
+
+### Basel I, Basel II, and Solvency II
+
+1. "When a steel company goes bankrupt, other companies in the same industry benefit
+because they have one less competitor. But when a bank goes bankrupt other banks do not
+necessarily benefit." Explain this statement.
+2. "The existence of deposit insurance makes it particularly important for there to be
+regulations on the amount of capital banks hold." Explain this statement.
+3. An interest rate swap involves the exchange of a fixed rate of interest for a
+floating rate of interest with both being applied to the same principal. The principals
+are not exchanged. What is the nature of the credit risk for a bank when it enters into
+a five-year interest rate swap with a notional principal of \$100 million? Assume the
+swap is worth zero initially.
+4. In a currency swap, interest on a principal in one currency is exchanged for interest
+on a principal in another currency. The principals in the two currencies are exchanged
+at the end of the life of the swap. Why is the credit risk on a currency swap greater
+than that on an interest rate swap?
+5. A four-year interest rate swap currently has a negative value to a financial
+institution. Is the financial institution exposed to credit risk on the transaction?
+Explain your answer.
+6. All the derivatives transactions a bank has with a corporate client have a positive
+value to the bank. What is the value to the bank of netting provisions in its master
+agreement with the client?
+7. What is the difference between the trading book and the banking book for a bank? A
+bank currently has a loan of \$10 million to a corporate client. At the end of the life
+of the loan, the client would like to sell debt securities to the bank instead of
+borrowing. How does this potentially affect the nature of the bank’s regulatory capital
+calculations?
+8. Under Basel I, banks do not like lending to highly creditworthy companies and prefer
+to help them issue debt securities. Why is this? Do you think this changed as a result
+of Basel II?
+9. Banks sometimes use what is referred to as regulatory arbitrage to reduce their
+capital. What do you think this means?
+
+### Basel II.5, Basel III, and Oter Post-Crisis Changes
+
+1. What are the three major components of Basel II.5?
+2. What are the six major components of Basel III?
+3. What is the difference between VaR as it has been traditionally measured and stressed
+VaR?
+4. Explain how the incremental risk charge is calculated. Why was it introduced by the
+Basel Committee?
+5. Explain how CoCo bonds work. Why are they attractive to (a) banks and (b) regulators?
+
+### Fundamental Review of the Trading Book
+
+1. Outline the differences between the way market risk capital is calculated in (a)
+Basel I, (b) Basel II.5, and (c) the FRTB. 
+2. What are the advantages of expected shortfall over value at risk?
+3. What is the difference between the trading book and the banking book? Why are
+regulators concerned about specifying whether an instrument should be one or the other
+in the FRTB?
+
+### Economic Capital and RAROC
+
+1. What is the difference between economic capital and regulatory capital?
+2. What determines the confidence level used by a AA-rated financial institution in its
+economic capital calculations?
+3. What types of risk are included in business risk?
+4. A bank is considering expanding its asset management operations. The main risk is
+operational risk. It estimates the expected operational risk loss from the new venture
+in one year to be \$2 million and the 99.97% VaR (arising from a small chance of an
+large investor lawsuit) to be \$40 million. The expected fees it will receive from
+investors for the funds under administration are \$12 million per year, and
+administrative costs are expected to be \$3 million per year. Estimate the before-tax
+RAROC.
+5. RAROC can be used in two different ways. What are they?
