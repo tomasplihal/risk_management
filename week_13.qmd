@@ -1,0 +1,277 @@
+---
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+# Financial Innovation and Risk Management Mistakes
+
+**References:**
+
+- Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+    - Chapter 29 - Financial Innovation
+    - Chapter 30 - Risk Management Mistakes to Avoid
+
+**Learning outcomes:**
+
+- Understand tech's impact on financial services by 2040.
+- Recognize shift to digital payments.
+- Learn machine learning's role in credit and fraud.
+- Know blockchain's impact on record-keeping.
+- Assess changes in the insurance industry.
+- Analyze trends in investing and borrowing.
+- Evaluate banks' adaptation to tech changes.
+- Formulate risk management mistakes to avoid.
+- Understand common misconceptions about risk.
+
+## Financial Innovation
+
+- Technological changes have led to disintermediation in finance.
+- New tech-based intermediaries emerge (reintermediation).
+- Financial firms, like banks, face disruption from FinTech.
+- Future FinTech will impact digitization, customer behavior, and firm adaptation.
+- These changes are of particular relevance to risk management professionals.
+
+### Technological Advances
+
+- Dramatic increase in computer processing power since the 1960s.
+- Introduction of Robotics Process Automation (RPA) for tasks such as customer account
+creation and employee hiring.
+
+#### Machine Learning
+
+- Differentiates from third industrial revolution through data-driven decision-making.
+- Applied in areas like credit decision automation, improving upon traditional human-led
+methods.
+- **Types of Machine Learning**:
+  1. Unsupervised learning: Identifies patterns and clusters, e.g., customer
+  segmentation.
+  2. Supervised learning: Prediction and classification, e.g., house valuation or loan
+  default prediction.
+  3. Reinforcement learning: Sequential decision-making, e.g., hedging strategies in
+  derivatives trading.
+- **Challenges**:
+  - Overfitting: Model may not generalize to new data.
+  - Solution: Use training, validation, and test datasets to estimate model accuracy.
+
+#### Blockchain Summary
+
+- **Challenges with Traditional Ledgers**: Risks include fraud, lack of trust, hacking,
+and inconsistencies across multiple record-keepers.
+- **Blockchain as a Solution**: A distributed ledger technology allowing multiple
+entries controlled by a community, aiming to negate the aforementioned risks.
+- Each block is sealed using a cryptographic hash, ensuring data integrity and
+tamper-proofing.
+- In blockchain systems like Bitcoin, miners are rewarded for validating and adding new
+blocks, thereby ensuring ongoing, decentralized maintenance.
+- Types of Blockchains: 
+  - Permissionless: Open to all, like Bitcoin.
+  - Permissioned: Restricted access; often used by financial institutions for
+  efficient transaction settlements.
+- **Potential in Financial Sector**: Blockchain is increasingly being adopted for
+trading securities, settlements, and back-office functions, aiming for near real-time
+operations.
+- Blockchain poses both threats and opportunities—potentially lowering bank fees while
+opening new service avenues.
+- May also lower operational risks and regulatory capital requirements.
+- Adoption and utility in various sectors are still under evaluation; however, it holds
+significant potential for operational improvements.
+  
+### Payment Systems
+
+- Evolution from cash to digital payments, with rapid adoption in developing countries.
+- Key attributes: speed, convenience, security, simplicity, and cost.
+- Innovations: Instant fund transfer (PayPal), digital wallets (Apple Pay), and use of
+cryptocurrencies.
+- Security: Focus on biometric authentication to reduce fraud and costs.
+- Privacy concerns: Data collection and biometric information.
+- Credit facilities: High-interest credit cards versus FinTech solutions like PayPal's
+free 14-day credit.
+- Future services: Easier foreign exchange and data analytics.
+- Data-driven credit decisions: Risks around privacy and data selling.
+- Future trends: Decline of cash, political resistance to full digitization.
+- Cryptocurrencies: Volatile but secure, growing acceptance.
+- Central Bank Digital Currencies (CBDCs): Emergence and implications for financial
+control.
+
+### Lending
+
+#### P2P Lending
+
+- P2P lending disintermediates traditional banks but adds new intermediaries for risk
+assessment and transaction facilitation.
+- P2P often serves borrowers rejected by traditional banks, potentially charging higher
+interest rates than conventional loans but lower than credit cards.
+- Diversification and secondary markets are crucial for lenders in P2P platforms to
+manage risks.
+  
+#### Crowdfunding
+
+- Crowdfunding democratizes equity investment but faces valuation complexities and
+regulatory hindrances.
+- JOBS Act in the U.S. provides some regulatory leeway, but limitations on funding
+exist.
+- ICOs represent a speculative, risky, and largely unregulated form of crowdfunding with
+potential for both fraud and success.
+
+### Wealth Management
+
+- **Traditional Wealth Management**:
+  - Highly profitable for banks, with fees ranging from 1% to 1.5% per annum.
+  - Involves client risk assessment and investment recommendations based on risk
+  profiles.
+- Emergence of **index funds** in 1975 by John Bogle, offering low fees (0.15%) and no need
+for human managers.
+- **Robo-Advisers**:
+  - Appeared around 2010, subject to regulatory oversight.
+  - Utilize digital platforms for risk assessment and automated portfolio rebalancing.
+  - Lower fees, typically around 0.25% per annum.
+  - Can address cognitive biases.
+  - Popularity may be cyclical, depending on market performance.
+
+### InsurTech
+
+- **Nature of Insurance Industry**:
+  - Resistant to disruption due to need for stability and strict regulations.
+  - Difficult for newcomers to enter without significant capital.
+  - Brokers and agents facilitate customer-insurer interactions.
+  - Trend towards disintermediation; websites for direct customer dealings.
+- **Technological Innovations**:
+  - Online quote comparison made easy.
+  - Data collection for risk assessment.
+  - Enables precise risk profiling for premium adjustments.
+  - Potentially simplifies claims in case of accidents.
+- InsurTech unlikely to disrupt, but adoption of technology is advantageous.
+
+### Regulation and Compliance
+
+- Financial institutions face a high regulatory barrier, affecting small FinTech
+startups.
+- Regulators aim to balance innovation with client safety.
+- "Sandbox" programs provide a testing environment for new financial products.
+- Challenges include jurisdiction issues and evaluating FinTech's primarily code-based
+assets.
+- Technology simplifies and streamlines regulatory compliance.
+- Real-time monitoring helps avoid fines and ensures international compliance.
+
+### How Should Financial Institutions Respond?
+
+- FinTech poses strategic risk to established financial entities.
+- Institutions should adapt business models to changing consumer behavior.
+- Various strategies include in-house development, acquisitions, and partnerships with
+startups.
+- **Flexibility and Adaptability**: Key for surviving in the changing landscape.
+
+## Risk Management Mistakes to Avoid
+
+- Clear and unambiguous risk limits essential for both financial and non-financial
+companies.
+- Limits should be established at the board level and trickled down to individual risk
+managers.
+- Daily reports must align with actual gains and losses for accurate risk assessment.
+- Special Attention to Derivatives:
+  - Close monitoring of derivatives required to differentiate between hedging,
+  speculation, or arbitrage.
+- Issue of Exceeding Risk Limits for Profit:
+  - Profiting from exceeding risk limits creates a risky culture.
+  - Penalties should apply equally for both profitable and unprofitable violations.
+- Misconception of Market Predictability:
+  - Success in trading often attributed to luck rather than skill.
+  - Risk limits should not be increased just because a trader shows consistent profits.
+- Importance of Diversification:
+  - Risks can be halved by diversifying across 20 stocks, making it a poor choice to
+  limit to one market variable.
+- Necessity of Scenario Analyses and Stress Tests:
+  - Risk measures like VaR should be complemented by stress tests.
+  - Results of stress testing should inform strategic decision-making, often ignored
+  during good times.
+
+### Managing the Trading Room
+
+- All traders should be scrutinized, even high-performing ones, to ensure they are not
+taking undue risks or manipulating systems.
+- Separation of Front, Middle, and Back Office to prevent internal mishandling of
+trades.
+- Financial models are not foolproof and should not be blindly trusted.
+- Model failures have led to significant losses for financial institutions.
+- Profits from selling exotic instruments should be recognized conservatively over the
+life of the deal to mitigate the risk of aggressive trading behavior.
+- Financial institutions should avoid selling inappropriate high-risk products to
+clients, as it undermines long-term trust and can lead to legal repercussions.
+- Situations offering seemingly easy profits should be scrutinized for potential hidden
+risks.
+
+### Liquidity Risk
+
+- Traders use actively traded instruments to price infrequently traded ones.
+- Risk arises when assuming these can be traded close to theoretical prices, especially
+in market shocks.
+- The need for scenario analyses and stress testing.
+- Dangers escalate when multiple participants follow the same trading strategy, causing
+market volatility.
+- Excessive use of short-term funding for long-term needs increases liquidity risks.
+- Basel III introduced liquidity requirements.
+- Lack of transparency in structured products exacerbated the 2007 credit crisis.
+- Advocates for more information about underlying assets to minimize market disruptions
+(flight to quality during crisis).
+
+### Lessons for Nonfinancial Corporations
+
+#### Understand Your Trades
+- Corporations should fully understand the trade or trading strategy before execution.
+- If senior management doesn't understand a trade, it shouldn't be approved.
+- Valuing the financial instrument is a way to ensure understanding.
+- Relying solely on investment bankers for valuation can be risky.
+
+#### Hedgers vs Speculators
+- Initially, a trader may focus on hedging but might gradually transition to
+speculation.
+- A loss in speculation can lead to risky attempts to recover, potentially causing
+disaster.
+- Senior management should set clear risk limits and controls.
+
+#### Treasury as Profit Center: Be Cautious
+- Making the treasury department a profit center can be tempting but is fraught with
+risks.
+- The treasurer might take additional risks to improve the bottom line.
+- The primary goal of a hedging program is to reduce risks, not to increase profits.
+- Treating the treasury as a profit center could lead to speculation and financial
+disasters.
+
+### A Final Point
+
+- Known Risks: Quantifiable risks like market and credit risks.
+- Unknown Risks: Known events with indeterminable probability, e.g., operational risks.
+- Unknowable Risks: Risks where even the event is unknown; often termed as "black swans."
+- Known risks are called "risk," while unknown risks are termed "uncertainty" (Knight,
+1921).
+- Understanding and preparing for various kinds of risks can significantly mitigate the
+potential for catastrophic losses.
+
+#### Managing Unknown Risks
+- Subjective probabilities often used.
+- Flexibility is key; avoid excessive leverage and aim for variable costs.
+- Insurance products may be developed to cover some unknown risks.
+
+#### Managing Unknowable Risks
+- Most challenging to handle due to their unpredictability.
+- Diversification across products and markets can add a layer of protection.
+- Insurance products for unknowable risks are an area of future development.
+
+## Practice Questions and Problems
+
+### Financial Innovation
+
+1. Explain the terms disintermediation and reintermediation.
+2. What is meant by (a) machine learning and (b) distributed ledger technologies?
+3. Why might a central bank switch from fiat money to digital money?
+4. Explain how P2P lending and equity crowdfunding work.
+5. "When thinking about the impact of FinTech, financial institutions should be thankful
+for regulation." Explain.
+6. "Index funds are a great idea, but if everyone chose them there would be no price
+discovery." Do you agree with this argument?
+
+### Risk Management Mistakes to Avoid
+
+1. Discuss and name a few mistakes to avoid.
