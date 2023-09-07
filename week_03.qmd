@@ -361,6 +361,7 @@ million).
   - Purchase bond futures contracts to increase the duration on the cash to desired
   level.
 
+
 ### Pre-Investing in an Asset Class 
 
 - Pre-investing via futures contracts allows investors to enter the market without

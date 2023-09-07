@@ -295,7 +295,7 @@ be zero in the model-building approach.
 
 
 - One-day 99% VaR is $2.326 \times \$50,000 = \$116,300$.
-- 10-day 99% VaR is $\2.326 \times \$50,000 \times \sqrt{10} = \$367,800$.
+- 10-day 99% VaR is $2.326 \times \$50,000 \times \sqrt{10} = \$367,800$.
 - 10-day 99% ES is: 
 
 $$
