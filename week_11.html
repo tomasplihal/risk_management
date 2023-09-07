@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Risk Management and Financial Institutions - 11&nbsp; Operational Risk, Liquidity Risk, and Model Risk</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./week_12.html" rel="next">
+<link href="./week_10.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_11.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Risk Management and Financial Institutions</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Risk-Management-and-Financial-Institutions.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Risk-Management-and-Financial-Institutions.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Risk Management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Revision of the Basic Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward and Futures Strategies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Option Strategies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Volatility, Correlations, and Copulas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Market Risk I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reading Week</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Market Risk II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Credit Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_11.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Regulation, Economic Capital, and RAROC</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Financial Innovation and Risk Management Mistakes</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#climate-risk-and-enterprise-risk-management" id="toc-climate-risk-and-enterprise-risk-management" class="nav-link active" data-scroll-target="#climate-risk-and-enterprise-risk-management"><span class="header-section-number">12</span> Climate Risk and Enterprise Risk Management</a>
+  <ul class="collapse">
+  <li><a href="#climate-risk-esg-and-sustainability" id="toc-climate-risk-esg-and-sustainability" class="nav-link" data-scroll-target="#climate-risk-esg-and-sustainability"><span class="header-section-number">12.1</span> Climate Risk, ESG, and Sustainability</a>
+  <ul class="collapse">
+  <li><a href="#climate-risk" id="toc-climate-risk" class="nav-link" data-scroll-target="#climate-risk"><span class="header-section-number">12.1.1</span> Climate Risk</a></li>
+  <li><a href="#esg" id="toc-esg" class="nav-link" data-scroll-target="#esg"><span class="header-section-number">12.1.2</span> ESG</a></li>
+  <li><a href="#sustainability" id="toc-sustainability" class="nav-link" data-scroll-target="#sustainability"><span class="header-section-number">12.1.3</span> Sustainability</a></li>
+  <li><a href="#greenwashing" id="toc-greenwashing" class="nav-link" data-scroll-target="#greenwashing"><span class="header-section-number">12.1.4</span> Greenwashing</a></li>
+  </ul></li>
+  <li><a href="#enterprise-risk-management" id="toc-enterprise-risk-management" class="nav-link" data-scroll-target="#enterprise-risk-management"><span class="header-section-number">12.2</span> Enterprise Risk Management</a>
+  <ul class="collapse">
+  <li><a href="#risk-appetite" id="toc-risk-appetite" class="nav-link" data-scroll-target="#risk-appetite"><span class="header-section-number">12.2.1</span> Risk Appetite</a></li>
+  <li><a href="#risk-culture" id="toc-risk-culture" class="nav-link" data-scroll-target="#risk-culture"><span class="header-section-number">12.2.2</span> Risk Culture</a></li>
+  <li><a href="#identifying-major-risks" id="toc-identifying-major-risks" class="nav-link" data-scroll-target="#identifying-major-risks"><span class="header-section-number">12.2.3</span> Identifying Major Risks</a></li>
+  <li><a href="#strategic-risk-management" id="toc-strategic-risk-management" class="nav-link" data-scroll-target="#strategic-risk-management"><span class="header-section-number">12.2.4</span> Strategic Risk Management</a></li>
+  </ul></li>
+  <li><a href="#practice-questions-and-problems" id="toc-practice-questions-and-problems" class="nav-link" data-scroll-target="#practice-questions-and-problems"><span class="header-section-number">12.3</span> Practice Questions and Problems</a>
+  <ul class="collapse">
+  <li><a href="#climate-risk-esg-and-sustainability-1" id="toc-climate-risk-esg-and-sustainability-1" class="nav-link" data-scroll-target="#climate-risk-esg-and-sustainability-1"><span class="header-section-number">12.3.1</span> Climate Risk, ESG, and Sustainability</a></li>
+  <li><a href="#enterprise-risk-management-1" id="toc-enterprise-risk-management-1" class="nav-link" data-scroll-target="#enterprise-risk-management-1"><span class="header-section-number">12.3.2</span> Enterprise Risk Management</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><strong>References:</strong></p>
+<ul>
+<li>Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+<ul>
+<li>Chapter 23 - Climate Risk, ESG, and Sustainability</li>
+<li>Chapter 24 - Enterprise Risk Management</li>
+</ul></li>
+</ul>
+<p><strong>Learning outcomes:</strong></p>
+<ul>
+<li>Understand the growing importance of environmental risks in risk management practices.</li>
+<li>Recognize the terms ESG, sustainability, greenwashing.</li>
+<li>Understand the holistic approach of Enterprise Risk Management (ERM).</li>
+<li>Recognize the importance of integrating business units into an enterprise-wide risk management system.</li>
+<li>Distinguish between quantitative and qualitative aspects of risk appetite.</li>
+<li>Emphasize the significance of a strong risk culture, especially in medium- to long-term risk assessment.</li>
+<li>Be aware of the potential pitfalls in focusing solely on short-term profits, as evident from historical crises.</li>
+</ul>
+<section id="climate-risk-and-enterprise-risk-management" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Climate Risk and Enterprise Risk Management</h1>
+<section id="climate-risk-esg-and-sustainability" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="climate-risk-esg-and-sustainability"><span class="header-section-number">12.1</span> Climate Risk, ESG, and Sustainability</h2>
+<ul>
+<li>Environmental risks pose a threat to Earth’s habitability for future generations.</li>
+<li>Companies and financial institutions are under increasing societal pressure to address these risks.</li>
+<li>The prominence of environmental risks is expected to rise in the coming years.</li>
+<li>Climate risk is identified as the most significant environmental risk.</li>
+</ul>
+<section id="climate-risk" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="climate-risk"><span class="header-section-number">12.1.1</span> Climate Risk</h3>
+<ul>
+<li>Climate risk is one of the most pressing environmental concern.</li>
+<li>Human activities emit tens of billions of tons of greenhouse gases annually.</li>
+<li>Greenhouse gases, primarily CO2, persist for hundreds of years, exacerbating global warming.</li>
+<li>Paris Agreement (2015) and Glasgow Climate Pact (2021) aim for net-zero emissions by</li>
+</ul>
+<ol start="2050" type="1">
+<li></li>
+</ol>
+<ul>
+<li>Uncertainties exist in achieving these goals due to varying global policy responses.</li>
+<li>Difficulty in balancing current emissions with future environmental damage (trade-off between emissions today and damage in the future).</li>
+<li>Major sectors contributing to greenhouse gas emissions in the US are transportation, electricity, and industry.</li>
+<li>China, U.S., and India as major emitters, with per capita disparities. <a href="https://www.worldometers.info/co2-emissions/co2-emissions-by-country/" class="uri">https://www.worldometers.info/co2-emissions/co2-emissions-by-country/</a></li>
+<li>Climate change causes rising sea levels due to ice melt and water expansion.</li>
+<li>Increase in extreme weather events like storms, heatwaves, and hurricanes.</li>
+<li>Extreme events already cost billions; e.g., Hurricane Ida cost $75 billion in 2021.</li>
+</ul>
+<section id="physical-and-transition-risks" class="level4" data-number="12.1.1.1">
+<h4 data-number="12.1.1.1" class="anchored" data-anchor-id="physical-and-transition-risks"><span class="header-section-number">12.1.1.1</span> Physical and Transition Risks</h4>
+<ul>
+<li>Analysts differentiate between physical and transition climate risks.</li>
+<li><strong>Physical risks</strong> involve costs from extreme climate events like floods and hurricanes.</li>
+<li><strong>Transition risks</strong> are linked to policies for lower emissions, such as carbon taxes.</li>
+<li>Companies may need to shut down fossil fuel plants earlier due to transition risks.</li>
+<li>Lower emissions also present new business opportunities in green technologies.</li>
+<li>Estimated $100–150 trillion needed for economic transition over next 30 years.</li>
+<li><strong>Carbon tax</strong> and <strong>cap-and-trade</strong> systems as tools to regulate emissions, varying adoption globally.</li>
+</ul>
+</section>
+<section id="insurance-companies" class="level4" data-number="12.1.1.2">
+<h4 data-number="12.1.1.2" class="anchored" data-anchor-id="insurance-companies"><span class="header-section-number">12.1.1.2</span> Insurance Companies</h4>
+<ul>
+<li>Climate change significantly impacts the insurance industry by affecting risk correlations.</li>
+<li>Traditional “law of large numbers” less applicable due to correlated climate-related disasters.</li>
+<li>Short-term contracts allow pricing adjustments.</li>
+<li>Life insurance less adaptable to climate risks.</li>
+<li>Resource allocation needed for better climate risk understanding and regulatory compliance.</li>
+<li>Companies increasingly reluctant to insure high-risk areas for natural disasters.</li>
+</ul>
+</section>
+<section id="banks" class="level4" data-number="12.1.1.3">
+<h4 data-number="12.1.1.3" class="anchored" data-anchor-id="banks"><span class="header-section-number">12.1.1.3</span> Banks</h4>
+<ul>
+<li>Banks actively quantify climate change effects through forums like PCAF (Partnership for Carbon Accounting Financials).</li>
+<li>Regulatory bodies launch climate stress tests for banks.</li>
+<li>Climate risks impact multiple traditional risk categories:
+<ul>
+<li><strong>Credit Risk</strong>: Climate risk can impair debt service and collateral value.</li>
+<li><strong>Market Risk</strong>: Asset prices may decline due to climate effects.</li>
+<li><strong>Liquidity Risk</strong>: Market changes may limit access to stable funding.</li>
+<li><strong>Operational Risk</strong>: Legal and compliance risks may rise.</li>
+<li><strong>Reputational Risk</strong>: Public sentiment can heighten reputational risks.</li>
+</ul></li>
+<li>Mortgages vulnerable to long-term climate change impacts on real estate values.</li>
+<li>Severe climate events can reduce corporate profitability, raising credit risk.</li>
+<li>Mass migrations and agricultural changes expected, affecting economic stability.</li>
+<li>Sovereign debt increasingly risky, particularly in less-developed countries.</li>
+<li>Transition to low-carbon economy creates winners and losers, affecting lending.</li>
+<li>Reputational risks make banks cautious in lending to carbon emitters.</li>
+</ul>
+</section>
+<section id="institutional-investors" class="level4" data-number="12.1.1.4">
+<h4 data-number="12.1.1.4" class="anchored" data-anchor-id="institutional-investors"><span class="header-section-number">12.1.1.4</span> Institutional Investors</h4>
+<ul>
+<li>Increasing focus on incorporating climate risk in portfolios.</li>
+<li>Companies incentivized to align with emission targets to attract institutional investments.</li>
+<li><strong>Green Bonds</strong>: Innovative financial instruments designated for climate-friendly investments, underwritten by investment banks.</li>
+<li>Multiple organizations aim to standardize climate-related financial reporting, but efforts are still in progress.</li>
+<li>Asset managers like BlackRock are proactive, while others like Berkshire Hathaway are resistant.</li>
+<li><strong>Political Counterpressures</strong>: Legislation proposals and requests to ignore environmental factors in state pension investments.</li>
+<li>Despite political setbacks, focus on emissions and climate risk disclosure is growing.</li>
+</ul>
+</section>
+</section>
+<section id="esg" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="esg"><span class="header-section-number">12.1.2</span> ESG</h3>
+<ul>
+<li>Shift from profit-centric approach to incorporating environmental, social, and governance (ESG) factors.</li>
+<li><strong>Social Aspect</strong>: Addresses diversity, equity, inclusion, and worker well-being. Metrics still under development.</li>
+<li><strong>Governance Aspect</strong>: Focuses on transparent accounting and accountability to shareholders. Avoids conflicts of interest and unethical behavior.</li>
+<li>Multiple ESG data providers exist, often yielding conflicting reports.</li>
+<li>Absence of regulated ESG reporting standards allows companies to shop for favorable scores, creating risk for investors.</li>
+</ul>
+</section>
+<section id="sustainability" class="level3" data-number="12.1.3">
+<h3 data-number="12.1.3" class="anchored" data-anchor-id="sustainability"><span class="header-section-number">12.1.3</span> Sustainability</h3>
+<ul>
+<li><strong>Sustainability Defined</strong>: Meets current needs without jeopardizing future generations.</li>
+<li><strong>Examples of Nonsustainability</strong>: Greenhouse gas emissions, ocean pollution, soil and water contamination.</li>
+<li>Sustainability Accounting Standards Board (SASB) and Global Reporting Initiative provide guidelines.</li>
+<li><strong>Three Pillars</strong>:
+<ul>
+<li>Environmental Sustainability: Resource conservation.</li>
+<li>Economic Sustainability: Long-term stability with social and environmental care.</li>
+<li>Social Sustainability: Supports healthy, livable communities for current and future generations.</li>
+</ul></li>
+<li>Sustainable investment funds aim to invest in companies with good ESG or sustainability practices.</li>
+<li>No significant outperformance compared to traditional funds, despite increased demand. <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12841" class="uri">https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12841</a></li>
+<li>Some reports overstate benefits, suggest high returns with low risks contrary to finance theory.</li>
+</ul>
+</section>
+<section id="greenwashing" class="level3" data-number="12.1.4">
+<h3 data-number="12.1.4" class="anchored" data-anchor-id="greenwashing"><span class="header-section-number">12.1.4</span> Greenwashing</h3>
+<ul>
+<li><strong>Greenwashing Concept</strong>: Companies misleadingly claim ecological responsibility to attract consumers.</li>
+<li><strong>Examples</strong>:
+<ul>
+<li>Innocent drinks: False claims about recyclable plastics.</li>
+<li>Keurig: Misleading recycling claims led to a $3 million fine.</li>
+<li>IKEA: Used illegally sourced wood despite good sustainability credentials.</li>
+<li>Ryanair: Unsubstantiated claim of being Europe’s “lowest emissions airline.”</li>
+</ul></li>
+<li><strong>Financial Institutions</strong>: Deutsche Bank’s DWS exaggerated green credentials, leading to CEO’s resignation.</li>
+<li><strong>Implications</strong>: Considered a serious offense, impacting consumer trust and corporate credibility.</li>
+</ul>
+</section>
+</section>
+<section id="enterprise-risk-management" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="enterprise-risk-management"><span class="header-section-number">12.2</span> Enterprise Risk Management</h2>
+<ul>
+<li>Risk managers must evaluate risks and adopt a holistic view through Enterprise Risk Management (ERM).</li>
+<li>Top-down and bottom-up approaches essential for effective risk management.
+<ul>
+<li>Top-down sets overall risk appetite.</li>
+<li>Bottom-up assesses risks at the business unit level.</li>
+</ul></li>
+<li>Shift from compliance orientation to strategic orientation in risk management is noted.</li>
+</ul>
+<section id="risk-appetite" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="risk-appetite"><span class="header-section-number">12.2.1</span> Risk Appetite</h3>
+<ul>
+<li><p>How much risk is the organization prepared to take in order to achieve its strategic objectives and business plans?</p></li>
+<li><p>Risk appetite is an essential part of Enterprise Risk Management (ERM).</p></li>
+<li><p>For fund managers, risk appetite is more straightforward to quantify using beta, expected return, and risk.</p></li>
+<li><p>For fund managers it is possible to use <span class="math inline">\(\beta\)</span> that is consistent with a particular VaR objective.</p></li>
+</ul>
+<p><span class="math display">\[
+\beta = \frac{R - R_F}{R_M - R_F + N^{-1} (1-p) \sigma_M}
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(R\)</span> is the return that has a probability <span class="math inline">\(p\)</span> of being exceeded in one year.</p></li>
+<li><p><span class="math inline">\(R_M\)</span> is the expected market return and <span class="math inline">\(R_F\)</span> is the risk-free rate.</p></li>
+<li><p>Unfortunately, the available risk-return alternatives for a financial institution such as a bank or an insurance company cannot usually be quantified as easily as for a fund manager.</p></li>
+<li><p>VaR or expected shortfall often specify worst-case loss aspect of risk appetite.</p></li>
+<li><p>Other elements like reputational risk, credit rating risk, legal risks, etc., may be qualitative.</p></li>
+<li><p>Risk quantification can be:</p>
+<ol type="1">
+<li>Bottom-Up: Calculated by business units, then aggregated.</li>
+<li>Top-Down: Set by the board, guiding risk limits for individual business lines.</li>
+</ol></li>
+<li><p>Risk appetite should address <strong>risk Concentration</strong>: Limit exposure to sectors, market variables, companies.</p></li>
+<li><p>Monitoring and adherence to set limits crucial for effectiveness.</p></li>
+</ul>
+</section>
+<section id="risk-culture" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="risk-culture"><span class="header-section-number">12.2.2</span> Risk Culture</h3>
+<ul>
+<li>It is all about how decisions are made.</li>
+<li>If the risk culture is good, all decisions are made in a disciplined way with a careful consideration of possible outcomes, weighing risks and rewards.</li>
+<li>A strong risk culture should align with an institution’s risk appetite and long-term objectives.</li>
+<li>Short-term profits should not outweigh long-term risks.</li>
+<li>The role of compensation in influencing decisions is crucial and is being revised to mitigate short-term focus.</li>
+<li>E.g., spreading bonuses over years, clawback provisions for adverse outcomes.</li>
+<li>Regulatory guidelines (Financial Stability Board) can assist in establishing a robust risk culture.</li>
+</ul>
+</section>
+<section id="identifying-major-risks" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="identifying-major-risks"><span class="header-section-number">12.2.3</span> Identifying Major Risks</h3>
+<ul>
+<li>Core to ERM, similar to stress testing; consider historical and emerging trends.</li>
+<li>Regulatory Changes: Banks face tighter regulations; shift of activities to less-regulated shadow banks.</li>
+<li>Cognitive Biases:
+<ul>
+<li>Wishful Thinking: Confusing desires with likely outcomes.</li>
+<li>Anchoring: Fixation on initial estimates, neglecting full range of outcomes.</li>
+<li>Availability: Overemphasis on recent information.</li>
+<li>Representativeness: Stereotyping situations based on past experiences.</li>
+<li>Sunk Costs Bias: Ignoring sunk costs critical for rational decision-making.</li>
+</ul></li>
+<li>Underestimating tail risks due to cognitive biases; requires methods to improve estimations.</li>
+<li>Inclusion of diverse views mitigates bias, improves risk identification.</li>
+</ul>
+</section>
+<section id="strategic-risk-management" class="level3" data-number="12.2.4">
+<h3 data-number="12.2.4" class="anchored" data-anchor-id="strategic-risk-management"><span class="header-section-number">12.2.4</span> Strategic Risk Management</h3>
+<ul>
+<li>Focuses on assessing assumptions and potential failures in a company’s strategy.
+<ul>
+<li>Key Questions: Impact of competitors, customer reactions, and external events.</li>
+<li>Risk is tied to the poor performance under ‘wrong’ scenarios.</li>
+</ul></li>
+<li>Courses of Action Once Risk Identified:
+<ul>
+<li>Avoid: Terminate the business or investment.</li>
+<li>Reduce: Mitigate likelihood or impact of adverse events.</li>
+<li>Adjust: Modify plans to lower risks.</li>
+<li>Share/Insure: Transfer or share some risk.</li>
+<li>Accept: No action taken.</li>
+</ul></li>
+<li>Choice of action varies by context but requires thorough consideration.</li>
+</ul>
+</section>
+</section>
+<section id="practice-questions-and-problems" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="practice-questions-and-problems"><span class="header-section-number">12.3</span> Practice Questions and Problems</h2>
+<section id="climate-risk-esg-and-sustainability-1" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="climate-risk-esg-and-sustainability-1"><span class="header-section-number">12.3.1</span> Climate Risk, ESG, and Sustainability</h3>
+<ol type="1">
+<li>Why does the burning of fossil fuels lead to temperature rises?</li>
+<li>What is the goal that was agreed to in Paris in 2015?</li>
+<li>What is the difference between a carbon tax and a cap and trade system?</li>
+<li>What is the difference between physical risks and transition risks?</li>
+<li>What are the risks of climate change to insurance companies?</li>
+<li>What does ESG stand for?</li>
+<li>What is greenwashing?</li>
+<li>How can pension plans and mutual funds help solve the global warming problem?</li>
+<li>Give examples of activities covered by ESG and sustainability that are not climate risk issues.</li>
+</ol>
+</section>
+<section id="enterprise-risk-management-1" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="enterprise-risk-management-1"><span class="header-section-number">12.3.2</span> Enterprise Risk Management</h3>
+<ol type="1">
+<li>Explain the difference between top-down and bottom-up approaches to risk management. Why are both necessary in ERM?</li>
+<li>“The risk culture at a bank should lead it to consider the longer-term implications of decisions as well as short-term profits.” Discuss.</li>
+<li>What steps can a bank take to encourage employees to consider more than short-term profits?</li>
+<li>What distinguishes enterprise risk management from more traditional approaches to risk management?</li>
+<li>A fund’s risk appetite is such that it wants to be 90% certain that it will not lose more than 20% in any one year. Using the performance of the S&amp;P 500 between 1970 and 2016 (mean return 11.74%, standard deviation 18.86%), determine the beta the fund should have. Assume a risk-free rate of 3% per annum.</li>
+<li>Give three examples of cognitive biases in finance.</li>
+</ol>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./week_10.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./week_12.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Regulation, Economic Capital, and RAROC</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

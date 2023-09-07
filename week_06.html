@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Risk Management and Financial Institutions - 6&nbsp; Market Risk I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./week_07.html" rel="next">
+<link href="./week_05.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_06.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Market Risk I</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Risk Management and Financial Institutions</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Risk-Management-and-Financial-Institutions.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Risk-Management-and-Financial-Institutions.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Risk Management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Revision of the Basic Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward and Futures Strategies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Option Strategies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Volatility, Correlations, and Copulas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_06.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Market Risk I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reading Week</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Market Risk II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Credit Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Regulation, Economic Capital, and RAROC</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Financial Innovation and Risk Management Mistakes</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">6.1</span> Introduction</a></li>
+  <li><a href="#understanding-value-at-risk-var" id="toc-understanding-value-at-risk-var" class="nav-link" data-scroll-target="#understanding-value-at-risk-var"><span class="header-section-number">6.2</span> Understanding Value at Risk (VaR)</a>
+  <ul class="collapse">
+  <li><a href="#simple-var-calculations" id="toc-simple-var-calculations" class="nav-link" data-scroll-target="#simple-var-calculations"><span class="header-section-number">6.2.1</span> Simple VaR Calculations</a></li>
+  </ul></li>
+  <li><a href="#advantages-and-limitations-of-var" id="toc-advantages-and-limitations-of-var" class="nav-link" data-scroll-target="#advantages-and-limitations-of-var"><span class="header-section-number">6.3</span> Advantages and Limitations of VaR</a>
+  <ul class="collapse">
+  <li><a href="#advantages-of-var" id="toc-advantages-of-var" class="nav-link" data-scroll-target="#advantages-of-var"><span class="header-section-number">6.3.1</span> Advantages of VaR</a></li>
+  <li><a href="#limitations-of-var" id="toc-limitations-of-var" class="nav-link" data-scroll-target="#limitations-of-var"><span class="header-section-number">6.3.2</span> Limitations of VaR</a></li>
+  <li><a href="#extensions-of-var" id="toc-extensions-of-var" class="nav-link" data-scroll-target="#extensions-of-var"><span class="header-section-number">6.3.3</span> Extensions of VaR</a></li>
+  </ul></li>
+  <li><a href="#expected-shortfall" id="toc-expected-shortfall" class="nav-link" data-scroll-target="#expected-shortfall"><span class="header-section-number">6.4</span> Expected Shortfall</a></li>
+  <li><a href="#coherent-risk-measures" id="toc-coherent-risk-measures" class="nav-link" data-scroll-target="#coherent-risk-measures"><span class="header-section-number">6.5</span> Coherent Risk Measures</a>
+  <ul class="collapse">
+  <li><a href="#subadditivity-example" id="toc-subadditivity-example" class="nav-link" data-scroll-target="#subadditivity-example"><span class="header-section-number">6.5.1</span> Subadditivity Example</a></li>
+  </ul></li>
+  <li><a href="#choice-of-parameters-for-var-and-es" id="toc-choice-of-parameters-for-var-and-es" class="nav-link" data-scroll-target="#choice-of-parameters-for-var-and-es"><span class="header-section-number">6.6</span> Choice of Parameters for VaR and ES</a>
+  <ul class="collapse">
+  <li><a href="#the-time-horizon" id="toc-the-time-horizon" class="nav-link" data-scroll-target="#the-time-horizon"><span class="header-section-number">6.6.1</span> The Time Horizon</a></li>
+  <li><a href="#impact-of-autocorrelation" id="toc-impact-of-autocorrelation" class="nav-link" data-scroll-target="#impact-of-autocorrelation"><span class="header-section-number">6.6.2</span> Impact of Autocorrelation</a></li>
+  <li><a href="#confidence-level" id="toc-confidence-level" class="nav-link" data-scroll-target="#confidence-level"><span class="header-section-number">6.6.3</span> Confidence Level</a></li>
+  <li><a href="#back-testing" id="toc-back-testing" class="nav-link" data-scroll-target="#back-testing"><span class="header-section-number">6.6.4</span> Back-Testing</a></li>
+  </ul></li>
+  <li><a href="#additional-topics" id="toc-additional-topics" class="nav-link" data-scroll-target="#additional-topics"><span class="header-section-number">6.7</span> Additional Topics</a>
+  <ul class="collapse">
+  <li><a href="#interest-rate-risk" id="toc-interest-rate-risk" class="nav-link" data-scroll-target="#interest-rate-risk"><span class="header-section-number">6.7.1</span> Interest Rate Risk</a></li>
+  <li><a href="#derivatives-risk" id="toc-derivatives-risk" class="nav-link" data-scroll-target="#derivatives-risk"><span class="header-section-number">6.7.2</span> Derivatives Risk</a></li>
+  <li><a href="#scenario-analysis-and-stress-testing" id="toc-scenario-analysis-and-stress-testing" class="nav-link" data-scroll-target="#scenario-analysis-and-stress-testing"><span class="header-section-number">6.7.3</span> Scenario Analysis and Stress Testing</a></li>
+  </ul></li>
+  <li><a href="#practice-questions-and-problems" id="toc-practice-questions-and-problems" class="nav-link" data-scroll-target="#practice-questions-and-problems"><span class="header-section-number">6.8</span> Practice Questions and Problems</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Market Risk I</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><strong>References:</strong></p>
+<ul>
+<li>Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+<ul>
+<li>Chapter 11 - Value at Risk and Expected Shortfall</li>
+<li>Chapter 14 - Interest Rate Risk</li>
+<li>Chapter 15 - Derivatives Risk</li>
+<li>Chapter 16 - Scenario Analysis and Stress Testing</li>
+</ul></li>
+<li>Pirie, W. L., and M. P. Kritzman. 2017. Derivatives. CFA Institute Investment Series.
+<ul>
+<li>Chapter 6 - Risk Management</li>
+</ul></li>
+</ul>
+<p><strong>Learning outcomes:</strong></p>
+<ul>
+<li>Explain the use of Value at Risk (VaR) in measuring portfolio risk.</li>
+<li>Describe advantages and limitations of VaR.</li>
+<li>Explain the use of Expected Shortfall (ES) in measuring portfolio risk.</li>
+<li>Understand conditions for coherent risk measures and provide examples.</li>
+<li>Define how to choose parameters for VaR and ES estimation.</li>
+</ul>
+<section id="introduction" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
+<ul>
+<li><p><strong>Market risk</strong> refers to the risk arising from changes in stock prices, interest rates, exchange rates, and commodity prices.</p></li>
+<li><p>Risk management involves identifying and measuring risk and ensuring that it aligns with desired risk levels.</p></li>
+<li><p>Effective risk management requires judgment, experience, and an understanding of model strengths and limitations.</p></li>
+<li><p>Market risk is easier to analyze compared to other financial risks due to the availability of data and collective experience.</p></li>
+<li><p>Estimating potential losses for market risk is challenging as they are unknown and based on historical data.</p></li>
+<li><p>Risk management models blend historical data with forward-looking judgment to create a framework for testing and assessing risk.</p></li>
+<li><p><strong>Value at Risk (VaR)</strong> and <strong>Expected Shortfall (ES)</strong> are metrics that summarize total portfolio risk with a single number.</p></li>
+<li><p>VaR was first introduced by JPMorgan and is now widely used by corporate treasurers, fund managers, and financial institutions.</p></li>
+<li><p>Regulators have traditionally used VaR for capital requirement calculations, but have switched to ES for some market risk.</p></li>
+</ul>
+</section>
+<section id="understanding-value-at-risk-var" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="understanding-value-at-risk-var"><span class="header-section-number">6.2</span> Understanding Value at Risk (VaR)</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition of VaR
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Value at risk is the minimum loss that would be expected a certain percentage of the time over a certain period of time given the assumed market conditions.</li>
+<li>E.g.: The 5% VaR of a portfolio is $2.2 million over a one-day period.</li>
+<li>Using the example given, it is correct to say any of the following:
+<ul>
+<li>$2.2 million is the minimum loss we would expect 5% of the time.</li>
+<li>5% of the time, losses would be at least $2.2 million.</li>
+<li>We would expect a loss of no more than $2.2 million 95% of the time.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<ul>
+<li>Value at Risk (VaR) is an important risk measure in global financial markets.</li>
+<li>VaR is defined as the minimum loss expected over a certain period of time with a specified level of confidence.</li>
+<li>VaR can be expressed in currency units or as a percentage of portfolio value.</li>
+<li>VaR is a minimum loss, not the total possible loss of the portfolio.</li>
+<li>A VaR statement includes the frequency of losses and the time horizon over which they are expected to occur.</li>
+<li>A 5% VaR implies a 95% level of confidence.</li>
+<li>VaR statements can be rephrased to indicate the minimum loss expected or the maximum loss not expected to occur.</li>
+<li>The concept of VaR is often illustrated using a probability distribution, such as the normal distribution, although other distributions may be more appropriate for financial market returns.</li>
+</ul>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1000</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>confidence_level <span class="op">=</span> <span class="fl">0.95</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate VaR</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>VaR <span class="op">=</span> norm.ppf(<span class="dv">1</span> <span class="op">-</span> confidence_level, mu, sigma)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the normal distribution</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.plot(x, norm.pdf(x, mu, sigma), label<span class="op">=</span><span class="st">"Normal distribution"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight the VaR area</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>x_fill <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">4</span>, VaR, <span class="dv">1000</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>plt.fill_between(</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    x_fill,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    norm.pdf(x_fill, mu, sigma),</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"blue"</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="ss">f"VaR (95% confidence)"</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels and legend</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Value"</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Probability Density"</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="week_06_files/figure-html/cell-2-output-1.png" width="597" height="429"></p>
+</div>
+</div>
+<section id="simple-var-calculations" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="simple-var-calculations"><span class="header-section-number">6.2.1</span> Simple VaR Calculations</h3>
+<p><strong>Example 1</strong> Suppose that the gain from a portfolio during six months is normally distributed with a mean of $2 million and a standard deviation of $10 million. How would you calculate the VaR for the portfolio with a time horizon of six months and confidence level of 99%, given the properties of the normal distribution?</p>
+<p><strong>Example 2</strong> Suppose that for a one-year project all outcomes between a loss of $50 million and a gain of $50 million are considered equally likely, resulting in a uniform distribution extending from –$\50 million to +$50 million. How would you determine the VaR with a one-year time horizon and a 99% confidence level for this project?</p>
+<p><strong>Example 3</strong> A one-year project has a 98% chance of leading to a gain of $2 million, a 1.5% chance of leading to a loss of $4 million, and a 0.5% chance of leading to a loss of $10 million. How would you calculate the VaR with a confidence level of 99% and a one-year time horizon for this project, given the cumulative loss distribution?</p>
+</section>
+</section>
+<section id="advantages-and-limitations-of-var" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="advantages-and-limitations-of-var"><span class="header-section-number">6.3</span> Advantages and Limitations of VaR</h2>
+<section id="advantages-of-var" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="advantages-of-var"><span class="header-section-number">6.3.1</span> Advantages of VaR</h3>
+<ul>
+<li><strong>Simple concept:</strong> VaR is easy to understand, making it accessible to decision-makers without technical backgrounds by asking the question, “How bad can things get?”.</li>
+<li><strong>Easily communicated:</strong> VaR consolidates a large amount of information into a single, significant number.</li>
+<li><strong>Provides a basis for risk comparison:</strong> VaR allows for the comparison of risks across different asset classes, portfolios, and trading units.</li>
+<li><strong>Facilitates capital allocation decisions:</strong> VaR provides a benchmark for capital allocation decisions across different trading units or portfolio positions.</li>
+<li><strong>Can be used for performance evaluation:</strong> VaR can be used for risk-adjusted performance measurement, which provides a more comprehensive view of profitability.</li>
+<li><strong>Reliability can be verified:</strong> VaR can be backtested, making it easier to check its reliability.</li>
+<li><strong>Widely accepted by regulators:</strong> VaR is commonly used and encouraged by regulators like the SEC, making it a common sight in annual reports of financial firms.</li>
+</ul>
+</section>
+<section id="limitations-of-var" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="limitations-of-var"><span class="header-section-number">6.3.2</span> Limitations of VaR</h3>
+<ul>
+<li><p><strong>Subjectivity:</strong> The estimation of VaR involves a lot of subjective decisions, such as choosing the VaR cutoff, time horizon, and estimation method.</p></li>
+<li><p><strong>Underestimating the frequency of extreme events:</strong> VaR can underestimate the likelihood of extreme adverse events, often referred to as “left-tail events”.</p></li>
+<li><p><strong>Failure to take into account liquidity:</strong> VaR can be understated in the case of relatively illiquid assets, particularly during major market downturns.</p></li>
+<li><p><strong>Sensitivity to correlation risk:</strong> VaR does not fully account for the fact that correlations among assets can rise significantly during times of market stress.</p></li>
+<li><p><strong>Vulnerability to trending or volatility regimes:</strong> VaR can lead to an underestimation of losses during periods of low volatility and may not fully capture the risk in trending markets.</p></li>
+<li><p><strong>Misunderstanding the meaning of VaR:</strong> VaR is not a worst-case scenario measure, and losses can exceed the VaR.</p></li>
+<li><p><strong>Oversimplification:</strong> While VaR is easy to communicate, it can also oversimplify the risk picture.</p></li>
+<li><p><strong>Disregard of right-tail events:</strong> VaR focuses on the left tail (losses), often ignoring the right tail (potential gains).</p></li>
+<li><p>VaR can be misleading when used to limit a trader’s risks. A trader can appear to meet a set VaR limit while taking on unacceptable risks.</p></li>
+<li><p>For example, a trader can create a portfolio with a 99.1% chance of a daily loss under $10 million, but a 0.9% chance of a $500 million loss, meeting a bank’s one-day 99% VaR limit of $10 million.</p></li>
+<li><p>Such skewed probability distributions, where large losses are more likely, are not uncommon. Trading strategies like writing out-of-the-money options often yield good returns but carry a small chance of huge losses.</p></li>
+<li><p>Traders often seek high risks for high returns, and if they find ways to take high risks without violating risk limits, they will do so.</p></li>
+</ul>
+</section>
+<section id="extensions-of-var" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="extensions-of-var"><span class="header-section-number">6.3.3</span> Extensions of VaR</h3>
+<ul>
+<li>No single risk model can answer all questions a risk manager may have, hence VaR has numerous variations, each providing additional information.</li>
+<li><strong>Conditional VaR</strong> (CVaR, Expected shortfall) estimates the average loss when VaR is exceeded.</li>
+<li><strong>Incremental VaR</strong> (IVaR) measures the change in portfolio VaR due to a change in position size.</li>
+<li><strong>Marginal VaR</strong> (MVaR) assesses the effect of a small change in position, useful for evaluating each asset’s contribution to total VaR in diversified portfolios.</li>
+<li>IVaR and MVaR help evaluate a trade’s potential effect before execution.</li>
+<li><strong>Relative VaR</strong>, or ex ante tracking error, quantifies how much a portfolio’s performance might deviate from its benchmark.</li>
+</ul>
+</section>
+</section>
+<section id="expected-shortfall" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="expected-shortfall"><span class="header-section-number">6.4</span> Expected Shortfall</h2>
+<ul>
+<li>ES is also known as conditional value at risk, conditional tail expectation, or expected tail loss.</li>
+<li>Expected Shortfall (ES) is an alternative risk measure to Value at Risk (VaR) that provides better incentives for traders.</li>
+<li>It provides a more comprehensive view of risk than VaR by considering the magnitude of extreme losses.</li>
+<li>ES is particularly useful for understanding the risk of rare but significant losses.</li>
+<li>While VaR measures the maximum potential loss at a given confidence level, ES calculates the average loss beyond the VaR threshold.</li>
+<li>To calculate ES, it is necessary to calculate VaR first. ES is the expected loss over time horizon T, given that the loss exceeds the VaR.</li>
+<li>ES depends on two parameters: T (time horizon) and X (confidence level).</li>
+<li>An example: If <span class="math inline">\(X\)</span> = 99, <span class="math inline">\(T\)</span> is 10 days, and the VaR is $64 million, then ES is the average loss over 10 days when the loss is greater than $64 million.</li>
+<li>Setting ES limits for traders reduces risky position-taking.</li>
+<li>ES has better properties than VaR as it always recognizes the benefits of diversification.</li>
+<li>However, ES is not as straightforward as VaR and is harder to understand.</li>
+<li>It is also more challenging to back-test a procedure for calculating ES compared to back-testing for VaR.</li>
+<li>Other risk measures can be defined with different weightings, such as the exponential spectral risk measure (ES use equal-weights).</li>
+</ul>
+</section>
+<section id="coherent-risk-measures" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="coherent-risk-measures"><span class="header-section-number">6.5</span> Coherent Risk Measures</h2>
+<ul>
+<li>Coherent risk measures provide a robust and consistent framework for assessing risk.</li>
+<li>They take into account the benefits of diversification and ensure that increasing the scale of a portfolio increases the risk measure proportionally.</li>
+<li>One example of a coherent risk measure is the Expected Shortfall (ES).</li>
+<li>Value at Risk (VaR) is not coherent as it does not always satisfy the subadditivity property.</li>
+<li>It is characterized by the following four axioms:</li>
+</ul>
+<ol type="1">
+<li><strong>Monotonicity</strong>: If portfolio <span class="math inline">\(A\)</span> always has returns greater than or equal to portfolio <span class="math inline">\(B\)</span>, the risk measure for <span class="math inline">\(A\)</span> should be less than or equal to the risk measure for <span class="math inline">\(B\)</span>.</li>
+<li><strong>Subadditivity</strong>: The risk measure of the combined portfolio <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> should be less than or equal to the sum of the risk measures of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> individually. This property ensures that diversification is rewarded.</li>
+<li><strong>Positive Homogeneity</strong>: If a portfolio’s holdings are scaled up by a positive factor <span class="math inline">\(\lambda\)</span>, the risk measure should also scale up by the same factor. Mathematically, if <span class="math inline">\(A\)</span> is a portfolio and <span class="math inline">\(\lambda &gt; 0\)</span>, then the risk measure of <span class="math inline">\(\lambda A\)</span> should be <span class="math inline">\(\lambda\)</span> times the risk measure of <span class="math inline">\(A\)</span>.</li>
+<li><strong>Translation Invariance</strong>: If a risk-free asset with return <span class="math inline">\(r\)</span> is added to a portfolio, the risk measure should decrease by the amount <span class="math inline">\(r\)</span>. Mathematically, if <span class="math inline">\(A\)</span> is a portfolio and <span class="math inline">\(r\)</span> is a risk-free return, the risk measure of <span class="math inline">\(A + r\)</span> should be the risk measure of <span class="math inline">\(A\)</span> minus <span class="math inline">\(r\)</span>.</li>
+</ol>
+<section id="subadditivity-example" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="subadditivity-example"><span class="header-section-number">6.5.1</span> Subadditivity Example</h3>
+<ul>
+<li><p>Each of two independent projects has a 2% probability of a $10 million loss and a 98% probability of a $1 million loss in one year.</p></li>
+<li><p>The one-year 97.5% <strong>VaR (Value at Risk)</strong> for each project is $1 million.</p></li>
+<li><p>When combined into a portfolio, there is:</p>
+<ul>
+<li>a 0.04% probability of a $20 million loss,</li>
+<li>3.92% probability of an $11 million loss, and</li>
+<li>96.04% probability of a $2 million loss.</li>
+</ul></li>
+<li><p>The one-year 97.5% VaR for the portfolio is $11 million, which is greater than the sum of the individual project VaRs ($2 million) by $9 million, <strong>violating subadditivity</strong>.</p></li>
+<li><p>The <strong>ES (Expected Shortfall)</strong> for a single project at 97.5% confidence level considers 2% at $10 million loss and 0.5% at $1 million loss. This results in an expected loss of $8.2 million.</p></li>
+<li><p>When combined, the ES for the portfolio considers 0.04% at $20 million loss and 2.46% at $11 million loss, resulting in an expected loss of $11.144 million.</p></li>
+<li><p>The sum of individual project ES ($16.4 million) is greater than the portfolio ES ($11.144 million), <strong>satisfying the subadditivity condition</strong>.</p></li>
+</ul>
+</section>
+</section>
+<section id="choice-of-parameters-for-var-and-es" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="choice-of-parameters-for-var-and-es"><span class="header-section-number">6.6</span> Choice of Parameters for VaR and ES</h2>
+<ul>
+<li>For both Value at Risk (VaR) and Expected Shortfall (ES), users must choose two parameters: the time horizon and the confidence level.</li>
+<li>One assumption is that the change in the portfolio value at the time horizon is normally distributed, although this may not always be appropriate.</li>
+<li>When the loss in the portfolio value has a mean of <span class="math inline">\(\mu\)</span> and a standard deviation of <span class="math inline">\(\sigma\)</span>, VaR is given by:</li>
+</ul>
+<p><span class="math display">\[
+\text{VaR} = \mu + \sigma N^{-1}(X)
+\]</span></p>
+<ul>
+<li><p>where <span class="math inline">\(X\)</span> is the confidence level, and <span class="math inline">\(N^{-1}(\cdot)\)</span> is the inverse cumulative normal distribution.</p></li>
+<li><p>For short time horizons, <span class="math inline">\(\mu\)</span> is often assumed to be zero, making VaR for a particular confidence level proportional to <span class="math inline">\(\sigma\)</span>.</p></li>
+<li><p>When the loss is assumed to be normally distributed with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, ES with a confidence level of <span class="math inline">\(X\)</span> is given by:</p></li>
+</ul>
+<p><span class="math display">\[
+\text{ES} = \mu + \sigma \frac{e^{-Y^2/2}}{\sqrt{2\pi} (1 - X)}
+\]</span></p>
+<ul>
+<li><p>where <span class="math inline">\(Y\)</span> is the <span class="math inline">\(X\)</span>th percentile point of the standard normal distribution.</p></li>
+<li><p><strong>Example:</strong> The loss from a portfolio over a 10-day horizon is normally distributed with a mean of zero and a standard deviation of $20 million. The 10-day 99% VaR and ES are:</p></li>
+</ul>
+<p><span class="math display">\[
+\text{VaR} = 20 N^{-1}(0.99) = \$46.5 \text{ million}
+\]</span></p>
+<p><span class="math display">\[
+\text{ES} = 20 \frac{e^{-2.326^2/2}}{\sqrt{2\pi} \times 0.01} = \$53.3 \text{ million}
+\]</span></p>
+<section id="the-time-horizon" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="the-time-horizon"><span class="header-section-number">6.6.1</span> The Time Horizon</h3>
+<ul>
+<li>Depends on liquidity and trading frequency.</li>
+<li>Short time horizons for liquid, actively-traded positions; long horizons for less liquid portfolios.</li>
+<li>Portfolios with mixed liquidity can have tailored risk measures for each asset.</li>
+<li>Analysts often start with a 1-day time horizon.</li>
+<li>T-day VaR and T-day ES can be calculated from 1-day measures using the formulas:</li>
+</ul>
+<p><span class="math display">\[
+\text{T-day VaR} = \text{1-day VaR} \times \sqrt{T}
+\]</span></p>
+<p><span class="math display">\[
+\text{T-day ES} = \text{1-day ES} \times \sqrt{T}
+\]</span></p>
+<ul>
+<li>These formulas are exactly true when daily changes in portfolio value have independent identical normal distributions with mean zero.</li>
+<li>In other cases, these formulas are approximations.</li>
+</ul>
+</section>
+<section id="impact-of-autocorrelation" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="impact-of-autocorrelation"><span class="header-section-number">6.6.2</span> Impact of Autocorrelation</h3>
+<ul>
+<li>Changes in portfolio value aren’t always independent.</li>
+<li>Higher autocorrelation of portfolio returns means higher underestimation of VaR and ES.</li>
+<li>It is possible to adjust standard deviation (<span class="math inline">\(\sigma\)</span>) to reflect autocorrelation when calculating VaR and ES.</li>
+<li>The standard deviation of the sum of <span class="math inline">\(T\)</span> daily changes, considering autocorrelation, is given by:</li>
+</ul>
+<p><span class="math display">\[
+\sigma \sqrt{T + 2(T - 1)\rho^1 + 2(T - 2)\rho^2 + ... + 2\rho^{T-1}}
+\]</span></p>
+</section>
+<section id="confidence-level" class="level3" data-number="6.6.3">
+<h3 data-number="6.6.3" class="anchored" data-anchor-id="confidence-level"><span class="header-section-number">6.6.3</span> Confidence Level</h3>
+<ul>
+<li>The choice depends on factors such as maintaining credit ratings.</li>
+<li>A bank aiming for an AA rating might use a 99.98% confidence level for VaR to align with a 0.02% annual default chance.</li>
+<li>It’s tough to estimate VaR directly with very high confidence levels.</li>
+<li>Extreme value theory can help to solve this issue.</li>
+</ul>
+</section>
+<section id="back-testing" class="level3" data-number="6.6.4">
+<h3 data-number="6.6.4" class="anchored" data-anchor-id="back-testing"><span class="header-section-number">6.6.4</span> Back-Testing</h3>
+<ul>
+<li>Back-testing evaluates the performance of risk measure models, like VaR, using historical data.</li>
+<li>It is relatively simple for VaR models.</li>
+<li>The analysis focuses on “exceptions,” where actual losses exceed the VaR prediction.</li>
+<li>A high or low percentage of exceptions may indicate model weaknesses.</li>
+<li>Statistical tests can assess whether a VaR model should be rejected based on exceptions.</li>
+<li>Regulators may increase market risk capital requirements if back-testing results over 250 days are unsatisfactory.</li>
+</ul>
+</section>
+</section>
+<section id="additional-topics" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="additional-topics"><span class="header-section-number">6.7</span> Additional Topics</h2>
+<section id="interest-rate-risk" class="level3" data-number="6.7.1">
+<h3 data-number="6.7.1" class="anchored" data-anchor-id="interest-rate-risk"><span class="header-section-number">6.7.1</span> Interest Rate Risk</h3>
+<ul>
+<li>Financial institutions have exposures to different yield curves, requiring calculation of VaR and ES.</li>
+<li>Two approaches for this: considering each rate as a separate risk factor or using principal components analysis.</li>
+<li>Bank’s net interest margin measures the excess of earned interest over paid interest; asset/liability management ensures constancy.</li>
+<li>Duration is key in interest rate markets, measuring portfolio sensitivity to shifts in the zero-coupon yield curve.</li>
+<li>Convexity of the portfolio adds precision for large parallel shifts, but not for nonparallel shifts.</li>
+<li>Several duration or delta measures quantify different ways the yield curve can change.</li>
+<li>Principal components analysis can be an alternative to multiple deltas, effectively hedging against standard shifts in yield curves.</li>
+</ul>
+</section>
+<section id="derivatives-risk" class="level3" data-number="6.7.2">
+<h3 data-number="6.7.2" class="anchored" data-anchor-id="derivatives-risk"><span class="header-section-number">6.7.2</span> Derivatives Risk</h3>
+<ul>
+<li>A trader monitors Greek letters (such as delta, gamma, vega) to keep them within specified limits.</li>
+<li>Delta (<span class="math inline">\(\Delta\)</span>) is the rate of change in portfolio value concerning the underlying asset’s price; delta hedging aims to create a delta-neutral position.</li>
+<li>Hedging involves taking a position of <span class="math inline">\(-\Delta\)</span> in the underlying asset, and complex portfolios require periodic rebalancing.</li>
+<li>After achieving delta neutrality, traders often look at gamma (curvature of the relationship) and vega (rate of change with respect to volatility).</li>
+<li>Gamma and vega can be altered by trading options on the asset.</li>
+<li>Derivatives traders typically rebalance daily to maintain delta neutrality; maintaining gamma and vega neutrality regularly is usually infeasible.</li>
+<li>Corrective action or trading curtailment may occur if gamma and vega measures get too large.</li>
+</ul>
+</section>
+<section id="scenario-analysis-and-stress-testing" class="level3" data-number="6.7.3">
+<h3 data-number="6.7.3" class="anchored" data-anchor-id="scenario-analysis-and-stress-testing"><span class="header-section-number">6.7.3</span> Scenario Analysis and Stress Testing</h3>
+<ul>
+<li>Stress testing is crucial in risk management, considering impacts of extreme scenarios usually ignored by VaR or ES analysis.</li>
+<li>It allows understanding and mitigation of risks and can uncover potential systemic problems.</li>
+<li>Scenarios generation methods include:
+<ul>
+<li>Examining extreme movements in one market variable.</li>
+<li>Using historical market variables from extreme shock periods.</li>
+<li>A committee of senior management and economists generating plausible extremes.</li>
+<li>Reverse stress testing using algorithms to find large loss scenarios.</li>
+</ul></li>
+<li>Scenarios should consider knock-on effects; market turmoil may lead to significant consequences like flight to quality or liquidity shortage.</li>
+<li>Regulators in the US, EU, and UK develop stress scenarios for large financial institutions, possibly leading to capital raising requirements.</li>
+<li>Integrating stress testing with VaR through subjective probabilities is an idea not widely adopted by financial institutions or regulators.</li>
+</ul>
+</section>
+</section>
+<section id="practice-questions-and-problems" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="practice-questions-and-problems"><span class="header-section-number">6.8</span> Practice Questions and Problems</h2>
+<ol type="1">
+<li>What is the difference between expected shortfall and VaR? What is the theoret- ical advantage of expected shortfall over VaR?</li>
+<li>A fund manager announces that the fund’s one-month 95% VaR is 6% of the size of the portfolio being managed. You have an investment of $100,000 in the fund. How do you interpret the portfolio manager’s announcement?</li>
+<li>A fund manager announces that the fund’s one-month 95% expected shortfall is 6% of the size of the portfolio being managed. You have an investment of $100,000 in the fund. How do you interpret the portfolio manager’s announce- ment?</li>
+<li>Suppose that each of two investments has a 0.9% chance of a loss of $10 million and a 99.1% chance of a loss of $1 million. The investments are independent of each other.
+<ul>
+<li>What is the VaR for one of the investments when the confidence level is 99%?</li>
+<li>What is the expected shortfall for one of the investments when the confidence level is 99%?</li>
+<li>What is the VaR for a portfolio consisting of the two investments when the confidence level is 99%?</li>
+<li>What is the expected shortfall for a portfolio consisting of the two investments when the confidence level is 99%?</li>
+<li>Show that in this example VaR does not satisfy the subadditivity condition, whereas expected shortfall does.</li>
+</ul></li>
+<li>Suppose that the change in the value of a portfolio over a one-day time period is normal with a mean of zero and a standard deviation of $2 million; what is (a) the one-day 97.5% VaR, (b) the five-day 97.5% VaR, and (c) the five-day 99% VaR?</li>
+<li>What difference does it make to your answer to Problem 5 if there is first-order daily autocorrelation with a correlation parameter equal to 0.16?</li>
+<li>The change in the value of a portfolio in one month is normally distributed with a mean of zero and a standard deviation of $2 million. Calculate the VaR and ES for a confidence level of 98% and a time horizon of three months.</li>
+<li>Suppose that each of two investments has a 4% chance of a loss of $10 million, a 2% chance of a loss of $1 million, and a 94% chance of a profit of $1 million. They are independent of each other.
+<ul>
+<li>What is the VaR for one of the investments when the confidence level is 95%?</li>
+<li>What is the expected shortfall when the confidence level is 95%?</li>
+<li>What is the VaR for a portfolio consisting of the two investments when the confidence level is 95%?</li>
+<li>What is the expected shortfall for a portfolio consisting of the two investments when the confidence level is 95%?</li>
+<li>Show that, in this example, VaR does not satisfy the subadditivity condition, whereas expected shortfall does.</li>
+</ul></li>
+<li>Suppose the first-order autocorrelation for daily changes in the value of a port- folio is 0.12. The 10-day VaR, calculated by multiplying the one-day VaR by√10, is $2 million. What is a better estimate of the VaR that takes account of autocorrelation?</li>
+<li>The change in the value of a portfolio in three months is normally distributed with a mean of $500,000 and a standard deviation of $3 million. Calculate the VaR and ES for a confidence level of 99.5% and a time horizon of three months.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./week_05.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Volatility, Correlations, and Copulas</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./week_07.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reading Week</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

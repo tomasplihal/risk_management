@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Risk Management and Financial Institutions - 10&nbsp; Operational Risk, Liquidity Risk, and Model Risk</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./week_11.html" rel="next">
+<link href="./week_09.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_10.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Risk Management and Financial Institutions</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Risk-Management-and-Financial-Institutions.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Risk-Management-and-Financial-Institutions.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Risk Management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Revision of the Basic Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward and Futures Strategies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Option Strategies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Volatility, Correlations, and Copulas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Market Risk I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reading Week</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Market Risk II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Credit Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_10.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Regulation, Economic Capital, and RAROC</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Financial Innovation and Risk Management Mistakes</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#operational-risk" id="toc-operational-risk" class="nav-link active" data-scroll-target="#operational-risk"><span class="header-section-number">10.1</span> Operational Risk</a>
+  <ul class="collapse">
+  <li><a href="#defining-operational-risk" id="toc-defining-operational-risk" class="nav-link" data-scroll-target="#defining-operational-risk"><span class="header-section-number">10.1.1</span> Defining Operational Risk</a></li>
+  <li><a href="#types-of-operational-risk" id="toc-types-of-operational-risk" class="nav-link" data-scroll-target="#types-of-operational-risk"><span class="header-section-number">10.1.2</span> Types of Operational Risk</a></li>
+  <li><a href="#loss-severity-and-loss-frequency" id="toc-loss-severity-and-loss-frequency" class="nav-link" data-scroll-target="#loss-severity-and-loss-frequency"><span class="header-section-number">10.1.3</span> Loss Severity and Loss Frequency</a></li>
+  <li><a href="#the-standardized-measurement-approach" id="toc-the-standardized-measurement-approach" class="nav-link" data-scroll-target="#the-standardized-measurement-approach"><span class="header-section-number">10.1.4</span> The Standardized Measurement Approach</a></li>
+  <li><a href="#preventing-operational-risk-losses" id="toc-preventing-operational-risk-losses" class="nav-link" data-scroll-target="#preventing-operational-risk-losses"><span class="header-section-number">10.1.5</span> Preventing Operational Risk Losses</a></li>
+  <li><a href="#allocation-of-operational-risk-capital" id="toc-allocation-of-operational-risk-capital" class="nav-link" data-scroll-target="#allocation-of-operational-risk-capital"><span class="header-section-number">10.1.6</span> Allocation of Operational Risk Capital</a></li>
+  <li><a href="#insurance" id="toc-insurance" class="nav-link" data-scroll-target="#insurance"><span class="header-section-number">10.1.7</span> Insurance</a></li>
+  </ul></li>
+  <li><a href="#liquidity-risk" id="toc-liquidity-risk" class="nav-link" data-scroll-target="#liquidity-risk"><span class="header-section-number">10.2</span> Liquidity Risk</a>
+  <ul class="collapse">
+  <li><a href="#liquidity-trading-risk" id="toc-liquidity-trading-risk" class="nav-link" data-scroll-target="#liquidity-trading-risk"><span class="header-section-number">10.2.1</span> Liquidity Trading Risk</a></li>
+  <li><a href="#measuring-market-liquidity" id="toc-measuring-market-liquidity" class="nav-link" data-scroll-target="#measuring-market-liquidity"><span class="header-section-number">10.2.2</span> Measuring Market Liquidity</a></li>
+  <li><a href="#liquidity-funding-risk" id="toc-liquidity-funding-risk" class="nav-link" data-scroll-target="#liquidity-funding-risk"><span class="header-section-number">10.2.3</span> Liquidity Funding Risk</a></li>
+  <li><a href="#reserve-requirements-and-regulation" id="toc-reserve-requirements-and-regulation" class="nav-link" data-scroll-target="#reserve-requirements-and-regulation"><span class="header-section-number">10.2.4</span> Reserve Requirements and Regulation</a></li>
+  <li><a href="#liquidity-black-holes" id="toc-liquidity-black-holes" class="nav-link" data-scroll-target="#liquidity-black-holes"><span class="header-section-number">10.2.5</span> Liquidity Black Holes</a></li>
+  </ul></li>
+  <li><a href="#model-risk-management" id="toc-model-risk-management" class="nav-link" data-scroll-target="#model-risk-management"><span class="header-section-number">10.3</span> Model Risk Management</a>
+  <ul class="collapse">
+  <li><a href="#regulatory-guidance" id="toc-regulatory-guidance" class="nav-link" data-scroll-target="#regulatory-guidance"><span class="header-section-number">10.3.1</span> Regulatory Guidance</a></li>
+  <li><a href="#models-in-physics-and-finance" id="toc-models-in-physics-and-finance" class="nav-link" data-scroll-target="#models-in-physics-and-finance"><span class="header-section-number">10.3.2</span> Models in Physics and Finance</a></li>
+  <li><a href="#models-for-pricing-actively-traded-products" id="toc-models-for-pricing-actively-traded-products" class="nav-link" data-scroll-target="#models-for-pricing-actively-traded-products"><span class="header-section-number">10.3.3</span> Models for Pricing Actively Traded Products</a></li>
+  <li><a href="#models-for-less-actively-traded-products" id="toc-models-for-less-actively-traded-products" class="nav-link" data-scroll-target="#models-for-less-actively-traded-products"><span class="header-section-number">10.3.4</span> Models for Less Actively Traded Products</a></li>
+  <li><a href="#successful-pricing-models-and-common-mistakes" id="toc-successful-pricing-models-and-common-mistakes" class="nav-link" data-scroll-target="#successful-pricing-models-and-common-mistakes"><span class="header-section-number">10.3.5</span> Successful Pricing Models and Common Mistakes</a></li>
+  </ul></li>
+  <li><a href="#practice-questions-and-problems" id="toc-practice-questions-and-problems" class="nav-link" data-scroll-target="#practice-questions-and-problems"><span class="header-section-number">10.4</span> Practice Questions and Problems</a>
+  <ul class="collapse">
+  <li><a href="#operational-risk-1" id="toc-operational-risk-1" class="nav-link" data-scroll-target="#operational-risk-1"><span class="header-section-number">10.4.1</span> Operational Risk</a></li>
+  <li><a href="#liquidity-risk-1" id="toc-liquidity-risk-1" class="nav-link" data-scroll-target="#liquidity-risk-1"><span class="header-section-number">10.4.2</span> Liquidity Risk</a></li>
+  <li><a href="#model-risk-management-1" id="toc-model-risk-management-1" class="nav-link" data-scroll-target="#model-risk-management-1"><span class="header-section-number">10.4.3</span> Model Risk Management</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><strong>References:</strong></p>
+<ul>
+<li>Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+<ul>
+<li>Chapter 20 - Operational Risk</li>
+<li>Chapter 21 - Liquidity Risk</li>
+<li>Chapter 22 - Model Risk Management</li>
+</ul></li>
+</ul>
+<p><strong>Learning outcomes:</strong></p>
+<ul>
+<li>Recognize the evolution of capital charge for operational risk.</li>
+<li>Comprehend the need for key risk indicators in operational risk management.</li>
+<li>Learn how to allocate operational risk capital to business units.</li>
+<li>Be aware of insurance options for mitigating operational risk and their limitations.</li>
+<li>Acknowledge the evolving nature of operational risk management procedures.</li>
+<li>Understand two types of liquidity risk: trading and funding.</li>
+<li>Recognize factors affecting liquidity trading risk.</li>
+<li>Know how to measure liquidity using bid–ask spread methods.</li>
+<li>Understand the importance of forecasting cash needs in normal and stressed conditions.</li>
+<li>Identify “liquidity black holes” and the need for diverse trading strategies.</li>
+<li>Understand model risk as a form of operational risk.</li>
+<li>Identify the unique challenges posed by financial models compared to physical science models.</li>
+</ul>
+<section id="operational-risk" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="operational-risk"><span class="header-section-number">10.1</span> Operational Risk</h2>
+<ul>
+<li>Regulators introduced operational risk capital requirements in 1999.</li>
+<li>Cyber risk is a growing form of operational risk, necessitating advanced security measures and ongoing education.</li>
+<li>Operational risk is harder to quantify and manage compared to credit or market risk.</li>
+<li>Unlike insurance companies that can raise premiums to cover large losses, banks do not have this option as they operate in a competitive environment.</li>
+</ul>
+<section id="defining-operational-risk" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="defining-operational-risk"><span class="header-section-number">10.1.1</span> Defining Operational Risk</h3>
+<ul>
+<li>Basel Committee’s 2001 definition: “The risk of loss resulting from inadequate or failed internal processes, people, and systems or from external events.”</li>
+<li>Legal risk is included, but reputation and strategic decision risks are excluded.</li>
+<li>Operational risks affect bank costs and revenue, and can interact with credit and market risks.</li>
+<li>E.g., natural disasters, political and regulatory risk, security breaches, and so on.</li>
+</ul>
+</section>
+<section id="types-of-operational-risk" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="types-of-operational-risk"><span class="header-section-number">10.1.2</span> Types of Operational Risk</h3>
+<ul>
+<li><strong>Internal Fraud</strong>: Intentional acts to defraud or circumvent law by internal parties. Examples include insider trading and rogue trading.</li>
+<li><strong>External Fraud</strong>: Fraudulent acts by third parties such as robbery and computer hacking.</li>
+<li><strong>Employment Practices and Workplace Safety</strong>: Violations related to employment laws, health and safety, including discrimination claims.</li>
+<li><strong>Clients, Products, and Business Practices</strong>: Failures to meet professional obligations or misuse of customer information. Examples include fiduciary breaches and money laundering.</li>
+<li><strong>Damage to Physical Assets</strong>: Losses from natural disasters or vandalism. Examples include fires and earthquakes.</li>
+<li><strong>Business Disruption and System Failures</strong>: Issues like hardware failures and utility outages disrupting business.</li>
+<li><strong>Execution, Delivery, and Process Management</strong>: Transaction failures, documentation issues, and vendor disputes.</li>
+</ul>
+</section>
+<section id="loss-severity-and-loss-frequency" class="level3" data-number="10.1.3">
+<h3 data-number="10.1.3" class="anchored" data-anchor-id="loss-severity-and-loss-frequency"><span class="header-section-number">10.1.3</span> Loss Severity and Loss Frequency</h3>
+<ul>
+<li><p>Loss frequency and loss severity are two fundamental distributions to estimate potential size of operational risks.</p></li>
+<li><p><strong>Loss Frequency</strong>: Distribution of the number of losses observed in one year. Commonly modeled using the Poisson distribution. <span class="math display">\[
+P(n) = e^{-\lambda T} \frac{(\lambda T)^n}{n!}
+\]</span></p></li>
+<li><p>Where <span class="math inline">\(\lambda\)</span> is the average number of losses per year.</p></li>
+<li><p><strong>Loss Severity</strong>: Distribution of the size of a loss, given that a loss occurs. Often modeled using the lognormal distribution.</p></li>
+<li><p><strong>Monte Carlo Simulation</strong>: Used to combine loss frequency and severity to determine a total loss distribution.</p></li>
+<li><p>Banks often have limited internal data but may utilize data from other banks or vendors.</p></li>
+<li><p>Losses from other banks must be adjusted to reflect size of the institution.</p></li>
+<li><p>Publicly reported data, like that from vendors, is often skewed towards larger losses.</p></li>
+<li><p>Scenario analysis is used to assess operational risks that have not yet been observed.</p></li>
+<li><p>Committee estimates for loss frequency and severity are subjective.</p></li>
+<li><p>Scenarios can be developed to think actively about potential adverse events and formulate responses.</p></li>
+</ul>
+</section>
+<section id="the-standardized-measurement-approach" class="level3" data-number="10.1.4">
+<h3 data-number="10.1.4" class="anchored" data-anchor-id="the-standardized-measurement-approach"><span class="header-section-number">10.1.4</span> The Standardized Measurement Approach</h3>
+<ul>
+<li><p>Defined by regulators in December 2017, see &lt;www.bis.org/bcbs/publ/d424.pdf&gt;.</p></li>
+<li><p>Implementation date: January 2023</p></li>
+<li><p>Its purpose was to standardize the calculation of capital for operational risk in banks.</p></li>
+<li><p><strong>Business Indicator (BI)</strong> to measures the bank’s size and therefore its potential operational risk exposure:</p>
+<ul>
+<li>Interest Leases and Dividend Component (ILDC)</li>
+<li>Services Component (SC)</li>
+<li>Financial Component (FC)</li>
+<li><strong>Formula</strong>: <span class="math inline">\(\text{BI} = \text{ILDC} + \text{SC} + \text{FC}\)</span></li>
+</ul></li>
+<li><p><strong>Business Indicator Component (BIC)</strong>:</p>
+<ul>
+<li>Small Banks: <span class="math inline">\(BIC = 0.12 \times BI\)</span></li>
+<li>BI between 1 and 30 billion euros: <span class="math inline">\(BIC = 0.12 + 0.15 \times (BI-1)\)</span></li>
+<li>BI above 30 billion euros**: <span class="math inline">\(BIC = 4.47 + 0.18 \times (BI-30)\)</span></li>
+</ul></li>
+<li><p><strong>Internal Loss Multiplier (ILM)</strong>:</p>
+<ul>
+<li><strong>Loss Component (LC)</strong> is equal to 15 times average annual operational risk losses over previous 10 years. <span class="math display">\[
+ILM = \ln \left[ e - 1 + \left( \frac{LC}{BIC} \right)^{0.8} \right]
+\]</span></li>
+</ul></li>
+<li><p><strong>Operational Risk Capital</strong>:</p></li>
+<li><p>For Small Banks (BI &lt; 1 billion euros): Equal to BIC.</p></li>
+<li><p>For Other Banks: Equal to <span class="math inline">\(BIC \times ILM\)</span>.</p></li>
+<li><p>National Supervisors’ Discretion: May set capital equal to BIC for all banks or use loss data for small banks.</p></li>
+<li><p>If <span class="math inline">\(LC = BIC\)</span>, then <span class="math inline">\(ILM = 1\)</span> and required capital is BIC.</p></li>
+<li><p>Banks with operational risk losses higher than average will have <span class="math inline">\(ILM &gt; 1\)</span>.</p></li>
+<li><p>Banks with losses lower than average will have <span class="math inline">\(ILM &lt; 1\)</span>.</p></li>
+</ul>
+</section>
+<section id="preventing-operational-risk-losses" class="level3" data-number="10.1.5">
+<h3 data-number="10.1.5" class="anchored" data-anchor-id="preventing-operational-risk-losses"><span class="header-section-number">10.1.5</span> Preventing Operational Risk Losses</h3>
+<ul>
+<li>Operational risk managers aim to prevent losses by studying failures at other banks.</li>
+<li>Managers explore causal relationships between decisions and operational risk to identify preventive measures, such as modifying employee qualifications or upgrading systems.</li>
+<li>Business unit managers identify operational risks, often using questionnaires and scorecards (risk control and self-assesment).</li>
+<li>Key risk indicators act as early warning systems, tracking metrics like:
+<ol type="1">
+<li>Staff turnover</li>
+<li>Number of failed transactions</li>
+<li>Number of positions filled by temps</li>
+<li>Ratio of supervisors to staff</li>
+<li>Number of open positions</li>
+<li>Percentage of staff who did not take 10 days consecutive leave in the last 12 months</li>
+</ol></li>
+</ul>
+</section>
+<section id="allocation-of-operational-risk-capital" class="level3" data-number="10.1.6">
+<h3 data-number="10.1.6" class="anchored" data-anchor-id="allocation-of-operational-risk-capital"><span class="header-section-number">10.1.6</span> Allocation of Operational Risk Capital</h3>
+<ul>
+<li>Capital should be allocated in a way that motivates business units to manage operational risks effectively.</li>
+<li>Reduction in operational risk should lead to less allocated capital, thereby increasing return on capital for the unit.</li>
+<li>However, costs of reducing certain risks may outweigh the benefits.</li>
+<li>Support from senior management and board oversight is critical.</li>
+<li>Basel Committee on Banking Supervision recommends regular board reviews of risk management programs.</li>
+</ul>
+</section>
+<section id="insurance" class="level3" data-number="10.1.7">
+<h3 data-number="10.1.7" class="anchored" data-anchor-id="insurance"><span class="header-section-number">10.1.7</span> Insurance</h3>
+<ul>
+<li><strong>Moral Hazard</strong>: Insuring against operational risks may encourage lax behavior in risk management.</li>
+<li><strong>Adverse Selection</strong>: Insurance companies may attract higher-risk clients, requiring rigorous assessment of bank controls.</li>
+<li>Deductibles, coinsurance, and policy limits are used to manage these insurance risks.</li>
+</ul>
+</section>
+</section>
+<section id="liquidity-risk" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="liquidity-risk"><span class="header-section-number">10.2</span> Liquidity Risk</h2>
+<ul>
+<li>Elevated by the Global Financial Crisis of 2007.</li>
+<li><strong>Solvency</strong> refers to a company having more assets than liabilities, so that the value of its equity is positive.</li>
+<li><strong>Liquidity</strong> refers to the ability of a company to make cash payments as they become due.</li>
+<li>Financial institutions that are solvent can fail because of liquidity problems.</li>
+<li><strong>Liquidity Funding Risk</strong>: Risk associated with inability to meet short-term obligations.</li>
+<li><strong>Liquidity Trading Risk</strong>: Concerns bid-ask spreads and asset marketability.</li>
+<li>Regulatory liquidity requirements aim to ensure worst-case scenario survival.</li>
+<li>“Liquidity Black Holes”: Extreme situations where market liquidity evaporates suddenly.</li>
+</ul>
+<section id="liquidity-trading-risk" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="liquidity-trading-risk"><span class="header-section-number">10.2.1</span> Liquidity Trading Risk</h3>
+<ul>
+<li>Factors Affecting Liquidity:
+<ul>
+<li>Asset type (e.g., IBM shares vs.&nbsp;non-investment-grade bonds)</li>
+<li>Trade size</li>
+<li>Speed of liquidation</li>
+<li>Economic environment</li>
+</ul></li>
+<li>Market makers may widen bid-ask spreads for large trades.</li>
+<li>Without market makers, implicit bid-ask spreads exist, varying from 0.01% to 10% of mid-market price.</li>
+<li>Market participants may anticipate large position unwinds, affecting liquidity.</li>
+<li>Importance of maintaining confidentiality to avoid predatory trading.</li>
+<li>Lack of transparency can lead to illiquid markets.</li>
+<li>During the Global Financial Crisis, complex derivatives became illiquid due to lack of understanding.</li>
+<li>“Liquidity Black Hole”: liquidity evaporates when multiple institutions try to unwind similar positions simultaneously.</li>
+</ul>
+</section>
+<section id="measuring-market-liquidity" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="measuring-market-liquidity"><span class="header-section-number">10.2.2</span> Measuring Market Liquidity</h3>
+<ul>
+<li><p><strong>Bid-Ask Spread</strong>: Measures liquidity either as a cash amount or as a proportion of the asset price.</p></li>
+<li><p><strong>Cash Bid-Ask Spread</strong>: <span class="math inline">\(p = \text{Ask price} - \text{Bid price}\)</span></p></li>
+<li><p><strong>Proportional Bid-Ask Spread</strong>: <span class="math inline">\(s = \frac{\text{Ask price} - \text{Bid
+price}}{\text{Mid-market price}}\)</span></p></li>
+<li><p>One measure of the liquidity of a book is how much it would cost to liquidate the book in normal market conditions within a certain time.</p></li>
+<li><p><strong>Cost of Liquidation</strong>: Estimates the cost to liquidate an asset or book of assets.</p></li>
+<li><p><strong>Cost of Liquidation (Normal Market)</strong>:<br>
+<span class="math display">\[
+\text{Cost} = \sum_{i=1}^{n} \frac{s_i \alpha_i}{2}
+\]</span></p></li>
+<li><p>where <span class="math inline">\(s_i\)</span> is the proportional bid-ask spread and <span class="math inline">\(\alpha_i\)</span> is the value of the position.</p></li>
+<li><p><strong>Cost of Liquidation (Stressed Market)</strong>:<br>
+<span class="math display">\[
+\text{Cost} = \sum_{i=1}^{n} \frac{(\mu_i + \lambda \sigma_i) \alpha_i}{2}
+\]</span></p></li>
+<li><p><span class="math inline">\(\mu_i\)</span> is the mean of the proportional bid-offer spread for the ith financial instrument.</p></li>
+<li><p><span class="math inline">\(\sigma_i\)</span> is standard deviation of the proportional bid-offer spread for the ith financial instrument.</p></li>
+<li><p><span class="math inline">\(\lambda\)</span> gives the required confidence level for the spread.</p></li>
+<li><p>Diversification doesn’t necessarily reduce liquidity risk.</p></li>
+<li><p>Monitoring liquidity regularly is crucial.</p></li>
+<li><p>The measure is sensitive to the time period assumed for liquidation.</p></li>
+<li><p>Holding many small positions rather than a few large positions therefore tends to entail less liquidity risk.</p></li>
+<li><p>Setting limits to the size of any one position can therefore be one way of reducing liquidity trading risk.</p></li>
+</ul>
+<section id="additional-notes" class="level4" data-number="10.2.2.1">
+<h4 data-number="10.2.2.1" class="anchored" data-anchor-id="additional-notes"><span class="header-section-number">10.2.2.1</span> Additional Notes</h4>
+<p><strong>Liquidity-Adjusted VaR</strong>: - It incorporates both market risk and liquidity risk into a single metric (Var plus Cost of liquidation). - It can be calculated using either normal market conditions or stressed market conditions.</p>
+<ul>
+<li><strong>Unwinding a Position Optimally</strong>:
+<ul>
+<li>A dilemma exists between liquidating quickly (higher bid-ask spread, less market risk) and liquidating slowly (lower bid-ask spread, higher market risk).</li>
+<li>Almgren and Chriss (2001) provide a mathematical approach to optimize this process.</li>
+</ul></li>
+<li><strong>Other Measures of Market Liquidity</strong>:
+<ul>
+<li>Besides bid-ask spread, trading volume and price impact are also considered.</li>
+<li>A metric proposed by Amihud relates daily return to daily dollar volume, suggesting that higher expected returns compensate for lower liquidity.</li>
+<li><strong>Amihud’s Measure</strong>: Average of <span class="math display">\[ \frac{\text{Absolute value of daily return}}{\text{Daily dollar volume}} \]</span></li>
+<li>This is a simpler but similar measure to price impact.</li>
+<li>Amihud (2002) demonstrates that as liquidity decreases, an asset’s expected return increases, implying that investors are compensated for taking on liquidity risk.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="liquidity-funding-risk" class="level3" data-number="10.2.3">
+<h3 data-number="10.2.3" class="anchored" data-anchor-id="liquidity-funding-risk"><span class="header-section-number">10.2.3</span> Liquidity Funding Risk</h3>
+<ul>
+<li>Focuses on a financial institution’s capacity to meet cash needs.</li>
+<li>Institutions can be solvent yet fail due to liquidity issues.</li>
+<li>Causes of Liquidity Funding Problems:
+<ol type="1">
+<li><strong>Economic Liquidity Stresses</strong>: Reluctance from investors to fund any credit-risk bearing activities.</li>
+<li><strong>Aggressive Funding Decisions</strong>: Tendency to fund long-term needs with short-term instruments, causing liquidity mismatch.</li>
+<li><strong>Poor Financial Performance</strong>: Leads to loss of confidence, deposit withdrawal, and funding difficulties.</li>
+</ol></li>
+<li>Often, all three causes may contribute to severe liquidity problems.</li>
+<li><strong>Managing Risk</strong>:
+<ol type="1">
+<li>Predicting Cash Needs: Some are predictable (e.g., bond coupons), others less so (e.g., deposit withdrawals).</li>
+<li>Complex Financial Instruments: Increase unpredictability of cash needs due to factors like downgrade triggers and counterparty defaults.</li>
+</ol></li>
+<li>The key is to ensure cash needs can be met even in adverse scenarios.</li>
+</ul>
+<section id="sources-of-liquidity" class="level4" data-number="10.2.3.1">
+<h4 data-number="10.2.3.1" class="anchored" data-anchor-id="sources-of-liquidity"><span class="header-section-number">10.2.3.1</span> Sources of Liquidity</h4>
+<ol type="1">
+<li><strong>Cash and Treasury Securities</strong>: Highly liquid but expensive, limiting the amount held.</li>
+<li><strong>Liquidating Trading Book</strong>: Requires monitoring liquidity under stressed market conditions.</li>
+<li><strong>Ability to Borrow</strong>: Easy during unstressed periods but difficult during market stress.</li>
+<li><strong>Retail and Wholesale Deposits</strong>: Volatile and dependent on market-wide conditions.</li>
+<li><strong>Securitization</strong>: Used to be reliable but became risky after 2007.</li>
+<li><strong>Central Bank Borrowing</strong>: Lender of last resort, subject to collateral and haircut.</li>
+</ol>
+<ul>
+<li><strong>Additional Considerations</strong>:
+<ol type="1">
+<li><strong>Stressed vs Normal Conditions</strong>: Different liquidity sources function differently under stress.</li>
+<li><strong>Collateral and Haircut</strong>: Important when borrowing from central banks.</li>
+<li><strong>Hedging Issues</strong>: May result in liquidity problems due to margin requirements.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="reserve-requirements-and-regulation" class="level3" data-number="10.2.4">
+<h3 data-number="10.2.4" class="anchored" data-anchor-id="reserve-requirements-and-regulation"><span class="header-section-number">10.2.4</span> Reserve Requirements and Regulation</h3>
+<ul>
+<li>A set percentage of a bank’s deposits must be kept in reserve.</li>
+<li>Affects the money supply; varies by country.</li>
+<li>Basel III Liquidity Risk Requirements:
+<ul>
+<li><strong>LCR (Liquidity Coverage Ratio)</strong>: High-quality liquid assets to net cash outflows in a 30-day stress period should be <span class="math inline">\(\leq\)</span> 100%.</li>
+<li><strong>NSFR (Net Stable Funding Ratio)</strong>: Amount of stable funding to required stable funding should be <span class="math inline">\(\leq\)</span> 100%.</li>
+</ul></li>
+</ul>
+</section>
+<section id="liquidity-black-holes" class="level3" data-number="10.2.5">
+<h3 data-number="10.2.5" class="anchored" data-anchor-id="liquidity-black-holes"><span class="header-section-number">10.2.5</span> Liquidity Black Holes</h3>
+<ul>
+<li>A situation where market liquidity dries up due to everyone wanting to sell and no one wanting to buy, or vice versa.</li>
+<li>It is still possible to buy/sell assets but the bid-ask spread is huge.</li>
+<li>Negative Feedback Traders: Buy when prices fall, sell when prices rise.</li>
+<li>Positive Feedback Traders: Do the opposite, exacerbating price movements.</li>
+<li>Dominance of positive feedback traders leads to unstable, illiquid markets.</li>
+<li>Reasons for positive feedback trading:
+<ol type="1">
+<li><strong>Trend Trading</strong>: Buy or sell based on asset price trends.</li>
+<li><strong>Stop-Loss Rules</strong>: Automatic selling below certain price levels.</li>
+<li><strong>Dynamic Hedging</strong>: Can reduce market liquidity when large short option positions are hedged.</li>
+<li><strong>Synthetic Options</strong>: Commercial programs for synthetic put options can cause liquidity black holes.</li>
+<li><strong>Margins</strong>: Big market moves lead to margin calls, further destabilizing prices.</li>
+<li><strong>Predatory Trading</strong>: Knowing an investor must sell large quantities can drive prices further down.</li>
+<li><strong>LTCM Failure</strong>: Example of how leveraging and margin calls can exacerbate liquidity issues.</li>
+</ol></li>
+<li><strong>Leveraging and Deleveraging</strong>:
+<ul>
+<li>Banks awash with liquidity make credit easily available, leading to increased asset prices (“leveraging”).</li>
+<li>Deleveraging is the opposite: reduced liquidity in banks results in tightened credit and decreased asset prices.</li>
+<li>Hedge funds are particularly affected by leveraging-deleveraging cycles.</li>
+</ul></li>
+<li><strong>Irrational Exuberance</strong>:
+<ul>
+<li>Term coined by Alan Greenspan in 1996 to describe overvaluation of asset prices.</li>
+<li>Often self-reinforcing due to high short-term profits.</li>
+<li>Leads to liquidity black holes and market crashes.</li>
+</ul></li>
+<li><strong>The Impact of Regulation</strong>:
+<ul>
+<li>Uniform regulatory environment can lead to synchronous behavior among banks, exacerbating market issues.</li>
+<li>Different financial cycles necessitate different capital requirements; uniformity can be problematic.</li>
+</ul></li>
+<li><strong>The Importance of Diversity</strong>:
+<ul>
+<li>Market participants often do not act independently, causing liquidity black holes.</li>
+<li>Different types of financial institutions should be regulated differently to introduce market diversity.</li>
+<li>Contrarian investment strategies may offer benefits but are hard to implement under short-term VaR-based risk management.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="model-risk-management" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="model-risk-management"><span class="header-section-number">10.3</span> Model Risk Management</h2>
+<ul>
+<li>Models increasingly used for various applications like credit decisions, liquidity management, and risk assessment.</li>
+<li>Advanced analytic techniques, including machine learning, automate tasks previously done by humans.</li>
+<li>Large institutions require a model risk management function for appropriate use and validation.</li>
+<li>Models are approximations, dependent on assumptions about the phenomena they represent.</li>
+<li>Importance of understanding these assumptions and their limitations.</li>
+<li>Model risk is considered a component of operational risk.</li>
+<li>Banks must develop, validate, and use models in accordance with regulatory systems.</li>
+</ul>
+<section id="regulatory-guidance" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="regulatory-guidance"><span class="header-section-number">10.3.1</span> Regulatory Guidance</h3>
+<ul>
+<li><a href="https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm">SR 11-7</a> by the U.S. Board of Governors of the Federal Reserve System outlines principles for effective model risk management.</li>
+<li>Model risk defined as adverse consequences from incorrect or misused models.</li>
+<li>Model risk occurs primarily for two reasons:
+<ol type="1">
+<li>The model may have fundamental errors (data, calculation)</li>
+<li>The model may be used incorrectly or inappropriately (limitations and assumptions of the model)</li>
+</ol></li>
+<li><strong>Model Development</strong>:
+<ul>
+<li>Importance of thorough documentation for model continuity, regulatory scrutiny, and validation.</li>
+<li>Testing should be rigorous, including out-of-sample tests and performance under extreme conditions.</li>
+</ul></li>
+<li><strong>Model Validation</strong>:
+<ul>
+<li>Model validation groups provide an independent check.</li>
+<li>Three core elements: conceptual soundness, ongoing monitoring, and outcomes analysis.</li>
+<li>Importance of independence and corporate culture.</li>
+</ul></li>
+<li><strong>Vendor Models</strong>:
+<ul>
+<li>Vendor models should undergo similar validation processes.</li>
+<li>Require documentation and ongoing monitoring from vendors.</li>
+<li>Contingency plans for vendor unavailability.</li>
+</ul></li>
+</ul>
+</section>
+<section id="models-in-physics-and-finance" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="models-in-physics-and-finance"><span class="header-section-number">10.3.2</span> Models in Physics and Finance</h3>
+<ul>
+<li>Physical models are precise because they describe fundamental laws of nature.</li>
+<li>Financial models are approximate, influenced by human behavior.</li>
+<li>Parameters like gravitational pull in physics are constant.</li>
+<li>Financial parameters like volatility change frequently.</li>
+<li>Financial models can result in significant errors and losses.</li>
+<li>Incorrect assumptions and lack of validation can be costly.</li>
+<li>To manage model risk, monitoring trading patterns and competitiveness in various products is crucial.</li>
+</ul>
+</section>
+<section id="models-for-pricing-actively-traded-products" class="level3" data-number="10.3.3">
+<h3 data-number="10.3.3" class="anchored" data-anchor-id="models-for-pricing-actively-traded-products"><span class="header-section-number">10.3.3</span> Models for Pricing Actively Traded Products</h3>
+<ul>
+<li>A situation that is common in the over-the-counter market is one where a financial instrument that has to be valued is a standard product such as an option, but not exactly the same as one that trades in the market.</li>
+<li>Actively traded financial instruments have market-determined prices.</li>
+<li>Models like Black–Scholes–Merton are used for similar but non-standard products to ensure pricing consistency.</li>
+<li>Models are primarily interpolation tools; changes in model usually don’t affect prices significantly.</li>
+<li>Model risk exists in extreme market conditions and must be validated.</li>
+<li>Hedging focuses on both within-model and outside-model variables.</li>
+<li>Portfolio value changes can be attributed to unhedged risks, model imperfections, and new trades.</li>
+<li>Risk is often diversified away in large financial institutions, minimizing the impact of inaccurate hedging.</li>
+</ul>
+</section>
+<section id="models-for-less-actively-traded-products" class="level3" data-number="10.3.4">
+<h3 data-number="10.3.4" class="anchored" data-anchor-id="models-for-less-actively-traded-products"><span class="header-section-number">10.3.4</span> Models for Less Actively Traded Products</h3>
+<ul>
+<li>For actively traded products, calibrating models to market prices minimizes model risk.</li>
+<li>For less-traded products, model choice significantly affects valuation and hedging.</li>
+<li>Institutions often aim for relative, not absolute, valuation based on similar market-traded instruments.</li>
+<li>Multiple models should be used for non-standard products to understand model risk.</li>
+<li>Using multiple models can provide a range of possible prices.</li>
+<li>Institutions should charge at the higher end of this range and be conservative about recognizing profits.</li>
+<li>Accounting standards categorize valuations as Level 1, 2, or 3 based on reliability and need for modeling assumptions.</li>
+</ul>
+</section>
+<section id="successful-pricing-models-and-common-mistakes" class="level3" data-number="10.3.5">
+<h3 data-number="10.3.5" class="anchored" data-anchor-id="successful-pricing-models-and-common-mistakes"><span class="header-section-number">10.3.5</span> Successful Pricing Models and Common Mistakes</h3>
+<ul>
+<li><p>The goal is to create models that aid in market understanding and decision-making without unnecessary complexity.</p></li>
+<li><p><strong>Successful Pricing Models</strong>:</p>
+<ol type="1">
+<li>Consistency: Aligns with observed market prices, useful for interpolation.</li>
+<li>Communication: Facilitates stable, easier-to-understand metrics like implied volatilities.</li>
+<li>Simplicity: Intuitive enough for traders to develop a nuanced understanding.</li>
+</ol></li>
+<li><p><strong>Model-Building Considerations</strong>:</p>
+<ol type="1">
+<li>Avoid Over-fitting: Complex models may capture data well but lack utility and might produce unrealistic outcomes.</li>
+<li>Caution on Over-parameterization: Adding too many parameters complicates the model and could fail during market regime changes.</li>
+<li>Preference for Simplicity: Simple models are often preferred as they are easier to understand and less of a ‘black box.’</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="practice-questions-and-problems" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="practice-questions-and-problems"><span class="header-section-number">10.4</span> Practice Questions and Problems</h2>
+<section id="operational-risk-1" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="operational-risk-1"><span class="header-section-number">10.4.1</span> Operational Risk</h3>
+<ol type="1">
+<li>What risks are included by regulators in their definition of operational risks? What risks are not included?</li>
+<li>Discuss how moral hazard and adverse selection are handled in car insurance.</li>
+<li>When is a trading loss classified as a market risk and when is it classified as an operational risk?</li>
+<li>Discuss whether there is (a) moral hazard and (b) adverse selection in life insurance contracts.</li>
+<li>Give two examples of key risk indicators that might be monitored by a central operational risk management group within a bank.</li>
+<li>onsider two banks, each with a BIC of 200 million euros. Bank A has suffered 10 operational risk losses of 20 million euros in the past 10 years. Bank B has suffered one 200 million euro loss in the past 10 years. What is the operational risk regulatory capital for each bank under SMA?</li>
+</ol>
+</section>
+<section id="liquidity-risk-1" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="liquidity-risk-1"><span class="header-section-number">10.4.2</span> Liquidity Risk</h3>
+<ol type="1">
+<li>An asset is quoted bid 50, offer 55. What does this mean? What is the proportional bid–offer spread?</li>
+<li>Suppose that an investor has shorted shares worth $5,000 of Company A and bought shares worth $3,000 of Company B. The proportional bid–offer spread for Company A is 0.01 and the proportional bid–offer spread for Company B is 0.02. What does it cost the investor to unwind the portfolio?</li>
+<li>Suppose that in Problem 2. the bid–offer spreads for the two companies are normally distributed. For Company A the bid–offer spread has a mean of 0.01 and a standard deviation of 0.01. For Company B the bid–offer spread has a mean of 0.02 and a standard deviation of 0.03. What is the cost of unwinding that the investor is 95% confident will not be exceeded?</li>
+<li>Explain the difference between the liquidity coverage ratio (LCR) and the net stable funding ratio (NSFR).</li>
+<li>Why is it risky to rely on wholesale deposits for funding?</li>
+<li>What is meant by (a) positive feedback trading and (b) negative feedback trading? Which is liable to lead to liquidity problems?</li>
+<li>What is meant by liquidity-adjusted VaR?</li>
+<li>Explain how liquidity black holes occur. How can regulation lead to liquidity black holes?</li>
+<li>Why is it beneficial to the liquidity of markets for traders to follow diverse trading strategies?</li>
+</ol>
+</section>
+<section id="model-risk-management-1" class="level3" data-number="10.4.3">
+<h3 data-number="10.4.3" class="anchored" data-anchor-id="model-risk-management-1"><span class="header-section-number">10.4.3</span> Model Risk Management</h3>
+<ol type="1">
+<li>How is a financial institution likely to find that it is using a model different from its competitors for valuing a particular type of derivatives product?</li>
+<li>Distinguish between within-model and outside-model hedging.</li>
+<li>What is meant by P&amp;L decomposition?</li>
+<li>What is meant by over-fitting and over-parameterization in model building?</li>
+<li>“For structured products, traders mark to model. They do not mark to market.” Explain this remark.</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./week_09.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Credit Risk</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./week_11.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

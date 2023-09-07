@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Risk Management and Financial Institutions - 3&nbsp; Forward and Futures Strategies</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./week_04.html" rel="next">
+<link href="./week_02.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_03.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward and Futures Strategies</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Risk Management and Financial Institutions</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Risk-Management-and-Financial-Institutions.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Risk-Management-and-Financial-Institutions.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Risk Management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Revision of the Basic Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_03.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward and Futures Strategies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Option Strategies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Volatility, Correlations, and Copulas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Market Risk I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reading Week</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Market Risk II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Credit Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Regulation, Economic Capital, and RAROC</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Financial Innovation and Risk Management Mistakes</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
+  <li><a href="#managing-interest-rate-risk" id="toc-managing-interest-rate-risk" class="nav-link" data-scroll-target="#managing-interest-rate-risk"><span class="header-section-number">3.2</span> Managing Interest Rate Risk</a>
+  <ul class="collapse">
+  <li><a href="#managing-the-interest-rate-risk-of-a-loan-using-a-fra" id="toc-managing-the-interest-rate-risk-of-a-loan-using-a-fra" class="nav-link" data-scroll-target="#managing-the-interest-rate-risk-of-a-loan-using-a-fra"><span class="header-section-number">3.2.1</span> Managing the Interest Rate Risk of a Loan Using a FRA</a></li>
+  <li><a href="#strategies-and-applications-for-managing-bond-portfolio-risk" id="toc-strategies-and-applications-for-managing-bond-portfolio-risk" class="nav-link" data-scroll-target="#strategies-and-applications-for-managing-bond-portfolio-risk"><span class="header-section-number">3.2.2</span> Strategies and Applications for Managing Bond Portfolio Risk</a></li>
+  </ul></li>
+  <li><a href="#managing-equity-market-risk" id="toc-managing-equity-market-risk" class="nav-link" data-scroll-target="#managing-equity-market-risk"><span class="header-section-number">3.3</span> Managing Equity Market Risk</a>
+  <ul class="collapse">
+  <li><a href="#measuring-and-managing-the-risk-of-equities" id="toc-measuring-and-managing-the-risk-of-equities" class="nav-link" data-scroll-target="#measuring-and-managing-the-risk-of-equities"><span class="header-section-number">3.3.1</span> Measuring and Managing the Risk of Equities</a></li>
+  <li><a href="#numerical-example-of-managing-beta" id="toc-numerical-example-of-managing-beta" class="nav-link" data-scroll-target="#numerical-example-of-managing-beta"><span class="header-section-number">3.3.2</span> Numerical Example of Managing <span class="math inline">\(\beta\)</span></a></li>
+  <li><a href="#creating-equity-out-of-cash" id="toc-creating-equity-out-of-cash" class="nav-link" data-scroll-target="#creating-equity-out-of-cash"><span class="header-section-number">3.3.3</span> Creating Equity out of Cash</a></li>
+  <li><a href="#creating-cash-out-of-equity" id="toc-creating-cash-out-of-equity" class="nav-link" data-scroll-target="#creating-cash-out-of-equity"><span class="header-section-number">3.3.4</span> Creating Cash out of Equity</a></li>
+  </ul></li>
+  <li><a href="#asset-allocation-with-futures" id="toc-asset-allocation-with-futures" class="nav-link" data-scroll-target="#asset-allocation-with-futures"><span class="header-section-number">3.4</span> Asset Allocation with Futures</a>
+  <ul class="collapse">
+  <li><a href="#adjusting-the-allocation-among-asset-classes" id="toc-adjusting-the-allocation-among-asset-classes" class="nav-link" data-scroll-target="#adjusting-the-allocation-among-asset-classes"><span class="header-section-number">3.4.1</span> Adjusting the Allocation among Asset Classes</a></li>
+  <li><a href="#pre-investing-in-an-asset-class" id="toc-pre-investing-in-an-asset-class" class="nav-link" data-scroll-target="#pre-investing-in-an-asset-class"><span class="header-section-number">3.4.2</span> Pre-Investing in an Asset Class</a></li>
+  </ul></li>
+  <li><a href="#managing-foreign-currency-risk" id="toc-managing-foreign-currency-risk" class="nav-link" data-scroll-target="#managing-foreign-currency-risk"><span class="header-section-number">3.5</span> Managing Foreign Currency Risk</a>
+  <ul class="collapse">
+  <li><a href="#managing-the-risk-of-a-foreign-currency-receiptpayment" id="toc-managing-the-risk-of-a-foreign-currency-receiptpayment" class="nav-link" data-scroll-target="#managing-the-risk-of-a-foreign-currency-receiptpayment"><span class="header-section-number">3.5.1</span> Managing the Risk of a Foreign Currency Receipt/Payment</a></li>
+  <li><a href="#managing-the-risk-of-a-foreign-market-asset-portfolio" id="toc-managing-the-risk-of-a-foreign-market-asset-portfolio" class="nav-link" data-scroll-target="#managing-the-risk-of-a-foreign-market-asset-portfolio"><span class="header-section-number">3.5.2</span> Managing the Risk of a Foreign-Market Asset Portfolio</a></li>
+  </ul></li>
+  <li><a href="#final-comments" id="toc-final-comments" class="nav-link" data-scroll-target="#final-comments"><span class="header-section-number">3.6</span> Final Comments</a></li>
+  <li><a href="#practice-questions-and-problems" id="toc-practice-questions-and-problems" class="nav-link" data-scroll-target="#practice-questions-and-problems"><span class="header-section-number">3.7</span> Practice Questions and Problems</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward and Futures Strategies</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><strong>References:</strong></p>
+<ul>
+<li>Pirie, W. L., and M. P. Kritzman. 2017. Derivatives. CFA Institute Investment Series.
+<ul>
+<li>Chapter 7 - Risk Management Applications of Forward and Futures Strategies</li>
+</ul></li>
+</ul>
+<p><strong>Learning outcomes:</strong></p>
+<ul>
+<li>Show how to use equity futures contracts for achieving a desired portfolio beta and calculate the necessary number of futures contracts.</li>
+<li>Create a synthetic stock index fund using cash and stock index futures.</li>
+<li>Describe the conversion of a long stock position into synthetic cash using stock index futures.</li>
+<li>Use equity and bond futures to rebalance a portfolio between equity and debt.</li>
+<li>Use futures to reallocate a portfolio across equity sectors.</li>
+<li>Define exchange rate risk and demonstrate the use of forward contracts to mitigate risk associated with future foreign currency transactions.</li>
+<li>Discuss the challenges and possible strategies for hedging the exchange rate risk of a foreign market portfolio.</li>
+</ul>
+<section id="introduction" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.1</span> Introduction</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition of forward an futures
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Forward and futures contracts are commitments for one party to buy and the other to sell an underlying instrument at a future date at a pre-agreed price.</li>
+<li>Forward contracts are customized agreements, while futures contracts are standardized, created on a futures exchange, and subject to federal regulation.</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>The material provides scenarios where these contracts are used for risk management.</li>
+<li>Businesses manage a variety of risks, often through hedging, which involves taking a market position to protect against unfavorable outcomes.</li>
+<li>Instead of just hedging, the broader concept of “risk management” will be emphasized.</li>
+</ul>
+</section>
+<section id="managing-interest-rate-risk" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="managing-interest-rate-risk"><span class="header-section-number">3.2</span> Managing Interest Rate Risk</h2>
+<ul>
+<li>Financial institutions face interest rate risk, affecting profitability and stability due to lending and borrowing activities.</li>
+<li>Interest rate risk impacts net income, asset values, and balance sheets, requiring effective risk management.</li>
+<li>Other companies also face interest rate risk in planning borrowing, including with fixed-rate loans, necessitating careful management to avoid unexpected cash demands.</li>
+</ul>
+<section id="managing-the-interest-rate-risk-of-a-loan-using-a-fra" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="managing-the-interest-rate-risk-of-a-loan-using-a-fra"><span class="header-section-number">3.2.1</span> Managing the Interest Rate Risk of a Loan Using a FRA</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition of FRA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>A FRA or Forward Rate Agreement is a financial contract between two parties to exchange interest payments for a notional principal amount on a future, pre-agreed date.</li>
+<li>In a “6x18” FRA, “6” denotes the time (in months) until the loan’s start, and “18” denotes the time until its end.</li>
+<li>So a “6x18” FRA means a one-year loan starting in six months.</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>Lenders can lock in future loan rates by shorting a FRA, but this is risky due to borrowers’ unpredictable needs and the possibility of losses if they decide not to take the loan.</li>
+<li>Banks offering floating-rate credit lines may use FRAs, but to mitigate risks, some choose options where the worst-case scenario is losing the option premium.</li>
+</ul>
+<section id="single-payment-loan" class="level4" data-number="3.2.1.1">
+<h4 data-number="3.2.1.1" class="anchored" data-anchor-id="single-payment-loan"><span class="header-section-number">3.2.1.1</span> Single-Payment Loan</h4>
+<ul>
+<li><p>XYZ Corporation, planning to borrow $10 million in six months for a year to finance business expansion, is concerned about potential rising interest rates.</p></li>
+<li><p>They enter into a 6x18 FRA with a bank at a rate of 5.5% to hedge the risk.</p></li>
+<li><p>Outcome scenarios:</p>
+<ol type="1">
+<li>If rates rise to 7%, the corporation borrows at 7% but the bank pays the difference, offsetting the increased cost (hedge was beneficial).</li>
+<li>If rates fall to 4%, the corporation pays the bank the difference, resulting in a cost (hedge wasn’t beneficial).</li>
+</ol></li>
+<li><p>A FRA allows XYZ Corporation to lock in a maximum interest rate, hedging against rising interest rates.</p></li>
+<li><p>It provides certainty but can result in missed opportunities if rates fall.</p></li>
+<li><p>The payoff of a FRA at maturity can be calculated as follows:</p></li>
+</ul>
+<p><span class="math display">\[
+\text{FRA Payoff} = \text{Notional Principal} \times \frac{ (\text{Rate at Maturity} -
+\text{FRA Rate}) \times \frac{\text{Days}}{360}}{1 + \text{Rate at Maturity} \times
+\frac{\text{Days}}{360}}
+\]</span></p>
+<ul>
+<li>Where:
+<ul>
+<li><strong>Notional Principal</strong> is the hypothetical amount of money that the FRA is based on.</li>
+<li><strong>Rate at Maturity</strong> is the actual market interest rate when the FRA matures.</li>
+<li><strong>FRA Rate</strong> is the interest rate agreed upon in the FRA contract.</li>
+<li><strong>Days</strong> is the number of days for which the contract is in effect.</li>
+</ul></li>
+<li>Note that this payoff is calculated assuming a 360-day year, which is a common convention for FRAs.</li>
+<li>The formula is based on the difference between the <strong>FRA Rate</strong> and the <strong>Rate at Maturity</strong>.</li>
+<li>Plugging these numbers into the FRA payoff formula, we get:</li>
+</ul>
+<p><span class="math display">\[
+\text{FRA Payoff} = \$10,000,000 \times \frac{(0.07 - 0.055) \times \frac{360}{360}}{1 +
+0.07 \times \frac{360}{360}} = \$140,187
+\]</span></p>
+<p><span class="math display">\[
+\text{Pay back} = (\$10,000,000 - \$140,187) \times (1 + 0.07 \times \frac{360}{360}) =
+\$10,550,000
+\]</span></p>
+<p><span class="math display">\[
+\text{Effective rate} = \left(\frac{\$10,550,000}{\$10,000,000} - 1 \right) \times
+\frac{360}{360} \approx 5.5\%
+\]</span></p>
+</section>
+<section id="floating-rate-loan" class="level4" data-number="3.2.1.2">
+<h4 data-number="3.2.1.2" class="anchored" data-anchor-id="floating-rate-loan"><span class="header-section-number">3.2.1.2</span> Floating-Rate Loan</h4>
+<ul>
+<li>Floating-rate loans, with fluctuating interest rates, pose risk for borrowers.</li>
+<li>Borrowers can manage this through a series of FRAs aligned with the loan’s rate reset dates, or futures contracts, though the latter may not match the reset periods.</li>
+<li>Financial institutions may use sophisticated methods to manage futures volatility, but these might not suit regular borrowers.</li>
+<li>Swaps could be a more accessible solution, and understanding FRAs helps in applying swaps for interest rate risk management.</li>
+</ul>
+</section>
+</section>
+<section id="strategies-and-applications-for-managing-bond-portfolio-risk" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="strategies-and-applications-for-managing-bond-portfolio-risk"><span class="header-section-number">3.2.2</span> Strategies and Applications for Managing Bond Portfolio Risk</h3>
+<ul>
+<li>Longer-term loans pose bond market risk for borrowers and lenders.</li>
+<li>Managing government bond portfolios helps firms mitigate interest rate risk.</li>
+<li>Using futures on government bonds is a strategy for managing interest rate risk.</li>
+<li>The approach is similar to managing <span class="math inline">\(\beta\)</span> in the equity portfolio, only the bond duration is used instead of <span class="math inline">\(\beta\)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="managing-equity-market-risk" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="managing-equity-market-risk"><span class="header-section-number">3.3</span> Managing Equity Market Risk</h2>
+<ul>
+<li>Stock market volatility poses greater risk compared to bond market volatility.</li>
+<li>The stock market is generally more liquid than the bond market.</li>
+<li>Futures contracts can help manage the risk associated with stock market volatility.</li>
+<li>Futures contracts are typically based on stock market indices, rather than individual stocks.</li>
+<li>Diversified investors manage risk at the portfolio level and prefer futures on broad-based indices.</li>
+</ul>
+<section id="measuring-and-managing-the-risk-of-equities" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="measuring-and-managing-the-risk-of-equities"><span class="header-section-number">3.3.1</span> Measuring and Managing the Risk of Equities</h3>
+<ul>
+<li>Beta (<span class="math inline">\(\beta\)</span>) is a measure of a stock’s or a portfolio’s volatility in relation to the market.</li>
+<li>It represents the tendency of a security’s returns to respond to swings in the market.</li>
+<li><span class="math inline">\(\beta\)</span> is used in the capital asset pricing model (CAPM), which calculates the expected return of an asset based on its beta and expected market returns.</li>
+<li>The formula for <span class="math inline">\(\beta\)</span> is:</li>
+</ul>
+<p><span class="math display">\[
+\beta_{i} = \frac {Cov(R_{i}, R_{m})} {Var(R_{m})}
+\]</span></p>
+<ul>
+<li>Where:
+<ul>
+<li><span class="math inline">\(\beta_{i}\)</span> is the beta of the stock or portfolio (<span class="math inline">\(i\)</span>).</li>
+<li><span class="math inline">\(Cov(R_{i}, R_{m})\)</span> is the covariance between the return of the stock/portfolio (<span class="math inline">\(R_{i}\)</span>) and the return of the market (<span class="math inline">\(R_{m}\)</span>).</li>
+<li><span class="math inline">\(Var(R_{m})\)</span> is the variance of the return of the market.</li>
+</ul></li>
+<li>If <span class="math inline">\(\beta\)</span> is:
+<ul>
+<li>1, the security’s price will move with the market</li>
+<li>less than 1, the security will be less volatile than the market</li>
+<li>greater than 1, the security’s price will be more volatile than the market.</li>
+</ul></li>
+<li>The number of futures contracts (<span class="math inline">\(N\)</span>) needed to adjust <span class="math inline">\(\beta\)</span> is:</li>
+</ul>
+<p><span class="math display">\[
+N = \frac{(\text{Target Beta} - \text{Current Beta}) \times \text{Portfolio
+Value}}{\text{Futures Price} \times \text{Futures Beta}}
+\]</span></p>
+<ul>
+<li>Let’s break down the elements of this formula:
+<ul>
+<li><strong>Target Beta</strong>: The desired beta of the portfolio after hedging.</li>
+<li><strong>Current Beta</strong>: The beta of the portfolio before the adjustment.</li>
+<li><strong>Portfolio Value</strong>: The total value of the portfolio that you want to hedge.</li>
+<li><strong>Futures Price</strong>: The price of one futures contract.</li>
+<li><strong>Futures Beta</strong>: The beta of the futures contract relative to the market.</li>
+</ul></li>
+<li>If the result of this formula is positive, it means you should buy futures contracts.</li>
+<li>Conversely, if the result is negative, it means you should sell futures contracts.</li>
+<li>The calculation assumes that the futures contract and the portfolio are based on closely correlated assets.</li>
+</ul>
+</section>
+<section id="numerical-example-of-managing-beta" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="numerical-example-of-managing-beta"><span class="header-section-number">3.3.2</span> Numerical Example of Managing <span class="math inline">\(\beta\)</span></h3>
+<ul>
+<li>Current Portfolio Beta: <span class="math inline">\(1.2\)</span></li>
+<li>Target Beta: <span class="math inline">\(0.8\)</span></li>
+<li>Portfolio Value: <span class="math inline">\(\$1,000,000\)</span></li>
+<li>Futures Price: <span class="math inline">\(\$50,000\)</span></li>
+<li>Futures Beta: <span class="math inline">\(0.95\)</span></li>
+</ul>
+<p><span class="math display">\[
+N = \frac{(0.8 - 1.2) \times \$1,000,000}{\$50,000 \times 0.95} \approx -8
+\]</span></p>
+<ul>
+<li><p>We need to short 8 futures contracts in order to adjust the portfolio beta to the target of 0.8.</p></li>
+<li><p>A negative value indicates shorting futures contracts because we want to decrease the portfolio’s market risk.</p></li>
+<li><p>Later, the market increases by 3.7% and the portfolio increases by 3.45%.</p></li>
+<li><p>Determine the overall value of the position and the effective <span class="math inline">\(\beta\)</span>. <span class="math display">\[
+\text{Portfolio value} = \$1,000,000 \times 1.037 = \$1,037,000
+\]</span></p></li>
+</ul>
+<p><span class="math display">\[
+\text{Futures value} = -8 \times (\$50,000 \times 1.0345 - \$50,000) = -\$13,800
+\]</span></p>
+<p><span class="math display">\[
+\text{Total return} = \frac{\$1,037,000 + (-\$13,800)}{\$1,000,000} - 1 = 0.0232  
+\]</span></p>
+<p><span class="math display">\[
+\text{Effective beta} = \frac{0.0232}{0.037} = 0.627
+\]</span></p>
+<ul>
+<li>The effective <span class="math inline">\(\beta = 0.627\)</span> is pretty far from the target <span class="math inline">\(0.8\)</span>, because optimal number of contracts was <span class="math inline">\(-8.421\)</span>.</li>
+</ul>
+</section>
+<section id="creating-equity-out-of-cash" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="creating-equity-out-of-cash"><span class="header-section-number">3.3.3</span> Creating Equity out of Cash</h3>
+<ul>
+<li>Stock index futures help create synthetic equity positions, reducing transaction costs and conserving liquidity.</li>
+<li>A relationship between futures/forwards and the asset is established using a formula connecting the risk-free interest rate and dividends.</li>
+<li>Synthetic replication of the asset is beneficial in creating a synthetic stock index fund or converting cash into equity while retaining liquidity.</li>
+</ul>
+<p><span class="math display">\[
+\text{Long Stock} + \text{Short Futures} = \text{Long Risk-Free Bond}
+\]</span></p>
+<ul>
+<li>Risk-free bonds and futures can be combined to “equitize” cash, converting it into an equity position while retaining liquidity.</li>
+<li>This strategy may be used by funds that wish to invest in equities but are constrained by the need for quick liquidation or regulatory restrictions.</li>
+<li>Despite these limitations, the fund can still gain equity exposure without significant risk of loss or difficulty in liquidation.</li>
+</ul>
+<section id="synthetic-index-fund" class="level4" data-number="3.3.3.1">
+<h4 data-number="3.3.3.1" class="anchored" data-anchor-id="synthetic-index-fund"><span class="header-section-number">3.3.3.1</span> Synthetic Index Fund</h4>
+<p><span class="math display">\[
+\text{Long Stock} = \text{Long Risk-Free Bond} + \text{Long Futures}
+\]</span> - It is created by combining risk-free bonds and futures on the desired index. - To calculate the number of futures contracts, we use: <span class="math display">\[
+N = \frac{V(1 + r)^t}{qf}
+\]</span></p>
+<ul>
+<li>Where:
+<ul>
+<li><span class="math inline">\(V\)</span> = amount of money to be invested.</li>
+<li><span class="math inline">\(f\)</span> = futures price.</li>
+<li><span class="math inline">\(t\)</span> = time to expiration of futures.</li>
+<li><span class="math inline">\(r\)</span> = risk-free rate.</li>
+<li><span class="math inline">\(q\)</span> = multiplier.</li>
+<li><span class="math inline">\(\delta\)</span> = dividend yield on the index.</li>
+</ul></li>
+<li>On 1st January, an investment firm wants to construct a synthetic index fund of $200 million invested in US stock.</li>
+<li>The index is the S&amp;P 500, with a dividend yield of 1.5%.</li>
+<li>A futures contract on the S&amp;P 500 is priced at $3,000 with a multiplier of $50.</li>
+<li>The position will be held for three months, after which it will be renewed.</li>
+<li>The US risk-free rate is 2%, and both the risk-free rate and dividend yield are compounded annually.</li>
+</ul>
+<p><span class="math display">\[
+N = \frac{V(1 + r)^t}{qf} = \frac{\$200,000,000(1.02)^{0.25}}{\$50 \times \$3,000} =
+1,339.95
+\]</span></p>
+<ul>
+<li>We can only buy whole futures contracts, so we round up to <span class="math inline">\(1,340\)</span> contracts.</li>
+</ul>
+<p><span class="math display">\[
+\frac{1,340 \times \$50 \times \$3,000}{1.02^{0.25}} = \$200,007,377
+\]</span></p>
+<ul>
+<li>We’re effectively investing $200,007,377 in the stock, and we put this much money into risk-free bonds.</li>
+<li>After three months the amount grows to <span class="math inline">\(\$200,007,377 \times 0.02^{0.25} = \$201,000,000\)</span>.</li>
+<li>The number of units of stock that we have effectively purchased at the start is:</li>
+</ul>
+<p><span class="math display">\[
+\frac{N \times q}{(1 + \delta)^t} = \frac{1,340 \times \$50}{1.015^{0.25}} = 66,751.08
+\]</span></p>
+<ul>
+<li>If the stock were actually purchased, dividends would be reinvested into additional shares, so the number of shares would grow to <span class="math inline">\(66,751,08 \times 1.015^{0.25} = 69,574.35\)</span>.</li>
+<li>When the futures contract expires at price <span class="math inline">\(S_T\)</span>, the futures contracts will have a payoff:</li>
+</ul>
+<p><span class="math display">\[
+\text{Futures payoff} = 1,340 \times \$50 \times (S_T - \$3,000) = 69,574.35 \times S_T
+- \$201,000,000
+\]</span></p>
+</section>
+</section>
+<section id="creating-cash-out-of-equity" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="creating-cash-out-of-equity"><span class="header-section-number">3.3.4</span> Creating Cash out of Equity</h3>
+<ul>
+<li>Converting a long stock position into synthetic cash involves selling futures.</li>
+<li>This can minimize transaction costs and help avoid the sale of a large volume of stocks at once.</li>
+</ul>
+<p><span class="math display">\[
+\text{Long Risk-Free Bond} = \text{Long Stock} + \text{Short Futures}
+\]</span></p>
+<ul>
+<li>The approach is simillar to the creation of synthetic index fund from the previous example.</li>
+<li>There are only two modifications in the equation:
+<ol type="1">
+<li>Minus at the beginning becasue we are selling futures.</li>
+<li><span class="math inline">\(V\)</span> is the market value of our stock investment.</li>
+</ol></li>
+</ul>
+<p><span class="math display">\[
+N = - \frac{V(1 + r)^t}{qf}
+\]</span></p>
+<ul>
+<li>This approach is comparable to changing <span class="math inline">\(\beta\)</span> to zero.</li>
+<li>In this example the stock portfolio has to be indentical to the index (the same <span class="math inline">\(\beta\)</span>) and it is a full hedge.</li>
+<li>The formula for managing <span class="math inline">\(\beta\)</span> is more general approach to eliminate the systematic risk on any portfolio.</li>
+<li>The number of futures contracts needed for transforming stocks into a risk-free asset might not match those required to nullify portfolio <span class="math inline">\(\beta\)</span>.</li>
+<li>Eliminating systematic risk doesn’t imply a complete absence of risk in the portfolio; diversifiable risk may persist.</li>
+<li>Both <span class="math inline">\(\beta\)</span> reduction and full hedging formulas align when applied to a portfolio identical to the index on which the futures are based.</li>
+<li>Derivatives provide a cost-effective and flexible solution for <span class="math inline">\(\beta\)</span> adjustments, especially for temporary adjustments.</li>
+</ul>
+</section>
+</section>
+<section id="asset-allocation-with-futures" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="asset-allocation-with-futures"><span class="header-section-number">3.4</span> Asset Allocation with Futures</h2>
+<section id="adjusting-the-allocation-among-asset-classes" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="adjusting-the-allocation-among-asset-classes"><span class="header-section-number">3.4.1</span> Adjusting the Allocation among Asset Classes</h3>
+<ul>
+<li>Suppose that our current portfolio is worth $300 million allocated to 80% stock ($240 million) and 20% bonds ($60 million).</li>
+<li>Our goal is to change allocation to 50% stock ($150 million) and 50% bonds ($150 million).</li>
+<li>We need to reduce stock allocation by $90 million and increase bond allocation by $90 million.</li>
+<li>Solution:
+<ul>
+<li>Sell stock index futures contracts to eliminate beta on $90 million of stock, effectively converting it to cash.</li>
+<li>Purchase bond futures contracts to increase the duration on the cash to desired level.</li>
+</ul></li>
+</ul>
+</section>
+<section id="pre-investing-in-an-asset-class" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="pre-investing-in-an-asset-class"><span class="header-section-number">3.4.2</span> Pre-Investing in an Asset Class</h3>
+<ul>
+<li>Pre-investing via futures contracts allows investors to enter the market without immediate cash.</li>
+<li>It is effectively borrowing against the cash that will be received in the future and investing in the underlying. invested in the underlying</li>
+<li>The strategy involves taking long positions in futures with correct beta and duration, aligning the results closely with direct investment.</li>
+</ul>
+<p><span class="math display">\[
+\text{Long Stock} = \text{Long Futures} + \text{Long Risk-Free Bond}
+\]</span></p>
+<p><span class="math display">\[
+\text{Long Stock} + \text{Short Risk-Free Bond }= \text{Long Futures}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\text{Short Risk-Free Bond}\)</span> is equivalent to a loan.</li>
+<li>Upon receipt of the anticipated cash, the futures are closed, and cash is invested, equating to paying off the implicit loan.</li>
+<li>This speculative strategy involves potential risks if the market doesn’t perform adequately to cover borrowing costs.</li>
+</ul>
+</section>
+</section>
+<section id="managing-foreign-currency-risk" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="managing-foreign-currency-risk"><span class="header-section-number">3.5</span> Managing Foreign Currency Risk</h2>
+<ul>
+<li>Companies engaging in international business face exchange rate risks that impact planning, income targets, and balance sheets.</li>
+<li><strong>Transaction exposure</strong> arises when future cash flows require conversion from foreign to domestic currency.</li>
+<li><strong>Translation exposure</strong> occurs when foreign subsidiary balance sheets are consolidated into the company’s domestic currency balance sheet.</li>
+<li><strong>Economic exposure</strong> refers to the impact of exchange rate changes on a company’s competitiveness. Even companies not dealing in foreign markets may be affected, for instance, if a strong domestic currency lowers inbound tourism.</li>
+<li>The management of these risks requires different approaches: forward contracts for transaction exposure, accounting knowledge for translation exposure, and demand forecasting for economic exposure.</li>
+<li>Companies often use forward contracts to manage single cash flow conversions from one currency to another as futures contracts may be too standardized for their needs.</li>
+</ul>
+<section id="managing-the-risk-of-a-foreign-currency-receiptpayment" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="managing-the-risk-of-a-foreign-currency-receiptpayment"><span class="header-section-number">3.5.1</span> Managing the Risk of a Foreign Currency Receipt/Payment</h3>
+<ul>
+<li>When a company expects to receive cash flows in a foreign currency, it is considered “long” on that currency.</li>
+<li>If the domestic currency increases in value while waiting for the cash flow, the company will receive fewer units of the domestic currency for the given amount of foreign currency.</li>
+<li>To manage this risk, the company should consider selling the foreign currency in the forward market by going “short” on a currency forward contract.</li>
+<li>The process for hedging a foreign currency cash outflow using a forward contract is similar to hedging a cash inflow but in reverse.</li>
+</ul>
+</section>
+<section id="managing-the-risk-of-a-foreign-market-asset-portfolio" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="managing-the-risk-of-a-foreign-market-asset-portfolio"><span class="header-section-number">3.5.2</span> Managing the Risk of a Foreign-Market Asset Portfolio</h3>
+<ul>
+<li>Foreign currency risk is a crucial consideration when investing abroad.</li>
+<li>It is challenging to hedge both the foreign market risk and the foreign currency risk simultaneously.</li>
+<li>Estimating the future portfolio value helps in determining hedging strategies.</li>
+<li>It is generally not possible to hedge the currency risk while leaving the local equity market exposed.</li>
+<li>Companies can choose to hedge the local market return or leave both the local market and currency risks unhedged.</li>
+<li>If only the foreign market returns is hedged, the gain is equal to foreign risk-free rate.</li>
+<li>If foreign market returns and exchange rate are hedged, the gain is equal to domestic risk-free rate.</li>
+<li>Neither strategy makes much sense for the long run.</li>
+<li>In the short run, however, this strategy can be a good tactic for investors who are already in foreign markets and who wish to temporarily take a more defensive position without liquidating the portfolio and converting it to cash.</li>
+</ul>
+</section>
+</section>
+<section id="final-comments" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="final-comments"><span class="header-section-number">3.6</span> Final Comments</h2>
+<ul>
+<li>Betas and durations are unstable and difficult to measure, making it difficult to accurately assess risk sensitivities in stocks and bonds.</li>
+<li>Derivatives shouldn’t be blamed if they don’t yield the exact hedging results expected, and they should not be maligned for their speculative use due to their valuable hedging uses.</li>
+<li>Futures and forwards typically offer much lower transaction costs compared to stock indices, a major reason for their existence and survival as risk management products.</li>
+<li>Futures and forwards are less disruptive to portfolio managers and can be used to effectively change the risk profile or asset allocation of a portfolio.</li>
+<li>Despite requiring less capital to trade, futures and forwards are not immune to liquidity issues, particularly for contracts with long-term expirations.</li>
+<li>Organizations may have varying policies regarding the use of futures, forwards, and options, often based on leverage and credit-risk considerations.</li>
+<li>Futures and forward contracts have zero value at the start and offer linear payoffs, unlike options which require a cash investment at the start and offer non-linear payoffs.</li>
+</ul>
+</section>
+<section id="practice-questions-and-problems" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="practice-questions-and-problems"><span class="header-section-number">3.7</span> Practice Questions and Problems</h2>
+<ol type="1">
+<li>An investment management firm wishes to increase the beta for one of its portfolios under management from 0.90 to 1.15 for a four-month period. The portfolio has a market value of $250,000,000. The investment firm plans to use a futures contract priced at $120,000 in order to adjust the portfolio beta. The futures contract has a beta of 1.02.
+<ul>
+<li>A. Calculate the number of futures contracts that should be bought or sold to achieve an increase in the portfolio beta.</li>
+<li>B. At the end of four months, the overall equity market is up 6.2%. The stock portfolio under management is up 5.8%. The futures contract is priced at $127,000. Calculate the value of the overall position and the effective beta of the portfolio.</li>
+</ul></li>
+<li>Consider an asset manager who wishes to create a fund with exposure to the S&amp;P 500 stock index. The initial amount to be invested is $400,000,000. The fund will be constructed using the S&amp;P 500 index futures contract, priced at 2705.25 with a $250 multiplier. The contract expires in six months. The underlying index has a dividend yield of 1.25%, and the risk-free rate is 1.95% per year.
+<ul>
+<li>A. Indicate how the money manager would go about constructing this synthetic index using futures.</li>
+<li>B. Assume that at expiration, the S&amp;P 500 is at 2812.40. Show how the synthetic position produces the same result as investment in the actual stock index.</li>
+</ul></li>
+<li>An investment management firm has a client who would like to temporarily reduce her exposure to equities by converting a $30 million equity position to cash for a period of five months. The client would like this reduction to take place without liquidating her equity position. The investment management firm plans to create a synthetic cash position using an equity futures contract. This futures contract is priced at 1265.80, has a multiplier of $200, and expires in five months. The dividend yield on the underlying index is 1.50%, and the risk-free rate is 2.25%.
+<ul>
+<li>A. Calculate the number of futures contracts required to create synthetic cash.</li>
+<li>B. Determine the effective amount of money committed to this risk-free transaction and the effective number of units of the stock index that are converted to cash.</li>
+<li>C. Assume that the stock index is at 1190 when the futures contract expires. Show how this strategy is equivalent to investing in the risk-free asset, cash.</li>
+</ul></li>
+<li>Consider a portfolio with a 60% allocation to stocks and 40% to bonds. The portfolio has a market value of $150 million. The beta of the stock position is 1.10, and the modified duration of the bond position is 5.50. The portfolio manager wishes to increase the stock allocation to 80% and reduce the bond allocation to 20% for a period of four months. In addition to altering asset allocations, the manager would also like to increase the beta on the stock position to 1.25 and increase the modified duration of the bonds to 7.50. A stock index futures contract that expires in four months is priced at $145,000 and has a beta of 0.90. A bond futures contract that expires in four months is priced at $104,000 and has an implied modified duration of 4.75. The stock futures contract has a multiplier of one.
+<ul>
+<li>A. Show how the portfolio manager can achieve her goals by using stock index and bond futures. Indicate the number of contracts and whether the manager should go long or short.</li>
+<li>B. After four months, the stock portfolio is up 4% and bonds are up 1.10%. The stock futures price is $150,800 and the bond futures price is $105,040. Compare the market value of the portfolio in which the allocation is adjusted using futures to the market value of the portfolio in which the allocation is adjusted by directly trading stocks and bonds.</li>
+</ul></li>
+<li>A hedge fund manager expects to receive a cash inflow of $60,000,000 in four months and wants to use futures contracts to take a $20,000,000 synthetic position in stocks and $40,000,000 in bonds today. The stock would have a beta of 1.20 and the bonds a modified duration of 6.50. A stock index futures contract with a beta of 0.88 is priced at $192,500. A bond futures contract with a modified duration of 4.75 is priced at $110,000.
+<ul>
+<li>A. Calculate the number of stock and bond futures contracts the fund manager would have to trade in order to synthetically take the desired position in stocks and bonds today. Indicate whether the futures positions are long or short.</li>
+<li>B. When the futures contracts expire in four months, stocks have declined by 4.3% and bonds have declined by 2.85%. Stock index futures are priced at $184,372, and bond futures are priced at $107,115. Show that profits on the futures positions are essentially the same as the change in the value of stocks and bonds during the four-month period.</li>
+</ul></li>
+<li>Consider a US company, StreamTech, that exports technology to the European Union. StreamTech has just closed a sale worth €250,000,000. The amount will be received in three months. Because it will be paid in euros, the US company bears the exchange risk. In order to hedge this risk, StreamTech intends to use a forward contract that is priced at $1.1725 per euro. Indicate how the company would go about constructing the hedge. Explain what happens when the forward contract expires in three months.</li>
+<li>MegaCorp is a US-based company that frequently imports electronics components from Japan. It has just entered into a contract to purchase ¥3,000,000,000 worth of semiconductor chips, to be paid in two months. MegaCorp fears that the Japanese yen will strengthen, thereby raising the US dollar cost. A forward contract is available and is priced at $0.0091 per Japanese yen. Indicate how MegaCorp would go about constructing a hedge. Explain what happens when the forward contract expires in two months.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./week_02.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Revision of the Basic Concepts</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./week_04.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Option Strategies</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

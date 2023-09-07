@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Risk Management and Financial Institutions - 5&nbsp; Volatility, Correlations, and Copulas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./week_06.html" rel="next">
+<link href="./week_04.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_05.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Volatility, Correlations, and Copulas</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Risk Management and Financial Institutions</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Risk-Management-and-Financial-Institutions.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Risk-Management-and-Financial-Institutions.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Risk Management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Revision of the Basic Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward and Futures Strategies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Option Strategies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_05.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Volatility, Correlations, and Copulas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Market Risk I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reading Week</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Market Risk II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Credit Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Regulation, Economic Capital, and RAROC</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Financial Innovation and Risk Management Mistakes</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#volatility" id="toc-volatility" class="nav-link active" data-scroll-target="#volatility"><span class="header-section-number">5.1</span> Volatility</a>
+  <ul class="collapse">
+  <li><a href="#definition-of-volatility" id="toc-definition-of-volatility" class="nav-link" data-scroll-target="#definition-of-volatility"><span class="header-section-number">5.1.1</span> Definition of Volatility</a></li>
+  <li><a href="#implied-volatility" id="toc-implied-volatility" class="nav-link" data-scroll-target="#implied-volatility"><span class="header-section-number">5.1.2</span> Implied Volatility</a></li>
+  <li><a href="#are-daily-percentage-changes-in-financial-variables-normal" id="toc-are-daily-percentage-changes-in-financial-variables-normal" class="nav-link" data-scroll-target="#are-daily-percentage-changes-in-financial-variables-normal"><span class="header-section-number">5.1.3</span> Are Daily Percentage Changes in Financial Variables Normal?</a></li>
+  <li><a href="#the-exponentially-weighted-moving-average-model" id="toc-the-exponentially-weighted-moving-average-model" class="nav-link" data-scroll-target="#the-exponentially-weighted-moving-average-model"><span class="header-section-number">5.1.4</span> The Exponentially Weighted Moving Average Model</a></li>
+  <li><a href="#the-garch11-model" id="toc-the-garch11-model" class="nav-link" data-scroll-target="#the-garch11-model"><span class="header-section-number">5.1.5</span> The GARCH(1,1) Model</a></li>
+  <li><a href="#choosing-between-the-models" id="toc-choosing-between-the-models" class="nav-link" data-scroll-target="#choosing-between-the-models"><span class="header-section-number">5.1.6</span> Choosing between the Models</a></li>
+  </ul></li>
+  <li><a href="#correlations" id="toc-correlations" class="nav-link" data-scroll-target="#correlations"><span class="header-section-number">5.2</span> Correlations</a>
+  <ul class="collapse">
+  <li><a href="#definition-of-correlation" id="toc-definition-of-correlation" class="nav-link" data-scroll-target="#definition-of-correlation"><span class="header-section-number">5.2.1</span> Definition of Correlation</a></li>
+  <li><a href="#monitoring-correlation" id="toc-monitoring-correlation" class="nav-link" data-scroll-target="#monitoring-correlation"><span class="header-section-number">5.2.2</span> Monitoring Correlation</a></li>
+  </ul></li>
+  <li><a href="#copulas" id="toc-copulas" class="nav-link" data-scroll-target="#copulas"><span class="header-section-number">5.3</span> Copulas</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-copulas" id="toc-introduction-to-copulas" class="nav-link" data-scroll-target="#introduction-to-copulas"><span class="header-section-number">5.3.1</span> Introduction to Copulas</a></li>
+  <li><a href="#gaussian-copula" id="toc-gaussian-copula" class="nav-link" data-scroll-target="#gaussian-copula"><span class="header-section-number">5.3.2</span> Gaussian Copula</a></li>
+  <li><a href="#gaussian-copula-example" id="toc-gaussian-copula-example" class="nav-link" data-scroll-target="#gaussian-copula-example"><span class="header-section-number">5.3.3</span> Gaussian Copula Example</a></li>
+  <li><a href="#clayton-copula-example" id="toc-clayton-copula-example" class="nav-link" data-scroll-target="#clayton-copula-example"><span class="header-section-number">5.3.4</span> Clayton Copula Example</a></li>
+  </ul></li>
+  <li><a href="#valuation-and-scenario-analysis" id="toc-valuation-and-scenario-analysis" class="nav-link" data-scroll-target="#valuation-and-scenario-analysis"><span class="header-section-number">5.4</span> Valuation and Scenario Analysis</a></li>
+  <li><a href="#practice-questions-and-problems" id="toc-practice-questions-and-problems" class="nav-link" data-scroll-target="#practice-questions-and-problems"><span class="header-section-number">5.5</span> Practice Questions and Problems</a>
+  <ul class="collapse">
+  <li><a href="#volatility-1" id="toc-volatility-1" class="nav-link" data-scroll-target="#volatility-1"><span class="header-section-number">5.5.1</span> Volatility</a></li>
+  <li><a href="#correlations-and-copulas" id="toc-correlations-and-copulas" class="nav-link" data-scroll-target="#correlations-and-copulas"><span class="header-section-number">5.5.2</span> Correlations and Copulas</a></li>
+  <li><a href="#valuation-and-scenario-analysis-1" id="toc-valuation-and-scenario-analysis-1" class="nav-link" data-scroll-target="#valuation-and-scenario-analysis-1"><span class="header-section-number">5.5.3</span> Valuation and Scenario Analysis</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Volatility, Correlations, and Copulas</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><strong>References:</strong></p>
+<ul>
+<li>Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+<ul>
+<li>Chapter 8 - Volatility</li>
+<li>Chapter 9 - Correlations and Copulas</li>
+<li>Chapter 10 - Valuation and Scenario Analysis</li>
+</ul></li>
+</ul>
+<p><strong>Learning outcomes:</strong></p>
+<ul>
+<li>Understand the concept of volatility and implied volatility.</li>
+<li>Become familiar with standard volatility models like EWMA and GARCH(1,1).</li>
+<li>Explore basic concept of correlation and copulas.</li>
+<li>Describe the funcioning of a simple copula.</li>
+<li>Be aware of copulas shortcomings and criticism.</li>
+<li>Describe the process of valuation and scenario analysis.</li>
+</ul>
+<section id="volatility" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="volatility"><span class="header-section-number">5.1</span> Volatility</h2>
+<ul>
+<li>Monitoring the volatilities of market variables such as exchange rates, equity prices, and commodity prices is crucial for a financial institution to manage the value of its portfolio.</li>
+<li>The popular models are Exponentially Weighted Moving Average (EWMA), Autoregressive Conditional Heteroscedasticity (ARCH), and Generalized Autoregressive Conditional Heteroscedasticity (GARCH).</li>
+<li>These models acknowledge that volatility is not constant and varies over time; it can be low during some periods and high during others.</li>
+</ul>
+<section id="definition-of-volatility" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="definition-of-volatility"><span class="header-section-number">5.1.1</span> Definition of Volatility</h3>
+<ul>
+<li>The volatility, <span class="math inline">\(\sigma\)</span>, is usually calculated as a standard deviation of daily returns.</li>
+<li>When volatility is used for option pricing, the unit of time is usually one year.</li>
+<li>When volatility is used for risk management, the unit of time is usually one day.</li>
+<li>Volatility is usually much greater when the market is open than when it is closed.</li>
+<li>For this reason time is usually measured in <strong>trading days</strong> not calendar days.</li>
+<li>It is assumed that there are <strong>252 trading days</strong> in one year for most assets.</li>
+</ul>
+<p><span class="math display">\[ \sigma_{year} = \sigma_{day} \times \sqrt{252} \]</span></p>
+<p><span class="math display">\[ \sigma_{day} = \sigma_{year} \times \frac{1}{\sqrt{252}} \]</span></p>
+</section>
+<section id="implied-volatility" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="implied-volatility"><span class="header-section-number">5.1.2</span> Implied Volatility</h3>
+<ul>
+<li>Volatility inferred from option prices is called the <strong>implied volatility</strong>.</li>
+<li>The implied volatility of an option is the volatility for which the Black-Scholes-Merton price equals the market price.</li>
+<li>The key advantage in using implied volatility is that it provides information regarding the market’s perception of uncertainty going forward.</li>
+<li><a href="https://www.cboe.com/tradable_products/vix/">The VIX S&amp;P 500 Volatility Index.</a></li>
+</ul>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Download historical data for VIX</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"^VIX"</span>, period<span class="op">=</span><span class="st">"30y"</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the closing price</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>plt.plot(data[<span class="st">"Close"</span>])</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"VIX Index Plot"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Date"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Close Price"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="week_05_files/figure-html/cell-2-output-1.png" width="808" height="523"></p>
+</div>
+</div>
+</section>
+<section id="are-daily-percentage-changes-in-financial-variables-normal" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="are-daily-percentage-changes-in-financial-variables-normal"><span class="header-section-number">5.1.3</span> Are Daily Percentage Changes in Financial Variables Normal?</h3>
+<ul>
+<li>The following code tests if the daily returns AAPL are normally distributed.</li>
+<li>Download daily data from Yahoo Finance, calculate log returns, and show descriptive statistics.</li>
+</ul>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm, kstest</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Download historical data for AAPL</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"AAPL"</span>, period<span class="op">=</span><span class="st">"20y"</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the daily returns</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"Return"</span>] <span class="op">=</span> np.log(data[<span class="st">"Close"</span>] <span class="op">/</span> data[<span class="st">"Close"</span>].shift(<span class="dv">1</span>)).dropna()</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Show descriptive statistics</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>desc <span class="op">=</span> pd.DataFrame(data[<span class="st">"Return"</span>].describe())</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Descriptive Statistics:"</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(desc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Descriptive Statistics:
+            Return
+count  5033.000000
+mean      0.001214
+std       0.020955
+min      -0.197470
+25%      -0.008716
+50%       0.001062
+75%       0.011998
+max       0.130194</code></pre>
+</div>
+</div>
+<ul>
+<li>Plot the histogram of returns and fit a normal distribution to the data.</li>
+<li>It is visible that AAPL returns are not normally distributed.</li>
+<li>AAPL shows fat tails (heavy-tailed distribution) which means that large changes in the variable are more likely compared to normal distribution.</li>
+</ul>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the histogram of returns</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.hist(data[<span class="st">"Return"</span>], bins<span class="op">=</span><span class="dv">100</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, color<span class="op">=</span><span class="st">"g"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a normal distribution to the data</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>mu, std <span class="op">=</span> norm.fit(data[<span class="st">"Return"</span>].dropna())</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the PDF</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>xmin, xmax <span class="op">=</span> plt.xlim()</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(xmin, xmax, <span class="dv">100</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> norm.pdf(x, mu, std)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.plot(x, p, <span class="st">"k"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> <span class="st">"Fit results: mu = </span><span class="sc">%.4f</span><span class="st">,  std = </span><span class="sc">%.4f</span><span class="st">"</span> <span class="op">%</span> (mu, std)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.title(title)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="week_05_files/figure-html/cell-4-output-1.png" width="715" height="505"></p>
+</div>
+</div>
+<ul>
+<li>Use Kolmogorov-Smirnov test to check normality of the returns.</li>
+<li>The Kolmogorov-Smirnov (K-S) test is a non-parametric test used to determine if a sample data set follows a specific distribution, such as the normal distribution.</li>
+<li><span class="math inline">\(H_0:\)</span> The sample data follows the normal distribution.</li>
+<li><span class="math inline">\(H_1:\)</span> The sample data does not follow the normal distribution.</li>
+<li>p-value in this example is extremely small, therfore, <span class="math inline">\(H_0\)</span> could be rejected.</li>
+</ul>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform a Kolmogorov-Smirnov test</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ks_statistic, p_value <span class="op">=</span> kstest(data[<span class="st">"Return"</span>].dropna(), <span class="st">"norm"</span>, args<span class="op">=</span>(mu, std))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"KS Statistic:"</span>, ks_statistic)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>KS Statistic: 0.07008438605916109
+p-value: 6.1038040683674905e-22</code></pre>
+</div>
+</div>
+</section>
+<section id="the-exponentially-weighted-moving-average-model" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="the-exponentially-weighted-moving-average-model"><span class="header-section-number">5.1.4</span> The Exponentially Weighted Moving Average Model</h3>
+<ul>
+<li>The Exponentially Weighted Moving Average (EWMA) model for volatility is a method of measuring the volatility of financial returns where more weight is assigned to more recent returns.</li>
+<li>This is in contrast to the simple moving average model, which assigns equal weight to all observations in the sample.</li>
+<li>The idea behind giving more weight to recent returns is that they are more indicative of future volatility than older returns.</li>
+<li>The EWMA model can be defined by the following equation:</li>
+</ul>
+<p><span class="math display">\[
+\sigma_{t}^{2} = \lambda \sigma_{t-1}^{2} + (1 - \lambda) r_{t-1}^{2}
+\]</span></p>
+<ul>
+<li><p>Where:</p>
+<ul>
+<li><span class="math inline">\(\sigma_{t}^{2}\)</span> is the forecasted variance for time <span class="math inline">\(t\)</span>,</li>
+<li><span class="math inline">\(\sigma_{t-1}^{2}\)</span> is the variance for time <span class="math inline">\(t-1\)</span>,</li>
+<li><span class="math inline">\(r_{t-1}^{2}\)</span> is the square of the return at time <span class="math inline">\(t-1\)</span>,</li>
+<li>and <span class="math inline">\(\lambda\)</span> is the decay factor, which determines the weights.</li>
+</ul></li>
+<li><p>In the EWMA model, <span class="math inline">\(\lambda\)</span> lies between 0 and 1.</p></li>
+<li><p>A smaller <span class="math inline">\(\lambda\)</span> will assign more weight to recent returns.</p></li>
+<li><p>Now let’s implement a simple numerical example in Python.</p></li>
+<li><p>In this example, we first download the historical closing prices for AAPL and compute the daily returns.</p></li>
+<li><p>We then calculate the volatility series using the EWMA model, with a decay factor of 0.94.</p></li>
+<li><p>Finally, we plot the volatility series.</p></li>
+</ul>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Download historical data for AAPLpepe</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"AAPL"</span>, period<span class="op">=</span><span class="st">"3y"</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the daily returns</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"Return"</span>] <span class="op">=</span> np.log(data[<span class="st">"Close"</span>] <span class="op">/</span> data[<span class="st">"Close"</span>].shift(<span class="dv">1</span>))</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop missing values</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.dropna().copy()</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the decay factor</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>lambda_factor <span class="op">=</span> <span class="fl">0.94</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the variance</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>variance <span class="op">=</span> data[<span class="st">"Return"</span>][<span class="dv">0</span>] <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the volatility series with the first variance</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>volatility_series <span class="op">=</span> [np.sqrt(variance)]</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the volatility series</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(data)):</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    variance <span class="op">=</span> (</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        lambda_factor <span class="op">*</span> variance <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> lambda_factor) <span class="op">*</span> data[<span class="st">"Return"</span>].iloc[t <span class="op">-</span> <span class="dv">1</span>] <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    volatility_series.append(np.sqrt(variance))</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert volatility series to pandas Series</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>volatility_series <span class="op">=</span> pd.Series(volatility_series, index<span class="op">=</span>data.index)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the rolling 30-day standard deviation as volatility</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"30D Std Dev"</span>] <span class="op">=</span> data[<span class="st">"Return"</span>].rolling(window<span class="op">=</span><span class="dv">30</span>).std()</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the volatility</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>volatility_series.plot(label<span class="op">=</span><span class="st">"EWMA Volatility"</span>)</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"30D Std Dev"</span>].plot(label<span class="op">=</span><span class="st">"30-Day Rolling Std Dev"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Volatility of AAPL"</span>)</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Date"</span>)</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Volatility"</span>)</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="week_05_files/figure-html/cell-6-output-1.png" width="829" height="498"></p>
+</div>
+</div>
+</section>
+<section id="the-garch11-model" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="the-garch11-model"><span class="header-section-number">5.1.5</span> The GARCH(1,1) Model</h3>
+<ul>
+<li>The Generalized Autoregressive Conditional Heteroskedasticity (GARCH) model is a statistical model used to estimate the volatility of financial markets.</li>
+<li>The GARCH(1,1) model is the most widely used GARCH variant, where “1,1” indicates that the model uses one lag of the squared residuals (ARCH term) and one lag of the conditional variance (GARCH term).</li>
+<li>The model is specified as follows:</li>
+</ul>
+<p><span class="math display">\[
+\sigma_{t}^{2} = \omega + \alpha r_{t-1}^{2} + \beta \sigma_{t-1}^{2}
+\]</span></p>
+<ul>
+<li><p>Where:</p>
+<ul>
+<li><span class="math inline">\(\sigma_{t}^{2}\)</span> is the conditional variance at time <span class="math inline">\(t\)</span>,</li>
+<li><span class="math inline">\(r_{t-1}^{2}\)</span> is the square of the return at time <span class="math inline">\(t-1\)</span>,</li>
+<li><span class="math inline">\(\sigma_{t-1}^{2}\)</span> is the conditional variance at time <span class="math inline">\(t-1\)</span>,</li>
+<li><span class="math inline">\(\omega\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\beta\)</span> are parameters to be estimated. <span class="math inline">\(\alpha\)</span> is the ARCH parameter that determines the impact of the previous error, and <span class="math inline">\(\beta\)</span> is the GARCH parameter that determines the impact of the previous period’s variance.</li>
+</ul></li>
+<li><p>In a GARCH(1,1) model, the variance today depends on the weighted average of long-term variance (<span class="math inline">\(\omega\)</span>), the impact of the return from the previous day (<span class="math inline">\(\alpha\)</span>), and the variance observed the previous day (<span class="math inline">\(\beta\)</span>).</p></li>
+<li><p>We can estimate a GARCH(1,1) model in Python using the <code>arch</code> package.</p></li>
+<li><p>Here’s an example with real historical data for the Apple Inc.&nbsp;(AAPL) stock.</p></li>
+<li><p>More information about the package available at <a href="https://bashtage.github.io/arch/univariate/introduction.html" class="uri">https://bashtage.github.io/arch/univariate/introduction.html</a></p></li>
+</ul>
+<div class="cell" data-execution_count="6">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> arch <span class="im">import</span> arch_model</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Download historical data for AAPL</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"AAPL"</span>, period<span class="op">=</span><span class="st">"3y"</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the daily returns</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"Return"</span>] <span class="op">=</span> np.log(data[<span class="st">"Close"</span>] <span class="op">/</span> data[<span class="st">"Close"</span>].shift(<span class="dv">1</span>)) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop missing values</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.dropna()</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the GARCH model</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> arch_model(data[<span class="st">"Return"</span>], vol<span class="op">=</span><span class="st">"Garch"</span>, p<span class="op">=</span><span class="dv">1</span>, q<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>model_fit <span class="op">=</span> model.fit(disp<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the summary of the model</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_fit.summary())</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the conditional standard deviation</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>model_fit.plot(annualize<span class="op">=</span><span class="st">"D"</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     Constant Mean - GARCH Model Results                      
+==============================================================================
+Dep. Variable:                 Return   R-squared:                       0.000
+Mean Model:             Constant Mean   Adj. R-squared:                  0.000
+Vol Model:                      GARCH   Log-Likelihood:               -1501.88
+Distribution:                  Normal   AIC:                           3011.76
+Method:            Maximum Likelihood   BIC:                           3030.26
+                                        No. Observations:                  753
+Date:                Thu, Sep 07 2023   Df Residuals:                      752
+Time:                        10:07:34   Df Model:                            1
+                                 Mean Model                                
+===========================================================================
+                 coef    std err          t      P&gt;|t|     95.0% Conf. Int.
+---------------------------------------------------------------------------
+mu             0.1217  6.308e-02      1.929  5.369e-02 [-1.935e-03,  0.245]
+                              Volatility Model                              
+============================================================================
+                 coef    std err          t      P&gt;|t|      95.0% Conf. Int.
+----------------------------------------------------------------------------
+omega          0.0463  2.943e-02      1.571      0.116  [-1.144e-02,  0.104]
+alpha[1]       0.0446  1.251e-02      3.566  3.627e-04 [2.009e-02,6.912e-02]
+beta[1]        0.9404  1.512e-02     62.190      0.000     [  0.911,  0.970]
+============================================================================
+
+Covariance estimator: robust</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="week_05_files/figure-html/cell-7-output-2.png" width="594" height="431"></p>
+</div>
+</div>
+<ul>
+<li>In this script, we first download the historical closing prices for AAPL and compute the daily log returns (in percentage for model easier estimation).</li>
+<li>We then define a GARCH(1,1) model and fit the model to the returns data.</li>
+<li>The <code>arch_model</code> function is used to define the GARCH model, where <code>p=1</code> and <code>q=1</code> specify the GARCH(1,1) model.</li>
+<li>Finally, we print the summary of the model fit, which includes the estimated parameters, and plot the conditional standard deviation.</li>
+<li>The plot shows the evolution of the estimated volatility over time.</li>
+<li>Please note that the code uses daily returns to fit the model, which may lead to extreme values in the estimation of the variance because of daily market noise. A solution could be to use longer periods (weekly, monthly), depending on the purpose of the analysis.</li>
+</ul>
+</section>
+<section id="choosing-between-the-models" class="level3" data-number="5.1.6">
+<h3 data-number="5.1.6" class="anchored" data-anchor-id="choosing-between-the-models"><span class="header-section-number">5.1.6</span> Choosing between the Models</h3>
+<ul>
+<li>GARCH(1,1) and EWMA models estimate financial market volatility.</li>
+<li>GARCH(1,1) incorporates mean reversion, unlike EWMA.</li>
+<li>Despite being complex, GARCH(1,1) is theoretically superior due to its consideration of mean reversion.</li>
+<li>In GARCH(1,1), best-fit parameter estimation is critical.</li>
+<li>If <span class="math inline">\(\omega\)</span> is zero in GARCH(1,1), it reduces to EWMA.</li>
+<li>If <span class="math inline">\(\omega\)</span> is negative, GARCH(1,1) is unstable and EWMA is preferred.</li>
+</ul>
+</section>
+</section>
+<section id="correlations" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="correlations"><span class="header-section-number">5.2</span> Correlations</h2>
+<ul>
+<li>Risk managers need to estimate not just volatilities, but also correlations between changes in market variables when assessing risk exposures.</li>
+<li>Correlations can be monitored in a similar manner to volatilities.</li>
+</ul>
+<section id="definition-of-correlation" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="definition-of-correlation"><span class="header-section-number">5.2.1</span> Definition of Correlation</h3>
+<ul>
+<li>Correlation between two variables, <span class="math inline">\(V1\)</span> and <span class="math inline">\(V2\)</span>, is represented by the correlation coefficient <span class="math inline">\(\rho\)</span>, calculated using the formula:</li>
+</ul>
+<p><span class="math display">\[
+\rho = \frac{E(V_1 V_2) - E(V_1) E(V_2)}{SD(V1_)SD(V_2)}
+\]</span></p>
+<ul>
+<li><p>where <span class="math inline">\(E(.)\)</span> stands for expected value and <span class="math inline">\(SD(.)\)</span> for standard deviation.</p></li>
+<li><p>No correlation exists when <span class="math inline">\(E(V_1 V_2) = E(V_1)E(V_2)\)</span>, making <span class="math inline">\(\rho = 0\)</span>.</p></li>
+<li><p>If <span class="math inline">\(V_1 = V_2\)</span>, <span class="math inline">\(\rho\)</span> equals 1.</p></li>
+<li><p>Covariance between <span class="math inline">\(V_1\)</span> and <span class="math inline">\(V_2\)</span> is defined as:</p></li>
+</ul>
+<p><span class="math display">\[
+\text{cov}(V_1, V_2) = E(V_1 V_2) - E(V_1)E(V_2)
+\]</span></p>
+<ul>
+<li>This allows us to write the correlation as:</li>
+</ul>
+<p><span class="math display">\[
+\rho = \frac{\text{cov}(V_1, V_2)}{SD(V_1)SD(V_2)}
+\]</span></p>
+<ul>
+<li><p>Though understanding correlation may be more intuitive, covariances prove to be fundamental in the analysis.</p></li>
+<li><p>Two variables are statistically independent if knowing one doesn’t affect the probability distribution for the other. Formal representation:</p></li>
+</ul>
+<p><span class="math display">\[
+f(V_2|V_1 = x) = f(V_2)
+\]</span></p>
+<ul>
+<li>for all <span class="math inline">\(x\)</span>, where <span class="math inline">\(f(.)\)</span> represents the probability density function.</li>
+<li>Zero correlation doesn’t imply no dependence between variables.</li>
+<li>Correlation measures linear dependence, but there can be many other ways two variables can relate. These relationships can be visualized by plotting <span class="math inline">\(E(V_2)\)</span> against <span class="math inline">\(V_1\)</span>.</li>
+<li>In certain situations, the standard deviation of <span class="math inline">\(V_2\)</span> depends on the value of <span class="math inline">\(V_1\)</span>, indicating another aspect of how <span class="math inline">\(V_2\)</span> depends on <span class="math inline">\(V_1\)</span>.</li>
+</ul>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a range of x values</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">400</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear Relationship</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>y_linear <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x <span class="op">+</span> <span class="dv">3</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_linear)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Linear Relationship"</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Non-linear Relationship (Quadratic)</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>y_nonlinear <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_nonlinear)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Non-Linear Relationship"</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Absolute Value Function</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>y_abs <span class="op">=</span> np.<span class="bu">abs</span>(x)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_abs)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Absolute Value Function"</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="week_05_files/figure-html/cell-8-output-1.png" width="1142" height="374"></p>
+</div>
+</div>
+</section>
+<section id="monitoring-correlation" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="monitoring-correlation"><span class="header-section-number">5.2.2</span> Monitoring Correlation</h3>
+<ul>
+<li>It is common to work with variance-covariance matrices.</li>
+<li>Similar approaches as Exponentially Weighted Moving Average (EWMA) and GARCH models can be used to monitor the covariance rate between two variables.</li>
+<li>The returns on variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> on day <span class="math inline">\(i\)</span> are:</li>
+</ul>
+<p><span class="math display">\[
+x_i = \frac{X_i - X_{i-1}}{X_{i-1}}
+\]</span></p>
+<p><span class="math display">\[
+y_i = \frac{Y_i - Y_{i-1}}{Y_{i-1}}
+\]</span></p>
+<ul>
+<li>The covariance rate between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> on day <span class="math inline">\(n\)</span> is:</li>
+</ul>
+<p><span class="math display">\[
+\text{cov}_n = E(x_n y_n) - E(x_n)E(y_n)
+\]</span></p>
+<ul>
+<li>In practice, risk managers assume that expected daily returns are zero when calculating the covariance rate per day, hence the covariance rate per day between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> on day <span class="math inline">\(n\)</span> is simplified to:</li>
+</ul>
+<p><span class="math display">\[
+\text{cov}_n = E(x_n y_n)
+\]</span></p>
+<ul>
+<li>Using equal weights for the last <span class="math inline">\(m\)</span> observations on <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span> gives the following:</li>
+</ul>
+<p><span class="math display">\[
+\text{cov}_{n} = \frac{1}{m} \sum_{i=1}^{m} x_{n-i} y_{n-i}
+\]</span></p>
+<p><span class="math display">\[
+\text{var}_{x,n} = \frac{1}{m} \sum_{i=1}^{m} x_{n-i}^{2}
+\]</span></p>
+<p><span class="math display">\[
+\text{var}_{y,n} = \frac{1}{m} \sum_{i=1}^{m} y_{n-i}^{2}
+\]</span></p>
+<p><span class="math display">\[
+\rho_n = \frac{\text{cov}_{n}}{\sqrt{\text{var}_{x,n} \text{var}_{y,n}}}
+\]</span></p>
+<ul>
+<li>The Exponentially Weighted Moving Average (EWMA) model can be used to weigh recent observations more heavily. The formula for updating a covariance estimate in the EWMA model is:</li>
+</ul>
+<p><span class="math display">\[
+\text{cov}_n = \lambda\text{cov}_{n-1} + (1 - \lambda)x_{n-1}y_{n-1}
+\]</span></p>
+<ul>
+<li>The lower the value of <span class="math inline">\(\lambda\)</span>, the greater the weight that is given to recent observations.</li>
+<li>GARCH models can also be used for updating covariance rate estimates and forecasting the future level of covariance rates. The GARCH(1,1) model for updating a covariance rate between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is:</li>
+</ul>
+<p><span class="math display">\[
+\text{cov}_n = \omega + \alpha x_{n-1}y_{n-1} + \beta\text{cov}_{n-1}
+\]</span></p>
+<ul>
+<li><p>This formula gives some weight to a long-run average covariance, some to the most recent covariance estimate, and some to the most recent observation on covariance.</p></li>
+<li><p>The long-term average covariance rate is <span class="math inline">\(\omega / (1 - \alpha - \beta)\)</span>.</p></li>
+<li><p>Example of covariance between Apple and Microsoft from the past 5 years of daily returns:</p></li>
+</ul>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Download daily closing prices of Apple and Microsoft from the past 5 years</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> yf.download([<span class="st">"AAPL"</span>, <span class="st">"MSFT"</span>], period<span class="op">=</span><span class="st">"5y"</span>, progress<span class="op">=</span><span class="va">False</span>)[<span class="st">"Adj Close"</span>]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate daily returns</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.pct_change().dropna()</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Define decay factor and initialize covariance</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>decay_factor <span class="op">=</span> <span class="fl">0.94</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>ewma_cov <span class="op">=</span> df[<span class="st">"AAPL"</span>].iloc[<span class="dv">0</span>] <span class="op">*</span> df[<span class="st">"MSFT"</span>].iloc[<span class="dv">0</span>]</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate EWMA covariance</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(df)):</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    ewma_cov <span class="op">=</span> (</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        decay_factor <span class="op">*</span> ewma_cov</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> decay_factor) <span class="op">*</span> df[<span class="st">"AAPL"</span>].iloc[i] <span class="op">*</span> df[<span class="st">"MSFT"</span>].iloc[i]</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The EWMA covariance is: </span><span class="sc">{</span>ewma_cov<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The EWMA covariance is: 8.769791954818312e-05</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="copulas" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="copulas"><span class="header-section-number">5.3</span> Copulas</h2>
+<ul>
+<li>This section introduces the concept of copulas, which define a correlation structure between two or more variables, regardless of the shapes of their probability distributions.</li>
+<li>It illustrates how a copula can model default correlation for a portfolio of loans, a model that forms part of the Basel II capital requirements.</li>
+</ul>
+<section id="introduction-to-copulas" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="introduction-to-copulas"><span class="header-section-number">5.3.1</span> Introduction to Copulas</h3>
+<ul>
+<li>In risk management, copulas are statistical tools used to model and manage dependencies among different risk types or among different components within a risk type.</li>
+<li>A copula is a function that links univariate marginal distributions to their joint multivariate distribution.</li>
+<li>Copulas allow risk managers to separate the study of the behavior of individual risk factors (captured by the marginal distributions) from the study of the dependencies among these risk factors (captured by the copula).</li>
+<li>This separation property is particularly useful in risk management because it allows practitioners to fit marginal distributions and dependency structures separately.</li>
+</ul>
+<p>Some key points:</p>
+<ol type="1">
+<li><strong>Multivariate distribution:</strong> When dealing with multiple risk factors, it is often necessary to understand their joint behavior, which is described by their multivariate distribution. However, multivariate distributions can be difficult to estimate and work with directly.</li>
+<li><strong>Marginal distributions and copulas:</strong> The copula approach decomposes the multivariate distribution into marginal distributions (one for each risk factor) and a copula that captures the dependencies among the risk factors.</li>
+<li><strong>Benefits:</strong> The benefits of copulas include flexibility in modeling and the ability to capture a wide range of dependency structures. Different copula types can be used to model different types of dependencies (e.g., Gaussian copula, t-copula, etc.).</li>
+<li><strong>Applications:</strong> In risk management, copulas are used in various applications, such as estimating portfolio credit risk, modeling the spread of contagion in financial networks, pricing complex derivatives, and more.</li>
+<li><strong>Limits and criticisms:</strong> Despite their benefits, copulas also have limits. In particular, they have been criticized for their role in the financial crisis of 2007-2008, where the widespread use of Gaussian copulas for modeling dependencies among mortgage-backed securities led to underestimation of risk due to the fact that Gaussian copulas do not capture tail dependence well.</li>
+</ol>
+<p>Applications in risk management:</p>
+<ol type="1">
+<li><strong>Portfolio Risk Management:</strong> Copulas can model the dependence structure between different assets in a portfolio, separate from their individual behaviors. This allows for a more accurate computation of portfolio risk measures, such as Value-at-Risk (VaR) and Expected Shortfall (ES), by capturing the impact of extreme joint movements in asset prices.</li>
+<li><strong>Credit Risk Management:</strong> Copulas are extensively used in the pricing and risk management of credit derivatives, especially Collateralized Debt Obligations (CDOs). They can model the likelihood of joint default events (default correlations) across different entities. The Gaussian copula was famously used in the pricing of CDOs in the run-up to the 2007-2008 financial crisis.</li>
+<li><strong>Operational Risk Management:</strong> In operational risk, losses are usually due to a number of high impact, low frequency events (e.g., legal risks, risks of fraud, etc.). Copulas can be used to model the dependencies among these different types of operational risks, improving the accuracy of capital requirement calculations.</li>
+<li><strong>Insurance Risk Management:</strong> Copulas can also be used to model dependencies in insurance claims from different sectors or regions, helping insurers to better manage their overall risk.</li>
+<li><strong>Stress Testing:</strong> Copulas can be useful in stress testing scenarios. By defining the dependence structure between various risk factors, stress tests can be more accurately modeled to reflect extreme conditions.</li>
+</ol>
+</section>
+<section id="gaussian-copula" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="gaussian-copula"><span class="header-section-number">5.3.2</span> Gaussian Copula</h3>
+<ul>
+<li>A Gaussian copula is a specific type of copula used to model the dependency structure among various dimensions or variables.</li>
+<li>It assumes that these dependencies follow a multivariate normal distribution.</li>
+<li>To understand the Gaussian copula, consider a collection of random variables.</li>
+<li>Each of these variables has its own individual (marginal) distribution, which describes its behavior.</li>
+<li>The copula then describes how these variables interact or are correlated with each other.</li>
+</ul>
+<p>Simplified description of how a Gaussian copula is constructed:</p>
+<ol type="1">
+<li><strong>Start with random variables:</strong> Let’s say we have a set of random variables, each following its own arbitrary distribution.</li>
+<li><strong>Transform to uniform:</strong> Apply the cumulative distribution function (CDF) to each random variable. This transforms each variable into a uniform distribution on the interval [0, 1].</li>
+<li><strong>Apply inverse Gaussian CDF:</strong> Take these uniform variables and apply the inverse of the cumulative distribution function of the multivariate normal distribution. This step ensures that the new variables have a multivariate normal distribution.</li>
+<li><strong>Correlation Matrix:</strong> The Gaussian copula is parameterized by a correlation matrix, which captures the dependencies among the variables.</li>
+</ol>
+<ul>
+<li>The Gaussian copula is popular due to its simplicity and the tractability of the Gaussian distribution.</li>
+<li>However, it has limitations, particularly in modeling tail dependencies.</li>
+<li>It was famously used in the pricing of collateralized debt obligations (CDOs) and was implicated in the mispricing of risk that contributed to the 2008 financial crisis.</li>
+</ul>
+<div class="cell" data-execution_count="9">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the random seed for reproducibility</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate independent data</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>data_independent <span class="op">=</span> np.random.normal(size<span class="op">=</span>(<span class="dv">1000</span>, <span class="dv">2</span>))</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate correlated data</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>correlated_mean <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>correlated_cov <span class="op">=</span> [[<span class="dv">1</span>, <span class="fl">0.9</span>], [<span class="fl">0.9</span>, <span class="dv">1</span>]]</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>data_correlated <span class="op">=</span> np.random.multivariate_normal(</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    correlated_mean, correlated_cov, size<span class="op">=</span><span class="dv">1000</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Gaussian Copula for independent data</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>u_independent <span class="op">=</span> norm.cdf(data_independent)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Gaussian Copula for correlated data</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>u_correlated <span class="op">=</span> norm.cdf(data_correlated)</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting both scatter plots side by side</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot for independent data</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].scatter(u_independent[:, <span class="dv">0</span>], u_independent[:, <span class="dv">1</span>], marker<span class="op">=</span><span class="st">"."</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_xlabel(<span class="st">"U1"</span>)</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">"U2"</span>)</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_title(<span class="st">"Gaussian Copula with Independent Variables"</span>)</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot for correlated data</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].scatter(u_correlated[:, <span class="dv">0</span>], u_correlated[:, <span class="dv">1</span>], marker<span class="op">=</span><span class="st">"."</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_xlabel(<span class="st">"U1"</span>)</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_ylabel(<span class="st">"U2"</span>)</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_title(<span class="st">"Gaussian Copula with Correlated Variables"</span>)</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="week_05_files/figure-html/cell-10-output-1.png" width="950" height="470"></p>
+</div>
+</div>
+</section>
+<section id="gaussian-copula-example" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="gaussian-copula-example"><span class="header-section-number">5.3.3</span> Gaussian Copula Example</h3>
+<ul>
+<li>In this example, we’ll use historical data from two stocks to demonstrate the use of a Gaussian copula.</li>
+<li>First, we’ll download the data and compute the daily returns for each stock.</li>
+</ul>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm, gaussian_kde</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Download historical data for desired stocks</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>tickers <span class="op">=</span> [<span class="st">"AAPL"</span>, <span class="st">"MSFT"</span>]</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(tickers, period<span class="op">=</span><span class="st">"2y"</span>, progress<span class="op">=</span><span class="va">False</span>)[<span class="st">"Adj Close"</span>]</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the daily returns</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>returns <span class="op">=</span> data.pct_change().dropna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li>Next, we’ll transform these daily returns to be uniformly distributed by using the empirical cumulative distribution function.</li>
+</ul>
+<div class="cell" data-execution_count="11">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate empirical cumulative distribution functions</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ecdf_aapl <span class="op">=</span> returns[<span class="st">"AAPL"</span>].rank() <span class="op">/</span> <span class="bu">len</span>(returns[<span class="st">"AAPL"</span>])</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>ecdf_msft <span class="op">=</span> returns[<span class="st">"MSFT"</span>].rank() <span class="op">/</span> <span class="bu">len</span>(returns[<span class="st">"MSFT"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li>Finally, we’ll transform these uniform variables to be normally distributed and plot the joint distribution to see their dependence structure.</li>
+</ul>
+<div class="cell" data-execution_count="12">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform to standard normal distribution</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>norm_aapl <span class="op">=</span> norm.ppf(ecdf_aapl)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>norm_msft <span class="op">=</span> norm.ppf(ecdf_msft)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create DataFrame for plotting</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>df_norm <span class="op">=</span> pd.DataFrame({<span class="st">"AAPL"</span>: norm_aapl, <span class="st">"MSFT"</span>: norm_msft})</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot joint distribution</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>sns.jointplot(data<span class="op">=</span>df_norm, x<span class="op">=</span><span class="st">"AAPL"</span>, y<span class="op">=</span><span class="st">"MSFT"</span>, kind<span class="op">=</span><span class="st">"kde"</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="week_05_files/figure-html/cell-13-output-1.png" width="565" height="566"></p>
+</div>
+</div>
+<ul>
+<li>The plot shows a smoothed estimate of the joint distribution of the transformed returns.</li>
+<li>There is a clear linear pattern suggesting a strong dependence between the two stocks’ returns.</li>
+<li>Remember, in practice, you should check the appropriateness of the Gaussian copula for your data.</li>
+<li>While it’s a simple and popular choice, it might not always capture the dependence structure correctly, especially in the tails of the distribution.</li>
+</ul>
+</section>
+<section id="clayton-copula-example" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="clayton-copula-example"><span class="header-section-number">5.3.4</span> Clayton Copula Example</h3>
+<ul>
+<li><p><strong>Tail Dependence</strong>: The main difference between the Clayton and Gaussian copulas is how they model tail dependence. The Clayton copula is suitable for modeling lower tail dependence (correlation between extreme negative values), while the Gaussian copula can model both lower and upper tail dependence, but not as effectively for extreme values.</p></li>
+<li><p><strong>Parameterization</strong>: The Clayton copula uses a single parameter (the Clayton parameter) to determine the strength and direction of the dependence. In contrast, the Gaussian copula uses a correlation matrix to model the linear dependence between variables.</p></li>
+<li><p><strong>Origins</strong>: The Clayton copula is an Archimedean copula, while the Gaussian copula is derived from the multivariate normal distribution.</p></li>
+<li><p>This example fetches historical stock data for two companies (e.g., Apple and Microsoft) and shows their tail dependence using the Clayton copula.</p></li>
+<li><p>The plots show the lower tail dependence between the daily returns of Apple and Microsoft.</p></li>
+<li><p>This can be helpful for analyzing the risk of simultaneous extreme losses in these two stocks.</p></li>
+</ul>
+<div class="cell" data-execution_count="13">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> copulas.univariate <span class="im">import</span> GaussianKDE</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> copulas.bivariate <span class="im">import</span> Clayton</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> rankdata</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch historical stock data from Yahoo Finance</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>stock_A <span class="op">=</span> yf.download(<span class="st">"AAPL"</span>, period<span class="op">=</span><span class="st">"2y"</span>, progress<span class="op">=</span><span class="va">False</span>)[<span class="st">"Adj Close"</span>]</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>stock_B <span class="op">=</span> yf.download(<span class="st">"MSFT"</span>, period<span class="op">=</span><span class="st">"2y"</span>, progress<span class="op">=</span><span class="va">False</span>)[<span class="st">"Adj Close"</span>]</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate daily returns</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>returns_A <span class="op">=</span> stock_A.pct_change().dropna()</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>returns_B <span class="op">=</span> stock_B.pct_change().dropna()</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform data to uniform marginals using rank transform</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>u1 <span class="op">=</span> rankdata(returns_A) <span class="op">/</span> (<span class="bu">len</span>(returns_A) <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>u2 <span class="op">=</span> rankdata(returns_B) <span class="op">/</span> (<span class="bu">len</span>(returns_B) <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a Clayton copula to the transformed data</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>copula <span class="op">=</span> Clayton()</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>copula.fit(np.column_stack((u1, u2)))</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate data from the copula</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>simulated_data <span class="op">=</span> copula.sample(<span class="bu">len</span>(returns_A))</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the original and simulated data</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].scatter(u1, u2, marker<span class="op">=</span><span class="st">"."</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_xlabel(<span class="st">"Apple Returns"</span>)</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">"Microsoft Returns"</span>)</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_title(<span class="st">"Original Data"</span>)</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].scatter(simulated_data[:, <span class="dv">0</span>], simulated_data[:, <span class="dv">1</span>], marker<span class="op">=</span><span class="st">"."</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_xlabel(<span class="st">"Apple Returns"</span>)</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_ylabel(<span class="st">"Microsoft Returns"</span>)</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_title(<span class="st">"Simulated Data from Clayton Copula"</span>)</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="week_05_files/figure-html/cell-14-output-1.png" width="950" height="470"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="valuation-and-scenario-analysis" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="valuation-and-scenario-analysis"><span class="header-section-number">5.4</span> Valuation and Scenario Analysis</h2>
+<ul>
+<li><strong>Valuation and Scenario Analysis</strong>: Both activities used by financial institutions, concerned with estimating future cash flows, but with different objectives.
+<ul>
+<li><strong>Valuation</strong>: Aims to estimate the present value of future cash flows. Calculates expected values of future cash flows across all outcomes and discounts them to today.</li>
+<li><strong>Scenario Analysis</strong>: Focuses on exploring the full range of future situations, often emphasizing adverse outcomes to answer “How bad can things get?”</li>
+</ul></li>
+<li><strong>Real-world vs Risk-Neutral Projections</strong>:
+<ul>
+<li><strong>Real-World Projections</strong>: Underlie scenario analysis.</li>
+<li><strong>Risk-Neutral Projections</strong>: Used for valuation, helpful for time-evolving variables or when an outcome depends on a particular discrete event, such as a company defaulting.</li>
+</ul></li>
+</ul>
+</section>
+<section id="practice-questions-and-problems" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="practice-questions-and-problems"><span class="header-section-number">5.5</span> Practice Questions and Problems</h2>
+<section id="volatility-1" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="volatility-1"><span class="header-section-number">5.5.1</span> Volatility</h3>
+<ol type="1">
+<li>The volatility of an asset is 2% per day. What is the standard deviation of the per- centage price change in three days?</li>
+<li>The volatility of an asset is 25% per annum. What is the standard deviation of the percentage price change in one trading day? Assuming a normal distribution with zero mean, estimate 95% confidence limits for the percentage price change in one day.</li>
+<li>What is implied volatility? What does it mean if different options on the same asset have different implied volatilities?</li>
+<li>Calculate daily volatility using the last 30 observations for selected asset.</li>
+<li>Test normality of daily returns for selected asset.</li>
+<li>Explain the exponentially weighted moving average (EWMA) model for estimating volatility from historical data.</li>
+<li>What is the difference between the exponentially weighted moving average model and the GARCH(1,1) model for updating volatilities?</li>
+<li>The most recent estimate of the daily volatility of an asset is 1.5% and the price of the asset at the close of trading yesterday was $30.00. The parameter <span class="math inline">\(\lambda\)</span> in the EWMA model is 0.94. Suppose that the price of the asset at the close of trading today is $30.50. How will this cause the volatility to be updated by the EWMA model?</li>
+<li>A company uses an EWMA model for forecasting volatility. It decides to change the parameter <span class="math inline">\(\lambda\)</span> from 0.95 to 0.85. Explain the likely impact on the forecasts.</li>
+<li>A company uses the GARCH(1,1) model for updating volatility. The three param- eters are <span class="math inline">\(\omega\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\beta\)</span>. Describe the impact of making a small increase in each of the parameters while keeping the others fixed.</li>
+<li>Assume that an index at close of trading yesterday was 1,040 and the daily volatility of the index was estimated as 1% per day at that time. The parameters in a GARCH(1,1) model are <span class="math inline">\(\omega\)</span> = 0.000002, <span class="math inline">\(\alpha\)</span> = 0.06, and <span class="math inline">\(\beta\)</span> = 0.92. If the level of the index at close of trading today is 1,060, what is the new volatility estimate?</li>
+</ol>
+</section>
+<section id="correlations-and-copulas" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="correlations-and-copulas"><span class="header-section-number">5.5.2</span> Correlations and Copulas</h3>
+<ol type="1">
+<li>If you know the correlation between two variables, what extra information do you need to calculate the covariance?</li>
+<li>What is the difference between correlation and dependence? Suppose that <span class="math inline">\(y = x^2\)</span> and <span class="math inline">\(x\)</span> is normally distributed with mean zero and standard deviation one. What is the correlation between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>?</li>
+<li>Explain what is meant by tail dependence. How can you vary tail dependence by the choice of copula?</li>
+<li>Calculate Clayton copula for selected asset and show appropriate graphs.</li>
+</ol>
+</section>
+<section id="valuation-and-scenario-analysis-1" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="valuation-and-scenario-analysis-1"><span class="header-section-number">5.5.3</span> Valuation and Scenario Analysis</h3>
+<ol type="1">
+<li>What is the difference between <em>valuation</em> and <em>scenario analysis</em>?</li>
+<li>What is meant by risk-neutral valuation and the risk-neutral world?</li>
+<li>A stock price has an expected return of 12% and a volatility of 20%. It is currently $50. What is the probability that it will be greater than $70 in two years?</li>
+<li>An analyst calculates the expected future value of a stock index in (a) the real world and (b) the risk-neutral world. Which would you expect to be higher? Why?</li>
+<li>The value of a derivative that pays off $100 after one year if a company has defaulted during the year is $3. The value of a derivative that pays off $100 after one year if a company has not defaulted is $95. What is the risk-free rate? What is the risk neutral probability of default?</li>
+<li>Explain why it is sometimes necessary to work in both the real world and the risk-neutral world when carrying out a scenario analysis to determine a confi- dence interval for the value of a portfolio in one year.</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./week_04.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Option Strategies</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./week_06.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Market Risk I</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

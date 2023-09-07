@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.361">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>risk_management - 1&nbsp; Introduction to Risk Management</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./03_learning_outcomes.html" rel="next">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_introduction.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Risk Management</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">risk_management</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_introduction.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Risk Management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./03_learning_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Risk Management Applications of Forward and Futures Strategies</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_forwards_futures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Risk Management Applications of Forward and Futures Strategies</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1.1</span> Introduction</a></li>
+  <li><a href="#the-risk-management-process" id="toc-the-risk-management-process" class="nav-link" data-scroll-target="#the-risk-management-process"><span class="header-section-number">1.2</span> The Risk Management Process</a>
+  <ul class="collapse">
+  <li><a href="#the-definition-of-risk" id="toc-the-definition-of-risk" class="nav-link" data-scroll-target="#the-definition-of-risk"><span class="header-section-number">1.2.1</span> The Definition of Risk</a></li>
+  <li><a href="#risk-management" id="toc-risk-management" class="nav-link" data-scroll-target="#risk-management"><span class="header-section-number">1.2.2</span> Risk Management</a></li>
+  </ul></li>
+  <li><a href="#the-risk-management-framework" id="toc-the-risk-management-framework" class="nav-link" data-scroll-target="#the-risk-management-framework"><span class="header-section-number">1.3</span> The Risk Management Framework</a>
+  <ul class="collapse">
+  <li><a href="#key-factors" id="toc-key-factors" class="nav-link" data-scroll-target="#key-factors"><span class="header-section-number">1.3.1</span> Key Factors</a></li>
+  </ul></li>
+  <li><a href="#risk-tolerance" id="toc-risk-tolerance" class="nav-link" data-scroll-target="#risk-tolerance"><span class="header-section-number">1.4</span> Risk Tolerance</a></li>
+  <li><a href="#risk-budgeting" id="toc-risk-budgeting" class="nav-link" data-scroll-target="#risk-budgeting"><span class="header-section-number">1.5</span> Risk Budgeting</a></li>
+  <li><a href="#identification-of-risk---financial-and-non-financial-risk" id="toc-identification-of-risk---financial-and-non-financial-risk" class="nav-link" data-scroll-target="#identification-of-risk---financial-and-non-financial-risk"><span class="header-section-number">1.6</span> Identification of Risk - Financial and Non-Financial Risk</a>
+  <ul class="collapse">
+  <li><a href="#financial-risks" id="toc-financial-risks" class="nav-link" data-scroll-target="#financial-risks"><span class="header-section-number">1.6.1</span> Financial Risks</a></li>
+  <li><a href="#non-financial-risks" id="toc-non-financial-risks" class="nav-link" data-scroll-target="#non-financial-risks"><span class="header-section-number">1.6.2</span> Non-Financial Risks</a></li>
+  </ul></li>
+  <li><a href="#identification-of-risk---interactions-between-risks" id="toc-identification-of-risk---interactions-between-risks" class="nav-link" data-scroll-target="#identification-of-risk---interactions-between-risks"><span class="header-section-number">1.7</span> Identification of Risk - Interactions Between Risks</a></li>
+  <li><a href="#measuring-and-modifying-risk---drivers-and-metrics" id="toc-measuring-and-modifying-risk---drivers-and-metrics" class="nav-link" data-scroll-target="#measuring-and-modifying-risk---drivers-and-metrics"><span class="header-section-number">1.8</span> Measuring and Modifying Risk - Drivers and Metrics</a>
+  <ul class="collapse">
+  <li><a href="#drivers" id="toc-drivers" class="nav-link" data-scroll-target="#drivers"><span class="header-section-number">1.8.1</span> Drivers</a></li>
+  <li><a href="#metrics" id="toc-metrics" class="nav-link" data-scroll-target="#metrics"><span class="header-section-number">1.8.2</span> Metrics</a></li>
+  </ul></li>
+  <li><a href="#methods-of-risk-modification---prevention-avoidance-and-acceptance" id="toc-methods-of-risk-modification---prevention-avoidance-and-acceptance" class="nav-link" data-scroll-target="#methods-of-risk-modification---prevention-avoidance-and-acceptance"><span class="header-section-number">1.9</span> Methods of Risk Modification - Prevention, Avoidance, and Acceptance</a>
+  <ul class="collapse">
+  <li><a href="#risk-prevention-and-avoidance" id="toc-risk-prevention-and-avoidance" class="nav-link" data-scroll-target="#risk-prevention-and-avoidance"><span class="header-section-number">1.9.1</span> Risk Prevention and Avoidance</a></li>
+  <li><a href="#risk-acceptance-self-insurance-and-diversification" id="toc-risk-acceptance-self-insurance-and-diversification" class="nav-link" data-scroll-target="#risk-acceptance-self-insurance-and-diversification"><span class="header-section-number">1.9.2</span> Risk Acceptance: Self-Insurance and Diversification</a></li>
+  </ul></li>
+  <li><a href="#methods-of-risk-modification---transfer-shifting-choosing-a-method-for-modifying" id="toc-methods-of-risk-modification---transfer-shifting-choosing-a-method-for-modifying" class="nav-link" data-scroll-target="#methods-of-risk-modification---transfer-shifting-choosing-a-method-for-modifying"><span class="header-section-number">1.10</span> Methods of Risk Modification - Transfer, Shifting, Choosing a Method for Modifying</a>
+  <ul class="collapse">
+  <li><a href="#risk-transfer" id="toc-risk-transfer" class="nav-link" data-scroll-target="#risk-transfer"><span class="header-section-number">1.10.1</span> Risk Transfer</a></li>
+  <li><a href="#risk-shifting" id="toc-risk-shifting" class="nav-link" data-scroll-target="#risk-shifting"><span class="header-section-number">1.10.2</span> Risk Shifting</a></li>
+  <li><a href="#how-to-choose-which-method-for-modifying-risk" id="toc-how-to-choose-which-method-for-modifying-risk" class="nav-link" data-scroll-target="#how-to-choose-which-method-for-modifying-risk"><span class="header-section-number">1.10.3</span> How to Choose Which Method for Modifying Risk</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Risk Management</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>CFA Level I Reading 53, str. 83-131</p>
+<p>CFA Derivatives, chapter 6, subchapters 1-3</p>
+<p>Learning outcomes:</p>
+<ul>
+<li><p>define risk management</p></li>
+<li><p>describe features of a risk management framework</p></li>
+<li><p>define risk governance and describe elements of effective risk governance</p></li>
+<li><p>explain how risk tolerance affects risk management</p></li>
+<li><p>describe risk budgeting and its role in risk governance</p></li>
+<li><p>identify financial and non-financial sources of risk and describe how they may interact</p></li>
+<li><p>describe methods for measuring and modifying risk exposures and factors to consider in choosing among the methods</p></li>
+</ul>
+<section id="introduction" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1.1</span> Introduction</h2>
+<ul>
+<li>Investment involves inherent risk, and risk management is crucial in the investment process.</li>
+<li>Risk identification, measurement, and control are essential for proper investing and achieving objectives.</li>
+<li>Portfolio managers need to understand risk management both for portfolios and the enterprises they represent.</li>
+<li>Risky activities raise important questions about effective risk management processes.</li>
+<li>Risks should be evaluated to determine which are worth taking regularly, occasionally, or should be avoided.</li>
+</ul>
+</section>
+<section id="the-risk-management-process" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="the-risk-management-process"><span class="header-section-number">1.2</span> The Risk Management Process</h2>
+<section id="the-definition-of-risk" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="the-definition-of-risk"><span class="header-section-number">1.2.1</span> The Definition of Risk</h3>
+<ul>
+<li><strong><em>Risk</em></strong> <span class="math inline">\(\rightarrow\)</span> exposure to uncertainty.</li>
+<li>Risk is the chance of a loss or adverse outcome as a result of an action, inaction, or external event.</li>
+<li>It is not about avoiding risk, it is about managing risk.</li>
+<li>Risk and return are the interconnected forces of the financial universe.</li>
+<li>Risk can be managed or controlled as opposed to return.<br>
+</li>
+<li><strong>Risk exposure</strong> <span class="math inline">\(\rightarrow\)</span> the state of being exposed or vulnerable to a risk.</li>
+<li>Risk exposure results from the decisions of an organization or investor to take on risk-sensitive assets and liabilities.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose there is an important announcement in Japan that will result in the yen either appreciating or depreciating by 1%. The risk can be described as the range of resulting outcomes and is often thought of in terms of a probability distribution of future returns.</p>
+<p>Suppose that the underlying amount is ¥1,000,000 which result in ¥10,000 of risk exposure (1% of ¥1,000,000). The risk management process would inform the decision of whether to operate or invest in this risky currency.</p>
+</div>
+</div>
+<p>The term risk has three related but different meanings:</p>
+<ol type="1">
+<li><strong>Risk driver</strong> for the underlying risk.
+<ul>
+<li>The underlying uncertainty (e.g., the uncertain +1% or –1% movement of the currency).</li>
+</ul></li>
+<li><strong>Risk position</strong> to describe or quantify the risky action taken.
+<ul>
+<li>The extent of the risky action taken (e.g., the ¥1,000,000 worth of risky currency).</li>
+</ul></li>
+<li><strong>Risk exposure</strong> for the potential valuation change that may occurs.
+<ul>
+<li>The resulting range of risky outcomes to the organization (e.g., +¥10,000 or –¥10,000 risky outcome that might accrue to the business).</li>
+</ul></li>
+</ol>
+</section>
+<section id="risk-management" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="risk-management"><span class="header-section-number">1.2.2</span> Risk Management</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Risk management definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Risk management is the process by which an organization or individual defines the level of risk to be taken, measures the level of risk being taken, and adjusts the latter toward the former, with the goal of maximizing the company’s or portfolio’s value or the individual’s overall satisfaction, or utility.</p>
+<p><em>Alternative definition:</em> Risk management comprises all the decisions and actions needed to best achieve organizational or personal objectives while bearing a tolerable level of risk.</p>
+</div>
+</div>
+<ul>
+<li>Risk management is not about minimizing risk it is about actively understanding and embracing those risks that best balance the achievement of goals with an acceptable chance of failure, quantifying the exposure, and continually monitoring and modifying it.</li>
+<li>Good risk management does not prevent losses, but provides a full top-to-bottom framework that rigorously informs the decision-making process—before, during, and after a risk event.</li>
+<li><strong>Risks and exposures are dynamic</strong>, risk management is a continuous process.</li>
+<li>Even the best risk management may not stop a portfolio from losing money in a market crash nor prevent a business from reduced profits in an economic downturn.</li>
+</ul>
+</section>
+</section>
+<section id="the-risk-management-framework" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="the-risk-management-framework"><span class="header-section-number">1.3</span> The Risk Management Framework</h2>
+<ul>
+<li>A risk management framework <span class="math inline">\(\rightarrow\)</span> the infrastructure, process, and analytics needed to support effective risk management in an organization.</li>
+<li>It integrates the “risk” and “return” aspects of the enterprise into decisions in support of best achieving its goals within its tolerance for risk.</li>
+<li>A risk management framework should provide the tools to better understand the how and why of performance and help sort out which activities are adding value, and which are not.</li>
+<li>In investing, rigorous analysis can support better investment decisions and improve strategy and risk-adjusted returns.</li>
+<li>Although there are a very high number of risks faced by every organization, most organizations are primarily affected by a small number of key risk drivers, or primary underlying factors that create risk.</li>
+</ul>
+<section id="key-factors" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="key-factors"><span class="header-section-number">1.3.1</span> Key Factors</h3>
+<ol type="1">
+<li><strong>Risk governance:</strong>
+<ul>
+<li>The top-down process and guidance that directs risk management activities.</li>
+<li><strong><em>Enterprise risk management</em></strong> is an governance approach applied throughout the organization and consistent with its strategy, guiding the risk management framework to focus risk activities on the objectives, health, and value of the entire organization.</li>
+</ul></li>
+<li><strong>Risk identification and measurement:</strong>
+<ul>
+<li>The main quantitative core of risk management.</li>
+<li>Analyzing the environment for relevant risk drivers.</li>
+<li>Analyzing the business or portfolio to ascertain risk exposures.</li>
+<li>Tracking changes in those risk exposures.</li>
+<li>Calculating risk metrics to size these risks under various scenarios and stresses.</li>
+</ul></li>
+<li><strong>Risk infrastructure:</strong>
+<ul>
+<li>It refers to the people and systems required to track risk exposures and perform most of the quantitative risk analysis to allow an assessment of the organization’s risk profile.</li>
+<li>E.g., database and data model, analytic models and systems, a stress or scenario engine, etc.</li>
+</ul></li>
+<li><strong>Defined policies and processes:</strong>
+<ul>
+<li>The extension of risk governance into both the day-to-day operation and decision-making processes of the organization.</li>
+<li>There may be limits, requirements, constraints, and guidelines to ensure risky activities are in line with the organization’s predetermined risk tolerance and regulatory requirements.</li>
+</ul></li>
+<li><strong>Risk monitoring, mitigation, and management:</strong>
+<ul>
+<li>The most obvious facet of a risk framework, but also one of the most difficult.</li>
+<li>Actively monitoring and managing risk requires pulling together risk governance, identification and measurement, infrastructure, and policies and processes and continually reviewing and reevaluating in the face of changing risk exposures and risk drivers.</li>
+<li>It requires recognizing when risk exposure is not aligned with risk tolerance and then taking action to bring them back into alignment.</li>
+</ul></li>
+<li><strong>Communications:</strong>
+<ul>
+<li>It must happen continually and across all levels of the organization.</li>
+<li>Governance parameters, such as risk tolerances and associated constraints, must be clearly communicated to, and understood by, managers.</li>
+<li>Risk metrics must be reported in a clear and timely manner.</li>
+<li>Risk issues must be reviewed and discussed as a standard part of decision making.</li>
+<li>Changes in exposure must be discussed so that action can be taken as appropriate.</li>
+</ul></li>
+<li><strong>Strategic analysis or integration:</strong>
+<ul>
+<li>It helps turn risk management into an offensive weapon to improve performance.</li>
+<li>Good risk management is a key to increasing the value of the overall business or portfolio.</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="risk-tolerance" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="risk-tolerance"><span class="header-section-number">1.4</span> Risk Tolerance</h2>
+<ul>
+<li>Risk tolerance identifies the extent to which the organization is willing to experience losses or opportunity costs and to fail in meeting its objectives.</li>
+<li>What shortfalls within an organization would cause it to fail, or at least fail to achieve some critical goals?</li>
+<li>What uncertain forces is the organization exposed to? (What are its risk drivers?)</li>
+<li>Risk tolerance should be formally chosen and communicated before a crisis, and will serve as the high-level guidance for management in its strategic selection of risks.</li>
+</ul>
+</section>
+<section id="risk-budgeting" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="risk-budgeting"><span class="header-section-number">1.5</span> Risk Budgeting</h2>
+<ul>
+<li>Risk budgeting quantifies and allocates the tolerable risk by specific metrics; it extends and guides implementation of the risk tolerance decision.</li>
+<li>Risk budgeting is any means of allocating a portfolio based on some risk characteristics of the investments.</li>
+<li>In the purest sense, the term “budget” implies that there is a total risk limit for the organization.</li>
+<li>A risk budget can be complex and multi-dimensional, or it can be a simple, onedimensional risk measure.</li>
+<li>Four well-known single-dimension measures that are often used are standard deviation, beta, value at risk (VaR), and scenario loss.</li>
+<li>Multi-dimensional approaches for example evaluate risks by their underlying risk classes, such as equity, fixed income, commodity risk, and so on, and then allocates investments by their risk class.</li>
+<li>Also common are risk factor approaches to risk budgeting, in which exposure to various factors is used to attempt to capture associated risk premiums.</li>
+<li>One major benefit of even the most basic risk budgeting is that it forces risk tradeoffs and supports a culture in which risk is considered as a part of all key decisions.</li>
+<li>The budgeting of risk should result in an approach, whether explicit or not, of choosing to invest where the return per unit of risk is the highest.</li>
+<li>Choosing between a market hedge or less of a risky investment.</li>
+</ul>
+<hr>
+</section>
+<section id="identification-of-risk---financial-and-non-financial-risk" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="identification-of-risk---financial-and-non-financial-risk"><span class="header-section-number">1.6</span> Identification of Risk - Financial and Non-Financial Risk</h2>
+<ul>
+<li><strong><em>Financial risks</em></strong> originate from the financial markets (e.g., changes in prices or interest rates).</li>
+<li><strong><em>Non-financial risks</em></strong> are risks that are not primarily related to financial markets but arise from various sources (e.g., actions within the organization or from external origins such as the environment, relationship with counterparties, regulators, governments, suppliers, customers, etc.).</li>
+</ul>
+<section id="financial-risks" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="financial-risks"><span class="header-section-number">1.6.1</span> Financial Risks</h3>
+<ul>
+<li><strong>Market risk</strong> arises from movements in interest rates, stock prices, exchange rates, and commodity prices.</li>
+<li><strong>Credit risk</strong>, also known as default risk or counterparty risk, is the risk of loss if one party fails to pay an amount owed on an obligation, such as a bond, loan, or derivative, to another party.</li>
+<li><strong>Liquidity risk</strong> is the risk of a significant downward valuation adjustment when selling a financial asset.
+<ul>
+<li>It is related to transaction costs in the market (bid-ask spread).</li>
+<li>Depends on time-varying asset liquidity and size of a position.</li>
+</ul></li>
+</ul>
+</section>
+<section id="non-financial-risks" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="non-financial-risks"><span class="header-section-number">1.6.2</span> Non-Financial Risks</h3>
+<ul>
+<li><strong>Settlement risk</strong> is the risk of payment failure just before a default (e.g., you send money to your counterparty and it defaults and ).</li>
+<li><strong>Legal risk</strong> includes the risk of being sued and the risk that contract terms won’t be upheld.</li>
+<li><strong>Regulatory</strong>, <strong>accounting</strong>, and <strong>tax risks</strong> are related and collectively referred to as compliance risk.</li>
+<li><strong>Model risk</strong> is the risk of valuation error from using the wrong model or using the right model incorrectly.</li>
+<li><strong>Tail risk</strong> refers to events in the distribution tail that are more frequent than expected.</li>
+<li><strong>Operational risk</strong> arises from inadequate people, systems, internal policies, and external events.
+<ul>
+<li>Employees can pose risks through theft, mistakes, or accounting fraud.</li>
+<li>Rogue traders are individuals who engage in risky trades without regard for organizational limits.</li>
+<li>Business interruptions from extreme weather or natural disasters can shut down an organization.</li>
+<li>Cyber risk is a major operational risk related to IT system disruption, hacking, and data breaches.</li>
+<li>Terrorism poses a threat to organizations and individuals and requires security measures.</li>
+</ul></li>
+<li><strong>Solvency risk</strong> (sometimes called liquidity risk) is the risk of running out of cash, even if an organization is otherwise solvent.</li>
+</ul>
+</section>
+</section>
+<section id="identification-of-risk---interactions-between-risks" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="identification-of-risk---interactions-between-risks"><span class="header-section-number">1.7</span> Identification of Risk - Interactions Between Risks</h2>
+<ul>
+<li>Risks in different categories can often be classified into multiple categories.
+<ul>
+<li>Market risk leads to credit risk, which in turn leads to operational risk.</li>
+<li>Credit risk is closely linked to settlement risk.</li>
+<li>Legal risk can arise from market or credit risk, as parties search for loopholes in contracts.</li>
+</ul></li>
+<li>Risks can interact and compound, leading to higher costs and lower expected payoffs.</li>
+<li>Risks tend to interact with one another, particularly in stressed market conditions.</li>
+<li>Adverse risk interactions were prevalent during the financial crisis of 2008 and other market events.</li>
+<li>Combined risk is usually worse than the sum of individual risks in a non-linear manner.</li>
+<li>Up-front scenario planning is valuable in understanding risk interactions.</li>
+<li>Risk models and systems often do not account for risk interactions, making the consequences worse.</li>
+<li>Governance bodies, company management, and financial analysts should be aware of the potential risks and damages of risk interactions and avoid treating risks as separate and unrelated.</li>
+</ul>
+</section>
+<section id="measuring-and-modifying-risk---drivers-and-metrics" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="measuring-and-modifying-risk---drivers-and-metrics"><span class="header-section-number">1.8</span> Measuring and Modifying Risk - Drivers and Metrics</h2>
+<ul>
+<li>The primary purpose of measuring risk is to determine whether the risk being taken, or being considered, is consistent with the pre-defined risk tolerance.</li>
+</ul>
+<section id="drivers" class="level3" data-number="1.8.1">
+<h3 data-number="1.8.1" class="anchored" data-anchor-id="drivers"><span class="header-section-number">1.8.1</span> Drivers</h3>
+<ul>
+<li>All risks arise from the fact that the future is unknown.</li>
+<li>Financial markets reflect global and domestic economic conditions, industry factors, and company-specific characteristics.</li>
+<li>Government policies, regulations, laws, and economic factors influence the economic environment and impact the activities of companies.</li>
+<li>Macroeconomic and central bank policies introduce systematic risks to economies and industries.</li>
+<li>Investors also face idiosyncratic (unsystematic) risks specific to individual companies.</li>
+<li>Diversified portfolios aim to eliminate unsystematic risks, but unsystematic risks still matter to company management, poorly diversified investors, and financial analysts.</li>
+<li>Unsystematic risks can sometimes become systematic, such as when poor credit risk management in a major bank triggers a global financial crisis.</li>
+<li>Risk management can mitigate some risks but cannot control all of them.</li>
+<li>Measuring risk is essential for aligning risk exposure with objectives and risk tolerance.</li>
+</ul>
+</section>
+<section id="metrics" class="level3" data-number="1.8.2">
+<h3 data-number="1.8.2" class="anchored" data-anchor-id="metrics"><span class="header-section-number">1.8.2</span> Metrics</h3>
+<ul>
+<li>Metrics in risk refer to quantitative measures of risk exposure.</li>
+<li>Probability is a basic metric associated with risk, measuring the relative frequency of expected outcomes.</li>
+<li>Standard deviation measures the dispersion in a probability distribution and gives a range within which outcomes are expected to occur.</li>
+<li>Standard deviation has limitations and may not be appropriate for non-normal distributions or return distributions with fat tails.</li>
+<li><strong>Beta</strong>, a measure of sensitivity to market returns, is used to capture the risk of an asset in the context of a diversified portfolio.</li>
+<li>Derivatives require specialized risk measures called <strong>Greeks</strong> (e.g., delta, gamma, vega, theta, and rho).</li>
+<li>Different asset classes may have their own risk metrics, such as <strong>duration</strong> for fixed-income instruments.</li>
+<li><strong>Value at risk</strong> (VaR) is a measure of the size of extreme losses in a portfolio or organization, based on a specified absolute loss, probability, and time period.
+<ul>
+<li>VaR estimation methods vary and can lead to diverse estimates, and VaR is subject to model risk and assumptions.</li>
+<li>VaR is a minimum extreme loss metric. It does not tell the maximum loss.</li>
+<li><strong>Conditional VaR</strong> or CVaR is a common tail loss measure, defined as the weighted average of all loss outcomes in the statistical distribution that exceed the VaR loss.</li>
+<li>Extreme value theory analyze the statistical characteristics of outcomes that occur in the tails of the distribution.</li>
+<li><strong>Scenario analysis</strong> and <strong>stress testing</strong> complement VaR by evaluating the impact of specific conditions or extreme market movements on a portfolio.</li>
+</ul></li>
+<li>Credit risk assessment includes <strong>credit ratings</strong>, liquidity, solvency, profitability, leverage, and macroeconomic factors.</li>
+<li>Measuring credit risk is challenging due to the rarity of credit events, but default probabilities can be estimated by aggregating companies with similar characteristics or analyzing market prices of derivative instruments (e.g., credit default swaps).</li>
+<li>Operational risk is difficult to measure and involves assessing the likelihood and potential losses of rare events such as cyberattacks.</li>
+<li>Other risks, such as changes in accounting rules or regulatory requirements, may require subjective evaluation due to a lack of numeric measures.</li>
+</ul>
+</section>
+</section>
+<section id="methods-of-risk-modification---prevention-avoidance-and-acceptance" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="methods-of-risk-modification---prevention-avoidance-and-acceptance"><span class="header-section-number">1.9</span> Methods of Risk Modification - Prevention, Avoidance, and Acceptance</h2>
+<ul>
+<li>Risk modification involves aligning actual risk with acceptable risk, as determined in the risk governance stage.</li>
+<li>Risk modification does not always mean reducing risk; it can also involve adjusting risk to meet strategic objectives.</li>
+<li>Risk reduction, also known as hedging, is a common focus of risk management.</li>
+<li>Hedging involves implementing transactions to lower or eliminate risk.</li>
+<li>Risk management can vary depending on the organization’s goals, such as maintaining solvency.</li>
+<li>Four broad categories of risk modification are: risk prevention and avoidance, risk acceptance, risk transfer, and risk shifting.</li>
+</ul>
+<section id="risk-prevention-and-avoidance" class="level3" data-number="1.9.1">
+<h3 data-number="1.9.1" class="anchored" data-anchor-id="risk-prevention-and-avoidance"><span class="header-section-number">1.9.1</span> Risk Prevention and Avoidance</h3>
+<ul>
+<li>Risk avoidance may not always be possible or desirable, as there is often a trade-off between cost and benefits.</li>
+<li>Risk-taking behavior is often driven by perceived benefits that outweigh the associated costs.</li>
+<li>Organizational decisions to avoid risk are strategic and made at the governance level.</li>
+<li>Risk prevention and avoidance are part of the overall decision-making process regarding risk acceptance and trade-offs.</li>
+<li>Risk management involves fine-tuning exposure to achieve the desired level of risk relative to the benefits.</li>
+<li>If risk exceeds the acceptable level, three approaches to managing risk are self-insuring, risk transfer, and risk shifting.</li>
+</ul>
+</section>
+<section id="risk-acceptance-self-insurance-and-diversification" class="level3" data-number="1.9.2">
+<h3 data-number="1.9.2" class="anchored" data-anchor-id="risk-acceptance-self-insurance-and-diversification"><span class="header-section-number">1.9.2</span> Risk Acceptance: Self-Insurance and Diversification</h3>
+<ul>
+<li>Self-insurance involves bearing a risk that is considered costly to eliminate by external means.</li>
+<li>Self-insuring can mean accepting the risk as is or establishing a reserve to cover potential losses.</li>
+<li>Care must be taken to ensure self-insurance aligns with an enterprise’s risk tolerance and is not a form of denial or bad risk governance.</li>
+<li>Diversification is a risk-mitigation technique that involves spreading investments across different assets or sectors.</li>
+<li>Diversification is central to modern portfolio analysis and is often combined with other risk modification strategies.</li>
+</ul>
+</section>
+</section>
+<section id="methods-of-risk-modification---transfer-shifting-choosing-a-method-for-modifying" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="methods-of-risk-modification---transfer-shifting-choosing-a-method-for-modifying"><span class="header-section-number">1.10</span> Methods of Risk Modification - Transfer, Shifting, Choosing a Method for Modifying</h2>
+<section id="risk-transfer" class="level3" data-number="1.10.1">
+<h3 data-number="1.10.1" class="anchored" data-anchor-id="risk-transfer"><span class="header-section-number">1.10.1</span> Risk Transfer</h3>
+<ul>
+<li>Risk transfer involves passing on a risk to another party through insurance policies.</li>
+<li>Insurance is a legal contract where the insurer agrees to cover a portion of a loss in exchange for a premium.</li>
+<li>Insurance has been used for centuries in industries like shipping and farming.</li>
+<li>Insurers diversify risks by selling many policies with low-correlation risks and charge premiums to cover expected losses and operating costs.</li>
+<li>Some risks can be correlated, and insurers manage this by avoiding excessive coverage in high-risk areas and using reinsurance.</li>
+<li>Specialized insurance coverage is available for unique risks through companies like Lloyd’s of London.</li>
+</ul>
+</section>
+<section id="risk-shifting" class="level3" data-number="1.10.2">
+<h3 data-number="1.10.2" class="anchored" data-anchor-id="risk-shifting"><span class="header-section-number">1.10.2</span> Risk Shifting</h3>
+<ul>
+<li>Risk transfer passes risk to other parties, while risk shifting changes the distribution of risk outcomes.</li>
+<li>Risk transfer is associated with insurance, while risk shifting involves derivatives.</li>
+<li>Derivatives allow efficient shifting of risk across probability distributions and from one party to another.</li>
+<li>Derivatives can be forward commitments (e.g., futures contracts, swaps) or contingent claims (e.g., options).</li>
+<li>Forward commitments lock in future prices, rates, or exchange rates without an upfront payment.</li>
+<li>Contingent claims (options) grant the right, but not the obligation, to buy/sell an asset or pay/receive a known rate.</li>
+<li>Option buyers pay a premium and have the choice to exercise the option or let it expire.</li>
+<li>Derivatives can be created on exchanges or privately between parties.</li>
+</ul>
+</section>
+<section id="how-to-choose-which-method-for-modifying-risk" class="level3" data-number="1.10.3">
+<h3 data-number="1.10.3" class="anchored" data-anchor-id="how-to-choose-which-method-for-modifying-risk"><span class="header-section-number">1.10.3</span> How to Choose Which Method for Modifying Risk</h3>
+<ul>
+<li>Choosing the right risk mitigation method (prevention, self-insurance, transfer, shifting) is crucial in risk management.</li>
+<li>Organizations often use multiple methods, and the choice depends on costs, benefits, and risk tolerance.</li>
+<li>Companies with foreign operations often hedge exchange rate risk using derivatives (forwards, swaps, options).</li>
+<li>Risk prevention and avoidance are preferred for risks with little benefit, but avoidance may not always be feasible.</li>
+<li>Self-insurance can be an option for organizations with ample cash flow, but it may not cover all risks.</li>
+<li>Risk transfer through insurance may not be suitable for all risks, especially those that can affect many parties simultaneously.</li>
+<li>Risk shifting using derivatives is common for financial risks that exceed risk appetite.</li>
+<li>Different risk management methods have varying impacts on risk reduction and remaining risk profiles.</li>
+<li>Decision-making involves evaluating costs, benefits, and risk profiles while aligning with organizational risk management objectives.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./03_learning_outcomes.html" class="pagination-link">
+        <span class="nav-page-text">Risk Management Applications of Forward and Futures Strategies</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

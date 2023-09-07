@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Risk Management and Financial Institutions - 4&nbsp; Option Strategies</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./week_05.html" rel="next">
+<link href="./week_03.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_04.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Option Strategies</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Risk Management and Financial Institutions</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Risk-Management-and-Financial-Institutions.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Risk-Management-and-Financial-Institutions.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Risk Management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Revision of the Basic Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward and Futures Strategies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_04.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Option Strategies</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Volatility, Correlations, and Copulas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Market Risk I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reading Week</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Market Risk II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Credit Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Operational Risk, Liquidity Risk, and Model Risk</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Regulation, Economic Capital, and RAROC</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Financial Innovation and Risk Management Mistakes</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">4.1</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#notation-and-assumptions" id="toc-notation-and-assumptions" class="nav-link" data-scroll-target="#notation-and-assumptions"><span class="header-section-number">4.1.1</span> Notation and Assumptions</a></li>
+  </ul></li>
+  <li><a href="#option-strategies-for-equity-portfolios" id="toc-option-strategies-for-equity-portfolios" class="nav-link" data-scroll-target="#option-strategies-for-equity-portfolios"><span class="header-section-number">4.2</span> Option Strategies for Equity Portfolios</a>
+  <ul class="collapse">
+  <li><a href="#standard-long-and-short-positions" id="toc-standard-long-and-short-positions" class="nav-link" data-scroll-target="#standard-long-and-short-positions"><span class="header-section-number">4.2.1</span> Standard Long and Short Positions</a></li>
+  <li><a href="#risk-management-strategies-with-options-and-the-underlying" id="toc-risk-management-strategies-with-options-and-the-underlying" class="nav-link" data-scroll-target="#risk-management-strategies-with-options-and-the-underlying"><span class="header-section-number">4.2.2</span> Risk Management Strategies with Options and the Underlying</a></li>
+  <li><a href="#money-spreads" id="toc-money-spreads" class="nav-link" data-scroll-target="#money-spreads"><span class="header-section-number">4.2.3</span> Money Spreads</a></li>
+  <li><a href="#combinations-of-calls-and-puts" id="toc-combinations-of-calls-and-puts" class="nav-link" data-scroll-target="#combinations-of-calls-and-puts"><span class="header-section-number">4.2.4</span> Combinations of Calls and Puts</a></li>
+  </ul></li>
+  <li><a href="#interest-rate-option-strategies" id="toc-interest-rate-option-strategies" class="nav-link" data-scroll-target="#interest-rate-option-strategies"><span class="header-section-number">4.3</span> Interest Rate Option Strategies</a>
+  <ul class="collapse">
+  <li><a href="#using-interest-rate-calls-with-borrowing---example" id="toc-using-interest-rate-calls-with-borrowing---example" class="nav-link" data-scroll-target="#using-interest-rate-calls-with-borrowing---example"><span class="header-section-number">4.3.1</span> Using Interest Rate Calls with Borrowing - Example</a></li>
+  <li><a href="#floating-rate-cap-floor-and-collar" id="toc-floating-rate-cap-floor-and-collar" class="nav-link" data-scroll-target="#floating-rate-cap-floor-and-collar"><span class="header-section-number">4.3.2</span> Floating-Rate Cap, Floor, and Collar</a></li>
+  </ul></li>
+  <li><a href="#option-portfolio-risk-management-strategies" id="toc-option-portfolio-risk-management-strategies" class="nav-link" data-scroll-target="#option-portfolio-risk-management-strategies"><span class="header-section-number">4.4</span> Option Portfolio Risk Management Strategies</a>
+  <ul class="collapse">
+  <li><a href="#delta-hedging" id="toc-delta-hedging" class="nav-link" data-scroll-target="#delta-hedging"><span class="header-section-number">4.4.1</span> Delta Hedging</a></li>
+  <li><a href="#gamma-hedging" id="toc-gamma-hedging" class="nav-link" data-scroll-target="#gamma-hedging"><span class="header-section-number">4.4.2</span> Gamma Hedging</a></li>
+  <li><a href="#vega-and-volatility-risk" id="toc-vega-and-volatility-risk" class="nav-link" data-scroll-target="#vega-and-volatility-risk"><span class="header-section-number">4.4.3</span> Vega and Volatility Risk</a></li>
+  </ul></li>
+  <li><a href="#practice-questions-and-problems" id="toc-practice-questions-and-problems" class="nav-link" data-scroll-target="#practice-questions-and-problems"><span class="header-section-number">4.5</span> Practice Questions and Problems</a>
+  <ul class="collapse">
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="header-section-number">4.5.1</span> Case Study</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Option Strategies</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><strong>References:</strong></p>
+<ul>
+<li>Pirie, W. L., and M. P. Kritzman. 2017. Derivatives. CFA Institute Investment Series.
+<ul>
+<li>Chapter 8 - Risk Management Applications of Option Strategies</li>
+</ul></li>
+</ul>
+<p><strong>Learning outcomes:</strong></p>
+<ul>
+<li>Compare the use of covered calls and protective puts for risk management.</li>
+<li>Calculate/interpret values for option strategies including bull spread, bear spread, butterfly spread, collar, straddle, box spread.</li>
+<li>Determine the effective annual rate for an anticipated loan managed with interest rate options.</li>
+<li>Calculate payoffs for a floating rate loan combined with an interest rate cap, floor, or collar.</li>
+<li>Explain delta hedging for dealers, including adjustments and why delta changes.</li>
+<li>Interpret the gamma of a delta-hedged portfolio and explain how gamma changes with options moving toward expiration.</li>
+</ul>
+<section id="introduction" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">4.1</span> Introduction</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition of options
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Options are contracts that give the buyer the right, but not the obligation, to buy (in the case of a call option) or sell (in the case of a put option) an underlying asset at a predetermined price, known as the strike price, within a specified time frame. The seller of the option, in turn, has the obligation to fulfill the transaction if the buyer decides to exercise the option.</p>
+</div>
+</div>
+<ul>
+<li>Options have non-linear payoffs and require upfront payment.</li>
+<li>Options allow benefiting from favorable movements and minimizing harm from unfavorable movements.</li>
+<li>Sellers of options face potential large losses and must be adequately compensated.</li>
+</ul>
+<section id="notation-and-assumptions" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="notation-and-assumptions"><span class="header-section-number">4.1.1</span> Notation and Assumptions</h3>
+<ul>
+<li>Assumptions:
+<ul>
+<li>Option user has a view on underlying movements or volatility.</li>
+<li>Options are customized and European-style.</li>
+<li>No early termination of strategies.</li>
+</ul></li>
+<li>Time notation:
+<ul>
+<li>Time <span class="math inline">\(0\)</span> is the time at which the strategy is initiated.</li>
+<li>Time <span class="math inline">\(t\)</span> is the time the option expires, stated as a fraction of a year.</li>
+</ul></li>
+<li>Time until expiration: <span class="math inline">\(t - 0 = t\)</span>, which is <span class="math inline">\(\frac{\text{Days to expiration}}{365}\)</span>.</li>
+<li>Symbol definitions:
+<ul>
+<li><span class="math inline">\(c_0, c_t\)</span> <span class="math inline">\(\dots\)</span> Price of the call option at time <span class="math inline">\(0\)</span> and time <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\(p_0, p_t\)</span> <span class="math inline">\(\dots\)</span> Price of the put option at time <span class="math inline">\(0\)</span> and time <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\(X\)</span> <span class="math inline">\(\dots\)</span> Exercise price.</li>
+<li><span class="math inline">\(S_0, S_t\)</span> <span class="math inline">\(\dots\)</span> Price of the underlying at time <span class="math inline">\(0\)</span> and time <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\(V_0, V_t\)</span> <span class="math inline">\(\dots\)</span> Value of the position at time <span class="math inline">\(0\)</span> and time <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\(\Pi\)</span> <span class="math inline">\(\dots\)</span> Profit from the transaction, calculated as <span class="math inline">\(V_t - V_0\)</span>.</li>
+<li><span class="math inline">\(r\)</span> <span class="math inline">\(\dots\)</span> Risk-free rate.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="option-strategies-for-equity-portfolios" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="option-strategies-for-equity-portfolios"><span class="header-section-number">4.2</span> Option Strategies for Equity Portfolios</h2>
+<ul>
+<li>The following strategies can be applied to variety of asset classes.</li>
+<li>However, they are primarily explained and understood within the context of investing in equities or equity indices.</li>
+</ul>
+<section id="standard-long-and-short-positions" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="standard-long-and-short-positions"><span class="header-section-number">4.2.1</span> Standard Long and Short Positions</h3>
+<ul>
+<li>Based on the course “Financial Derivatives” you should be able to define the following:
+<ul>
+<li>Long position in a stock and short position in a stock.</li>
+<li>Long call and short call options.</li>
+<li>Long put and short put options.</li>
+<li>Calculate profit and value of the option.</li>
+<li>Determine the maximum profit or loss for each position.</li>
+</ul></li>
+</ul>
+</section>
+<section id="risk-management-strategies-with-options-and-the-underlying" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="risk-management-strategies-with-options-and-the-underlying"><span class="header-section-number">4.2.2</span> Risk Management Strategies with Options and the Underlying</h3>
+<section id="covered-call" class="level4" data-number="4.2.2.1">
+<h4 data-number="4.2.2.1" class="anchored" data-anchor-id="covered-call"><span class="header-section-number">4.2.2.1</span> Covered Call</h4>
+<ul>
+<li>Covered call strategy involves owning the underlying asset (like stocks) and then selling call options on that same asset.</li>
+<li>The goal is to generate additional income from the option premium, which the investor gets to keep regardless of whether the option is exercised or not.</li>
+<li>Covered calls reduce the risk of a position, contradicting beliefs that options inherently increase risk.</li>
+<li>While they decrease risk, covered calls also reduce expected returns compared to only holding the stock.</li>
+<li>This strategy may limit gains in bull markets but provides a cushion against losses in bear markets through the option premium.</li>
+<li>To summarize the covered call, we have the following: <span class="math display">\[
+V_t = S_t - \max(0, S_t - X)
+\]</span></li>
+</ul>
+<p><span class="math display">\[
+\Pi = V_t - S_0 + c_0
+\]</span></p>
+<p><span class="math display">\[
+\text{Maximum profit} = X - S_0 + c_0
+\]</span></p>
+<p><span class="math display">\[
+\text{Maximum loss} = S_0 - c_0
+\]</span></p>
+<p><span class="math display">\[
+\text{Breakeven} = S_t = S_0 - c_0
+\]</span></p>
+</section>
+<section id="covered-call-example" class="level4" data-number="4.2.2.2">
+<h4 data-number="4.2.2.2" class="anchored" data-anchor-id="covered-call-example"><span class="header-section-number">4.2.2.2</span> Covered Call Example</h4>
+<ul>
+<li>This example illustrates how a covered call strategy can generate income and potentially increase profits, but it also shows that the strategy can limit upside potential if the underlying asset’s price increases significantly.</li>
+<li>Suppose you own 100 shares of Company XYZ, which are currently trading at $50 per share.</li>
+<li>You decide to implement a covered call strategy by selling one call option (equivalent to 100 shares) with a strike price of $55 for a premium of $2 per share.</li>
+<li>If the price of the shares rises to $60, the option will be exercised:</li>
+</ul>
+<p><span class="math display">\[
+\text{Profit} = \text{Profit from shares} + \text{Profit from option}
+\]</span></p>
+<p><span class="math display">\[
+\text{Profit} = (\$60 - \$50) \times 100 + (-\$300) = \$1000 - \$300 = \$700
+\]</span></p>
+<ul>
+<li>If the price of the shares stays below $55, the option will not be exercised:</li>
+</ul>
+<p><span class="math display">\[
+\text{Profit} = (\$2 \times 100) + ((\$55 - \$50) \times 100) = \$200 + \$0 = \$200
+\]</span></p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>stock_price <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>strike_price <span class="op">=</span> <span class="dv">55</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>premium <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>shares <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Stock price range for the graph</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>stock_price_range <span class="op">=</span> np.arange(<span class="dv">40</span>, <span class="dv">70</span>, <span class="dv">1</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Underlying stock payoff calculation</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>stock_payoff <span class="op">=</span> stock_price_range <span class="op">-</span> stock_price</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Call option payoff calculation (for short position)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>call_payoff <span class="op">=</span> np.where(</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    stock_price_range <span class="op">&lt;=</span> strike_price,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    premium,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    premium <span class="op">-</span> (stock_price_range <span class="op">-</span> strike_price),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Covered call payoff calculation</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>covered_call_payoff <span class="op">=</span> stock_payoff <span class="op">+</span> call_payoff</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>plt.plot(stock_price_range, stock_payoff, label<span class="op">=</span><span class="st">"Underlying Stock"</span>, color<span class="op">=</span><span class="st">"blue"</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>plt.plot(stock_price_range, call_payoff, label<span class="op">=</span><span class="st">"Short Call Option"</span>, color<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>plt.plot(</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    stock_price_range,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    covered_call_payoff,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Covered Call Strategy"</span>,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"green"</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linewidth<span class="op">=</span><span class="fl">1.2</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Stock Price at Expiration"</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Profit/Loss"</span>)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Covered Call Strategy Payoff"</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="week_04_files/figure-html/cell-2-output-1.png" width="819" height="523"></p>
+</div>
+</div>
+</section>
+<section id="protective-put" class="level4" data-number="4.2.2.3">
+<h4 data-number="4.2.2.3" class="anchored" data-anchor-id="protective-put"><span class="header-section-number">4.2.2.3</span> Protective Put</h4>
+<ul>
+<li>A protective put strategy involves buying an asset (like stocks) and buying a put option for the same asset.</li>
+<li>The goal of this strategy is to limit the downside risk of owning the asset.</li>
+<li>If the asset’s price falls, the put option increases in value, offsetting the loss from the asset.</li>
+<li>A protective put strategy offers downside protection with upside potential, but it’s important to consider the costs and trade-offs.</li>
+<li>Protection against downside loss is expensive and the buyer of a protective put must give up considerable upside potential.</li>
+<li>The protective put strategy is often viewed as a form of insurance.</li>
+<li>To summarize the protective put, we have the following:</li>
+</ul>
+<p><span class="math display">\[
+V_t = S_t + \max(0, X - S_t)
+\]</span></p>
+<p><span class="math display">\[
+\Pi = V_t - S_0 - p_0
+\]</span></p>
+<p><span class="math display">\[
+\text{Maximum profit} = \infty
+\]</span></p>
+<p><span class="math display">\[
+\text{Maximum loss} = S_0 + p_0 - X
+\]</span></p>
+<p><span class="math display">\[
+\text{Breakeven} = S_t = S_0 + p_0
+\]</span></p>
+</section>
+<section id="protective-put-example" class="level4" data-number="4.2.2.4">
+<h4 data-number="4.2.2.4" class="anchored" data-anchor-id="protective-put-example"><span class="header-section-number">4.2.2.4</span> Protective Put Example</h4>
+<ul>
+<li>Suppose you own 100 shares of Company XYZ, which are currently trading at $50 per share.</li>
+<li>You decide to implement a protective put strategy by buying one put option (equivalent to 100 shares) with a strike price of $45 for a premium of $2 per share.</li>
+<li>If the price of the shares rises to $60, the option will not be exercised:</li>
+</ul>
+<p><span class="math display">\[
+\text{Profit} = \text{Profit from shares} + \text{Profit from option}
+\]</span></p>
+<p><span class="math display">\[
+\text{Profit} = (\$60 - \$50) \times 100 + (-\$2) \times 100 = \$1000 - \$200 = \$800
+\]</span></p>
+<ul>
+<li>If the price of the shares drops to $40, the option will be exercised:</li>
+</ul>
+<p><span class="math display">\[
+\text{Profit} = (\$40 - \$50) \times 100  + (-\$2) \times 100 + (\$45 - \$40) \times 100
+\]</span></p>
+<p><span class="math display">\[
+\text{Profit} = -\$1000 - \$200 + \$500 = -\$700
+\]</span></p>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>stock_price <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>strike_price <span class="op">=</span> <span class="dv">45</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>premium <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>shares <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Stock price range for the graph</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>stock_price_range <span class="op">=</span> np.arange(<span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">1</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Underlying stock payoff calculation</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>stock_payoff <span class="op">=</span> stock_price_range <span class="op">-</span> stock_price</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Put option payoff calculation (for long position)</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>put_payoff <span class="op">=</span> (</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    np.where(stock_price_range <span class="op">&lt;=</span> strike_price, strike_price <span class="op">-</span> stock_price_range, <span class="dv">0</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> premium</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Protective put payoff calculation</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>protective_put_payoff <span class="op">=</span> stock_payoff <span class="op">+</span> put_payoff</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>plt.plot(stock_price_range, stock_payoff, label<span class="op">=</span><span class="st">"Underlying Stock"</span>, color<span class="op">=</span><span class="st">"blue"</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>plt.plot(stock_price_range, put_payoff, label<span class="op">=</span><span class="st">"Long Put Option"</span>, color<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>plt.plot(</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    stock_price_range,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    protective_put_payoff,</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Protective Put Strategy"</span>,</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"green"</span>,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linewidth<span class="op">=</span><span class="fl">1.2</span>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Stock Price at Expiration"</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Profit/Loss"</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Protective Put Strategy Payoff"</span>)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="week_04_files/figure-html/cell-3-output-1.png" width="832" height="523"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="money-spreads" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="money-spreads"><span class="header-section-number">4.2.3</span> Money Spreads</h3>
+<ul>
+<li>In options trading, “money spreads” or “spreads” refer to strategies that involve simultaneously buying and selling options of the same class (e.g., calls or puts) on the same underlying asset but with different strike prices and/or expiration dates.</li>
+<li>These strategies are often used to reduce risk and can also be a way to reduce the initial cost of entering a position.</li>
+<li>Spreads are categorized based on how they make or lose money, and below are some common types:</li>
+</ul>
+<ol type="1">
+<li><strong>Vertical Spreads</strong>:
+<ul>
+<li><strong>Bull Call Spread</strong>: Buying a call option with a lower strike price and selling another call option with a higher strike price, both with the same expiration date.</li>
+<li><strong>Bull Put Spread</strong>: Selling a put option with a higher strike price and buying a put option with a lower strike price.</li>
+<li><strong>Bear Put Spread</strong>: Buying a put option with a higher strike price and selling</li>
+<li><strong>Bear Call Spread</strong>: Selling a call option with a lower strike price and buying a call option with a higher strike price.</li>
+</ul></li>
+<li><strong>Horizontal Spreads</strong> (also known as <strong>Calendar Spreads</strong>):
+<ul>
+<li>Involves options with the same strike price but different expiration dates.</li>
+</ul></li>
+<li><strong>Diagonal Spreads</strong>:
+<ul>
+<li>Combines elements of both vertical and horizontal spreads, involving different strike prices and different expiration dates.</li>
+</ul></li>
+<li><strong>Iron Condor</strong>:
+<ul>
+<li>A combination of two vertical spreads (one using calls, the other using puts) with the same expiration date but different strike prices.</li>
+</ul></li>
+<li><strong>Butterfly Spread</strong>:
+<ul>
+<li>A combination of three strike prices, usually involving both calls and puts. It can be constructed using all calls (call butterfly) or all puts (put butterfly).</li>
+</ul></li>
+</ol>
+<ul>
+<li>The profit and loss of these strategies depend on the underlying asset’s price at expiration, relative to the strike prices of the options used in the spread.</li>
+<li>Money spreads help traders target a specific range of potential price movement, and they often involve less risk than outright buying or selling single options.</li>
+<li>The tradeoff, generally speaking, is that they also offer more limited profit potential.</li>
+</ul>
+</section>
+<section id="combinations-of-calls-and-puts" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="combinations-of-calls-and-puts"><span class="header-section-number">4.2.4</span> Combinations of Calls and Puts</h3>
+<section id="collars" class="level4" data-number="4.2.4.1">
+<h4 data-number="4.2.4.1" class="anchored" data-anchor-id="collars"><span class="header-section-number">4.2.4.1</span> Collars</h4>
+<ul>
+<li>A collar option strategy is a defensive strategy that investors use when they have a long position in the underlying asset and want to protect against potential losses.</li>
+<li>It consists of three components:
+<ol type="1">
+<li><strong>Owning the Underlying Asset</strong>: The investor holds shares of a stock or another underlying asset.</li>
+<li><strong>Buying a Put Option</strong>: The investor buys a put option with a strike price below the current price of the underlying asset. This put option serves as insurance, providing the right to sell the underlying asset at the strike price if the asset’s price falls significantly. It defines a floor on potential losses.</li>
+<li><strong>Selling a Call Option</strong>: At the same time, the investor sells (or “writes”) a call option with a strike price above the current price of the underlying asset. This generates premium income, which can offset the cost of buying the put option. However, it also caps the potential profit if the underlying asset’s price rises above the call’s strike price, as the call buyer will have the right to buy the asset at that price.</li>
+</ol></li>
+<li>The combination of these three elements forms a “collar” around the potential profit and loss from the underlying asset:
+<ul>
+<li><strong>Protection from Loss</strong>: If the underlying asset’s price falls, the put option compensates for the loss, limiting the downside risk.</li>
+<li><strong>Limitation on Profit</strong>: If the underlying asset’s price rises above the strike price of the sold call, the profit is capped, as the asset may be called away at that price.</li>
+<li><strong>Cost Mitigation</strong>: The premium received from selling the call option can offset the cost of buying the put, potentially creating a cost-neutral or low-cost hedge.</li>
+</ul></li>
+<li>The collar strategy is often used by investors who have significant gains in the underlying asset and want to protect those gains without selling the asset.</li>
+<li>It can be tailored to the investor’s outlook by choosing different strike prices and expiration dates for the options, balancing the level of protection, profit potential, and cost.</li>
+</ul>
+</section>
+<section id="straddle" class="level4" data-number="4.2.4.2">
+<h4 data-number="4.2.4.2" class="anchored" data-anchor-id="straddle"><span class="header-section-number">4.2.4.2</span> Straddle</h4>
+<ul>
+<li>A straddle option strategy is a neutral options strategy that involves simultaneously buying or selling a call option and a put option with the same strike price and expiration date on the same underlying asset.</li>
+<li>It’s used when an investor expects a significant price movement but is uncertain about the direction of the movement (up or down). There are two main variations of the straddle strategy:</li>
+<li><strong>Long Straddle</strong>: Suitable for investors who anticipate significant price volatility but are uncertain about the direction. The cost is the premium paid for both options, and the profit potential is unlimited.</li>
+<li><strong>Short Straddle</strong>: Suitable for investors who anticipate little to no price movement in the underlying asset. The profit is limited to the premiums received, and the risk can be substantial if the asset price moves sharply.</li>
+<li><strong>Strangle</strong>: Similar to a straddle but uses different strike prices for the call and put, usually with the call’s strike price above and the put’s strike price below the current asset price. It can be implemented as a long or short strategy.</li>
+<li>The straddle strategy is commonly used around significant news events, earnings announcements, or other situations where substantial price swings are possible. It allows investors to potentially profit from volatility itself, rather than having to correctly predict price direction.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="interest-rate-option-strategies" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="interest-rate-option-strategies"><span class="header-section-number">4.3</span> Interest Rate Option Strategies</h2>
+<ul>
+<li><p>Underlying asset is an interest rate, usually on a 90- or 180-day underlying instrument.</p></li>
+<li><p>The purpose is a protection against changes in interest rates.</p></li>
+<li><p>Call option is exercised if the underlying interest rate is above the exercise rate.</p></li>
+<li><p>Put option is exercised if the underlying interest rate is below the exercise rate.</p></li>
+<li><p>Notional principal determines the payoff when the option is exercised.</p></li>
+<li><p>Payoff is delayed by a period corresponding to the life of the underlying instrument.</p></li>
+<li><p>The rate is determined on one day, the option expiration, and payment is made <span class="math inline">\(m\)</span> days later.</p></li>
+<li><p>This practice is standard in floating-rate loans and thus is used with interest rate options, which are designed to manage the risk of floating-rate loans.</p></li>
+<li><p><strong>Payoff for Interest Rate Call Option</strong>:</p></li>
+</ul>
+<p><span class="math display">\[
+\text{Notional principal} \times \max(0, \text{Underlying rate at expiration} - \text{Exercise rate}) \times \frac{\text{Days in underlying rate}}{360}
+\]</span></p>
+<ul>
+<li><strong>Payoff for Interest Rate Put Option</strong>:</li>
+</ul>
+<p><span class="math display">\[
+\text{Notional principal} \times \max(0, \text{Exercise rate} - \text{Underlying rate at expiration}) \times \frac{\text{Days in underlying rate}}{360}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\text{Days in underlying}\)</span> refers to the maturity of the instrument from which the underlying rate is taken.</li>
+</ul>
+<section id="using-interest-rate-calls-with-borrowing---example" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="using-interest-rate-calls-with-borrowing---example"><span class="header-section-number">4.3.1</span> Using Interest Rate Calls with Borrowing - Example</h3>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Loan Details</th>
+<th style="text-align: center;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Loan Amount</td>
+<td style="text-align: center;">$40,000,000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Underlying</td>
+<td style="text-align: center;">180-day LIBOR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Spread</td>
+<td style="text-align: center;">200 basis points over LIBOR</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Current LIBOR</td>
+<td style="text-align: center;">5.5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Expiration</td>
+<td style="text-align: center;">128 days later</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Exercise Rate</td>
+<td style="text-align: center;">5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Call Premium</td>
+<td style="text-align: center;">$100,000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">LIBOR at expiration</td>
+<td style="text-align: center;">8%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Call Payoff at Expiration</strong> (received 180 days later):</li>
+</ul>
+<p><span class="math display">\[
+\$40,000,000 \times \max(0, 0.08 - 0.05) \times \frac{180}{360} = \$600,000
+\]</span></p>
+<ul>
+<li><strong>Premium Compounded</strong> from option initiation to option expiration (128 days) at original LIBOR of 5.5% plus 200 basis points:</li>
+</ul>
+<p><span class="math display">\[
+\$100,000 \times \left[1 + (0.055 + 0.02) \times \frac{128}{360}\right] = \$102,667
+\]</span></p>
+<ul>
+<li><strong>Effective Loan Proceeds</strong>:</li>
+</ul>
+<p><span class="math display">\[
+\$40,000,000 - \$102,667 = \$39,897,333
+\]</span></p>
+<ul>
+<li><strong>Loan Interest</strong>:</li>
+</ul>
+<p><span class="math display">\[
+\$40,000,000 \times (0.08 + 0.02) \times \frac{180}{360} = \$2,000,000
+\]</span></p>
+<ul>
+<li><strong>Effective Interest</strong>: Loan interest minus the call payoff</li>
+<li><strong>Effective Rate on the Loan</strong>:</li>
+</ul>
+<p><span class="math display">\[
+\left(\frac{\$40,000,000 + \$2,000,000 - \$600,000}{\$39,897,333}\right)^{365/180} - 1 = 7.79\%
+\]</span></p>
+<ul>
+<li>For various LIBOR rates at option expiration, the highest possible effective rate is 7.79% (if the option is exercised). If the option is not exercised, the effective rate decreases.</li>
+<li>The similar analysis can be used <strong>for lending</strong> by using interest rate <strong>put options</strong>.</li>
+<li>A lender can buy a put that pays off if the interest rate falls below a chosen level.</li>
+<li>The put payoff then compensates the lender for the lower interest rate on the loan.</li>
+<li>The equations have to be slightly adjusted for put options, everything else is similar.</li>
+</ul>
+</section>
+<section id="floating-rate-cap-floor-and-collar" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="floating-rate-cap-floor-and-collar"><span class="header-section-number">4.3.2</span> Floating-Rate Cap, Floor, and Collar</h3>
+<ul>
+<li><p>Many corporate loans are floating-rate loans that have periodic interest payments with regularly scheduled rate resets, causing multiple distinct risks.</p></li>
+<li><p><strong>Interest Rate Calls (Caplets)</strong>:</p>
+<ul>
+<li>Borrowers might use multiple call options (caplets) to set a ceiling on borrowing rates.</li>
+<li>Each caplet has its own expiration date; exercise rates are typically the same.</li>
+<li>A combination of these options is called <strong>a cap</strong>.</li>
+</ul></li>
+<li><p><strong>Interest Rate Puts (Floorlets)</strong>:</p>
+<ul>
+<li>Lenders like may be concerned about falling rates and can buy puts expiring on rate reset dates.</li>
+<li>This combination is known as <strong>a floor</strong>, with individual options called floorlets.</li>
+</ul></li>
+<li><p><strong>Interest Rate Collars</strong>:</p>
+<ul>
+<li>Combines a long position in a cap with a short position in a floor.</li>
+<li>Zero-Cost collar means that exercise rate on the floor matches the cap premium, seeming to have no “cost,” but the borrower gives up gains from potential falling rates.</li>
+<li>Borrowers often buy caps and sell floors, while lenders might buy floors and sell caps.</li>
+<li>Most interest rate collars are initiated by borrowers, to protect against varying interest rates.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="option-portfolio-risk-management-strategies" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="option-portfolio-risk-management-strategies"><span class="header-section-number">4.4</span> Option Portfolio Risk Management Strategies</h2>
+<ul>
+<li>Dealers provide liquidity in options, taking on risk and hedging positions to earn the bid-ask spread without taking on the risk themselves.</li>
+<li>When a customer wants to buy a call option, the dealer quotes a price and sells it, but this creates a dangerous short call position.</li>
+<li>Ideally, the dealer would find someone to take the opposite position or use put-call parity to hedge the risk.</li>
+<li>However, this often isn’t practical, so dealers often resort to delta hedging.</li>
+</ul>
+<section id="delta-hedging" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="delta-hedging"><span class="header-section-number">4.4.1</span> Delta Hedging</h3>
+<ul>
+<li><p>Delta is a ratio expressing how the option price changes relative to the underlying price, typically between 0.0 and 1.0.</p></li>
+<li><p>A long position in the underlying asset can offset a short call position; the size of the long position depends on the option’s delta.</p></li>
+<li><p>If the dealer sells a given number of calls, they need to own a number of shares equal to the number of underlying shares in the options times the delta.</p></li>
+<li><p><strong>Challenges with Delta Hedging</strong>:</p>
+<ul>
+<li><strong>Delta as an Approximation</strong>: Delta is only an approximate measure, and it changes as the <strong><em>underlying price or time changes</em></strong>, meaning the hedged position can quickly become unhedged.</li>
+<li><strong>Rounding Off</strong>: The number of underlying units per option has to be rounded, leading to imprecision in balancing the two positions.</li>
+<li><strong>Continuous Monitoring Required</strong>: Constant adjustments are needed to maintain the delta-hedged position, especially when the underlying changes significantly.</li>
+</ul></li>
+</ul>
+</section>
+<section id="gamma-hedging" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="gamma-hedging"><span class="header-section-number">4.4.2</span> Gamma Hedging</h3>
+<ul>
+<li>Gamma measures the rate of change in the delta with respect to the change in the underlying asset’s price.</li>
+<li>It reflects the deviation between the exact option price change and the price change approximated by delta, making it a measure of the delta’s sensitivity.</li>
+<li><strong>Role in Delta-Hedging</strong>:
+<ul>
+<li>If a delta-hedged position were risk-free, its gamma would be zero.</li>
+<li>A large gamma indicates a greater deviation from being risk-free.</li>
+<li>The larger the gamma, the more the position is affected by rapid movements in the delta.</li>
+</ul></li>
+<li>Gamma is the largest for at-the-money and near-expiration options.</li>
+<li>Deep in-the-money or out-of-the-money options have slow delta movements and pose fewer problems for hedgers.</li>
+<li>Gamma hedging requires adding another option and combining it with the underlying and existing options to make both delta and gamma zero.</li>
+</ul>
+</section>
+<section id="vega-and-volatility-risk" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="vega-and-volatility-risk"><span class="header-section-number">4.4.3</span> Vega and Volatility Risk</h3>
+<ul>
+<li>Vega measures the sensitivity of an option’s price to changes in the volatility of the underlying asset.</li>
+<li>Volatility is the only unobservable variable required to value an option, making it a critical factor.</li>
+<li>An option’s price is highly sensitive to changes in the underlying asset’s volatility.</li>
+<li>Changes in volatility can have a significant impact on a dealer’s position, even if it’s delta-hedged with zero or insignificant gamma.</li>
+<li>An increase in volatility can raise the value of options, potentially leading to substantial losses for a dealer holding the underlying and selling options to delta hedge.</li>
+<li>An option price is more sensitive to volatility when it is at-the-money.</li>
+<li>Dealers attempt to measure and monitor vega, and in some cases, hedge it by taking a position in another option.</li>
+<li>The dealer must jointly monitor and manage the risks associated with delta, gamma, and vega.</li>
+</ul>
+</section>
+</section>
+<section id="practice-questions-and-problems" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="practice-questions-and-problems"><span class="header-section-number">4.5</span> Practice Questions and Problems</h2>
+<section id="case-study" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="case-study"><span class="header-section-number">4.5.1</span> Case Study</h3>
+<p>Stanley Singh, CFA, is the risk manager at SS Asset Management. Singh works with individual clients to manage their investment portfolios. One client, Sherman Hopewell, is worried about how short-term market fluctuations over the next three months might impact his equity position in Walnut Corporation. While Hopewell is concerned about short-term downside price movements, he wants to remain invested in Walnut shares as he remains positive about its long-term performance. Hopewell has asked Singh to recommend an option strategy that will keep him invested in Walnut shares while protecting against a short-term price decline. Singh gathers the information in the following table to explore various strategies to address Hopewell’s concerns.</p>
+<ul>
+<li><strong>Current stock Price</strong>: $67.79</li>
+<li><strong>Walnut Corporation European options:</strong></li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 23%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Exercise Price</th>
+<th style="text-align: center;">Market Call Price</th>
+<th style="text-align: center;">Call Delta</th>
+<th style="text-align: center;">Market Put Price</th>
+<th style="text-align: center;">Put Delta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">$55.00</td>
+<td style="text-align: center;">$12.83</td>
+<td style="text-align: center;">4.7</td>
+<td style="text-align: center;">$0.24</td>
+<td style="text-align: center;">–16.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">$65.00</td>
+<td style="text-align: center;">$3.65</td>
+<td style="text-align: center;">12.0</td>
+<td style="text-align: center;">$1.34</td>
+<td style="text-align: center;">–16.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">$67.50</td>
+<td style="text-align: center;">$1.99</td>
+<td style="text-align: center;">16.5</td>
+<td style="text-align: center;">$2.26</td>
+<td style="text-align: center;">–15.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">$70.00</td>
+<td style="text-align: center;">$0.91</td>
+<td style="text-align: center;">22.2</td>
+<td style="text-align: center;">$3.70</td>
+<td style="text-align: center;">–12.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">$80.00</td>
+<td style="text-align: center;">$0.03</td>
+<td style="text-align: center;">35.8</td>
+<td style="text-align: center;">$12.95</td>
+<td style="text-align: center;">–5.0</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Each option has 106 days remaining until expiration.</p>
+</blockquote>
+<p>Another client, Nigel French, is a trader who does not currently own shares of Walnut Corporation. French has told Singh that he believes that Walnut shares will experience a large move in price after the upcoming quarterly earnings release in two weeks. However, French tells Singh he is unsure which direction the stock will move. French asks Singh to recommend an option strategy that would allow him to profit should the share price move in either direction.</p>
+<p>A third client, Wanda Tills, does not currently own Walnut shares and has asked Singh to explain the profit potential of three strategies using options in Walnut: a bull call spread, a straddle, and a butterfly spread. In addition, Tills asks Singh to explain the gamma of a call option. In response, Singh prepares a memo to be shared with Tills that provides a discussion of gamma and presents his analysis on three option strategies:</p>
+<ul>
+<li><strong>Strategy 1:</strong> A straddle position at the $67.50 strike option</li>
+<li><strong>Strategy 2:</strong> A bull call spread using the $65 and $70 strike options</li>
+<li><strong>Strategy 3:</strong> A butterfly spread using the $65, $67.50, and $70 strike call options</li>
+</ul>
+<ol type="1">
+<li>The option strategy Singh is most likely to recommend to Hopewell is a:
+<ul>
+<li><ol type="a">
+<li>collar.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>covered call.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>protective put.</li>
+</ol></li>
+</ul></li>
+<li>The option strategy that Singh is most likely to recommend to French is a:
+<ul>
+<li><ol type="a">
+<li>straddle.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>butterfly.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>box spread.</li>
+</ol></li>
+</ul></li>
+<li>Based upon the table, strategy 1 is profitable when the share price at expiration is <em>closest</em> to:
+<ul>
+<li><ol type="a">
+<li>$63.24.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>$65.24.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>$69.49.</li>
+</ol></li>
+</ul></li>
+<li>Based upon the table, the maximum profit, on a per share basis, from investing in strategy 2, is <em>closest</em> to:
+<ul>
+<li><ol type="a">
+<li>$2.26.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>$2.74.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>$5.00.</li>
+</ol></li>
+</ul></li>
+<li>Based upon the table, and assuming the market price of Walnut’s shares at expiration is $66, the profit or loss, on a per share basis, from investing in strategy 3, is <em>closest</em> to:
+<ul>
+<li><ol type="a">
+<li>–$1.57.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>$0.42.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>$1.00.</li>
+</ol></li>
+</ul></li>
+<li>Based on the data in the table, Singh would advise Tills that the call option with the largest gamma would have a strike price <em>closest</em> to:
+<ul>
+<li><ol type="a">
+<li>$55.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>$67.50.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>$80.</li>
+</ol></li>
+</ul></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./week_03.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Forward and Futures Strategies</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./week_05.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Volatility, Correlations, and Copulas</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
