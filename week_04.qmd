@@ -346,7 +346,6 @@ long position in the underlying asset and want to protect against potential loss
   call's strike price, as the call buyer will have the right to buy the asset at that
   price.
 
-\br
 
 - The combination of these three elements forms a "collar" around the potential profit
 and loss from the underlying asset:
@@ -358,7 +357,6 @@ and loss from the underlying asset:
   - **Cost Mitigation**: The premium received from selling the call option can offset
   the cost of buying the put, potentially creating a cost-neutral or low-cost hedge.
 
-\br
 
 - The collar strategy is often used by investors who have significant gains in the
 underlying asset and want to protect those gains without selling the asset.
@@ -400,7 +398,6 @@ later.
 - This practice is standard in floating-rate loans and thus is used with interest rate
 options, which are designed to manage the risk of floating-rate loans.
 
-\br
 
 - **Payoff for Interest Rate Call Option**:
 
@@ -513,7 +510,6 @@ the long position depends on the option's delta.
 - If the dealer sells a given number of calls, they need to own a number of shares equal
 to the number of underlying shares in the options times the delta.
 
-\br
 
 - **Challenges with Delta Hedging**:
   - **Delta as an Approximation**: Delta is only an approximate measure, and it changes

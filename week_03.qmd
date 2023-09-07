@@ -84,7 +84,6 @@ business expansion, is concerned about potential rising interest rates.
 rising interest rates.
 - It provides certainty but can result in missed opportunities if rates fall.
 
-\br
 
 - The payoff of a FRA at maturity can be calculated as follows:
 
@@ -168,14 +167,12 @@ $$
   ($R_{i}$) and the return of the market ($R_{m}$).
   - $Var(R_{m})$ is the variance of the return of the market.
 
-\br
 
 - If $\beta$ is:
   - 1, the security's price will move with the market
   - less than 1, the security will be less volatile than the market
   - greater than 1, the security's price will be more volatile than the market. 
 
-\br
 
 - The number of futures contracts ($N$) needed to adjust $\beta$ is:
 
@@ -191,7 +188,6 @@ $$
   - **Futures Price**: The price of one futures contract.
   - **Futures Beta**: The beta of the futures contract relative to the market.
 
-\br
 
 - If the result of this formula is positive, it means you should buy futures contracts.
 - Conversely, if the result is negative, it means you should sell futures contracts. 
@@ -215,7 +211,6 @@ target of 0.8.
 - A negative value indicates shorting futures contracts because we want to decrease the
 portfolio's market risk.
 
-\br
 
 - Later, the market increases by 3.7\% and the portfolio increases by 3.45\%. 
 - Determine the overall value of the position and the effective $\beta$.
@@ -277,7 +272,6 @@ $$
   - $q$ = multiplier.
   - $\delta$ = dividend yield on the index.
 
-\br
 
 - On 1st January, an investment firm wants to construct a synthetic index fund of \$200
 million invested in US stock.

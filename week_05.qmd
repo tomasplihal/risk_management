@@ -165,7 +165,6 @@ $$
 - In the EWMA model, $\lambda$ lies between 0 and 1.
 - A smaller $\lambda$ will assign more weight to recent returns.
 
-\br
 
 - Now let's implement a simple numerical example in Python.
 - In this example, we first download the historical closing prices for AAPL and compute
@@ -247,7 +246,6 @@ $$
 variance ($\omega$), the impact of the return from the previous day ($\alpha$), and the
 variance observed the previous day ($\beta$).
 
-\br
 
 - We can estimate a GARCH(1,1) model in Python using the `arch` package.
 - Here's an example with real historical data for the Apple Inc. (AAPL) stock.
@@ -326,7 +324,6 @@ $$
 - No correlation exists when $E(V_1 V_2) = E(V_1)E(V_2)$, making $\rho = 0$.
 - If $V_1 = V_2$, $\rho$ equals 1.
 
-\br
 
 - Covariance between $V_1$ and $V_2$ is defined as: 
 
@@ -343,7 +340,6 @@ $$
 - Though understanding correlation may be more intuitive, covariances prove to be
 fundamental in the analysis.
 
-\br
 
 - Two variables are statistically independent if knowing one doesn't affect the
 probability distribution for the other. Formal representation: 
@@ -460,7 +456,6 @@ $$
 recent covariance estimate, and some to the most recent observation on covariance.
 - The long-term average covariance rate is $\omega / (1 - \alpha - \beta)$. 
 
-\br
 
 - Example of covariance between Apple and Microsoft from the past 5 years of daily returns:
 ```{python}
@@ -509,7 +504,6 @@ among these risk factors (captured by the copula).
 - This separation property is particularly useful in risk management because it allows
 practitioners to fit marginal distributions and dependency structures separately. 
 
-\br
 
 Some key points:
 
@@ -532,7 +526,6 @@ particular, they have been criticized for their role in the financial crisis of
 mortgage-backed securities led to underestimation of risk due to the fact that Gaussian
 copulas do not capture tail dependence well. 
 
-\br
 
 Applications in risk management:
 
@@ -704,7 +697,6 @@ variables.
 - **Origins**: The Clayton copula is an Archimedean copula, while the Gaussian copula is
 derived from the multivariate normal distribution.
 
-\br
 
 - This example fetches historical stock data for two companies (e.g., Apple and
 Microsoft) and shows their tail dependence using the Clayton copula.

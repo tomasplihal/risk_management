@@ -82,7 +82,6 @@ modeled using the lognormal distribution.
 - **Monte Carlo Simulation**: Used to combine loss frequency and severity to determine a
 total loss distribution.
 
-\br
 
 - Banks often have limited internal data but may utilize data from other banks or
 vendors.
@@ -100,7 +99,6 @@ formulate responses.
 - Its purpose was to standardize the calculation of capital for operational risk in
 banks.
 
-\br
 
 - **Business Indicator (BI)** to measures the bank's size and therefore its potential
 operational risk exposure:
@@ -109,23 +107,20 @@ operational risk exposure:
   - Financial Component (FC)
   - **Formula**: $\text{BI} = \text{ILDC} + \text{SC} + \text{FC}$
 
-\br
 
 - **Business Indicator Component (BIC)**:
   - Small Banks: $BIC = 0.12 \times BI$
   - BI between 1 and 30 billion euros: $BIC = 0.12 + 0.15 \times (BI-1)$
   - BI above 30 billion euros**: $BIC = 4.47 + 0.18 \times (BI-30)$
 
-\br
 
 - **Internal Loss Multiplier (ILM)**:
   - **Loss Component (LC)** is equal to 15 times average annual operational risk losses
   over previous 10 years.
   $$
   ILM = \ln \left[ e - 1 + \left( \frac{LC}{BIC} \right)^{0.8} \right]
-  $$\)
+  $$
 
-\br
 
 - **Operational Risk Capital**:
 - For Small Banks (BI < 1 billion euros): Equal to BIC.
@@ -133,7 +128,6 @@ operational risk exposure:
 - National Supervisors' Discretion: May set capital equal to BIC for all banks or use
 loss data for small banks.
 
-\br
 
 - If $LC = BIC$, then $ILM = 1$ and required capital is BIC.
 - Banks with operational risk losses higher than average will have $ILM > 1$.
@@ -216,7 +210,6 @@ price}}{\text{Mid-market price}}$
 in normal market conditions within a certain time.
 - **Cost of Liquidation**: Estimates the cost to liquidate an asset or book of assets.
   
-\br
 
 - **Cost of Liquidation (Normal Market)**:  
 $$
@@ -226,7 +219,6 @@ $$
 - where $s_i$ is the proportional bid-ask spread and $\alpha_i$ is the value of the
 position.
    
-\br
 
 - **Cost of Liquidation (Stressed Market)**:  
 $$
@@ -239,7 +231,6 @@ instrument.
 financial instrument.
 - $\lambda$ gives the required confidence level for the spread.
 
-\br
 
 - Diversification doesn't necessarily reduce liquidity risk.
 - Monitoring liquidity regularly is crucial.
@@ -257,7 +248,6 @@ liquidity trading risk.
     - It can be calculated using either normal market conditions or stressed market
     conditions.
 
-\br
 
 - **Unwinding a Position Optimally**:
     -  A dilemma exists between liquidating quickly (higher bid-ask spread, less market
@@ -265,7 +255,6 @@ liquidity trading risk.
     -   Almgren and Chriss (2001) provide a mathematical approach to optimize this
     process.
 
-\br
 
 - **Other Measures of Market Liquidity**:
     - Besides bid-ask spread, trading volume and price impact are also considered.
@@ -344,7 +333,6 @@ wanting to buy, or vice versa.
     7. **LTCM Failure**: Example of how leveraging and margin calls can exacerbate
     liquidity issues.
 
-\br
 
 - **Leveraging and Deleveraging**:
     - Banks awash with liquidity make credit easily available, leading to increased
@@ -353,14 +341,12 @@ wanting to buy, or vice versa.
     credit and decreased asset prices.
     - Hedge funds are particularly affected by leveraging-deleveraging cycles.
 
-\br
 
 - **Irrational Exuberance**:
     - Term coined by Alan Greenspan in 1996 to describe overvaluation of asset prices.
     - Often self-reinforcing due to high short-term profits.
     - Leads to liquidity black holes and market crashes.
 
-\br
 
 - **The Impact of Regulation**:
     - Uniform regulatory environment can lead to synchronous behavior among banks,
@@ -368,7 +354,6 @@ wanting to buy, or vice versa.
     - Different financial cycles necessitate different capital requirements; uniformity
     can be problematic.
 
-\br
 
 - **The Importance of Diversity**:
     - Market participants often do not act independently, causing liquidity black holes.
@@ -402,7 +387,6 @@ model risk management.
     2. The model may be used incorrectly or inappropriately (limitations and assumptions
     of the model)
 
-\br
 
 - **Model Development**:
   - Importance of thorough documentation for model continuity, regulatory scrutiny, and
@@ -410,7 +394,6 @@ model risk management.
   - Testing should be rigorous, including out-of-sample tests and performance under
   extreme conditions.
 
-\br
 
 - **Model Validation**:
   - Model validation groups provide an independent check.
@@ -418,7 +401,6 @@ model risk management.
   analysis.
   - Importance of independence and corporate culture.
 
-\br
 
 - **Vendor Models**:
   - Vendor models should undergo similar validation processes.
@@ -473,7 +455,6 @@ and need for modeling assumptions.
 - The goal is to create models that aid in market understanding and decision-making
 without unnecessary complexity.
 
-\br
 
 - **Successful Pricing Models**:
   1. Consistency: Aligns with observed market prices, useful for interpolation.
@@ -481,7 +462,6 @@ without unnecessary complexity.
   volatilities.
   3. Simplicity: Intuitive enough for traders to develop a nuanced understanding.
 
-\br
 
 - **Model-Building Considerations**:
   1. Avoid Over-fitting: Complex models may capture data well but lack utility and might

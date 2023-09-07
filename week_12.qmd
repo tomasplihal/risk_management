@@ -90,13 +90,11 @@ $$
 $$
 - where $L_i$ is the principal amount and $w_i$ is its risk weight.
   
-\br
 
 - **Credit Equivalent Amount (Off-Balance)**:
 - Conversion factors applied to principal amounts of instruments like bankers’
 acceptances, guarantees, and loan commitments.
 
-\br
 
 - **Credit Equivalent Amount (Derivatives)**:
 $$
@@ -104,7 +102,6 @@ $$
 $$
 - where $V$ is current value, $a$ is an add-on factor, and $L$ is the principal amount.
 
-\br
 
 - **Total Risk-Weighted Assets**: 
 $$
@@ -259,7 +256,6 @@ risk capital.
   minimum value of three.
   - Effect: At least doubles the previous capital requirement.
 
-\br
 
 - **Incremental Risk Charge (IRC)**:
   - Addresses discrepancy between trading and banking book capital requirements.
@@ -268,7 +264,6 @@ risk capital.
   - Includes a "liquidity horizon" for each instrument.
   - Employs the "constant level of risk assumption."
 
-\br
 
 - **Comprehensive Risk Measure (CRM)**:
   - Focuses on correlation-dependent instruments like ABSs and CDOs.
@@ -508,7 +503,6 @@ confidence level, tailored to maintain credit ratings like AA or BBB.
   - Difficult to quantify, largely subjective.
   - Quantification can inform the impact of new strategic initiatives on total risk.
 
-\br
 
 - Characteristics of Loss Distributions for Different Risk Types
 
