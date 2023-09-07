@@ -136,9 +136,6 @@ including potential losses, opportunity costs, or failure in meeting objectives.
 uncertain forces or risk drivers.
 - It must be formally determined and communicated prior to any crisis, guiding
 management in the strategic selection of risks.
-
-\br
-
 - **Risk budgeting** focuses on the implementation of the risk tolerance decisions
 approved by the management at the strategic or governance level.
 - The risk budget will quantify risk by specific metrics and allocate risk across the

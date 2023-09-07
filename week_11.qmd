@@ -174,7 +174,6 @@ noted.
 objectives and business plans?
 - Risk appetite is an essential part of Enterprise Risk Management (ERM).
 
-\br
 
 - For fund managers, risk appetite is more straightforward to quantify using beta,
 expected return, and risk.
@@ -191,7 +190,6 @@ $$
 as a bank or an insurance company cannot usually be quantified as easily as for a fund
 manager. 
 
-\br
 
 - VaR or expected shortfall often specify worst-case loss aspect of risk appetite.
 - Other elements like reputational risk, credit rating risk, legal risks, etc., may be

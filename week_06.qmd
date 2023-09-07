@@ -40,7 +40,6 @@ based on historical data.
 - Risk management models blend historical data with forward-looking judgment to create a
 framework for testing and assessing risk.
 
-\br
 
 - **Value at Risk (VaR)** and **Expected Shortfall (ES)** are metrics that summarize
 total portfolio risk with a single number.
@@ -173,7 +172,6 @@ risk picture.
 - **Disregard of right-tail events:** VaR focuses on the left tail (losses), often
 ignoring the right tail (potential gains).
 
-\br
 
 - VaR can be misleading when used to limit a trader's risks. A trader can appear to meet
 a set VaR limit while taking on unacceptable risks.
@@ -254,7 +252,6 @@ risk measure of $A$ minus $r$.
 - Each of two independent projects has a 2% probability of a \$10 million loss and a 98%
 probability of a \$1 million loss in one year.
 
-\br
 
 - The one-year 97.5% **VaR (Value at Risk)** for each project is \$1 million.
 - When combined into a portfolio, there is:
@@ -265,7 +262,6 @@ probability of a \$1 million loss in one year.
 sum of the individual project VaRs (\$2 million) by \$9 million, **violating
 subadditivity**.
 
-\br
 
 - The **ES (Expected Shortfall)** for a single project at 97.5% confidence level
 considers 2% at \$10 million loss and 0.5% at \$1 million loss. This results in an
@@ -293,7 +289,6 @@ normal distribution.
 - For short time horizons, $\mu$ is often assumed to be zero, making VaR for a
 particular confidence level proportional to $\sigma$.
 
-\br
 
 - When the loss is assumed to be normally distributed with mean $\mu$ and standard
 deviation $\sigma$, ES with a confidence level of $X$ is given by:
@@ -304,7 +299,6 @@ $$
 
 - where $Y$ is the $X$th percentile point of the standard normal distribution.
 
-\br
 
 - **Example:** The loss from a portfolio over a 10-day horizon is normally distributed
 with a mean of zero and a standard deviation of \$20 million. The 10-day 99% VaR and ES

@@ -168,7 +168,6 @@ Moving Average (EWMA) to monitor the standard deviation of the simulated losses.
 - **Bootstrap Method**: Creating many new similar data sets by sampling observations
 with replacement.
 
-\br
 
 - Historical simulation is a method used to value the entire portfolio of a financial
 institution, often involving multiple simulations (e.g., 500 times).
@@ -274,7 +273,6 @@ be zero in the model-building approach.
 - Change in value is assumed to be normally distributed, with a standard deviation of
 \$200,000 and a mean of zero.
 
-\br
 
 - One-day 99% VaR is $2.326 \times \$200,000 = \$465,300$.
 - 10-day 99% VaR is $\2.326 \times \$200,000 \times \sqrt{10} = \$1,471,300$.
@@ -295,7 +293,6 @@ be zero in the model-building approach.
 - Change in value is assumed to be normally distributed, with a standard deviation of
 \$50,000 and a mean of zero.
 
-\br
 
 - One-day 99% VaR is $2.326 \times \$50,000 = \$116,300$.
 - 10-day 99% VaR is $\2.326 \times \$50,000 \times \sqrt{10} = \$367,800$.
