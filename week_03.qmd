@@ -5,7 +5,7 @@ format:
 jupyter: python3
 ---
 
-# Forward and Futures Strategies
+# Forwards and Futures Strategies
 
 **References:**
 
