@@ -2,20 +2,33 @@ project:
   type: book
 
 book:
-  title: "risk_management"
-  author: "Norah Jones"
-  date: "6/5/2023"
+  title: "Risk Management and Financial Institutions"
+  author: "Tomáš Plíhal"
+  date: "2023-09-18"
+  search: true
+  downloads: [pdf, epub]
+  sharing: [twitter, facebook]
+  sidebar:
+    logo: logo.png
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
-
-bibliography: references.bib
+    - week_01.qmd
+    - week_02.qmd
+    - week_03.qmd
+    - week_04.qmd
+    - week_05.qmd
+    - week_06.qmd
+    - week_07.qmd
+    - week_08.qmd
+    - week_09.qmd
+    - week_10.qmd
+    - week_11.qmd
+    - week_12.qmd
+    - week_13.qmd
 
 format:
   html:
-    theme: cosmo
+    theme: materia
   pdf:
     documentclass: scrreprt
 
