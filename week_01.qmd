@@ -182,7 +182,7 @@ origins such as the environment, relationship with counterparties, regulators,
 governments, suppliers, customers, etc.).
 :::
 - **Settlement risk** is the risk of payment failure just before a default (e.g., you
-send money to your counterparty and it defaults and ).
+send money to your counterparty and it defaults).
 - **Legal risk** includes the risk of being sued and the risk that contract terms won't
 be upheld.
 - **Regulatory**, **accounting**, and **tax risks** are related and collectively
