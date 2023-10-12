@@ -215,7 +215,7 @@ portfolio's market risk.
 - Later, the market increases by 3.7\% and the portfolio increases by 3.45\%. 
 - Determine the overall value of the position and the effective $\beta$.
 $$
-\text{Portfolio value} = \$1,000,000 \times 1.037 = \$1,037,000 
+\text{Portfolio value} = \$1,000,000 \times 1.044 = \$1,044,000 
 $$
 
 $$
@@ -223,15 +223,14 @@ $$
 $$
 
 $$
-\text{Total return} = \frac{\$1,037,000 + (-\$13,800)}{\$1,000,000} - 1 = 0.0232  
+\text{Total return} = \frac{\$1,044,000 + (-\$13,800)}{\$1,000,000} - 1 = 0.0302  
 $$
 
 $$
-\text{Effective beta} = \frac{0.0232}{0.037} = 0.627
+\text{Effective beta} = \frac{0.0302}{0.037} = 0.816
 $$
 
-- The effective $\beta = 0.627$ is pretty far from the target $0.8$, because optimal
-number of contracts was $-8.421$. 
+- The effective $\beta = 0.816$ is pretty close from the target $0.8$. 
 
 ### Creating Equity out of Cash
 
@@ -258,8 +257,10 @@ risk of loss or difficulty in liquidation.
 $$
 \text{Long Stock} = \text{Long Risk-Free Bond} + \text{Long Futures}
 $$
+
 - It is created by combining risk-free bonds and futures on the desired index.
 - To calculate the number of futures contracts, we use:
+
 $$
 N = \frac{V(1 + r)^t}{qf}
 $$
@@ -368,7 +369,6 @@ million).
 immediate cash.
 - It is effectively borrowing against the cash that will be received in the future and
 investing in the underlying.
-invested in the underlying
 - The strategy involves taking long positions in futures with correct beta and duration,
 aligning the results closely with direct investment.
 
@@ -462,10 +462,13 @@ value of \$175,000,000. The investment firm plans to use a futures contract pric
 0.98.
      - A. Calculate the number of futures contracts that should be bought or sold to
      achieve an increase in the portfolio beta.
-     - B. At the end of four months, the overall equity market is up 5.5%. The stock
+     - B. At the end of three months, the overall equity market is up 5.5%. The stock
      portfolio under management is up 5.1%. The futures contract is priced at \$111,500.
      Calculate the value of the overall position and the effective beta of the
      portfolio.
+
+<br/>
+
 2. Consider an asset manager who wishes to create a fund with exposure to the Russell
 2000 stock index. The initial amount to be invested is \$300,000,000. The fund will be
 constructed using the Russell 2000 Index futures contract, priced at 498.30 with a \$500
@@ -476,6 +479,9 @@ yield of 0.75%, and the risk-free rate is 2.35% per year.
      - B. Assume that at expiration, the Russell 2000 is at 594.65. Show how the
      synthetic position produces the same result as investment in the actual stock
      index.
+
+<br/>
+
 3. An investment management firm has a client who would like to temporarily reduce her
 exposure to equities by converting a \$25 million equity position to cash for a period
 of four months. The client would like this reduction to take place without liquidating
@@ -489,6 +495,9 @@ underlying index is 1.25%, and the risk-free rate is 2.75%.
      to cash.
      - C. Assume that the stock index is at 1031 when the futures contract expires. Show
      how this strategy is equivalent to investing in the risk-free asset, cash.
+
+<br/>
+
 4. Consider a portfolio with a 65% allocation to stocks and 35% to bonds. The portfolio
 has a market value of \$200 million. The beta of the stock position is 1.15, and the
 modified duration of the bond position is 6.75. The portfolio manager wishes to increase
@@ -507,6 +516,9 @@ contract has a multiplier of one.
      the market value of the portfolio in which the allocation is adjusted using futures
      to the market value of the portfolio in which the allocation is adjusted by
      directly trading stocks and bonds.
+
+<br/>
+
 5. A pension fund manager expects to receive a cash inflow of \$50,000,000 in three
 months and wants to use futures contracts to take a \$17,500,000 synthetic position in
 stocks and \$32,500,000 in bonds today. The stock would have a beta of 1.15 and the
@@ -521,15 +533,21 @@ at \$95,750.
      and bond futures are priced at \$93,586. Show that profits on the futures positions
      are essentially the same as the change in the value of stocks and bonds during the
      three-month period.
+
+<br/>
+
 6. Consider a US company, GateCorp, that exports products to the United Kingdom.
 GateCorp has just closed a sale worth 200,000,000 GBP. The amount will be received in
 two months. Because it will be paid in pounds, the us company bears the exchange risk.
 In order to hedge this risk, GateCorp intends to use a forward contract that is priced
 at \$1.4272 per pound. Indicate how the company would go about constructing the hedge.
 Explain what happens when the forward contract expires in two months.
+
+<br/>
+
 7. ABCorp is a US-based company that frequently imports raw materials from Australia.
 It has just entered into a contract to purchase 175,000,000 AUD worth of raw wool, to be
 paid in one month. ABCorp fears that the australian dollar will strengthen, thereby
 raising the US dollar cost. A forward contract is available and is priced at \$0.5249
-per australian dollar. Indicate how ABCorp would go about constructing a hedge.  Explain
+per australian dollar. Indicate how ABCorp would go about constructing a hedge. Explain
 what happens when the forward contract expires in one month.
