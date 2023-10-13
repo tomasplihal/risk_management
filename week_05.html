@@ -418,13 +418,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>Descriptive Statistics:
             Return
-count  5033.000000
-mean      0.001197
-std       0.020890
+count  5034.000000
+mean      0.001198
+std       0.020888
 min      -0.197470
-25%      -0.008698
-50%       0.001072
-75%       0.011922
+25%      -0.008692
+50%       0.001079
+75%       0.011921
 max       0.130194</code></pre>
 </div>
 </div>
@@ -474,8 +474,8 @@ max       0.130194</code></pre>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>KS Statistic: 0.07060894054248903
-p-value: 2.8981406321203095e-22</code></pre>
+<pre><code>KS Statistic: 0.07062564158373744
+p-value: 2.801839115698495e-22</code></pre>
 </div>
 </div>
 </section>
@@ -619,30 +619,30 @@ p-value: 2.8981406321203095e-22</code></pre>
 ==============================================================================
 Dep. Variable:                 Return   R-squared:                       0.000
 Mean Model:             Constant Mean   Adj. R-squared:                  0.000
-Vol Model:                      GARCH   Log-Likelihood:               -1484.68
-Distribution:                  Normal   AIC:                           2977.36
-Method:            Maximum Likelihood   BIC:                           2995.86
+Vol Model:                      GARCH   Log-Likelihood:               -1483.49
+Distribution:                  Normal   AIC:                           2974.98
+Method:            Maximum Likelihood   BIC:                           2993.48
                                         No. Observations:                  754
-Date:                Thu, Oct 12 2023   Df Residuals:                      753
-Time:                        14:44:09   Df Model:                            1
+Date:                Fri, Oct 13 2023   Df Residuals:                      753
+Time:                        14:31:08   Df Model:                            1
                                  Mean Model                                
 ===========================================================================
                  coef    std err          t      P&gt;|t|     95.0% Conf. Int.
 ---------------------------------------------------------------------------
-mu             0.1071  6.177e-02      1.734  8.294e-02 [-1.396e-02,  0.228]
+mu             0.1099  6.171e-02      1.780  7.503e-02 [-1.109e-02,  0.231]
                               Volatility Model                              
 ============================================================================
                  coef    std err          t      P&gt;|t|      95.0% Conf. Int.
 ----------------------------------------------------------------------------
-omega          0.0428  3.029e-02      1.414      0.157  [-1.652e-02,  0.102]
-alpha[1]       0.0441  1.311e-02      3.366  7.625e-04 [1.843e-02,6.981e-02]
-beta[1]        0.9415  1.688e-02     55.775      0.000     [  0.908,  0.975]
+omega          0.0427  3.065e-02      1.394      0.163  [-1.733e-02,  0.103]
+alpha[1]       0.0444  1.339e-02      3.318  9.064e-04 [1.819e-02,7.069e-02]
+beta[1]        0.9412  1.733e-02     54.315      0.000     [  0.907,  0.975]
 ============================================================================
 
 Covariance estimator: robust</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="week_05_files/figure-html/cell-7-output-2.png" width="578" height="431"></p>
+<p><img src="week_05_files/figure-html/cell-7-output-2.png" width="577" height="431"></p>
 </div>
 </div>
 <ul>
@@ -678,7 +678,7 @@ Covariance estimator: robust</code></pre>
 <li>Correlation between two variables, <span class="math inline">\(V1\)</span> and <span class="math inline">\(V2\)</span>, is represented by the correlation coefficient <span class="math inline">\(\rho\)</span>, calculated using the formula:</li>
 </ul>
 <p><span class="math display">\[
-\rho = \frac{E(V_1 V_2) - E(V_1) E(V_2)}{SD(V1_)SD(V_2)}
+\rho = \frac{E(V_1 V_2) - E(V_1) E(V_2)}{SD(V_1)SD(V_2)}
 \]</span></p>
 <ul>
 <li><p>where <span class="math inline">\(E(.)\)</span> stands for expected value and <span class="math inline">\(SD(.)\)</span> for standard deviation.</p></li>
@@ -785,7 +785,7 @@ y_i = \frac{Y_i - Y_{i-1}}{Y_{i-1}}
 \rho_n = \frac{\text{cov}_{n}}{\sqrt{\text{var}_{x,n} \text{var}_{y,n}}}
 \]</span></p>
 <ul>
-<li>The Exponentially Weighted Moving Average (EWMA) model can be used to weigh recent observations more heavily. The formula for updating a covariance estimate in the EWMA model is:</li>
+<li>The Exponentially Weighted Moving Average (EWMA) model can be used to weight recent observations more heavily. The formula for updating a covariance estimate in the EWMA model is:</li>
 </ul>
 <p><span class="math display">\[
 \text{cov}_n = \lambda\text{cov}_{n-1} + (1 - \lambda)x_{n-1}y_{n-1}
@@ -828,7 +828,7 @@ y_i = \frac{Y_i - Y_{i-1}}{Y_{i-1}}
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The EWMA covariance is: </span><span class="sc">{</span>ewma_cov<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>The EWMA covariance is: 0.00010620068395953021</code></pre>
+<pre><code>The EWMA covariance is: 9.867759991744889e-05</code></pre>
 </div>
 </div>
 </section>
