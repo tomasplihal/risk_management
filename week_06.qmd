@@ -420,7 +420,7 @@ widely adopted by financial institutions or regulators.
 
 ## Practice Questions and Problems
 
-1. What is the difference between expected shortfall and VaR? What is the theoret- ical
+1. What is the difference between expected shortfall and VaR? What is the theoretical
 advantage of expected shortfall over VaR?
 2. A fund manager announces that the fund’s one-month 95% VaR is 6% of the size of the
 portfolio being managed. You have an investment of \$100,000 in the fund. How do you
@@ -458,8 +458,8 @@ independent of each other.
     when the confidence level is 95%?
     - Show that, in this example, VaR does not satisfy the subadditivity condition,
     whereas expected shortfall does.
-9. Suppose the first-order autocorrelation for daily changes in the value of a port-
-folio is 0.12. The 10-day VaR, calculated by multiplying the one-day VaR by√10, is \$2
+9. Suppose the first-order autocorrelation for daily changes in the value of a portfolio
+is 0.12. The 10-day VaR, calculated by multiplying the one-day VaR by√10, is \$2
 million. What is a better estimate of the VaR that takes account of autocorrelation?
 10. The change in the value of a portfolio in three months is normally distributed with
 a mean of \$500,000 and a standard deviation of $3 million. Calculate the VaR and ES for

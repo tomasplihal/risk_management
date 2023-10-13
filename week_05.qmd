@@ -317,7 +317,7 @@ changes in market variables when assessing risk exposures.
 coefficient $\rho$, calculated using the formula: 
 
 $$
-\rho = \frac{E(V_1 V_2) - E(V_1) E(V_2)}{SD(V1_)SD(V_2)}
+\rho = \frac{E(V_1 V_2) - E(V_1) E(V_2)}{SD(V_1)SD(V_2)}
 $$ 
 
 - where $E(.)$ stands for expected value and $SD(.)$ for standard deviation.
@@ -434,7 +434,7 @@ $$
 \rho_n = \frac{\text{cov}_{n}}{\sqrt{\text{var}_{x,n} \text{var}_{y,n}}}
 $$
 
-- The Exponentially Weighted Moving Average (EWMA) model can be used to weigh recent
+- The Exponentially Weighted Moving Average (EWMA) model can be used to weight recent
 observations more heavily. The formula for updating a covariance estimate in the EWMA
 model is:
 

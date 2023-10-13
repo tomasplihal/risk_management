@@ -71,7 +71,7 @@ that are worse than VaR.
 5. Identify VaR and ES
 
 - Consider the last 500 daily returns for `SPY` ETF. What is daily VaR and ES with 99% confidence level? Below is the worst 20 returns during selected time priod.
-- 
+
 ```{python}
 
 import numpy as np
