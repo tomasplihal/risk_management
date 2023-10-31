@@ -418,13 +418,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>Descriptive Statistics:
             Return
-count  5034.000000
-mean      0.001198
-std       0.020888
+count  5032.000000
+mean      0.001199
+std       0.020856
 min      -0.197470
-25%      -0.008692
-50%       0.001079
-75%       0.011921
+25%      -0.008683
+50%       0.001067
+75%       0.011919
 max       0.130194</code></pre>
 </div>
 </div>
@@ -474,8 +474,8 @@ max       0.130194</code></pre>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>KS Statistic: 0.07062564158373744
-p-value: 2.801839115698495e-22</code></pre>
+<pre><code>KS Statistic: 0.07043805955999771
+p-value: 3.733173775239463e-22</code></pre>
 </div>
 </div>
 </section>
@@ -619,30 +619,30 @@ p-value: 2.801839115698495e-22</code></pre>
 ==============================================================================
 Dep. Variable:                 Return   R-squared:                       0.000
 Mean Model:             Constant Mean   Adj. R-squared:                  0.000
-Vol Model:                      GARCH   Log-Likelihood:               -1483.49
-Distribution:                  Normal   AIC:                           2974.98
-Method:            Maximum Likelihood   BIC:                           2993.48
-                                        No. Observations:                  754
-Date:                Fri, Oct 13 2023   Df Residuals:                      753
-Time:                        14:31:08   Df Model:                            1
+Vol Model:                      GARCH   Log-Likelihood:               -1469.04
+Distribution:                  Normal   AIC:                           2946.08
+Method:            Maximum Likelihood   BIC:                           2964.57
+                                        No. Observations:                  752
+Date:                Tue, Oct 31 2023   Df Residuals:                      751
+Time:                        10:28:19   Df Model:                            1
                                  Mean Model                                
 ===========================================================================
                  coef    std err          t      P&gt;|t|     95.0% Conf. Int.
 ---------------------------------------------------------------------------
-mu             0.1099  6.171e-02      1.780  7.503e-02 [-1.109e-02,  0.231]
+mu             0.1079  6.071e-02      1.777  7.564e-02 [-1.114e-02,  0.227]
                               Volatility Model                              
 ============================================================================
                  coef    std err          t      P&gt;|t|      95.0% Conf. Int.
 ----------------------------------------------------------------------------
-omega          0.0427  3.065e-02      1.394      0.163  [-1.733e-02,  0.103]
-alpha[1]       0.0444  1.339e-02      3.318  9.064e-04 [1.819e-02,7.069e-02]
-beta[1]        0.9412  1.733e-02     54.315      0.000     [  0.907,  0.975]
+omega          0.0430  3.058e-02      1.405      0.160  [-1.695e-02,  0.103]
+alpha[1]       0.0454  1.282e-02      3.543  3.957e-04 [2.030e-02,7.057e-02]
+beta[1]        0.9401  1.699e-02     55.323      0.000     [  0.907,  0.973]
 ============================================================================
 
 Covariance estimator: robust</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="week_05_files/figure-html/cell-7-output-2.png" width="577" height="431"></p>
+<p><img src="week_05_files/figure-html/cell-7-output-2.png" width="569" height="431"></p>
 </div>
 </div>
 <ul>
@@ -828,7 +828,7 @@ y_i = \frac{Y_i - Y_{i-1}}{Y_{i-1}}
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The EWMA covariance is: </span><span class="sc">{</span>ewma_cov<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>The EWMA covariance is: 9.867759991744889e-05</code></pre>
+<pre><code>The EWMA covariance is: 0.00010861549239552128</code></pre>
 </div>
 </div>
 </section>
