@@ -280,7 +280,7 @@ be zero in the model-building approach.
 
 $$
 \text{ES} = \$200,000 \times \sqrt{10} \times \frac{e^{-2.326^2/2}}{\sqrt{2\pi} (1 -
-0.99)} = \$1,686,00
+0.99)} = \$1,686,994
 $$
 
 #### Asset B
