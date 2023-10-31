@@ -237,7 +237,7 @@ $$
 $$
 
 $$
-\text{ES} = \mu + \sigma \times \sqrt{T} \times \frac{e^{-Y^2/2}}{\sqrt{2\pi} (1 - X)}
+\text{ES} = \mu + \sigma \times \sqrt{T} \times \frac{e^{-(Y^2/2)}}{\sqrt{2\pi} (1 - X)}
 $$
 
 - Where:
@@ -279,7 +279,7 @@ be zero in the model-building approach.
 - 10-day 99% ES is: 
 
 $$
-\text{ES} = \$200,000 \times \sqrt{10} \times \frac{e^{-2.326^2/2}}{\sqrt{2\pi} (1 -
+\text{ES} = \$200,000 \times \sqrt{10} \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} (1 -
 0.99)} = \$1,686,994
 $$
 
@@ -299,7 +299,7 @@ be zero in the model-building approach.
 - 10-day 99% ES is: 
 
 $$
-\text{ES} = \$50,000 \times \sqrt{10} \times \frac{e^{-2.326^2/2}}{\sqrt{2\pi} (1 -
+\text{ES} = \$50,000 \times \sqrt{10} \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} (1 -
 0.99)} = \$421,400
 $$
 
@@ -323,7 +323,7 @@ $$
 - 10-day 99% VaR is $\$512,300 \times \sqrt{10} = \$1,620,100$. 
 - 10-day 99% ES is:
 $$
-\text{ES} = \$220,227 \times \sqrt{10} \times \frac{e^{-2.326^2/2}}{\sqrt{2\pi} (1 -
+\text{ES} = \$220,227 \times \sqrt{10} \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} (1 -
 0.99)} = \$1,856,100
 $$
 

@@ -294,7 +294,7 @@ particular confidence level proportional to $\sigma$.
 deviation $\sigma$, ES with a confidence level of $X$ is given by:
 
 $$
-\text{ES} = \mu + \sigma \frac{e^{-Y^2/2}}{\sqrt{2\pi} (1 - X)}
+\text{ES} = \mu + \sigma \frac{e^{-(Y^2/2)}}{\sqrt{2\pi} (1 - X)}
 $$
 
 - where $Y$ is the $X$th percentile point of the standard normal distribution.
@@ -309,7 +309,7 @@ $$
 $$
 
 $$
-\text{ES} = 20 \frac{e^{-2.326^2/2}}{\sqrt{2\pi} \times 0.01} = \$53.3 \text{ million}
+\text{ES} = 20 \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} \times 0.01} = \$53.3 \text{ million}
 $$
 
 ### The Time Horizon
