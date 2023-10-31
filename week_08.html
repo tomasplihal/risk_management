@@ -525,7 +525,7 @@ The 1-day 99% ES is: -0.040492</code></pre>
 \text{VaR} = \mu + \sigma \times \sqrt{T} \times N^{-1}(X)
 \]</span></p>
 <p><span class="math display">\[
-\text{ES} = \mu + \sigma \times \sqrt{T} \times \frac{e^{-Y^2/2}}{\sqrt{2\pi} (1 - X)}
+\text{ES} = \mu + \sigma \times \sqrt{T} \times \frac{e^{-(Y^2/2)}}{\sqrt{2\pi} (1 - X)}
 \]</span></p>
 <ul>
 <li>Where:
@@ -563,7 +563,7 @@ The 1-day 99% ES is: -0.040492</code></pre>
 <li><p>10-day 99% ES is:</p></li>
 </ul>
 <p><span class="math display">\[
-\text{ES} = \$200,000 \times \sqrt{10} \times \frac{e^{-2.326^2/2}}{\sqrt{2\pi} (1 -
+\text{ES} = \$200,000 \times \sqrt{10} \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} (1 -
 0.99)} = \$1,686,994
 \]</span></p>
 </section>
@@ -580,7 +580,7 @@ The 1-day 99% ES is: -0.040492</code></pre>
 <li><p>10-day 99% ES is:</p></li>
 </ul>
 <p><span class="math display">\[
-\text{ES} = \$50,000 \times \sqrt{10} \times \frac{e^{-2.326^2/2}}{\sqrt{2\pi} (1 -
+\text{ES} = \$50,000 \times \sqrt{10} \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} (1 -
 0.99)} = \$421,400
 \]</span></p>
 </section>
@@ -604,7 +604,7 @@ The 1-day 99% ES is: -0.040492</code></pre>
 <li>One-day 99% VaR is <span class="math inline">\(\$2.326 \times \$220,227 = \$512,300\)</span>.</li>
 <li>10-day 99% VaR is <span class="math inline">\(\$512,300 \times \sqrt{10} = \$1,620,100\)</span>.</li>
 <li>10-day 99% ES is: <span class="math display">\[
-\text{ES} = \$220,227 \times \sqrt{10} \times \frac{e^{-2.326^2/2}}{\sqrt{2\pi} (1 -
+\text{ES} = \$220,227 \times \sqrt{10} \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} (1 -
 0.99)} = \$1,856,100
 \]</span></li>
 </ul>
@@ -710,8 +710,8 @@ The 1-day 99% ES is: -0.040492</code></pre>
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"1-day 99% ES is $</span><span class="sc">{</span>ES<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>1-day 99% VaR is $10.09
-1-day 99% ES is $11.63</code></pre>
+<pre><code>1-day 99% VaR is $10.75
+1-day 99% ES is $12.31</code></pre>
 </div>
 </div>
 </section>

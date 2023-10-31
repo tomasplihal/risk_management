@@ -549,7 +549,7 @@ Definition of VaR
 <li><p>When the loss is assumed to be normally distributed with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, ES with a confidence level of <span class="math inline">\(X\)</span> is given by:</p></li>
 </ul>
 <p><span class="math display">\[
-\text{ES} = \mu + \sigma \frac{e^{-Y^2/2}}{\sqrt{2\pi} (1 - X)}
+\text{ES} = \mu + \sigma \frac{e^{-(Y^2/2)}}{\sqrt{2\pi} (1 - X)}
 \]</span></p>
 <ul>
 <li><p>where <span class="math inline">\(Y\)</span> is the <span class="math inline">\(X\)</span>th percentile point of the standard normal distribution.</p></li>
@@ -559,7 +559,7 @@ Definition of VaR
 \text{VaR} = 20 N^{-1}(0.99) = \$46.5 \text{ million}
 \]</span></p>
 <p><span class="math display">\[
-\text{ES} = 20 \frac{e^{-2.326^2/2}}{\sqrt{2\pi} \times 0.01} = \$53.3 \text{ million}
+\text{ES} = 20 \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} \times 0.01} = \$53.3 \text{ million}
 \]</span></p>
 <section id="the-time-horizon" class="level3" data-number="6.6.1">
 <h3 data-number="6.6.1" class="anchored" data-anchor-id="the-time-horizon"><span class="header-section-number">6.6.1</span> The Time Horizon</h3>
