@@ -81,8 +81,6 @@ $$
 modeled using the lognormal distribution.
 - **Monte Carlo Simulation**: Used to combine loss frequency and severity to determine a
 total loss distribution.
-
-
 - Banks often have limited internal data but may utilize data from other banks or
 vendors.
 - Losses from other banks must be adjusted to reflect size of the institution.
@@ -94,7 +92,8 @@ formulate responses.
 
 ### The Standardized Measurement Approach
 
-- Defined by regulators in December 2017, see <www.bis.org/bcbs/publ/d424.pdf>.
+- Defined by regulators in December 2017, see
+[www.bis.org/bcbs/publ/d424.pdf](www.bis.org/bcbs/publ/d424.pdf).
 - Implementation date: January 2023
 - Its purpose was to standardize the calculation of capital for operational risk in
 banks.
@@ -242,7 +241,7 @@ liquidity trading risk.
 
 #### Additional Notes
 
-**Liquidity-Adjusted VaR**:
+- **Liquidity-Adjusted VaR**:
     - It incorporates both market risk and liquidity risk into a single metric (Var plus
     Cost of liquidation).
     - It can be calculated using either normal market conditions or stressed market
@@ -308,9 +307,9 @@ stress.
 - Affects the money supply; varies by country.
 - Basel III Liquidity Risk Requirements:
     - **LCR (Liquidity Coverage Ratio)**: High-quality liquid assets to net cash
-    outflows in a 30-day stress period should be $\leq$ 100%.
+    outflows in a 30-day stress period should be $\geq$ 100%.
     - **NSFR (Net Stable Funding Ratio)**: Amount of stable funding to required stable
-    funding should be $\leq$ 100%.
+    funding should be $\geq$ 100%.
     
 ### Liquidity Black Holes
 

@@ -81,8 +81,6 @@ ratings.
 time. For poor-rated bonds, it may decrease.
 - Both unconditional and conditional default probabilities can be computed from the
 data.
-
-
 - Table presents the historical default probabilities for bonds of various credit
 ratings from 1981 to 2020.
 - The table assists in understanding the risk profiles associated with bonds of
@@ -188,8 +186,6 @@ credit entity, whereas a narrower spread suggests a lower perceived risk.
 would pay the seller 2% of the notional amount annually for the protection.
 - The CDS spread serves as a valuable indicator of credit risk and market sentiment for
 the referenced credit entity.
-
-
 - Credit indices are benchmarks that track the performance of a basket of credit
 instruments such as bonds or credit default swaps.
 - They include a diversified portfolio of credit instruments, often representing various
@@ -211,8 +207,6 @@ bearing a particular credit risk.
 - N-year CDS spread should approximate the yield difference between an N-year corporate
 bond and an N-year risk-free bond.
 - Liquidity constraints can limit the effectiveness of arbitrage between CDS and bonds.
-
-
 - CDSs provide a direct estimate of credit spread.
 - Risk-free rates are generally derived from Treasury bonds.
 - Implied risk-free rates often found to be higher than Treasury rates.
@@ -298,8 +292,6 @@ transactions with non-financial end users).
 - Credit risk assessment for derivatives is more complicated than for loans.
 - Unlike fixed loan exposures, the future exposure in derivatives is uncertain, and the
 potential loss could be theoretically infinite.
-
-
 - Credit Value Adjustment (CVA) and Debit Value Adjustment (DVA) are risk management
 tools used in the valuation of counterparty risk. 
 - **xVAs**: Credit Value Adjustment (CVA) and Debit Value Adjustment (DVA) are key
@@ -317,8 +309,6 @@ risk in bilaterally cleared transactions.
   dealer.
   2. The derivative is an asset (e.g., long option): Dealer has credit exposure.
   3. The derivative can be either(e.g., forward, swap): Exposure varies over time.
-
-
 - In multiple transactions between a dealer and a counterparty, exposures are netted.
 - The dealer's net exposure is $\text{max}(V, 0)$, where $V$ is the net market value of
 all transactions.
@@ -369,8 +359,6 @@ default.
 percentile (e.g., 97.5%) of exposures in Monte Carlo simulations.
 - It should use real-world, not risk-neutral world, simulations, but for short time
 periods the difference is small.
-  
-
 - **Downgrade Triggers**: Clauses in ISDA master agreements that require more collateral
 or termination if one party's credit rating falls below a specified level.
 - Downgrade triggers can lead to significant liquidity crises if a company cannot meet
@@ -397,8 +385,6 @@ as other derivatives (using Greek letters).
 - Computing Greek letters for CVA is computationally intensive. 
 - Incorporating risks from changes in credit spreads into market risk capital
 calculations is a required by regulators.
-
-
 - **Wrong-way risk** arises when probability of default and exposure are positively
 correlated.
 - **Right-way risk** is the opposite.
@@ -448,8 +434,6 @@ for five-year horizon take fifth power of the one-year matrix).
 - The model assumes rating changes are independent across periods, though this is not
 entirely accurate.
 - Recent downgrades make further downgrades more likely.
-
-
 - One-Year Ratings Transition Matrix, 1981–2020 (Source: S&P)
 - Probabilities Expressed as Percentages and Adjustments for Transition to the NR (not
 rated) Category
@@ -480,8 +464,6 @@ rated) Category
   - Proposed by JPMorgan in 1997.
   - Uses a Gaussian copula model with a ratings transition matrix.
   - Considers losses from both defaults and credit rating downgrades.
-
-
 - **CreditMetrics vs. Credit Risk Plus**: 
   - Should predict the same long-term loss distribution if based on identical
   assumptions.
