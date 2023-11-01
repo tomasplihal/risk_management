@@ -39,8 +39,6 @@ availability of data and collective experience.
 based on historical data.
 - Risk management models blend historical data with forward-looking judgment to create a
 framework for testing and assessing risk.
-
-
 - **Value at Risk (VaR)** and **Expected Shortfall (ES)** are metrics that summarize
 total portfolio risk with a single number.
 - VaR was first introduced by JPMorgan and is now widely used by corporate treasurers,
@@ -124,7 +122,7 @@ given the properties of the normal distribution?
 **Example 2**
 Suppose that for a one-year project all outcomes between a loss of \$50 million and a
 gain of \$50 million are considered equally likely, resulting in a uniform distribution
-extending from –$\50 million to +\$50 million. How would you determine the VaR with a
+extending from –\$50 million to +\$50 million. How would you determine the VaR with a
 one-year time horizon and a 99% confidence level for this project?
 
 **Example 3**
@@ -171,8 +169,6 @@ losses can exceed the VaR.
 risk picture.
 - **Disregard of right-tail events:** VaR focuses on the left tail (losses), often
 ignoring the right tail (potential gains).
-
-
 - VaR can be misleading when used to limit a trader's risks. A trader can appear to meet
 a set VaR limit while taking on unacceptable risks.
 - For example, a trader can create a portfolio with a 99.1% chance of a daily loss under
@@ -251,8 +247,6 @@ risk measure of $A$ minus $r$.
 
 - Each of two independent projects has a 2% probability of a \$10 million loss and a 98%
 probability of a \$1 million loss in one year.
-
-
 - The one-year 97.5% **VaR (Value at Risk)** for each project is \$1 million.
 - When combined into a portfolio, there is:
   - a 0.04% probability of a \$20 million loss,
@@ -261,8 +255,6 @@ probability of a \$1 million loss in one year.
 - The one-year 97.5% VaR for the portfolio is \$11 million, which is greater than the
 sum of the individual project VaRs (\$2 million) by \$9 million, **violating
 subadditivity**.
-
-
 - The **ES (Expected Shortfall)** for a single project at 97.5% confidence level
 considers 2% at \$10 million loss and 0.5% at \$1 million loss. This results in an
 expected loss of \$8.2 million.
@@ -288,8 +280,6 @@ $$
 normal distribution.
 - For short time horizons, $\mu$ is often assumed to be zero, making VaR for a
 particular confidence level proportional to $\sigma$.
-
-
 - When the loss is assumed to be normally distributed with mean $\mu$ and standard
 deviation $\sigma$, ES with a confidence level of $X$ is given by:
 
@@ -298,8 +288,6 @@ $$
 $$
 
 - where $Y$ is the $X$th percentile point of the standard normal distribution.
-
-
 - **Example:** The loss from a portfolio over a 10-day horizon is normally distributed
 with a mean of zero and a standard deviation of \$20 million. The 10-day 99% VaR and ES
 are:
@@ -427,7 +415,7 @@ portfolio being managed. You have an investment of \$100,000 in the fund. How do
 interpret the portfolio manager’s announcement?
 3. A fund manager announces that the fund’s one-month 95% expected shortfall is 6% of
 the size of the portfolio being managed. You have an investment of \$100,000 in the
-fund. How do you interpret the portfolio manager’s announce- ment?
+fund. How do you interpret the portfolio manager’s announcement?
 4. Suppose that each of two investments has a 0.9% chance of a loss of \$10 million and
 a 99.1% chance of a loss of \$1 million. The investments are independent of each other.
     - What is the VaR for one of the investments when the confidence level is 99%?
