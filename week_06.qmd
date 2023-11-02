@@ -418,37 +418,37 @@ the size of the portfolio being managed. You have an investment of \$100,000 in 
 fund. How do you interpret the portfolio manager’s announcement?
 4. Suppose that each of two investments has a 0.9% chance of a loss of \$10 million and
 a 99.1% chance of a loss of \$1 million. The investments are independent of each other.
-    - What is the VaR for one of the investments when the confidence level is 99%?
+    - What is the VaR for one of the investments when the confidence level is 99%? [1 mil.]
     - What is the expected shortfall for one of the investments when the confidence
-    level is 99%?
+    level is 99%? [9.1 mil]
     - What is the VaR for a portfolio consisting of the two investments when the
-    confidence level is 99%?
+    confidence level is 99%? [11 mil.]
     - What is the expected shortfall for a portfolio consisting of the two investments
-    when the confidence level is 99%?
+    when the confidence level is 99%? [11.07 mil.]
     - Show that in this example VaR does not satisfy the subadditivity condition,
-    whereas expected shortfall does.
+    whereas expected shortfall does. [18.2 > 11.07]
 5. Suppose that the change in the value of a portfolio over a one-day time period is
 normal with a mean of zero and a standard deviation of \$2 million; what is (a) the
-one-day 97.5% VaR, (b) the five-day 97.5% VaR, and (c) the five-day 99% VaR?
+one-day 97.5% VaR, (b) the five-day 97.5% VaR, and (c) the five-day 99% VaR? [a) 3.92 mil., b) 8.77 mil., c) 10.4 mil.]
 6. What difference does it make to your answer to Problem 5 if there is first-order
-daily autocorrelation with a correlation parameter equal to 0.16?
+daily autocorrelation with a correlation parameter equal to 0.16? [a) the same, b) 9.96 mil., c) 11.82 mil.]
 7. The change in the value of a portfolio in one month is normally distributed with a
 mean of zero and a standard deviation of \$2 million. Calculate the VaR and ES for a
-confidence level of 98% and a time horizon of three months.
+confidence level of 98% and a time horizon of three months. [VaR = 7.11 mil., ES = 8.39 mil.]
 8. Suppose that each of two investments has a 4% chance of a loss of \$10 million, a 2%
-chance of a loss of $1 million, and a 94% chance of a profit of \$1 million.  They are
+chance of a loss of \$1 million, and a 94% chance of a profit of \$1 million. They are
 independent of each other.
-    - What is the VaR for one of the investments when the confidence level is 95%?
-    - What is the expected shortfall when the confidence level is 95%?
+    - What is the VaR for one of the investments when the confidence level is 95%? [-1 mil.]
+    - What is the expected shortfall when the confidence level is 95%? [8.2 mil.]
     - What is the VaR for a portfolio consisting of the two investments when the
-    confidence level is 95%?
+    confidence level is 95%? [-9 mil.]
     - What is the expected shortfall for a portfolio consisting of the two investments
-    when the confidence level is 95%?
+    when the confidence level is 95%? [-9.96 mil.]
     - Show that, in this example, VaR does not satisfy the subadditivity condition,
-    whereas expected shortfall does.
+    whereas expected shortfall does. [-9 mil. > -2 mil.]
 9. Suppose the first-order autocorrelation for daily changes in the value of a portfolio
-is 0.12. The 10-day VaR, calculated by multiplying the one-day VaR by√10, is \$2
-million. What is a better estimate of the VaR that takes account of autocorrelation?
+is 0.12. The 10-day VaR, calculated by multiplying the one-day VaR by $\sqrt{10}$, is
+\$2 million. What is a better estimate of the VaR that takes account of autocorrelation?
 10. The change in the value of a portfolio in three months is normally distributed with
 a mean of \$500,000 and a standard deviation of $3 million. Calculate the VaR and ES for
 a confidence level of 99.5% and a time horizon of three months.
