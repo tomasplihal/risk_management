@@ -224,9 +224,9 @@ $$
 \text{Cost} = \sum_{i=1}^{n} \frac{(\mu_i + \lambda \sigma_i) \alpha_i}{2}
 $$
 
-- $\mu_i$ is the mean of the proportional bid-offer spread for the ith financial
+- $\mu_i$ is the mean of the proportional bid-offer spread for the $i$th financial
 instrument.
-- $\sigma_i$ is standard deviation of the proportional bid-offer spread for the ith
+- $\sigma_i$ is standard deviation of the proportional bid-offer spread for the $i$th
 financial instrument.
 - $\lambda$ gives the required confidence level for the spread.
 
@@ -242,7 +242,7 @@ liquidity trading risk.
 #### Additional Notes
 
 - **Liquidity-Adjusted VaR**:
-    - It incorporates both market risk and liquidity risk into a single metric (Var plus
+    - It incorporates both market risk and liquidity risk into a single metric (VaR plus
     Cost of liquidation).
     - It can be calculated using either normal market conditions or stressed market
     conditions.
@@ -483,7 +483,7 @@ operational risk?
 contracts.
 5. Give two examples of key risk indicators that might be monitored by a central
 operational risk management group within a bank.
-6. onsider two banks, each with a BIC of 200 million euros. Bank A has suffered 10
+6. Consider two banks, each with a BIC of 200 million euros. Bank A has suffered 10
 operational risk losses of 20 million euros in the past 10 years. Bank B has suffered
 one 200 million euro loss in the past 10 years. What is the operational risk regulatory
 capital for each bank under SMA?
