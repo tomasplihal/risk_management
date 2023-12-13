@@ -241,8 +241,8 @@ $$
 $$
 
 - Where:
-    - $\mu$ is the mean of returns, usually assumed as zero.
-    - $\sigma$ is the standard deviation of returns.
+    - $\mu$ is the mean of losses, usually assumed as zero.
+    - $\sigma$ is the standard deviation of losses.
     - $X$ is the confidence level.
     - $N^{-1}(\cdot)$ is the inverse cumulative normal distribution.
     - $Y$ is the $X$th percentile point of the standard normal distribution.
