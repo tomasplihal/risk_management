@@ -212,7 +212,8 @@ target of 0.8.
 portfolio's market risk.
 
 
-- Later, the market increases by 3.7\% and the portfolio increases by 3.45\%. 
+- Later, the market increases by 3.7\% and the portfolio increases by 4.4\%, and futures
+price increases by 3.45\%. 
 - Determine the overall value of the position and the effective $\beta$.
 $$
 \text{Portfolio value} = \$1,000,000 \times 1.044 = \$1,044,000 
