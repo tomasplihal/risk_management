@@ -2,6 +2,7 @@
 /.venv/
 /_book/
 /_site/
+/exams/
 /resources/
 /solutions/
 risk_management.code-workspace
