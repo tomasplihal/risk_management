@@ -2,6 +2,8 @@
 format:
   html:
     code-fold: true
+    toc: true
+    toc-depth: 2
 jupyter: python3
 ---
 
@@ -20,24 +22,24 @@ jupyter: python3
 
 **Learning Outcomes:**
 
-- Grasping the trade-offs between risk and return for various investments.
-- Understanding key investment theories like CAPM, efficient frontier, and strategies in
-hedge funds, mutual funds, and ETFs.
-- Studying roles and conflicts in banking, insurance, and fund management.
-- Exploring financial instruments such as derivatives, options, swaps, and futures.
-- Differentiating between exchange-traded and over-the-counter markets, including
-concepts like securitization.
-- Examining the 2007-2008 financial crisis, its causes, and lessons learned.
+- Quantify risk and return, and understand diversification and the efficient frontier.
+- Analyze CAPM, systematic/nonsystematic risk, and $\alpha$ and $\beta$.
+- Evaluate leverage, capital structure, and Modigliani-Miller propositions.
+- Examine derivatives and the impact of the 2007-2008 crisis on OTC markets.
+- Assess financial institutions' risks and differences between funds.
+- Explore systemic risk, the 2007-2008 crisis, and regulatory frameworks.
 
-## Risk vs. Return for Investors and the Efficient Frontier
+## Risk vs. Return for Investors
 
-- How to quantify expected return of an individual investment and of a portfolio of
-investments?
-- How to quantify risk of an individual investment and of a portfolio of investments?
-- What is the theoretical trade-off between risk and expected return in investment?
-- What is the concept of the efficient frontier in investment?
-- How does the introduction of a risk-free asset alter it?
-- How does this lead to the notion of a "market portfolio"?
+- How do investors quantify risk and return, both individually and in portfolios?
+- What is the relationship between risk and expected return, and how does it influence
+investment decisions?
+- How does diversification impact portfolio risk, and what is the efficient frontier's
+role in portfolio construction?
+- How does adding a risk-free asset alter the efficient frontier, and how is the concept
+of the "market portfolio" derived?
+- How do changes in market conditions, such as interest rate fluctuations or economic
+downturns, impact the risk-return trade-off in an investment portfolio?
 
 ## The Capital Asset Pricing Model
 
@@ -45,100 +47,44 @@ investments?
 - What is the systematic and nonsystematic risk, and where can you find it in the CAPM
 model?
 - What is represented by $\alpha$ and $\beta$ in the CAPM model?
-- Suppose that the risk-free rate is 5% and the return on the market portfolio is 10%.
-What are the expected returns of investments with $\beta$ 0, 0.5, and 1.2?
 - What are the theoretical assumptions of the CAPM model? Is this model still useful in
 the real world?
 - How is it possible to achieve positive $\alpha$, and how much is the weighted average
 $\alpha$ of all investors?
-- How does arbitrage pricing theory differ from the CAPM model?
 
-## Risk vs. Return for Companies
+## Capital Structure and Leverage
 
-- How should a company decide whether the expected return on a new investment project is
-sufficient compensation for its risks?
-- What are the bankruptcy costs, and how does it influence the behavior of investors?
-- How is the stable financial system secured?
-- What is the difference between *risk decomposition* and *risk aggregation*?
-- What is a credit rating? Who provides credit rating? What is the best and the worst
-rating?
+- How does leverage impact a firm's risk and return profile?
+- What is the optimal capital structure for a company in terms of risk management?
+- How does debt affect the company's risk of financial distress or bankruptcy?
+- How do Modigliani-Miller propositions relate to risk management in firms with
+different capital structures?
+- What role does equity financing play in reducing risk, and how does it compare to debt
+in terms of cost and financial flexibility?
 
-## Commercial vs. Investment Banking
+## Risk Management Tools and Derivatives
 
-- What does commercial banking mean?
-- What are the common assets and liabilities in a bank's balance sheet?
-- How can the bank increase its ROE?
-- How much equity capital does the bank need?
-- Why deposit insurance exists, and who provides it?
-- What is the main purpose of the investment banking sector?
-- What is a Dutch auction approach to IPO?
-- What are potential trading activities provided by banks?
-- The number of shares being auctioned is 210,000. What is the price paid by investors?
-How many shares does each investor receive? The bidders in a Dutch auction are as
-follows:
-
-| Bidder | Number of Shares | Price  |
-|:------:|:----------------:|:------:|
-| A      | 60,000           | $50.00 |
-| B      | 20,000           | $80.00 |
-| C      | 30,000           | $55.00 |
-| D      | 40,000           | $38.00 |
-| E      | 40,000           | $42.00 |
-| F      | 40,000           | $42.00 |
-| G      | 50,000           | $35.00 |
-| H      | 50,000           | $60.00 |
-
-
-## Potential Conflicts of Interest in Banking
-
-- What are the potential conflicts of interest between commercial banking, securities
-services, and investment banking when they are all conducted under the same corporate
-umbrella?
-- Is the bank allowed to do commercial and investment banking together?
-- What is the difference between a trading book and a banking book?
-- What is securitization, and how can the bank benefit from it?
-- What are the main risks for the bank?
-
-## Insurance Companies and Fund Managers
-
-- How can be the insurance sector classified?
-- What does the tearm "reinsurance" mean?
-- What is the definition of moral hazard and adverse selection?
-- What are the main risks for insurance companies?
-- What are the similarities and differences between mutual funds, ETFs, and hedge funds?
-- What investment strategies are used in hedge funds?
-
-## Financial Instruments
-
-- What does it mean long and short position in an asset? What is the short sale?  What
-is the effect of dividends in each position?
-- What are the key differences between exchange-traded and over-the-counter (OTC)
-markets?
-- What is the definition of a forward/futures contract? How does the forward contract
-differs from futures contract?
-- What are the reference interest rates in the derivatives markets?
-- What is the definition and the main purpose of swaps?
-- What is the definition of options? What different options and option positions exist?
-- What are exotic options and structured products?
-- What risk management challenges are associated with derivatives?
-
-## The OTC Derivatives Market
-
-- How does the exchange-traded derivative market works? What is the role of clearing
-house? How does the margin works?
-- What are the specifics of OTC derivatives market? What are the two types of clearing
-schemes in the OTC market?
-- Are there any margin requirements in the OTC derivatives markets?
+- How do exchange-traded and OTC derivatives differ in terms of risk exposure and regulation?
+- What are the main challenges of using derivatives for risk management?
 - What is meant by netting, and how is it related to events of default?
 - How does financial crisis 2007-2008 changed OTC derivatives market?
 - What is "rehypothecation", and what issues it causes on the OTC market?
 
-## Securitization and the Global Financial Crisis
+## Financial Institutions
 
+- What are the roles of credit rating agencies in assessing the creditworthiness of
+institutions and securities?
+- What are the potential conflicts of interest between commercial banking, securities
+services, and investment banking when they are all conducted under the same corporate
+umbrella?
+- What is the definition of moral hazard and adverse selection?
+- What are the main risks for insurance companies?
+- What are the similarities and differences between mutual funds, ETFs, and hedge funds?
+
+## Regulatory and Systemic Risk
+
+- What is systemic risk, and why is it crucial in the context of financial institutions?
 - What were the origins and causes of the 2007 - 2008 financial crisis?
-- How does securitization works, and how was it used before the crisis?
-- How does asset-backed security (ABS) work?
-- What is collateralized debt obligation (CDO), and how is it related to ABS?
-- What is meant by the term “agency costs”?
+- What role do regulatory frameworks play in managing systemic risk?
 - What went wrong during the crisis?
 - What lessons can be learned from the crisis?

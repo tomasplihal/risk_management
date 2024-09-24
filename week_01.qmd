@@ -2,6 +2,8 @@
 format:
   html:
     code-fold: true
+    toc: true
+    toc-depth: 2
 jupyter: python3
 ---
 
@@ -26,129 +28,123 @@ choosing among the methods.
 
 ## Introduction
 
-- Investment involves inherent risk, and risk management is crucial in the investment
-process.
-- Risk identification, measurement, and control are essential for proper investing and
-achieving objectives.
-- Portfolio managers need to understand risk management both for portfolios and the
-enterprises they represent.
-- Risks should be evaluated to determine which are worth taking regularly, occasionally,
-or should be avoided.
+In financial institutions, risk is an inherent aspect of all investment decisions,
+making effective risk management vital for long-term success. The process of risk
+management involves identifying, measuring, and controlling risks to ensure alignment
+with the institution's financial objectives and regulatory requirements. Portfolio
+managers must be proficient in handling risks at both the portfolio level—focusing on
+specific assets and their correlations—and the enterprise level, where systemic and
+institutional risks are addressed. Continuous assessment is essential to classify risks
+into those that offer potential rewards, those that require mitigation, and those that
+should be avoided to preserve institutional stability and performance.
 
 ## The Risk Management Process
 
 ::: {.callout-tip}
 # Definition of risk
 
-- ***Risk*** $\rightarrow$ exposure to uncertainty.
-- Risk is the chance of a loss or adverse outcome as a result of an action, inaction, or
+***Risk*** $\rightarrow$ exposure to uncertainty.
+
+Risk is the chance of a loss or adverse outcome as a result of an action, inaction, or
 external event.
 :::
 
-- It is not about avoiding risk, it is about managing risk.
-- Risk and return are the interconnected forces of the financial universe.
-- Risk can be managed or controlled as opposed to return.  
-- ***Risk exposure*** $\rightarrow$ the state of being exposed or vulnerable to a risk. 
+- Managing risk doesn't mean avoiding it but controlling it effectively.
+- **Risk and return**: These are interrelated forces in finance; only risk can be
+controlled, not return.
+- **Risk exposure**: The state of being vulnerable to potential risks.
 
 ::: {.callout-note}
 # Example
+Consider an announcement in Japan that could lead to a 1% appreciation or depreciation
+of the yen. The potential risk reflects a range of outcomes, typically described by a
+probability distribution of future returns. For an underlying amount of ¥1,000,000, the
+risk exposure is ¥10,000 (1% of ¥1,000,000). The risk management process helps decide
+whether to invest in this risky currency.
 
-Suppose there is an important announcement in Japan that will result in the yen either
-appreciating or depreciating by 1%. The risk can be described as the range of resulting
-outcomes and is often thought of in terms of a probability distribution of future
-returns.
-
-Suppose that the underlying amount is ¥1,000,000 which result in ¥10,000 of risk
-exposure (1% of ¥1,000,000). The risk management process would inform the decision of
-whether to operate or invest in this risky currency.
+- **Risk driver**: The underlying uncertainty (e.g., +1% or -1% yen movement).
+- **Risk position**: The action or quantity at risk (e.g., ¥1,000,000 worth of yen).
+- **Risk exposure**: The potential valuation change (e.g., ±¥10,000).
 :::
 
-- The term risk has three related but different meanings: 
-    1. **Risk driver** for the underlying risk. The underlying uncertainty (e.g., the
-    uncertain +1% or –1% movement of the currency).
-    2. **Risk position** to describe or quantify the risky action taken (e.g., the
-    ¥1,000,000 worth of risky currency).
-    3. **Risk exposure** for the potential valuation change that may occurs (e.g.,
-    +¥10,000 or –¥10,000 risky outcome that might accrue to the business).
-    
+
 ::: {.callout-tip}
 # Definition of risk management
 
-Risk management is the process by which an organization or individual defines the level
-of risk to be taken, measures the level of risk being taken, and adjusts the latter
-toward the former, with the goal of maximizing the company’s or portfolio’s value or the
-individual’s overall satisfaction, or utility.
+Risk management is the process of defining, measuring, and adjusting the level of risk
+to optimize a portfolio's or organization's value. It involves balancing risk to achieve
+goals with an acceptable chance of failure.
 
-*Alternative definition:* Risk management comprises all the decisions and
-actions needed to best achieve organizational or personal objectives while bearing a
-tolerable level of risk.
+*Alternative definition*: Risk management involves decisions and actions that maximize
+*personal or organizational objectives within tolerable risk levels.
 :::
 
-- Actively understand and embrace risks that balance goal achievement with an acceptable
-failure chance, then quantify, monitor, and adjust them.
-- Good risk management offers a comprehensive framework that guides decisions before,
-during, and after a risk event, rather than preventing losses.
-- The best risk management might not prevent losses in a market crash or reduced profits
-during an economic downturn.
-- **Risks and exposures are dynamic**, risk management is a continuous process.
+- Effective risk management quantifies, monitors, and adjusts risks to balance goals
+with failure chances.
+- It provides a framework for decision-making before, during, and after risk events,
+rather than simply preventing losses.
+- **Dynamic nature**: Risks evolve, making risk management a continuous process.
 
 ## The Risk Management Framework
 
-- A risk management framework involves the infrastructure, process, and analytics needed
-to support effective risk management in an organization.
-- It integrates the "risk" and "return" aspects of the enterprise into decisions in
-support of best achieving its goals within its tolerance for risk.
-- Although there are a very high number of risks faced by every organization, most
-organizations are primarily affected by a small number of key risk drivers, or primary
-underlying factors that create risk.
+A risk management framework provides the infrastructure, processes, and analytics
+necessary for effective risk management. It integrates risk and return into
+decision-making to achieve the organization’s goals within its risk tolerance. While
+organizations face numerous risks, they are typically driven by a small number of key
+risk factors.
 
-### Key Factors
+### Key Components of the Risk Management Framework
 
-1. **Risk governance:**
-    - The top-down process and guidance that directs risk management activities.
-    - ***Enterprise risk management*** aligns risk management with the objectives,
-    health, and value of the entire organization
-2. **Risk identification and measurement:**
-    - Analyzing the environment for relevant risk drivers.
-    - Analyzing and tracking the business or portfolio to ascertain risk exposures.
-    - Calculating risk metrics to size these risks under various scenarios and stresses.
-3. **Risk infrastructure:**
-    - Refers to essential personnel and systems for tracking risk and conducting
-    quantitative analyses (e.g., databases, analytic models).
-4. **Defined policies and processes:**
-    - Extends governance into daily operations, setting guidelines and limits aligned
-    with risk tolerance and regulations.
-5. **Risk monitoring, mitigation, and management:**
-    - A complex facet that integrates all aspects of the framework.
-    - Involves ongoing review and action to align risk exposure with tolerance.
-6. **Communications:**
-    - A continuous process across the organization.
-    - Ensures clarity in governance, risk metrics, and exposure changes to enable
-    appropriate action.
-7. **Strategic analysis or integration:**
-    - Utilizes risk management proactively to enhance performance and overall value.
+1. **Risk Governance**  
+   This top-down process guides risk management activities. Enterprise risk management
+   (ERM) ensures alignment between risk practices and the organization’s overall
+   objectives, health, and value.
+
+2. **Risk Identification and Measurement**  
+   Identifying relevant risk drivers and tracking exposures within the business or
+   portfolio. This includes calculating risk metrics under various scenarios to size
+   potential risks.
+
+3. **Risk Infrastructure**  
+   Consists of the personnel and systems required for risk tracking and quantitative
+   analysis, such as databases and analytic models.
+
+4. **Defined Policies and Processes**  
+   Operationalizes governance by setting daily guidelines, limits, and processes that
+   align with the organization's risk tolerance and regulatory requirements.
+
+5. **Risk Monitoring, Mitigation, and Management**  
+   This involves ongoing reviews and adjustments to align risk exposure with the
+   organization’s tolerance levels. It is a dynamic process that integrates all aspects
+   of the framework.
+
+6. **Communication**  
+   Ensures clarity in risk governance, metrics, and exposure changes throughout the
+   organization. Effective communication enables timely and appropriate responses to
+   risks.
+
+7. **Strategic Integration**  
+   Proactive use of risk management to enhance performance, optimize decision-making,
+   and increase overall organizational value.
 
 ## Risk Tolerance and Risk Budgeting
 
-- **Risk tolerance** defines how much risk an organization is willing to accept,
-including potential losses, opportunity costs, or failure in meeting objectives.
-- It identifies critical shortfalls or failures in achieving goals and exposure to
-uncertain forces or risk drivers.
-- It must be formally determined and communicated prior to any crisis, guiding
-management in the strategic selection of risks.
-- **Risk budgeting** focuses on the implementation of the risk tolerance decisions
-approved by the management at the strategic or governance level.
-- The risk budget will quantify risk by specific metrics and allocate risk across the
-organization.
-- Single-dimension measures: standard deviation, beta, value at risk (VaR), and scenario
-loss.
-- Multi-dimensional approaches for example evaluate risks by their underlying risk
-classes, such as equity, fixed income, commodity risk, and so on, and then allocates
-investments by their risk class (factor analysis). 
-- Even basic risk budgeting promotes intentional risk trade-offs and a culture where
-risk is integrated into major decisions.
-- It aims to invest where return per risk unit is highest, affecting choices like opting
-for a market hedge or a less risky investment.
+**Risk tolerance** defines the level of risk an organization is willing to accept,
+*including potential losses, opportunity costs, and the risk of failing to meet
+*objectives. It helps identify critical shortfalls in goal achievement and exposure to
+*uncertain factors. Risk tolerance must be formally established and communicated in
+*advance, guiding strategic risk selection.
+
+**Risk budgeting** is the implementation of risk tolerance decisions approved at the
+*strategic or governance level. It quantifies risk using specific metrics and allocates
+*it across the organization. Common single-dimensional measures include standard
+*deviation, beta, value at risk (VaR), and scenario analysis. Multi-dimensional
+*approaches categorize risks by underlying classes (e.g., equity, fixed income,
+*commodities) and allocate investments accordingly through factor analysis.
+
+Risk budgeting fosters intentional risk trade-offs and encourages a decision-making
+culture where risk is integral. Its goal is to invest where the return per unit of risk
+is highest, influencing decisions such as hedging or choosing lower-risk investments.
 
 ## Identification of Risk
 
@@ -157,151 +153,131 @@ for a market hedge or a less risky investment.
 ::: {.callout-tip}
 # Definition
 
-- **Financial risks** originate from the financial markets (e.g., changes in prices or
-interest rates).
+**Financial risks** stem from financial markets, such as fluctuations in prices or
+interest rates.
 :::
 
-- **Market risk** arises from movements in interest rates, stock prices, exchange rates,
-and commodity prices.
-- **Credit risk**, also known as default risk or counterparty risk, is the risk of loss
-if one party fails to pay an amount owed on an obligation, such as a bond, loan, or
-derivative, to another party. 
-- **Liquidity risk** is the risk of a significant downward valuation adjustment when
-selling a financial asset. 
-    - It is related to transaction costs in the market (bid-ask spread).
-    - Depends on time-varying asset liquidity and size of a position.
+- **Market risk**: Risk due to movements in interest rates, stock prices, exchange
+rates, and commodity prices.
+- **Credit risk** (also known as default or counterparty risk): The risk of loss if one
+party fails to meet its obligations on bonds, loans, or derivatives.
+- **Liquidity risk**: The risk of a significant downward price adjustment when selling a
+financial asset, often influenced by market transaction costs (bid-ask spread), asset
+liquidity, and position size.
 
 ### Non-Financial Risks
 
 ::: {.callout-tip}
 # Definition
-
-- **Non-financial risks** are risks that are not primarily related to financial markets
-but arise from various sources (e.g., actions within the organization or from external
-origins such as the environment, relationship with counterparties, regulators,
-governments, suppliers, customers, etc.).
+**Non-financial risks** originate from sources outside financial markets, including
+internal organizational actions or external factors like relationships with regulators,
+governments, suppliers, or customers.
 :::
-- **Settlement risk** is the risk of payment failure just before a default (e.g., you
-send money to your counterparty and it defaults).
-- **Legal risk** includes the risk of being sued and the risk that contract terms won't
-be upheld.
-- **Regulatory**, **accounting**, and **tax risks** are related and collectively
-referred to as compliance risk.
-- **Model risk** is the risk of valuation error from using the wrong model or using the
-right model incorrectly.
-- **Tail risk** refers to events in the distribution tail that are more frequent than
-expected.
-- **Operational risk** arises from inadequate people, systems, internal policies, and
-external events (e.g., theft, accounting fraud, rogue traders, natural disasters, cyber
-risk, etc.).
-- **Solvency risk** (sometimes called liquidity risk) is the risk of running out of
-cash, even if an organization is otherwise solvent.
+
+- **Settlement risk**: Risk of payment failure before default (e.g., sending funds to a
+counterparty that defaults).
+- **Legal risk**: Risk of litigation or the failure of contracts to be upheld.
+- **Compliance risk**: Encompasses regulatory, accounting, and tax risks.
+- **Model risk**: Risk of errors from using incorrect models or misapplying correct ones.
+- **Tail risk**: Risk of extreme events that occur more frequently than anticipated.
+- **Operational risk**: Risk arising from internal failures (e.g., inadequate personnel,
+systems, or policies) or external events (e.g., fraud, natural disasters,
+cyber-attacks).
+- **Solvency risk**: Risk of running out of cash, despite being otherwise solvent
+(distinct from liquidity risk in financial markets).
 
 ## Interactions Between Risks
 
-- Risks in different categories can often be classified into multiple categories.
-    - Market risk leads to credit risk, which in turn leads to operational risk.
-    - Credit risk is closely linked to settlement risk.
-    - Legal risk can arise from market or credit risk, as parties search for loopholes
-    in contracts.
-- Risks can interact and compound, leading to higher costs and lower expected payoffs,
-particularly under stressed market conditions.
-- Such adverse risk interactions were notable during the 2008 financial crisis.
-- Combined risk is usually worse than the sum of individual risks (non-linear pattern).
-- Up-front scenario planning is valuable in understanding risk interactions.
-- Risk models and systems overlook these interactions, making the consequences worse.
-- Governance bodies, company management, and analysts must recognize the potential
-dangers of risk interactions and avoid treating risks as isolated and unrelated.
+Risks often overlap across categories. For instance, market risk can lead to credit
+risk, which may, in turn, cause operational risk. Similarly, credit risk is linked to
+settlement risk, and legal risks can arise from market or credit risk when parties seek
+contract loopholes.
 
-## Measuring and Modifying Risk
+The interaction of risks can compound and amplify costs and reduce expected returns,
+particularly under stressed conditions, as seen during the 2008 financial crisis.
+**Combined risks are usually worse than the sum of individual risks**, following a
+**non-linear pattern**. Scenario planning helps identify these interactions early. Risk
+models often fail to capture these interactions, worsening the consequences. Governance
+bodies, management, and analysts should avoid treating risks as isolated and unrelated.
 
-### Drivers
+## Measuring Risk
 
-- All risks arise from the fact that the future is unknown.
-- Financial markets reflect global and domestic economic conditions, industry factors,
-and company-specific characteristics.
-- Government policies, regulations, laws, and economic factors influence the economic
-environment and impact the activities of companies.
-- Systematic risks affect economies and industries, while idiosyncratic (unsystematic)
-risks are specific to individual companies.
-- Diversified portfolios aim to eliminate unsystematic risks, but unsystematic risks
-still matter to company management, poorly diversified investors, and financial
-analysts.
-- Unsystematic risks can sometimes become systematic, such as when poor credit risk
-management in a major bank triggers a global financial crisis.
+All risks stem from the uncertainty of the future. Financial markets reflect a blend of
+global and domestic economic conditions, industry dynamics, and company-specific
+factors. Government policies, regulations, and broader economic factors influence this
+environment, impacting company activities.
 
-### Metrics
+- **Systematic risk** affects entire economies or industries.
+- **Idiosyncratic (unsystematic) risk** is specific to individual companies but can
+sometimes evolve into systematic risk, as with poor credit risk management triggering a
+global crisis. 
+- Diversified portfolios aim to eliminate unsystematic risks, though these risks still
+matter to company managers, poorly diversified investors, and financial analysts.
 
-- Risk metrics quantify risk exposure.
-- Common measures include:
-    - **Probability**: Relative frequency of outcomes.
-    - **Standard Deviation**: Outcome range; limited for non-normal distributions.
-    - **Beta**: Sensitivity to market returns.
-    - **Greeks**: Specialized measures for derivatives (e.g., delta, gamma).
-    - **Duration**: Specific to fixed-income assets.
-    - **Value at Risk (VaR)**: Extreme loss size; subject to model risk and limitations.
-        - Variants include **Conditional VaR**, extreme value theory, **scenario analysis**, and **stress testing**.
-- Credit risk assessment includes **credit ratings**, liquidity, solvency,
-profitability, leverage, and macroeconomic factors.
-- Measuring credit risk is challenging due to the rarity of credit events, but default
-probabilities can be estimated by aggregating companies with similar characteristics or
-analyzing market prices of derivative instruments (e.g., credit default swaps).
-- Operational risk is difficult to measure and involves assessing the likelihood and
-potential losses of rare events such as cyberattacks.
-- Some risks like changes in accounting or regulation may require subjective evaluation.
+### Metrics for Measuring Risk
+
+Risk metrics are used to quantify exposure. Common measures include:
+
+- **Probability**: Frequency of outcomes.
+- **Standard deviation**: Measures the range of outcomes but has limitations for
+non-normal distributions.
+- **Beta**: Sensitivity to market returns.
+- **Greeks**: Measures specific to derivatives (e.g., delta, gamma).
+- **Duration**: Applies to fixed-income assets.
+- **Value at Risk (VaR)**: Estimates extreme loss potential but is subject to model
+limitations. Variants include Conditional VaR, extreme value theory, scenario analysis,
+and stress testing.
+
+For credit risk, assessments include factors like **credit ratings**, liquidity,
+solvency, profitability, and leverage, along with macroeconomic indicators. Credit risk
+is difficult to measure due to the rarity of credit events, but default probabilities
+can be estimated using similar company characteristics or analyzing derivative
+instruments like credit default swaps. Operational risk, such as from cyberattacks, is
+also challenging to quantify, requiring assessment of rare but impactful events.
+Subjective evaluation may be needed for risks related to changes in accounting or
+regulation.
 
 ## Methods of Risk Modification
 
-- Risk modification aligns actual risk with acceptable levels and strategic objectives.
-- It includes risk reduction (or hedging) and may vary by organizational goals.
-- Categories of risk modification: prevention and avoidance, acceptance, transfer, and
+Risk modification aims to align actual risk with acceptable levels and strategic
+objectives. It involves reducing or hedging risks and varies based on organizational
+goals. The primary methods include prevention and avoidance, acceptance, transfer, and
 shifting.
 
 ### Risk Prevention and Avoidance
 
-- Risk avoidance may not always be possible or desirable, as there is often a trade-off
-between cost and benefits.
-- Strategic decisions made at the governance level.
-- Involves fine-tuning exposure to achieve desired risk levels.
-- If risk exceeds acceptable levels, solutions include self-insuring, risk transfer, and
-shifting.
+Risk avoidance is not always possible or desirable due to trade-offs between cost and
+benefits. Strategic decisions at the governance level help fine-tune exposure to desired
+risk levels. If risk exceeds acceptable thresholds, mitigation options include
+self-insuring, transferring, or shifting the risk.
 
 ### Risk Acceptance: Self-Insurance and Diversification
 
-- Self-insurance involves bearing a risk that is considered costly to eliminate by
-external means.
-- Self-insuring can mean accepting the risk as is or establishing a reserve to cover
-potential losses.
-- It must align with an enterprise's risk tolerance.
-- Diversification is a risk-mitigation technique that involves spreading investments
-across different assets or sectors.
-- Diversification is central to modern portfolio analysis and is often combined with
-other risk modification strategies.
+Self-insurance involves accepting a risk that is too costly to eliminate through
+external means. This can either mean bearing the risk as is or setting aside reserves to
+cover potential losses. It must align with the enterprise’s risk tolerance.
+Diversification, a key risk-mitigation technique, spreads investments across assets or
+sectors, and is central to modern portfolio theory.
 
 ### Risk Transfer
 
-- Risk transfer involves passing on a risk to another party through insurance policies.
-- Insurers diversify risks, charge premiums, and manage correlated risks, offering specialized coverage for unique risks.
+Risk transfer shifts risk to another party, often through insurance. Insurers manage
+diversified risks by charging premiums and offering specialized coverage for unique
+risks.
 
 ### Risk Shifting
 
-- Risk shifting changes the distribution of risk outcomes and is associated with
-derivatives.
-- Derivatives, like forward commitments and contingent claims, allow efficient shifting
-of risk across probability distributions and from one party to another.
-- Derivatives can be created on exchanges or privately between parties.
+Risk shifting alters the distribution of risk outcomes, typically using derivatives.
+Forward commitments and contingent claims efficiently shift risk across probability
+distributions and between parties. Derivatives can be traded on exchanges or created
+privately.
 
 ### Choosing a Method for Modifying Risk
 
-- Organizations often use multiple methods, and the choice depends on costs, benefits,
-and risk tolerance.
-- Companies with foreign operations often hedge exchange rate risk using derivatives.
-- Risk prevention and avoidance are preferred for risks with little benefit.
-- Self-insurance can be an option for organizations with ample cash flow, but it may not
-cover all risks.
-- Risk transfer through insurance may not be suitable for all risks, especially those
-that can affect many parties simultaneously.
-- Risk shifting using derivatives is common for financial risks that exceed risk
-appetite.
-- Different risk management methods have varying impacts on risk reduction and remaining
-risk profiles.
+Organizations often **combine multiple risk-modification strategies** based on costs,
+benefits, and risk tolerance. For example, companies with foreign operations commonly
+hedge exchange rate risks using derivatives. Risk prevention and avoidance are preferred
+for low-benefit risks, while self-insurance may suit firms with strong cash flows.
+However, insurance may not cover risks affecting multiple parties simultaneously.
+Derivatives are often used to shift financial risks that exceed an organization’s risk
+appetite. Each method affects risk profiles differently and requires careful evaluation.
