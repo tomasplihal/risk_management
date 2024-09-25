@@ -76,7 +76,7 @@ to optimize a portfolio's or organization's value. It involves balancing risk to
 goals with an acceptable chance of failure.
 
 *Alternative definition*: Risk management involves decisions and actions that maximize
-*personal or organizational objectives within tolerable risk levels.
+personal or organizational objectives within tolerable risk levels.
 :::
 
 - Effective risk management quantifies, monitors, and adjusts risks to balance goals
