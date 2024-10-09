@@ -68,6 +68,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -267,30 +270,12 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
-  <ul>
+  <ul class="collapse">
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">3.1</span> Introduction</a></li>
-  <li><a href="#managing-interest-rate-risk" id="toc-managing-interest-rate-risk" class="nav-link" data-scroll-target="#managing-interest-rate-risk"><span class="header-section-number">3.2</span> Managing Interest Rate Risk</a>
-  <ul class="collapse">
-  <li><a href="#managing-the-interest-rate-risk-of-a-loan-using-a-fra" id="toc-managing-the-interest-rate-risk-of-a-loan-using-a-fra" class="nav-link" data-scroll-target="#managing-the-interest-rate-risk-of-a-loan-using-a-fra"><span class="header-section-number">3.2.1</span> Managing the Interest Rate Risk of a Loan Using a FRA</a></li>
-  <li><a href="#strategies-and-applications-for-managing-bond-portfolio-risk" id="toc-strategies-and-applications-for-managing-bond-portfolio-risk" class="nav-link" data-scroll-target="#strategies-and-applications-for-managing-bond-portfolio-risk"><span class="header-section-number">3.2.2</span> Strategies and Applications for Managing Bond Portfolio Risk</a></li>
-  </ul></li>
-  <li><a href="#managing-equity-market-risk" id="toc-managing-equity-market-risk" class="nav-link" data-scroll-target="#managing-equity-market-risk"><span class="header-section-number">3.3</span> Managing Equity Market Risk</a>
-  <ul class="collapse">
-  <li><a href="#measuring-and-managing-the-risk-of-equities" id="toc-measuring-and-managing-the-risk-of-equities" class="nav-link" data-scroll-target="#measuring-and-managing-the-risk-of-equities"><span class="header-section-number">3.3.1</span> Measuring and Managing the Risk of Equities</a></li>
-  <li><a href="#numerical-example-of-managing-beta" id="toc-numerical-example-of-managing-beta" class="nav-link" data-scroll-target="#numerical-example-of-managing-beta"><span class="header-section-number">3.3.2</span> Numerical Example of Managing <span class="math inline">\(\beta\)</span></a></li>
-  <li><a href="#creating-equity-out-of-cash" id="toc-creating-equity-out-of-cash" class="nav-link" data-scroll-target="#creating-equity-out-of-cash"><span class="header-section-number">3.3.3</span> Creating Equity out of Cash</a></li>
-  <li><a href="#creating-cash-out-of-equity" id="toc-creating-cash-out-of-equity" class="nav-link" data-scroll-target="#creating-cash-out-of-equity"><span class="header-section-number">3.3.4</span> Creating Cash out of Equity</a></li>
-  </ul></li>
-  <li><a href="#asset-allocation-with-futures" id="toc-asset-allocation-with-futures" class="nav-link" data-scroll-target="#asset-allocation-with-futures"><span class="header-section-number">3.4</span> Asset Allocation with Futures</a>
-  <ul class="collapse">
-  <li><a href="#adjusting-the-allocation-among-asset-classes" id="toc-adjusting-the-allocation-among-asset-classes" class="nav-link" data-scroll-target="#adjusting-the-allocation-among-asset-classes"><span class="header-section-number">3.4.1</span> Adjusting the Allocation among Asset Classes</a></li>
-  <li><a href="#pre-investing-in-an-asset-class" id="toc-pre-investing-in-an-asset-class" class="nav-link" data-scroll-target="#pre-investing-in-an-asset-class"><span class="header-section-number">3.4.2</span> Pre-Investing in an Asset Class</a></li>
-  </ul></li>
-  <li><a href="#managing-foreign-currency-risk" id="toc-managing-foreign-currency-risk" class="nav-link" data-scroll-target="#managing-foreign-currency-risk"><span class="header-section-number">3.5</span> Managing Foreign Currency Risk</a>
-  <ul class="collapse">
-  <li><a href="#managing-the-risk-of-a-foreign-currency-receiptpayment" id="toc-managing-the-risk-of-a-foreign-currency-receiptpayment" class="nav-link" data-scroll-target="#managing-the-risk-of-a-foreign-currency-receiptpayment"><span class="header-section-number">3.5.1</span> Managing the Risk of a Foreign Currency Receipt/Payment</a></li>
-  <li><a href="#managing-the-risk-of-a-foreign-market-asset-portfolio" id="toc-managing-the-risk-of-a-foreign-market-asset-portfolio" class="nav-link" data-scroll-target="#managing-the-risk-of-a-foreign-market-asset-portfolio"><span class="header-section-number">3.5.2</span> Managing the Risk of a Foreign-Market Asset Portfolio</a></li>
-  </ul></li>
+  <li><a href="#managing-interest-rate-risk" id="toc-managing-interest-rate-risk" class="nav-link" data-scroll-target="#managing-interest-rate-risk"><span class="header-section-number">3.2</span> Managing Interest Rate Risk</a></li>
+  <li><a href="#managing-equity-market-risk" id="toc-managing-equity-market-risk" class="nav-link" data-scroll-target="#managing-equity-market-risk"><span class="header-section-number">3.3</span> Managing Equity Market Risk</a></li>
+  <li><a href="#synthetic-positions" id="toc-synthetic-positions" class="nav-link" data-scroll-target="#synthetic-positions"><span class="header-section-number">3.4</span> Synthetic Positions</a></li>
+  <li><a href="#managing-foreign-currency-risk" id="toc-managing-foreign-currency-risk" class="nav-link" data-scroll-target="#managing-foreign-currency-risk"><span class="header-section-number">3.5</span> Managing Foreign Currency Risk</a></li>
   <li><a href="#final-comments" id="toc-final-comments" class="nav-link" data-scroll-target="#final-comments"><span class="header-section-number">3.6</span> Final Comments</a></li>
   <li><a href="#practice-questions-and-problems" id="toc-practice-questions-and-problems" class="nav-link" data-scroll-target="#practice-questions-and-problems"><span class="header-section-number">3.7</span> Practice Questions and Problems</a></li>
   </ul>
@@ -324,454 +309,510 @@ window.Quarto = {
 <ul>
 <li>Chapter 7 - Risk Management Applications of Forward and Futures Strategies</li>
 </ul></li>
+<li>HULL, John. Options, futures, and other derivatives. Ninth edition. Harlow: Pearson, 2018. ISBN 978-1-292-21289-0.
+<ul>
+<li>Chapter 6 - Interest Rate Futures</li>
+</ul></li>
 </ul>
 <p><strong>Learning outcomes:</strong></p>
 <ul>
-<li>Show how to use equity futures contracts for achieving a desired portfolio beta and calculate the necessary number of futures contracts.</li>
+<li>Demonstrate how to use equity futures to achieve a target portfolio beta and calculate the required number of contracts.</li>
 <li>Create a synthetic stock index fund using cash and stock index futures.</li>
-<li>Describe the conversion of a long stock position into synthetic cash using stock index futures.</li>
-<li>Use equity and bond futures to rebalance a portfolio between equity and debt.</li>
-<li>Use futures to reallocate a portfolio across equity sectors.</li>
-<li>Define exchange rate risk and demonstrate the use of forward contracts to mitigate risk associated with future foreign currency transactions.</li>
-<li>Discuss the challenges and possible strategies for hedging the exchange rate risk of a foreign market portfolio.</li>
+<li>Convert a long stock position into synthetic cash with stock index futures.</li>
+<li>Rebalance a portfolio between equity and debt using equity and bond futures.</li>
+<li>Use futures to shift portfolio allocations across equity sectors.</li>
+<li>Define exchange rate risk and show how forward contracts mitigate risk for future foreign currency transactions.</li>
 </ul>
 <section id="introduction" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.1</span> Introduction</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Definition">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definition of forward an futures
+Definition
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Forward and futures contracts are commitments for one party to buy and the other to sell an underlying instrument at a future date at a pre-agreed price.</li>
-<li>Forward contracts are customized agreements, while futures contracts are standardized, created on a futures exchange, and subject to federal regulation.</li>
+<li><strong>Forward and futures contracts</strong> are agreements where one party commits to buy, and the other to sell, an underlying asset at a predetermined price on a specified future date.</li>
+<li>Forward contracts are customized between parties, while futures contracts are standardized, traded on exchanges, and regulated by federal authorities.</li>
 </ul>
 </div>
 </div>
-<ul>
-<li>The material provides scenarios where these contracts are used for risk management.</li>
-<li>Businesses manage a variety of risks, often through hedging, which involves taking a market position to protect against unfavorable outcomes.</li>
-<li>Instead of just hedging, the broader concept of “risk management” will be emphasized.</li>
-</ul>
+<p>This material explores scenarios where these contracts are used in risk management. Businesses often hedge to mitigate various risks, using market positions to protect against adverse price movements. Here, we emphasize a broader view of risk management beyond simple hedging.</p>
+<p>For further review, see the topics from the Financial Derivatives course on <a href="https://tomasplihal.github.io/financial_derivatives/week_02.html">Forwards and Futures</a> and the <a href="https://tomasplihal.github.io/financial_derivatives/week_03.html">Determination of Forward and Futures Prices</a>.</p>
 </section>
 <section id="managing-interest-rate-risk" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="managing-interest-rate-risk"><span class="header-section-number">3.2</span> Managing Interest Rate Risk</h2>
-<ul>
-<li>Financial institutions face interest rate risk, affecting profitability and stability due to lending and borrowing activities.</li>
-<li>Interest rate risk impacts net income, asset values, and balance sheets, requiring effective risk management.</li>
-<li>Other companies also face interest rate risk in planning borrowing, including with fixed-rate loans, necessitating careful management to avoid unexpected cash demands.</li>
-</ul>
-<section id="managing-the-interest-rate-risk-of-a-loan-using-a-fra" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="managing-the-interest-rate-risk-of-a-loan-using-a-fra"><span class="header-section-number">3.2.1</span> Managing the Interest Rate Risk of a Loan Using a FRA</h3>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Definition">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definition of FRA
+Definition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>A FRA or Forward Rate Agreement is a financial contract between two parties to exchange interest payments for a notional principal amount on a future, pre-agreed date.</li>
-<li>In a “6x18” FRA, “6” denotes the time (in months) until the loan’s start, and “18” denotes the time until its end.</li>
-<li>So a “6x18” FRA means a one-year loan starting in six months.</li>
-</ul>
+<p><strong>Interest rate risk</strong> is the potential for financial loss due to fluctuations in interest rates. It can affect both the value of financial assets and the cost of liabilities.</p>
 </div>
 </div>
 <ul>
-<li>Lenders can lock in future loan rates by shorting a FRA, but this is risky due to borrowers’ unpredictable needs and the possibility of losses if they decide not to take the loan.</li>
-<li>Banks offering floating-rate credit lines may use FRAs, but to mitigate risks, some choose options where the worst-case scenario is losing the option premium.</li>
+<li>Financial institutions are particularly vulnerable to interest rate risk, as changes in rates can directly impact their profitability, net income, and balance sheet stability due to their reliance on lending and borrowing activities.</li>
+<li>This risk also affects non-financial companies, especially when planning long-term borrowing or managing fixed-rate loans, as unexpected changes in interest rates can lead to higher costs or cash flow disruptions.</li>
+<li>Effective management of interest rate risk is essential to maintaining financial health. To mitigate this risk, institutions and corporations often use forward rate agreements (FRAs) and interest rate futures, allowing them to hedge against unfavorable interest rate movements.</li>
 </ul>
-<section id="single-payment-loan" class="level4" data-number="3.2.1.1">
-<h4 data-number="3.2.1.1" class="anchored" data-anchor-id="single-payment-loan"><span class="header-section-number">3.2.1.1</span> Single-Payment Loan</h4>
-<ul>
-<li><p>XYZ Corporation, planning to borrow $10 million in six months for a year to finance business expansion, is concerned about potential rising interest rates.</p></li>
-<li><p>They enter into a 6x18 FRA with a bank at a rate of 5.5% to hedge the risk.</p></li>
-<li><p>Outcome scenarios:</p>
+<p>While both interest rate futures and FRAs serve as tools for managing interest rate risk, FRAs offer greater flexibility due to their customizable nature. Since financial institutions often require bespoke solutions to match their unique interest rate exposures, FRAs are more commonly used in practice than standardized futures contracts. Therefore, the following text will focus on FRAs as the preferred tool for managing interest rate risk.</p>
+<section id="interest-rate-futures" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="interest-rate-futures"><span class="header-section-number">3.2.1</span> Interest Rate Futures</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Definition">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Interest rate futures are standardized contracts traded on exchanges that allow market participants to buy or sell a notional amount of a debt instrument or interest rate index at a specified future date and price.</p>
+</div>
+</div>
+<p>These contracts are typically used to hedge against short-term interest rate fluctuations. Since they are exchange-traded, they offer high liquidity and are subject to daily mark-to-market adjustments, meaning gains and losses are settled at the end of each trading day, which can lead to margin calls.</p>
+<p>Examples of commonly traded interest rate futures include futures on government bonds (e.g., U.S. Treasury bonds) or short-term interest rates (e.g., Eurodollar futures). They are often used by institutional investors, banks, and corporations to protect themselves from unexpected changes in interest rates that can affect the cost of borrowing or the value of their bond portfolios.</p>
+<p><strong>Duration-based hedging</strong> is similar to managing beta in equity portfolios, but instead of using beta, we use duration to manage interest rate risk. Duration measures the sensitivity of a bond’s price to changes in interest rates, much like beta measures a stock’s sensitivity to market movements. We’ll explore the concept of managing beta in more detail when we discuss market risk in a later section.</p>
+<p><strong>Duration matching</strong> is a risk management technique used by financial institutions, pension funds, and insurance companies to protect against interest rate risk. The idea is to match the duration of assets with the duration of liabilities so that changes in interest rates have an equal but offsetting effect on both. This minimizes the institution’s exposure to fluctuations in interest rates.</p>
+<p>Interest rate futures are more complex than simple buy/sell agreements, and understanding their specifics is crucial for effective risk management.</p>
+<section id="price-quotations" class="level4">
+<h4 class="anchored" data-anchor-id="price-quotations">Price Quotations</h4>
+<p>Interest rate futures, like Eurodollar futures, are often quoted as 100 minus the interest rate. For example, if the quoted price is 98.50, it implies a 1.5% interest rate (100 - 98.50 = 1.50%). This inverted quotation system can be confusing but is designed to reflect rising interest rates causing a fall in futures prices and vice versa. Understanding these price quotations is key to analyzing market trends and deciding on hedge positions.</p>
+</section>
+<section id="day-count-conventions" class="level4">
+<h4 class="anchored" data-anchor-id="day-count-conventions">Day Count Conventions</h4>
+<p>Interest rate futures follow specific day count conventions to calculate interest and contract values. For example, Eurodollar futures use an actual/360 convention, meaning the interest is based on the actual number of days in the contract period, divided by 360. U.S. Treasury futures use a 30/360 convention, assuming each month has 30 days and the year has 360 days. These conventions affect the pricing and calculation of settlement values.</p>
+</section>
+<section id="conversion-factors" class="level4">
+<h4 class="anchored" data-anchor-id="conversion-factors">Conversion Factors</h4>
+<p>For bond futures, conversion factors are used to adjust the price of various bonds so they can be compared to the futures contract. The conversion factor represents the price at which a bond with a 6% coupon would be delivered. Bonds with different coupons or maturities are adjusted through this conversion factor to account for discrepancies, ensuring that different bonds are appropriately valued for delivery. This mechanism allows flexibility in delivery but can complicate the pricing and hedging process.</p>
+</section>
+<section id="cheapest-to-deliver-bonds" class="level4">
+<h4 class="anchored" data-anchor-id="cheapest-to-deliver-bonds">Cheapest-to-Deliver Bonds</h4>
+<p>In futures contracts involving bonds, such as U.S. Treasury futures, the seller can deliver any bond that meets the contract’s maturity criteria. However, sellers will choose the bond with the lowest cost of delivery, known as the “cheapest to deliver.” The selection of this bond impacts the actual delivery value and creates opportunities for arbitrage. Understanding how to calculate the cheapest-to-deliver bond is essential for participants hedging fixed-income portfolios.</p>
+</section>
+<section id="delivery-options-in-treasury-bond-futures" class="level4">
+<h4 class="anchored" data-anchor-id="delivery-options-in-treasury-bond-futures">Delivery Options in Treasury Bond Futures</h4>
+<p>In Treasury bond futures, the short position holder has key delivery options:</p>
 <ol type="1">
-<li>If rates rise to 7%, the corporation borrows at 7% but the bank pays the difference, offsetting the increased cost (hedge was beneficial).</li>
-<li>If rates fall to 4%, the corporation pays the bank the difference, resulting in a cost (hedge wasn’t beneficial).</li>
-</ol></li>
-<li><p>A FRA allows XYZ Corporation to lock in a maximum interest rate, hedging against rising interest rates.</p></li>
-<li><p>It provides certainty but can result in missed opportunities if rates fall.</p></li>
-<li><p>The payoff of a FRA at maturity can be calculated as follows:</p></li>
+<li>Can deliver on any day during the delivery month.</li>
+<li>Can choose from several eligible bonds, including the cheapest-to-deliver.</li>
+<li>Can notify intention to deliver based on the 2:00 p.m. settlement price but decide later in the day.</li>
+</ol>
+<p>These options add flexibility for the short position and generally reduce the futures price.</p>
+</section>
+</section>
+<section id="forward-rate-agreements" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="forward-rate-agreements"><span class="header-section-number">3.2.2</span> Forward Rate Agreements</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Definition">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A Forward Rate Agreement (FRA) is an over-the-counter (OTC) derivative contract between two parties to exchange interest payments based on a notional principal amount at a specified future date.</p>
+</div>
+</div>
+<p>The buyer of the FRA agrees to pay a fixed interest rate, while the seller agrees to pay a floating rate (usually based on LIBOR or another reference rate). The actual notional principal is never exchanged; instead, the parties settle based on the difference between the agreed-upon rate and the prevailing market rate. FRAs are used to hedge interest rate exposure. Borrowers can lock in future borrowing rates by buying a FRA, protecting against rising rates, while lenders can short a FRA to lock in future lending rates, guarding against falling rates.</p>
+<p>In a <strong>6x18 FRA</strong>, a company locks in the interest rate for a loan that begins 6 months from now and lasts for one year. If market rates rise by then, the borrower pays the agreed lower rate; if they fall, the borrower pays the difference.</p>
+<p>Banks use FRAs to hedge the risk of rising interest rates on floating-rate loans. Some prefer options instead, limiting losses to the option premium if the loan isn’t needed.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">timeline
+    title Timeline of a 6x18 FRA
+    FRA Signed (rate locked): t = 0
+    Start of Loan: t = 6 months
+    End of Loan: t = 18 months
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>The fair price for a FRA that prevents arbitrage is called <strong>forward rate</strong>. Forward rates are the rates implied by current zero rates for future periods. <strong>Zero rates</strong> (or spot rates) are the interest rates on zero-coupon bonds, which pay no interim interest but a single payment at maturity.</p>
+<p>Forward rates are calculated using the difference between zero rates for different maturities. They represent the interest rate for a future period that makes the total return over multiple periods consistent with the zero rates.</p>
+<p><span class="math display">\[
+R_F = \frac{R_2T_2 - R_1T_1}{T_2 - T_1}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(R_F\)</span> is forward rate.</li>
+<li><span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span> are zero rates for maturities <span class="math inline">\(T_1\)</span> and <span class="math inline">\(T_2\)</span>, respectively.</li>
+<li><span class="math inline">\(T_1\)</span> and <span class="math inline">\(T_2\)</span> are maturities in years.</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Maturity (Years)</th>
+<th style="text-align: center;">Zero Rates (%)</th>
+<th style="text-align: center;">Forward Rates (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">3.00</td>
+<td style="text-align: center;">N/A</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.50</td>
+<td style="text-align: center;">3.20</td>
+<td style="text-align: center;">3.40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.75</td>
+<td style="text-align: center;">3.40</td>
+<td style="text-align: center;">3.80</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1.00</td>
+<td style="text-align: center;">3.50</td>
+<td style="text-align: center;">3.80</td>
+</tr>
+</tbody>
+</table>
+<p>The forward rate for the period between 0.5 and 0.75 years is calculated as:</p>
+<p><span class="math display">\[
+R_F = \frac{3.40 \times 0.75 - 3.20 \times 0.50}{0.75 - 0.5} = 3.8
+\]</span></p>
+<p>This means the implied forward rate between 6 months and 9 months is 3.8%, based on the zero rates for those periods.</p>
+</div>
+</div>
+<section id="single-payment-loan" class="level4">
+<h4 class="anchored" data-anchor-id="single-payment-loan">Single-Payment Loan</h4>
+<p>XYZ Corporation plans to borrow $10 million in six months for a year to finance business expansion and is concerned about rising interest rates. To hedge this risk, they enter into a 6x18 FRA with a bank at a fixed rate of 5.5%.</p>
+<p>Two possible outcomes:</p>
+<ol type="1">
+<li>If interest rates rise to 7%, XYZ Corporation borrows at 7%, but the bank compensates them for the difference, effectively reducing the borrowing cost and making the hedge beneficial.</li>
+<li>If interest rates fall to 4%, XYZ pays the bank the difference, resulting in an additional cost, meaning the hedge wasn’t favorable.</li>
+</ol>
+<p>By locking in a rate with the FRA, XYZ Corporation limits its exposure to rising rates, securing certainty at the cost of potentially missing lower interest rates.</p>
 <p><span class="math display">\[
 \text{FRA Payoff} = \text{Notional Principal} \times \frac{ (\text{Rate at Maturity} -
 \text{FRA Rate}) \times \frac{\text{Days}}{360}}{1 + \text{Rate at Maturity} \times
 \frac{\text{Days}}{360}}
 \]</span></p>
 <ul>
-<li>Where:
-<ul>
-<li><strong>Notional Principal</strong> is the hypothetical amount of money that the FRA is based on.</li>
+<li><strong>Notional Principal</strong> is $10,000,000 (the loan amount).</li>
 <li><strong>Rate at Maturity</strong> is the actual market interest rate when the FRA matures.</li>
-<li><strong>FRA Rate</strong> is the interest rate agreed upon in the FRA contract.</li>
-<li><strong>Days</strong> is the number of days for which the contract is in effect.</li>
-</ul></li>
-<li>Note that this payoff is calculated assuming a 360-day year, which is a common convention for FRAs.</li>
-<li>The formula is based on the difference between the <strong>FRA Rate</strong> and the <strong>Rate at Maturity</strong>.</li>
-<li>Plugging these numbers into the FRA payoff formula, we get:</li>
+<li><strong>FRA Rate</strong> is the agreed rate in the FRA (5.5%).</li>
+<li><strong>Days</strong> is the number of days the FRA is active (360 days in this case).</li>
 </ul>
+<p>If the rate at maturity is 7%:</p>
 <p><span class="math display">\[
 \text{FRA Payoff} = \$10,000,000 \times \frac{(0.07 - 0.055) \times \frac{360}{360}}{1 +
 0.07 \times \frac{360}{360}} = \$140,187
 \]</span></p>
 <p><span class="math display">\[
-\text{Pay back} = (\$10,000,000 - \$140,187) \times (1 + 0.07 \times \frac{360}{360}) =
+\text{Pay back} = (\$10,000,000 + \$140,187) \times (1 + 0.07 \times \frac{360}{360}) =
 \$10,550,000
 \]</span></p>
 <p><span class="math display">\[
 \text{Effective rate} = \left(\frac{\$10,550,000}{\$10,000,000} - 1 \right) \times
 \frac{360}{360} \approx 5.5\%
 \]</span></p>
+<p>This shows that even though the market rate rose to 7%, the FRA has effectively hedged XYZ Corporation’s borrowing costs to approximately 5.5%.</p>
 </section>
-<section id="floating-rate-loan" class="level4" data-number="3.2.1.2">
-<h4 data-number="3.2.1.2" class="anchored" data-anchor-id="floating-rate-loan"><span class="header-section-number">3.2.1.2</span> Floating-Rate Loan</h4>
-<ul>
-<li>Floating-rate loans, with fluctuating interest rates, pose risk for borrowers.</li>
-<li>Borrowers can manage this through a series of FRAs aligned with the loan’s rate reset dates, or futures contracts, though the latter may not match the reset periods.</li>
-<li>Financial institutions may use sophisticated methods to manage futures volatility, but these might not suit regular borrowers.</li>
-<li>Swaps could be a more accessible solution, and understanding FRAs helps in applying swaps for interest rate risk management.</li>
-</ul>
-</section>
-</section>
-<section id="strategies-and-applications-for-managing-bond-portfolio-risk" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="strategies-and-applications-for-managing-bond-portfolio-risk"><span class="header-section-number">3.2.2</span> Strategies and Applications for Managing Bond Portfolio Risk</h3>
-<ul>
-<li>Longer-term loans pose bond market risk for borrowers and lenders.</li>
-<li>Managing government bond portfolios helps firms mitigate interest rate risk.</li>
-<li>Using futures on government bonds is a strategy for managing interest rate risk.</li>
-<li>The approach is similar to managing <span class="math inline">\(\beta\)</span> in the equity portfolio, only the bond duration is used instead of <span class="math inline">\(\beta\)</span>.</li>
-</ul>
 </section>
 </section>
 <section id="managing-equity-market-risk" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="managing-equity-market-risk"><span class="header-section-number">3.3</span> Managing Equity Market Risk</h2>
-<ul>
-<li>Stock market volatility poses greater risk compared to bond market volatility.</li>
-<li>The stock market is generally more liquid than the bond market.</li>
-<li>Futures contracts can help manage the risk associated with stock market volatility.</li>
-<li>Futures contracts are typically based on stock market indices, rather than individual stocks.</li>
-<li>Diversified investors manage risk at the portfolio level and prefer futures on broad-based indices.</li>
-</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Definition">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Equity market risk refers to the potential financial loss or variability in returns resulting from fluctuations in the prices of equity securities, such as stocks.</p>
+</div>
+</div>
+<p>Stock market volatility is generally higher than bond market volatility, although the stock market tends to be more liquid. Futures contracts are often used to manage the risks associated with stock market volatility, with these contracts typically tied to stock market indices rather than individual stocks. Diversified investors, managing risk at the portfolio level, tend to favor futures on broad-based indices.</p>
 <section id="measuring-and-managing-the-risk-of-equities" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="measuring-and-managing-the-risk-of-equities"><span class="header-section-number">3.3.1</span> Measuring and Managing the Risk of Equities</h3>
-<ul>
-<li>Beta (<span class="math inline">\(\beta\)</span>) is a measure of a stock’s or a portfolio’s volatility in relation to the market.</li>
-<li>It represents the tendency of a security’s returns to respond to swings in the market.</li>
-<li><span class="math inline">\(\beta\)</span> is used in the capital asset pricing model (CAPM), which calculates the expected return of an asset based on its beta and expected market returns.</li>
-<li>The formula for <span class="math inline">\(\beta\)</span> is:</li>
-</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Definition">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Beta (<span class="math inline">\(\beta\)</span>) measures a stock’s or portfolio’s volatility relative to the market, indicating how returns respond to market swings.</p>
+</div>
+</div>
+<p>It’s a key component of the Capital Asset Pricing Model (CAPM), which estimates expected returns based on beta and market returns. The formula for beta is:</p>
 <p><span class="math display">\[
 \beta_{i} = \frac {Cov(R_{i}, R_{m})} {Var(R_{m})}
 \]</span></p>
-<ul>
-<li>Where:
-<ul>
-<li><span class="math inline">\(\beta_{i}\)</span> is the beta of the stock or portfolio (<span class="math inline">\(i\)</span>).</li>
-<li><span class="math inline">\(Cov(R_{i}, R_{m})\)</span> is the covariance between the return of the stock/portfolio (<span class="math inline">\(R_{i}\)</span>) and the return of the market (<span class="math inline">\(R_{m}\)</span>).</li>
-<li><span class="math inline">\(Var(R_{m})\)</span> is the variance of the return of the market.</li>
-</ul></li>
-<li>If <span class="math inline">\(\beta\)</span> is:
-<ul>
-<li>1, the security’s price will move with the market</li>
-<li>less than 1, the security will be less volatile than the market</li>
-<li>greater than 1, the security’s price will be more volatile than the market.</li>
-</ul></li>
-<li>The number of futures contracts (<span class="math inline">\(N\)</span>) needed to adjust <span class="math inline">\(\beta\)</span> is:</li>
-</ul>
+<p>Where <span class="math inline">\(\beta_{i}\)</span> is the beta of the stock or portfolio, <span class="math inline">\(Cov(R_{i}, R_{m})\)</span> is the covariance between the returns of the stock/portfolio and the market, and <span class="math inline">\(Var(R_{m})\)</span> is the variance of market returns.</p>
+<p>A beta of 1 means the security moves with the market; less than 1 indicates lower volatility than the market, and greater than 1 suggests higher volatility.</p>
+<p>To adjust portfolio beta using futures contracts, the number of contracts (<span class="math inline">\(N\)</span>) is calculated as:</p>
 <p><span class="math display">\[
-N = \frac{(\text{Target Beta} - \text{Current Beta}) \times \text{Portfolio
-Value}}{\text{Futures Price} \times \text{Futures Beta}}
+N = \frac{(\text{Target Beta} - \text{Current Beta}) \times \text{Portfolio Value}}{\text{Futures Price} \times \text{Futures Beta}}
 \]</span></p>
+<p>Key elements:</p>
 <ul>
-<li>Let’s break down the elements of this formula:
-<ul>
-<li><strong>Target Beta</strong>: The desired beta of the portfolio after hedging.</li>
-<li><strong>Current Beta</strong>: The beta of the portfolio before the adjustment.</li>
-<li><strong>Portfolio Value</strong>: The total value of the portfolio that you want to hedge.</li>
-<li><strong>Futures Price</strong>: The price of one futures contract.</li>
-<li><strong>Futures Beta</strong>: The beta of the futures contract relative to the market.</li>
-</ul></li>
-<li>If the result of this formula is positive, it means you should buy futures contracts.</li>
-<li>Conversely, if the result is negative, it means you should sell futures contracts.</li>
-<li>The calculation assumes that the futures contract and the portfolio are based on closely correlated assets.</li>
+<li><strong>Target Beta</strong>: Desired beta post-hedging.</li>
+<li><strong>Current Beta</strong>: Portfolio’s initial beta.</li>
+<li><strong>Portfolio Value</strong>: Value of the portfolio.</li>
+<li><strong>Futures Price</strong>: Price of one futures contract.</li>
+<li><strong>Futures Beta</strong>: Beta of the futures contract.</li>
 </ul>
-</section>
-<section id="numerical-example-of-managing-beta" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="numerical-example-of-managing-beta"><span class="header-section-number">3.3.2</span> Numerical Example of Managing <span class="math inline">\(\beta\)</span></h3>
+<p>A <strong>positive result</strong> indicates <strong>buying futures</strong> (long position); a <strong>negative result</strong> means <strong>selling futures</strong> (short position). This calculation assumes the futures contract and portfolio are closely correlated.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Here’s a refined version:</p>
 <ul>
-<li>Current Portfolio Beta: <span class="math inline">\(1.2\)</span></li>
-<li>Target Beta: <span class="math inline">\(0.8\)</span></li>
-<li>Portfolio Value: <span class="math inline">\(\$1,000,000\)</span></li>
-<li>Futures Price: <span class="math inline">\(\$50,000\)</span></li>
-<li>Futures Beta: <span class="math inline">\(0.95\)</span></li>
+<li>Current Portfolio Beta: 1.2</li>
+<li>Target Beta: 0.8</li>
+<li>Portfolio Value: $1,000,000</li>
+<li>Futures Price: $50,000</li>
+<li>Futures Beta: 0.95</li>
 </ul>
+<p>The number of futures contracts needed is:</p>
 <p><span class="math display">\[
 N = \frac{(0.8 - 1.2) \times \$1,000,000}{\$50,000 \times 0.95} \approx -8
 \]</span></p>
-<ul>
-<li><p>We need to short 8 futures contracts in order to adjust the portfolio beta to the target of 0.8.</p></li>
-<li><p>A negative value indicates shorting futures contracts because we want to decrease the portfolio’s market risk.</p></li>
-<li><p>Later, the market increases by 3.7% and the portfolio increases by 4.4%, and futures price increases by 3.45%.</p></li>
-<li><p>Determine the overall value of the position and the effective <span class="math inline">\(\beta\)</span>. <span class="math display">\[
+<p>We need to short 8 futures contracts to reduce the portfolio beta to the target of 0.8. The negative value indicates shorting futures to decrease market risk.</p>
+<p>When the market rises by 3.7%, the portfolio increases by 4.4%, and the futures price increases by 3.45%. The overall value of the position and the effective beta are:</p>
+<p><span class="math display">\[
 \text{Portfolio value} = \$1,000,000 \times 1.044 = \$1,044,000
-\]</span></p></li>
-</ul>
+\]</span></p>
 <p><span class="math display">\[
 \text{Futures value} = -8 \times (\$50,000 \times 1.0345 - \$50,000) = -\$13,800
 \]</span></p>
 <p><span class="math display">\[
-\text{Total return} = \frac{\$1,044,000 + (-\$13,800)}{\$1,000,000} - 1 = 0.0302  
+\text{Total return} = \frac{\$1,044,000 + (-\$13,800)}{\$1,000,000} - 1 = 0.0302
 \]</span></p>
 <p><span class="math display">\[
 \text{Effective beta} = \frac{0.0302}{0.037} = 0.816
 \]</span></p>
-<ul>
-<li>The effective <span class="math inline">\(\beta = 0.816\)</span> is pretty close from the target <span class="math inline">\(0.8\)</span>.</li>
-</ul>
+<p>The effective beta of 0.816 is very close to the target of 0.8.</p>
+</div>
+</div>
 </section>
-<section id="creating-equity-out-of-cash" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="creating-equity-out-of-cash"><span class="header-section-number">3.3.3</span> Creating Equity out of Cash</h3>
-<ul>
-<li>Stock index futures help create synthetic equity positions, reducing transaction costs and conserving liquidity.</li>
-<li>A relationship between futures/forwards and the asset is established using a formula connecting the risk-free interest rate and dividends.</li>
-<li>Synthetic replication of the asset is beneficial in creating a synthetic stock index fund or converting cash into equity while retaining liquidity.</li>
-</ul>
-<p><span class="math display">\[
-\text{Long Stock} + \text{Short Futures} = \text{Long Risk-Free Bond}
-\]</span></p>
-<ul>
-<li>Risk-free bonds and futures can be combined to “equitize” cash, converting it into an equity position while retaining liquidity.</li>
-<li>This strategy may be used by funds that wish to invest in equities but are constrained by the need for quick liquidation or regulatory restrictions.</li>
-<li>Despite these limitations, the fund can still gain equity exposure without significant risk of loss or difficulty in liquidation.</li>
-</ul>
-<section id="synthetic-index-fund" class="level4" data-number="3.3.3.1">
-<h4 data-number="3.3.3.1" class="anchored" data-anchor-id="synthetic-index-fund"><span class="header-section-number">3.3.3.1</span> Synthetic Index Fund</h4>
+</section>
+<section id="synthetic-positions" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="synthetic-positions"><span class="header-section-number">3.4</span> Synthetic Positions</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="Definition">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A synthetic position refers to a financial strategy that replicates the risk and return profile of an asset or portfolio using a combination of other financial instruments, usually involving derivatives, instead of directly holding the asset.</p>
+</div>
+</div>
+<p>These positions are “constructed” by combining different market positions, allowing investors to mimic the behavior of a desired asset class without actually owning it. Synthetic positions can be used to manage risk, reduce transaction costs, or increase flexibility in investment strategies, providing exposure to various market movements in a cost-efficient or strategically beneficial manner.</p>
+<p>Common synthetic positions are as follows:</p>
 <p><span class="math display">\[
 \text{Long Stock} = \text{Long Risk-Free Bond} + \text{Long Futures}
 \]</span></p>
-<ul>
-<li>It is created by combining risk-free bonds and futures on the desired index.</li>
-<li>To calculate the number of futures contracts, we use:</li>
-</ul>
 <p><span class="math display">\[
-N = \frac{V(1 + r)^t}{qf}
+\text{Short Futures} = \text{Long Stock} - \text{Long Risk-Free Bond}
 \]</span></p>
-<ul>
-<li>Where:
-<ul>
-<li><span class="math inline">\(V\)</span> = amount of money to be invested.</li>
-<li><span class="math inline">\(f\)</span> = futures price.</li>
-<li><span class="math inline">\(t\)</span> = time to expiration of futures.</li>
-<li><span class="math inline">\(r\)</span> = risk-free rate.</li>
-<li><span class="math inline">\(q\)</span> = multiplier.</li>
-<li><span class="math inline">\(\delta\)</span> = dividend yield on the index.</li>
-</ul></li>
-<li>On 1st January, an investment firm wants to construct a synthetic index fund of $200 million invested in US stock.</li>
-<li>The index is the S&amp;P 500, with a dividend yield of 1.5%.</li>
-<li>A futures contract on the S&amp;P 500 is priced at $3,000 with a multiplier of $50.</li>
-<li>The position will be held for three months, after which it will be renewed.</li>
-<li>The US risk-free rate is 2%, and both the risk-free rate and dividend yield are compounded annually.</li>
-</ul>
-<p><span class="math display">\[
-N = \frac{V(1 + r)^t}{qf} = \frac{\$200,000,000(1.02)^{0.25}}{\$50 \times \$3,000} =
-1,339.95
-\]</span></p>
-<ul>
-<li>We can only buy whole futures contracts, so we round up to <span class="math inline">\(1,340\)</span> contracts.</li>
-</ul>
-<p><span class="math display">\[
-\frac{1,340 \times \$50 \times \$3,000}{1.02^{0.25}} = \$200,007,377
-\]</span></p>
-<ul>
-<li>We’re effectively investing $200,007,377 in the stock, and we put this much money into risk-free bonds.</li>
-<li>After three months the amount grows to <span class="math inline">\(\$200,007,377 \times 0.02^{0.25} = \$201,000,000\)</span>.</li>
-<li>The number of units of stock that we have effectively purchased at the start is:</li>
-</ul>
-<p><span class="math display">\[
-\frac{N \times q}{(1 + \delta)^t} = \frac{1,340 \times \$50}{1.015^{0.25}} = 66,751.08
-\]</span></p>
-<ul>
-<li>If the stock were actually purchased, dividends would be reinvested into additional shares, so the number of shares would grow to <span class="math inline">\(66,751,08 \times 1.015^{0.25} =
-69,574.35\)</span>.</li>
-<li>When the futures contract expires at price <span class="math inline">\(S_T\)</span>, the futures contracts will have a payoff:</li>
-</ul>
-<p><span class="math display">\[
-\text{Futures payoff} = 1,340 \times \$50 \times (S_T - \$3,000) = 69,574.35 \times S_T
-- \$201,000,000
-\]</span></p>
-</section>
-</section>
-<section id="creating-cash-out-of-equity" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="creating-cash-out-of-equity"><span class="header-section-number">3.3.4</span> Creating Cash out of Equity</h3>
-<ul>
-<li>Converting a long stock position into synthetic cash involves selling futures.</li>
-<li>This can minimize transaction costs and help avoid the sale of a large volume of stocks at once.</li>
-</ul>
 <p><span class="math display">\[
 \text{Long Risk-Free Bond} = \text{Long Stock} + \text{Short Futures}
 \]</span></p>
-<ul>
-<li>The approach is simillar to the creation of synthetic index fund from the previous example.</li>
-<li>There are only two modifications in the equation:
-<ol type="1">
-<li>Minus at the beginning becasue we are selling futures.</li>
-<li><span class="math inline">\(V\)</span> is the market value of our stock investment.</li>
-</ol></li>
-</ul>
+<p>These combinations allow investors to create synthetic positions, altering exposure between equities and risk-free returns, depending on their market outlook or risk preferences.</p>
+<section id="creating-equity-out-of-cash" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="creating-equity-out-of-cash"><span class="header-section-number">3.4.1</span> Creating Equity out of Cash</h3>
+<p>Stock index futures can be used to create <strong>synthetic equity positions</strong>, reducing transaction costs and preserving liquidity. By combining risk-free bonds and futures, cash can be “equitized,” effectively converting it into an equity position. This strategy is ideal for funds seeking equity exposure but needing to maintain liquidity or meet regulatory constraints, allowing for equity market participation without significant liquidation risk.</p>
 <p><span class="math display">\[
-N = - \frac{V(1 + r)^t}{qf}
+\text{Long Stock} = \text{Long Risk-Free Bond} + \text{Long Futures}
+\]</span></p>
+<p>This synthetic index fund is created by combining risk-free bonds with futures on a desired index. The number of futures contracts required (<span class="math inline">\(N\)</span>) is calculated using:</p>
+<p><span class="math display">\[
+N = \frac{V(1 + r)^t}{q \times f}
 \]</span></p>
 <ul>
-<li>This approach is comparable to changing <span class="math inline">\(\beta\)</span> to zero.</li>
-<li>In this example the stock portfolio has to be indentical to the index (the same <span class="math inline">\(\beta\)</span>) and it is a full hedge.</li>
-<li>The formula for managing <span class="math inline">\(\beta\)</span> is more general approach to eliminate the systematic risk on any portfolio.</li>
-<li>The number of futures contracts needed for transforming stocks into a risk-free asset might not match those required to nullify portfolio <span class="math inline">\(\beta\)</span>.</li>
-<li>Eliminating systematic risk doesn’t imply a complete absence of risk in the portfolio; diversifiable risk may persist.</li>
-<li>Both <span class="math inline">\(\beta\)</span> reduction and full hedging formulas align when applied to a portfolio identical to the index on which the futures are based.</li>
-<li>Derivatives provide a cost-effective and flexible solution for <span class="math inline">\(\beta\)</span> adjustments, especially for temporary adjustments.</li>
+<li><span class="math inline">\(V \dots\)</span> amount to be invested</li>
+<li><span class="math inline">\(f \dots\)</span> futures price</li>
+<li><span class="math inline">\(t \dots\)</span> time to futures expiration</li>
+<li><span class="math inline">\(r \dots\)</span> risk-free rate</li>
+<li><span class="math inline">\(q \dots\)</span> contract multiplier</li>
+<li><span class="math inline">\(\delta \dots\)</span> dividend yield on the index.</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On January 1st, an investment firm wants to construct a synthetic index fund with $200 million invested in the S&amp;P 500. The index’s dividend yield is 1.5%, and a futures contract on the S&amp;P 500 is priced at $3,000 with a $50 multiplier. The position will be held for three months, and the US risk-free rate is 2%, compounded annually.</p>
+<p>The number of futures contracts needed is:</p>
+<p><span class="math display">\[
+N = \frac{\$200,000,000 \times (1.02)^{0.25}}{\$50 \times 3,000} = 1,339.95
+\]</span></p>
+<p>Rounding up, the firm buys 1,340 contracts. The effective investment is:</p>
+<p><span class="math display">\[
+\frac{1,340 \times 50 \times 3,000}{1.02^{0.25}} = \$200,007,377
+\]</span></p>
+<p>The money is invested in risk-free bonds, growing to $201,000,000 after three months. The number of stock units effectively purchased at the start is:</p>
+<p><span class="math display">\[
+\frac{1,340 \times 50}{(1.015)^{0.25}} = 66,751.08
+\]</span></p>
+<p>With dividends reinvested, the number of shares grows to:</p>
+<p><span class="math display">\[
+66,751.08 \times (1.015)^{0.25} = 69,574.35
+\]</span></p>
+<p>At expiration, the futures payoff is:</p>
+<p><span class="math display">\[
+\text{Futures payoff} = 1,340 \times 50 \times (S_T - 3,000) = 69,574.35 \times S_T - 201,000,000
+\]</span></p>
+<p>This reflects the effective equity exposure created through the synthetic index fund.</p>
+</div>
+</div>
 </section>
+<section id="creating-cash-out-of-equity" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="creating-cash-out-of-equity"><span class="header-section-number">3.4.2</span> Creating Cash out of Equity</h3>
+<p>Converting a long stock position into synthetic cash involves selling futures. This approach minimizes transaction costs and avoids the need to sell a large volume of stocks at once. The relationship can be expressed as:</p>
+<p><span class="math display">\[
+\text{Long Risk-Free Bond} = \text{Long Stock} + \text{Short Futures}
+\]</span></p>
+<p>This strategy is similar to creating a synthetic index fund, with two key differences: a negative sign at the start because futures are being sold, and <span class="math inline">\(V\)</span> represents the market value of the stock investment.</p>
+<p><span class="math display">\[
+N = - \frac{V(1 + r)^t}{q \times f}
+\]</span></p>
+<p>This method is equivalent to setting <span class="math inline">\(\beta\)</span> to zero. In this scenario, the stock portfolio must mirror the index (with the same <span class="math inline">\(\beta\)</span>) for a full hedge. The formula for managing <span class="math inline">\(\beta\)</span> is a more general approach to eliminating systematic risk in any portfolio, though the number of futures contracts required to transform stocks into a risk-free asset may differ.</p>
+<p>It’s important to note that eliminating systematic risk does not mean the portfolio is entirely risk-free; diversifiable risk can still remain. Both the <span class="math inline">\(\beta\)</span> reduction and full hedging formulas align when applied to a portfolio identical to the index on which the futures are based. Derivatives provide a cost-effective and flexible means for adjusting <span class="math inline">\(\beta\)</span>, particularly for temporary adjustments.</p>
 </section>
-<section id="asset-allocation-with-futures" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="asset-allocation-with-futures"><span class="header-section-number">3.4</span> Asset Allocation with Futures</h2>
-<section id="adjusting-the-allocation-among-asset-classes" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="adjusting-the-allocation-among-asset-classes"><span class="header-section-number">3.4.1</span> Adjusting the Allocation among Asset Classes</h3>
-<ul>
-<li>Suppose that our current portfolio is worth $300 million allocated to 80% stock ($240 million) and 20% bonds ($60 million).</li>
-<li>Our goal is to change allocation to 50% stock ($150 million) and 50% bonds ($150 million).</li>
-<li>We need to reduce stock allocation by $90 million and increase bond allocation by $90 million.</li>
-<li>Solution:
-<ul>
-<li>Sell stock index futures contracts to eliminate beta on $90 million of stock, effectively converting it to cash.</li>
-<li>Purchase bond futures contracts to increase the duration on the cash to desired level.</li>
-</ul></li>
-</ul>
+<section id="adjusting-allocation-among-asset-classes" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="adjusting-allocation-among-asset-classes"><span class="header-section-number">3.4.3</span> Adjusting Allocation among Asset Classes</h3>
+<p>Consider a portfolio worth $300 million, with 80% allocated to stocks ($240 million) and 20% to bonds ($60 million). If the goal is to shift the allocation to 50% stocks ($150 million) and 50% bonds ($150 million), we need to reduce the stock allocation by $90 million and increase the bond allocation by the same amount.</p>
+<p>To achieve this, we sell stock index futures contracts to neutralize the beta on $90 million of stock, effectively converting it to cash. Simultaneously, bond futures contracts are purchased to increase the portfolio’s duration, aligning it with the new desired bond exposure.</p>
 </section>
-<section id="pre-investing-in-an-asset-class" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="pre-investing-in-an-asset-class"><span class="header-section-number">3.4.2</span> Pre-Investing in an Asset Class</h3>
-<ul>
-<li>Pre-investing via futures contracts allows investors to enter the market without immediate cash.</li>
-<li>It is effectively borrowing against the cash that will be received in the future and investing in the underlying.</li>
-<li>The strategy involves taking long positions in futures with correct beta and duration, aligning the results closely with direct investment.</li>
-</ul>
+<section id="pre-investing-in-an-asset-class" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="pre-investing-in-an-asset-class"><span class="header-section-number">3.4.4</span> Pre-Investing in an Asset Class</h3>
+<p>Pre-investing with futures contracts allows investors to gain exposure to an asset class before having the available cash. This strategy essentially involves borrowing against future cash inflows and investing in the underlying asset via futures. By taking long positions in futures with the appropriate beta and duration, investors can closely replicate the performance of a direct investment.</p>
+<p>The relationship is represented by:</p>
 <p><span class="math display">\[
 \text{Long Stock} = \text{Long Futures} + \text{Long Risk-Free Bond}
 \]</span></p>
+<p>Alternatively adding a loan to both sides gives:</p>
 <p><span class="math display">\[
-\text{Long Stock} + \text{Short Risk-Free Bond }= \text{Long Futures}
+\text{Long Stock} + \text{Short Risk-Free Bond} = \text{Long Futures}
 \]</span></p>
-<ul>
-<li><span class="math inline">\(\text{Short Risk-Free Bond}\)</span> is equivalent to a loan.</li>
-<li>Upon receipt of the anticipated cash, the futures are closed, and cash is invested, equating to paying off the implicit loan.</li>
-<li>This speculative strategy involves potential risks if the market doesn’t perform adequately to cover borrowing costs.</li>
-</ul>
+<p>Here, <span class="math inline">\(\text{Short Risk-Free Bond}\)</span> represents a loan. When the anticipated cash is received, the futures position is closed, and the cash is invested, which effectively repays the loan. However, this speculative strategy carries risks if the market underperforms and fails to cover the borrowing costs.</p>
 </section>
 </section>
 <section id="managing-foreign-currency-risk" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="managing-foreign-currency-risk"><span class="header-section-number">3.5</span> Managing Foreign Currency Risk</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="Definition">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Foreign currency risk, also known as exchange rate risk, is the potential for financial loss due to fluctuations in the exchange rates between different currencies.</p>
+</div>
+</div>
+<p>Companies engaged in international business are exposed to exchange rate risks, which can affect financial planning, income targets, and balance sheets.</p>
 <ul>
-<li>Companies engaging in international business face exchange rate risks that impact planning, income targets, and balance sheets.</li>
-<li><strong>Transaction exposure</strong> arises when future cash flows require conversion from foreign to domestic currency.</li>
-<li><strong>Translation exposure</strong> occurs when foreign subsidiary balance sheets are consolidated into the company’s domestic currency balance sheet.</li>
-<li><strong>Economic exposure</strong> refers to the impact of exchange rate changes on a company’s competitiveness. Even companies not dealing in foreign markets may be affected, for instance, if a strong domestic currency lowers inbound tourism.</li>
-<li>The management of these risks requires different approaches: forward contracts for transaction exposure, accounting knowledge for translation exposure, and demand forecasting for economic exposure.</li>
-<li>Companies often use forward contracts to manage single cash flow conversions from one currency to another as futures contracts may be too standardized for their needs.</li>
+<li><strong>Transaction exposure</strong> arises when future cash flows must be converted from foreign to domestic currency.</li>
+<li><strong>Translation exposure</strong> occurs when foreign subsidiaries’ financial statements are consolidated into the parent company’s domestic currency.</li>
+<li><strong>Economic exposure</strong> reflects the impact of exchange rate changes on a company’s overall competitiveness, even for businesses not directly involved in foreign trade, such as when a strong domestic currency reduces tourism.</li>
 </ul>
+<p>Managing these risks requires tailored approaches: <strong>forward contracts are typically used to mitigate transaction exposure</strong>, accounting strategies handle translation exposure, and demand forecasting addresses economic exposure. Forward contracts are particularly useful for managing specific cash flow conversions from one currency to another, as futures contracts may be too standardized for such purposes.</p>
 <section id="managing-the-risk-of-a-foreign-currency-receiptpayment" class="level3" data-number="3.5.1">
 <h3 data-number="3.5.1" class="anchored" data-anchor-id="managing-the-risk-of-a-foreign-currency-receiptpayment"><span class="header-section-number">3.5.1</span> Managing the Risk of a Foreign Currency Receipt/Payment</h3>
-<ul>
-<li>When a company expects to receive cash flows in a foreign currency, it is considered “long” on that currency.</li>
-<li>If the domestic currency increases in value while waiting for the cash flow, the company will receive fewer units of the domestic currency for the given amount of foreign currency.</li>
-<li>To manage this risk, the company should consider selling the foreign currency in the forward market by going “short” on a currency forward contract.</li>
-<li>The process for hedging a foreign currency cash outflow using a forward contract is similar to hedging a cash inflow but in reverse.</li>
-</ul>
+<p>When a company expects to receive cash flows in a foreign currency, it is considered “long” on that currency. If the domestic currency appreciates while awaiting the cash flow, the company will receive fewer domestic currency units for the same amount of foreign currency. To hedge this risk, the company can sell the foreign currency in the forward market, effectively going “short” on a currency forward contract. Hedging a foreign currency cash outflow follows a similar process but in reverse.</p>
 </section>
 <section id="managing-the-risk-of-a-foreign-market-asset-portfolio" class="level3" data-number="3.5.2">
 <h3 data-number="3.5.2" class="anchored" data-anchor-id="managing-the-risk-of-a-foreign-market-asset-portfolio"><span class="header-section-number">3.5.2</span> Managing the Risk of a Foreign-Market Asset Portfolio</h3>
-<ul>
-<li>Foreign currency risk is a crucial consideration when investing abroad.</li>
-<li>It is challenging to hedge both the foreign market risk and the foreign currency risk simultaneously.</li>
-<li>Estimating the future portfolio value helps in determining hedging strategies.</li>
-<li>It is generally not possible to hedge the currency risk while leaving the local equity market exposed.</li>
-<li>Companies can choose to hedge the local market return or leave both the local market and currency risks unhedged.</li>
-<li>If only the foreign market returns is hedged, the gain is equal to foreign risk-free rate.</li>
-<li>If foreign market returns and exchange rate are hedged, the gain is equal to domestic risk-free rate.</li>
-<li>Neither strategy makes much sense for the long run.</li>
-<li>In the short run, however, this strategy can be a good tactic for investors who are already in foreign markets and who wish to temporarily take a more defensive position without liquidating the portfolio and converting it to cash.</li>
-</ul>
+<p>Foreign currency risk is a key factor when investing in foreign markets. Simultaneously hedging foreign market risk and currency risk is challenging, and estimating the future portfolio value helps determine hedging strategies. It is generally difficult to hedge currency risk while keeping the local equity market exposure intact. Companies may choose to hedge local market returns or leave both market and currency risks unhedged.</p>
+<p>If only the foreign market returns are hedged, the gain equals the foreign risk-free rate. If both market returns and exchange rates are hedged, the gain equals the domestic risk-free rate. Neither strategy is optimal for long-term investments, but in the short run, this approach can be beneficial for investors who are already in foreign markets and want to adopt a more defensive position without liquidating the portfolio.</p>
 </section>
 </section>
 <section id="final-comments" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="final-comments"><span class="header-section-number">3.6</span> Final Comments</h2>
-<ul>
-<li>Betas and durations are unstable and difficult to measure, making it difficult to accurately assess risk sensitivities in stocks and bonds.</li>
-<li>Derivatives shouldn’t be blamed if they don’t yield the exact hedging results expected, and they should not be maligned for their speculative use due to their valuable hedging uses.</li>
-<li>Futures and forwards typically offer much lower transaction costs compared to stock indices, a major reason for their existence and survival as risk management products.</li>
-<li>Futures and forwards are less disruptive to portfolio managers and can be used to effectively change the risk profile or asset allocation of a portfolio.</li>
-<li>Despite requiring less capital to trade, futures and forwards are not immune to liquidity issues, particularly for contracts with long-term expirations.</li>
-<li>Organizations may have varying policies regarding the use of futures, forwards, and options, often based on leverage and credit-risk considerations.</li>
-<li>Futures and forward contracts have zero value at the start and offer linear payoffs, unlike options which require a cash investment at the start and offer non-linear payoffs.</li>
-</ul>
+<p>Betas and durations are inherently unstable and difficult to measure, complicating the accurate assessment of risk sensitivities in stocks and bonds. Derivatives should not be criticized for failing to deliver precise hedging outcomes or for their speculative applications, as they play a crucial role in hedging strategies.</p>
+<p>Futures and forwards typically incur significantly lower transaction costs compared to stock indices, which is a key reason for their continued relevance as risk management tools. They are less disruptive to portfolio managers and can be effectively used to alter a portfolio’s risk profile or asset allocation.</p>
+<p>Although futures and forwards require less capital to trade, they are not immune to liquidity concerns, especially for contracts with longer expirations. Organizational policies on the use of futures, forwards, and options often hinge on leverage and credit-risk factors. Unlike options, which require an upfront investment and provide non-linear payoffs, futures and forward contracts have zero initial value and offer linear payoffs.</p>
 </section>
 <section id="practice-questions-and-problems" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="practice-questions-and-problems"><span class="header-section-number">3.7</span> Practice Questions and Problems</h2>
 <ol type="1">
-<li>An investment management firm wishes to increase the beta for one of its portfolios under management from 0.95 to 1.20 for a three-month period. The portfolio has a market value of $175,000,000. The investment firm plans to use a futures contract priced at $105,790 in order to adjust the portfolio beta. The futures contract has a beta of 0.98.
+<li><p>An investment management firm wishes to increase the beta for one of its portfolios under management from 0.95 to 1.20 for a three-month period. The portfolio has a market value of $175,000,000. The investment firm plans to use a futures contract priced at $105,790 in order to adjust the portfolio beta. The futures contract has a beta of 0.98.</p>
 <ul>
 <li>A. Calculate the number of futures contracts that should be bought or sold to achieve an increase in the portfolio beta.</li>
 <li>B. At the end of three months, the overall equity market is up 5.5%. The stock portfolio under management is up 5.1%. The futures contract is priced at $111,500. Calculate the value of the overall position and the effective beta of the portfolio.</li>
 </ul></li>
-</ol>
-<p><br></p>
-<ol start="2" type="1">
-<li>Consider an asset manager who wishes to create a fund with exposure to the Russell 2000 stock index. The initial amount to be invested is $300,000,000. The fund will be constructed using the Russell 2000 Index futures contract, priced at 498.30 with a $500 multiplier. The contract expires in three months. The underlying index has a dividend yield of 0.75%, and the risk-free rate is 2.35% per year.
+<li><p>Consider an asset manager who wishes to create a fund with exposure to the Russell 2000 stock index. The initial amount to be invested is $300,000,000. The fund will be constructed using the Russell 2000 Index futures contract, priced at 498.30 with a $500 multiplier. The contract expires in three months. The underlying index has a dividend yield of 0.75%, and the risk-free rate is 2.35% per year.</p>
 <ul>
 <li>A. Indicate how the money manager would go about constructing this synthetic index using futures.</li>
 <li>B. Assume that at expiration, the Russell 2000 is at 594.65. Show how the synthetic position produces the same result as investment in the actual stock index.</li>
 </ul></li>
-</ol>
-<p><br></p>
-<ol start="3" type="1">
-<li>An investment management firm has a client who would like to temporarily reduce her exposure to equities by converting a $25 million equity position to cash for a period of four months. The client would like this reduction to take place without liquidating her equity position. The investment management firm plans to create a synthetic cash position using an equity futures contract. This futures contract is priced at 1170.10, has a multiplier of $250, and expires in four months. The dividend yield on the underlying index is 1.25%, and the risk-free rate is 2.75%.
+<li><p>An investment management firm has a client who would like to temporarily reduce her exposure to equities by converting a $25 million equity position to cash for a period of four months. The client would like this reduction to take place without liquidating her equity position. The investment management firm plans to create a synthetic cash position using an equity futures contract. This futures contract is priced at 1170.10, has a multiplier of $250, and expires in four months. The dividend yield on the underlying index is 1.25%, and the risk-free rate is 2.75%.</p>
 <ul>
 <li>A. Calculate the number of futures contracts required to create synthetic cash.</li>
 <li>B. Determine the effective amount of money committed to this risk-free transaction and the effective number of units of the stock index that are converted to cash.</li>
 <li>C. Assume that the stock index is at 1031 when the futures contract expires. Show how this strategy is equivalent to investing in the risk-free asset, cash.</li>
 </ul></li>
-</ol>
-<p><br></p>
-<ol start="4" type="1">
-<li>Consider a portfolio with a 65% allocation to stocks and 35% to bonds. The portfolio has a market value of $200 million. The beta of the stock position is 1.15, and the modified duration of the bond position is 6.75. The portfolio manager wishes to increase the stock allocation to 85% and reduce the bond allocation to 15% for a period of six months. In addition to altering asset allocations, the manager would also like to increase the beta on the stock position to 1.20 and increase the modified duration of the bonds to 8.25. A stock index futures contract that expires in six months is priced at $157,500 and has a beta of 0.95. A bond futures contract that expires in six months is priced at $109,000 and has an implied modified duration of 5.25. The stock futures contract has a multiplier of one.
+<li><p>Consider a portfolio with a 65% allocation to stocks and 35% to bonds. The portfolio has a market value of $200 million. The beta of the stock position is 1.15, and the modified duration of the bond position is 6.75. The portfolio manager wishes to increase the stock allocation to 85% and reduce the bond allocation to 15% for a period of six months. In addition to altering asset allocations, the manager would also like to increase the beta on the stock position to 1.20 and increase the modified duration of the bonds to 8.25. A stock index futures contract that expires in six months is priced at $157,500 and has a beta of 0.95. A bond futures contract that expires in six months is priced at $109,000 and has an implied modified duration of 5.25. The stock futures contract has a multiplier of one.</p>
 <ul>
 <li>A. Show how the portfolio manager can achieve her goals by using stock index and bond futures. Indicate the number of contracts and whether the manager should go long or short.</li>
 <li>B. After six months, the stock portfolio is up 5% and bonds are up 1.35%. The stock futures price is $164,005 and the bond futures price is $110,145. Compare the market value of the portfolio in which the allocation is adjusted using futures to the market value of the portfolio in which the allocation is adjusted by directly trading stocks and bonds.</li>
 </ul></li>
-</ol>
-<p><br></p>
-<ol start="5" type="1">
-<li>A pension fund manager expects to receive a cash inflow of $50,000,000 in three months and wants to use futures contracts to take a $17,500,000 synthetic position in stocks and $32,500,000 in bonds today. The stock would have a beta of 1.15 and the bonds a modified duration of 7.65. A stock index futures contract with a beta of 0.93 is priced at $175,210. A bond futures contract with a modified duration of 5.65 is priced at $95,750.
+<li><p>A pension fund manager expects to receive a cash inflow of $50,000,000 in three months and wants to use futures contracts to take a $17,500,000 synthetic position in stocks and $32,500,000 in bonds today. The stock would have a beta of 1.15 and the bonds a modified duration of 7.65. A stock index futures contract with a beta of 0.93 is priced at $175,210. A bond futures contract with a modified duration of 5.65 is priced at $95,750.</p>
 <ul>
 <li>A. Calculate the number of stock and bond futures contracts the fund manager would have to trade in order to synthetically take the desired position in stocks and bonds today. Indicate whether the futures positions are long or short.</li>
 <li>B. When the futures contracts expire in three months, stocks have declined by 5.4% and bonds have declined by 3.06%. Stock index futures are priced at $167,559, and bond futures are priced at $93,586. Show that profits on the futures positions are essentially the same as the change in the value of stocks and bonds during the three-month period.</li>
 </ul></li>
-</ol>
-<p><br></p>
-<ol start="6" type="1">
-<li>Consider a US company, GateCorp, that exports products to the United Kingdom. GateCorp has just closed a sale worth 200,000,000 GBP. The amount will be received in two months. Because it will be paid in pounds, the us company bears the exchange risk. In order to hedge this risk, GateCorp intends to use a forward contract that is priced at $1.4272 per pound. Indicate how the company would go about constructing the hedge. Explain what happens when the forward contract expires in two months.</li>
-</ol>
-<p><br></p>
-<ol start="7" type="1">
-<li>ABCorp is a US-based company that frequently imports raw materials from Australia. It has just entered into a contract to purchase 175,000,000 AUD worth of raw wool, to be paid in one month. ABCorp fears that the australian dollar will strengthen, thereby raising the US dollar cost. A forward contract is available and is priced at $0.5249 per australian dollar. Indicate how ABCorp would go about constructing a hedge. Explain what happens when the forward contract expires in one month.</li>
+<li><p>Consider a US company, GateCorp, that exports products to the United Kingdom. GateCorp has just closed a sale worth 200,000,000 GBP. The amount will be received in two months. Because it will be paid in pounds, the us company bears the exchange risk. In order to hedge this risk, GateCorp intends to use a forward contract that is priced at $1.4272 per pound. Indicate how the company would go about constructing the hedge. Explain what happens when the forward contract expires in two months.</p></li>
+<li><p>ABCorp is a US-based company that frequently imports raw materials from Australia. It has just entered into a contract to purchase 175,000,000 AUD worth of raw wool, to be paid in one month. ABCorp fears that the australian dollar will strengthen, thereby raising the US dollar cost. A forward contract is available and is priced at $0.5249 per australian dollar. Indicate how ABCorp would go about constructing a hedge. Explain what happens when the forward contract expires in one month.</p></li>
 </ol>
 
 
