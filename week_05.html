@@ -401,7 +401,7 @@ window.Quarto = {
 <li>The key advantage in using implied volatility is that it provides information regarding the market’s perception of uncertainty going forward.</li>
 <li><a href="https://www.cboe.com/tradable_products/vix/">The VIX S&amp;P 500 Volatility Index.</a></li>
 </ul>
-<div id="dcd23d93" class="cell" data-execution_count="1">
+<div id="20f10191" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -435,7 +435,7 @@ window.Quarto = {
 <li>The following code tests if the daily returns AAPL are normally distributed.</li>
 <li>Download daily data from Yahoo Finance, calculate log returns, and show descriptive statistics.</li>
 </ul>
-<div id="78eadee0" class="cell" data-execution_count="2">
+<div id="0a951acd" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -473,7 +473,7 @@ max       0.130194</code></pre>
 <li>It is visible that AAPL returns are not normally distributed.</li>
 <li>AAPL shows fat tails (heavy-tailed distribution) which means that large changes in the variable are more likely compared to normal distribution.</li>
 </ul>
-<div id="f2ad71a2" class="cell" data-execution_count="3">
+<div id="75a848c8" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the histogram of returns</span></span>
@@ -508,7 +508,7 @@ max       0.130194</code></pre>
 <li><span class="math inline">\(H_1:\)</span> The sample data does not follow the normal distribution.</li>
 <li>p-value in this example is extremely small, therfore, <span class="math inline">\(H_0\)</span> could be rejected.</li>
 </ul>
-<div id="21bf0d85" class="cell" data-execution_count="4">
+<div id="4293f7b5" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform a Kolmogorov-Smirnov test</span></span>
@@ -549,7 +549,7 @@ p-value: 2.6234979481096207e-24</code></pre>
 <li><p>We then calculate the volatility series using the EWMA model, with a decay factor of 0.94.</p></li>
 <li><p>Finally, we plot the volatility series.</p></li>
 </ul>
-<div id="db4c710b" class="cell" data-execution_count="5">
+<div id="2d0db73c" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -631,7 +631,7 @@ p-value: 2.6234979481096207e-24</code></pre>
 <li><p>Here’s an example with real historical data for the Apple Inc.&nbsp;(AAPL) stock.</p></li>
 <li><p>More information about the package available at <a href="https://bashtage.github.io/arch/univariate/introduction.html" class="uri">https://bashtage.github.io/arch/univariate/introduction.html</a></p></li>
 </ul>
-<div id="3e045731" class="cell" data-execution_count="6">
+<div id="01bb5455" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -672,7 +672,7 @@ Distribution:                  Normal   AIC:                           2902.87
 Method:            Maximum Likelihood   BIC:                           2921.37
                                         No. Observations:                  752
 Date:                Wed, Oct 09 2024   Df Residuals:                      751
-Time:                        10:38:01   Df Model:                            1
+Time:                        10:58:14   Df Model:                            1
                                  Mean Model                                
 ===========================================================================
                  coef    std err          t      P&gt;|t|     95.0% Conf. Int.
@@ -760,7 +760,7 @@ f(V_2|V_1 = x) = f(V_2)
 <li>Correlation measures linear dependence, but there can be many other ways two variables can relate. These relationships can be visualized by plotting <span class="math inline">\(E(V_2)\)</span> against <span class="math inline">\(V_1\)</span>.</li>
 <li>In certain situations, the standard deviation of <span class="math inline">\(V_2\)</span> depends on the value of <span class="math inline">\(V_1\)</span>, indicating another aspect of how <span class="math inline">\(V_2\)</span> depends on <span class="math inline">\(V_1\)</span>.</li>
 </ul>
-<div id="a6cb782d" class="cell" data-execution_count="7">
+<div id="3c338da0" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -858,7 +858,7 @@ y_i = \frac{Y_i - Y_{i-1}}{Y_{i-1}}
 <li><p>The long-term average covariance rate is <span class="math inline">\(\omega / (1 - \alpha - \beta)\)</span>.</p></li>
 <li><p>Example of covariance between Apple and Microsoft from the past 5 years of daily returns:</p></li>
 </ul>
-<div id="b936a679" class="cell" data-execution_count="8">
+<div id="ad046ef3" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
@@ -884,7 +884,7 @@ y_i = \frac{Y_i - Y_{i-1}}{Y_{i-1}}
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The EWMA covariance is: </span><span class="sc">{</span>ewma_cov<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>The EWMA covariance is: 0.00010715968820243316</code></pre>
+<pre><code>The EWMA covariance is: 0.00010715968855626995</code></pre>
 </div>
 </div>
 </section>
@@ -941,7 +941,7 @@ y_i = \frac{Y_i - Y_{i-1}}{Y_{i-1}}
 <li>However, it has limitations, particularly in modeling tail dependencies.</li>
 <li>It was famously used in the pricing of collateralized debt obligations (CDOs) and was implicated in the mispricing of risk that contributed to the 2008 financial crisis.</li>
 </ul>
-<div id="7d1b5dbf" class="cell" data-execution_count="9">
+<div id="b3e142d0" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1000,7 +1000,7 @@ y_i = \frac{Y_i - Y_{i-1}}{Y_{i-1}}
 <li>In this example, we’ll use historical data from two stocks to demonstrate the use of a Gaussian copula.</li>
 <li>First, we’ll download the data and compute the daily returns for each stock.</li>
 </ul>
-<div id="d457b58b" class="cell" data-execution_count="10">
+<div id="390221d2" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
@@ -1022,7 +1022,7 @@ y_i = \frac{Y_i - Y_{i-1}}{Y_{i-1}}
 <ul>
 <li>Next, we’ll transform these daily returns to be uniformly distributed by using the empirical cumulative distribution function.</li>
 </ul>
-<div id="806a6c92" class="cell" data-execution_count="11">
+<div id="6d6c1657" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate empirical cumulative distribution functions</span></span>
@@ -1033,7 +1033,7 @@ y_i = \frac{Y_i - Y_{i-1}}{Y_{i-1}}
 <ul>
 <li>Finally, we’ll transform these uniform variables to be normally distributed and plot the joint distribution to see their dependence structure.</li>
 </ul>
-<div id="beeaa06d" class="cell" data-execution_count="12">
+<div id="08a9a05f" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform to standard normal distribution</span></span>
