@@ -407,7 +407,7 @@ window.Quarto = {
 <ul>
 <li>Consider the last 500 daily returns for <code>SPY</code> ETF. What is daily VaR and ES with 99% confidence level? Below is the worst 20 returns during selected time priod.</li>
 </ul>
-<div id="440fdd7e" class="cell" data-execution_count="1">
+<div id="81023ff7" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -435,7 +435,7 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>            Log Returns
 2024-08-05    -0.029556
-2022-11-02    -0.025417
+2022-11-02    -0.025416
 2022-12-15    -0.024766
 2022-10-14    -0.023052
 2024-07-24    -0.022923
@@ -451,7 +451,7 @@ window.Quarto = {
 <li>VaR is the 5th worst loss.</li>
 <li>ES is the average of the 4 worst losses.</li>
 </ul>
-<div id="058c54d0" class="cell" data-execution_count="2">
+<div id="b3998eca" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The 1-day 99% VaR is:"</span>, <span class="bu">round</span>(sorted_returns[<span class="dv">4</span>], <span class="dv">6</span>))</span>
@@ -706,7 +706,7 @@ The 1-day 99% ES is: -0.025698</code></pre>
 <li>Sort the recorded results from worst to best.</li>
 <li>Calculate VaR and ES.</li>
 </ol>
-<div id="a6ed9932" class="cell" data-execution_count="3">
+<div id="64b331c6" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
@@ -746,8 +746,8 @@ The 1-day 99% ES is: -0.025698</code></pre>
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"1-day 99% ES is $</span><span class="sc">{</span>ES<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>1-day 99% VaR is $14.22
-1-day 99% ES is $16.43</code></pre>
+<pre><code>1-day 99% VaR is $14.05
+1-day 99% ES is $15.92</code></pre>
 </div>
 </div>
 </section>
