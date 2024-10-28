@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -301,32 +267,12 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
-  <ul>
+  <ul class="collapse">
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">8.1</span> Introduction</a></li>
-  <li><a href="#historical-simulation" id="toc-historical-simulation" class="nav-link" data-scroll-target="#historical-simulation"><span class="header-section-number">8.2</span> Historical Simulation</a>
-  <ul class="collapse">
-  <li><a href="#historical-simulation-example" id="toc-historical-simulation-example" class="nav-link" data-scroll-target="#historical-simulation-example"><span class="header-section-number">8.2.1</span> Historical Simulation Example</a></li>
-  <li><a href="#stressed-var-and-stressed-es" id="toc-stressed-var-and-stressed-es" class="nav-link" data-scroll-target="#stressed-var-and-stressed-es"><span class="header-section-number">8.2.2</span> Stressed VaR and Stressed ES</a></li>
-  <li><a href="#accuracy-of-var" id="toc-accuracy-of-var" class="nav-link" data-scroll-target="#accuracy-of-var"><span class="header-section-number">8.2.3</span> Accuracy of VaR</a></li>
-  <li><a href="#extensions-and-computational-issues" id="toc-extensions-and-computational-issues" class="nav-link" data-scroll-target="#extensions-and-computational-issues"><span class="header-section-number">8.2.4</span> Extensions and Computational Issues</a></li>
-  <li><a href="#extreme-value-theory" id="toc-extreme-value-theory" class="nav-link" data-scroll-target="#extreme-value-theory"><span class="header-section-number">8.2.5</span> Extreme Value Theory</a></li>
-  <li><a href="#advantages-of-historical-simulation-method" id="toc-advantages-of-historical-simulation-method" class="nav-link" data-scroll-target="#advantages-of-historical-simulation-method"><span class="header-section-number">8.2.6</span> Advantages of Historical Simulation Method</a></li>
-  </ul></li>
-  <li><a href="#parametric-approach" id="toc-parametric-approach" class="nav-link" data-scroll-target="#parametric-approach"><span class="header-section-number">8.3</span> Parametric Approach</a>
-  <ul class="collapse">
-  <li><a href="#the-basic-methodology" id="toc-the-basic-methodology" class="nav-link" data-scroll-target="#the-basic-methodology"><span class="header-section-number">8.3.1</span> The Basic Methodology</a></li>
-  <li><a href="#parametric-approach-vs.-historical-simulation" id="toc-parametric-approach-vs.-historical-simulation" class="nav-link" data-scroll-target="#parametric-approach-vs.-historical-simulation"><span class="header-section-number">8.3.2</span> Parametric Approach vs.&nbsp;Historical Simulation</a></li>
-  </ul></li>
-  <li><a href="#monte-carlo-simulation" id="toc-monte-carlo-simulation" class="nav-link" data-scroll-target="#monte-carlo-simulation"><span class="header-section-number">8.4</span> Monte Carlo Simulation</a>
-  <ul class="collapse">
-  <li><a href="#numerical-example-in-python" id="toc-numerical-example-in-python" class="nav-link" data-scroll-target="#numerical-example-in-python"><span class="header-section-number">8.4.1</span> Numerical Example in Python</a></li>
-  </ul></li>
-  <li><a href="#practice-questions-and-problems" id="toc-practice-questions-and-problems" class="nav-link" data-scroll-target="#practice-questions-and-problems"><span class="header-section-number">8.5</span> Practice Questions and Problems</a>
-  <ul class="collapse">
-  <li><a href="#historical-simulation-1" id="toc-historical-simulation-1" class="nav-link" data-scroll-target="#historical-simulation-1"><span class="header-section-number">8.5.1</span> Historical Simulation</a></li>
-  <li><a href="#parametric-approach-1" id="toc-parametric-approach-1" class="nav-link" data-scroll-target="#parametric-approach-1"><span class="header-section-number">8.5.2</span> Parametric Approach</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">8.5.3</span> Summary</a></li>
-  </ul></li>
+  <li><a href="#historical-simulation" id="toc-historical-simulation" class="nav-link" data-scroll-target="#historical-simulation"><span class="header-section-number">8.2</span> Historical Simulation</a></li>
+  <li><a href="#parametric-approach" id="toc-parametric-approach" class="nav-link" data-scroll-target="#parametric-approach"><span class="header-section-number">8.3</span> Parametric Approach</a></li>
+  <li><a href="#monte-carlo-simulation" id="toc-monte-carlo-simulation" class="nav-link" data-scroll-target="#monte-carlo-simulation"><span class="header-section-number">8.4</span> Monte Carlo Simulation</a></li>
+  <li><a href="#practice-questions-and-problems" id="toc-practice-questions-and-problems" class="nav-link" data-scroll-target="#practice-questions-and-problems"><span class="header-section-number">8.5</span> Practice Questions and Problems</a></li>
   </ul>
 </nav>
     </div>
@@ -373,383 +319,342 @@ window.Quarto = {
 <li>Understand the limitations of assuming a normal distribution of returns.</li>
 <li>Acquire knowledge of the Monte Carlo Simulation method.</li>
 <li>Understand the computational intensity and the assumptions involved in the Monte Carlo simulation method.</li>
-<li>Develop the ability to critically evaluate and compare the advantages and disadvantages of each of these methods in different investment contexts and scenarios.</li>
+<li>Develop the ability to critically evaluate each of these methods in different investment contexts and scenarios.</li>
 </ul>
 <section id="introduction" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">8.1</span> Introduction</h2>
-<p>There are several estimation methods for calculating Value at Risk (VaR):</p>
+<p>Several methods are available for estimating Value at Risk (VaR), each with distinct advantages and assumptions:</p>
 <ol type="1">
-<li><strong>Historical Simulation</strong>: This method involves using historical data to simulate the potential changes in the value of a portfolio. VaR is then calculated based on the worst losses observed in the historical data for a given confidence level.</li>
-<li><strong>Parametric (Analytical) Approach</strong>: This method assumes that returns on the assets in a portfolio are normally distributed, and uses the mean and standard deviation of the returns to calculate VaR. It can be used for individual assets as well as portfolios, taking into account the correlations between assets.</li>
-<li><strong>Monte Carlo Simulation</strong>: This method uses random number generation to simulate thousands of possible price paths for the assets in a portfolio. VaR is then calculated based on the distribution of simulated portfolio losses.</li>
-<li><strong>Extreme Value Theory (EVT)</strong>: This method focuses on modeling the tail of the loss distribution, which can be useful for calculating VaR at very high confidence levels.</li>
+<li><p><strong>Historical Simulation</strong>: This approach uses past data to simulate potential changes in portfolio value, calculating VaR based on the worst observed losses at a specified confidence level.</p></li>
+<li><p><strong>Parametric (Analytical) Approach</strong>: Assuming that asset returns follow a normal distribution, this method employs the mean and standard deviation of returns to calculate VaR. It can be applied to both individual assets and portfolios, incorporating asset correlations.</p></li>
+<li><p><strong>Monte Carlo Simulation</strong>: By generating random price paths for assets, this method simulates thousands of possible portfolio outcomes. VaR is then determined from the distribution of simulated losses.</p></li>
+<li><p><strong>Extreme Value Theory (EVT)</strong>: EVT models the tail of the loss distribution, making it particularly useful for calculating VaR at very high confidence levels where extreme losses are of primary concern.</p></li>
 </ol>
 </section>
 <section id="historical-simulation" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="historical-simulation"><span class="header-section-number">8.2</span> Historical Simulation</h2>
-<ul>
-<li>The historical simulation method for VaR uses the current portfolio and revalues it using actual historical changes in key factors experienced during a lookback period.</li>
-<li>The process starts by decomposing the portfolio into risk factors and collecting historical returns of each factor over the lookback period.</li>
-<li>The current portfolio is repriced using returns from each day of the lookback period, and results are sorted from largest loss to greatest gain.</li>
-<li>To estimate a one-day VaR at a 5% confidence interval, a point is chosen on the distribution beyond which 5% of the outcomes result in larger losses.</li>
-<li>To calculate <strong>expected shortfall</strong> using historical simulation, we average the losses that are worse than VaR.</li>
-</ul>
-<section id="historical-simulation-example" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="historical-simulation-example"><span class="header-section-number">8.2.1</span> Historical Simulation Example</h3>
-<p><strong>General Procedure:</strong></p>
+<p>The historical simulation method for VaR evaluates the current portfolio by revaluing it based on historical changes in key risk factors over a specified lookback period. The process involves:</p>
 <ol type="1">
-<li>Collect historical price data for the asset.</li>
-<li>Calculate the returns or the percentage change for each period.</li>
-<li>Sort these returns in ascending order.</li>
-<li>Identify the return at the (100 - confidence level)% quantile.</li>
-<li>Identify VaR and ES</li>
+<li><strong>Decomposition and Data Collection</strong>: The portfolio is broken down into individual risk factors, and historical returns for each factor are collected over the lookback period.</li>
+<li><strong>Repricing</strong>: The current portfolio is repriced using the returns for each day in the lookback period. This generates a range of simulated portfolio values.</li>
+<li><strong>Sorting Results</strong>: These simulated outcomes are sorted from the largest loss to the greatest gain.</li>
+<li><strong>VaR Calculation</strong>: To estimate a one-day VaR at a given confidence level (e.g., 5%), a cutoff point is selected where 5% of the outcomes result in larger losses, representing the VaR threshold.</li>
+<li><strong>Expected Shortfall (ES)</strong>: To calculate ES, the average of all losses that exceed the VaR threshold is taken, providing a view of the tail risk beyond VaR.</li>
 </ol>
+<p>This approach leverages real historical data, providing a non-parametric view of potential losses, although it assumes that historical trends will adequately represent future risk scenarios.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider a 500-day time window of daily returns for the SPY ETF to calculate the 1-day VaR and ES at a 99% confidence level. The table below lists the 10 worst daily returns from this period:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">No.</th>
+<th style="text-align: center;">Date</th>
+<th style="text-align: center;">Log Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1.</td>
+<td style="text-align: center;">2024-08-05</td>
+<td style="text-align: center;">-0.029556</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2.</td>
+<td style="text-align: center;">2022-11-02</td>
+<td style="text-align: center;">-0.025416</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3.</td>
+<td style="text-align: center;">2022-12-15</td>
+<td style="text-align: center;">-0.024766</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4.</td>
+<td style="text-align: center;">2024-07-24</td>
+<td style="text-align: center;">-0.022923</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5.</td>
+<td style="text-align: center;">2022-11-09</td>
+<td style="text-align: center;">-0.020817</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6.</td>
+<td style="text-align: center;">2024-09-03</td>
+<td style="text-align: center;">-0.020794</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7.</td>
+<td style="text-align: center;">2023-02-21</td>
+<td style="text-align: center;">-0.020265</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8.</td>
+<td style="text-align: center;">2024-08-02</td>
+<td style="text-align: center;">-0.018794</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9.</td>
+<td style="text-align: center;">2023-03-09</td>
+<td style="text-align: center;">-0.018622</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10.</td>
+<td style="text-align: center;">2022-12-05</td>
+<td style="text-align: center;">-0.018153</td>
+</tr>
+</tbody>
+</table>
+<p>In this example:</p>
 <ul>
-<li>Consider the last 500 daily returns for <code>SPY</code> ETF. What is daily VaR and ES with 99% confidence level? Below is the worst 20 returns during selected time priod.</li>
+<li><strong>1% of 500 observations equals 5</strong>, meaning the 5th worst loss represents the 1-day 99% VaR.</li>
+<li><strong>VaR</strong>: The daily 99% VaR is the 5th worst return, which corresponds to -0.020817.</li>
+<li><strong>ES</strong>: The daily 99% ES is the average of the 4 worst returns, -0.025665, providing an estimate of the average loss beyond the VaR threshold.</li>
 </ul>
-<div id="582e4f39" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Download historical data</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"SPY"</span>, period<span class="op">=</span><span class="st">"3y"</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>data.index <span class="op">=</span> data.index.date</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Calculate the log returns</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"Log Returns"</span>] <span class="op">=</span> np.log(data[<span class="st">"Adj Close"</span>] <span class="op">/</span> data[<span class="st">"Adj Close"</span>].shift(<span class="dv">1</span>))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove any NA values that might have been resulted from the log return calculation</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.dropna()</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep only the last 500 observations</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.iloc[<span class="op">-</span><span class="dv">500</span>:].copy()</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Sort these returns</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>sorted_returns <span class="op">=</span> data[<span class="st">"Log Returns"</span>].sort_values()</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.DataFrame(sorted_returns).head(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>            Log Returns
-2024-08-05    -0.029556
-2022-11-02    -0.025416
-2022-12-15    -0.024766
-2024-07-24    -0.022923
-2022-11-09    -0.020817
-2024-09-03    -0.020794
-2023-02-21    -0.020265
-2024-08-02    -0.018794
-2023-03-09    -0.018622
-2022-12-05    -0.018153</code></pre>
+<p>This method leverages historical returns to identify potential extreme losses based on recent market behavior.</p>
 </div>
 </div>
+<section id="stressed-var-and-stressed-es" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="stressed-var-and-stressed-es"><span class="header-section-number">8.2.1</span> Stressed VaR and Stressed ES</h3>
+<p>In the historical simulation method, VaR and ES are usually based on recent data, known as current VaR and current ES. To account for risk under extreme conditions, regulators introduced stressed VaR and ES, which use data from a particularly adverse 251-day period for the current portfolio. This period yields 250 scenarios, each reflecting changes in market variables between consecutive days.</p>
 <ul>
-<li>1% from 500 observations is 5.</li>
-<li>VaR is the 5th worst loss.</li>
-<li>ES is the average of the 4 worst losses.</li>
+<li><strong>Stressed VaR</strong>: The one-day 99% stressed VaR is the midpoint loss between the second and third worst scenarios.</li>
+<li><strong>Stressed ES</strong>: The one-day 99% stressed ES is calculated as the average of the two worst losses.</li>
 </ul>
-<div id="50b45ce2" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The 1-day 99% VaR is:"</span>, <span class="bu">round</span>(sorted_returns[<span class="dv">4</span>], <span class="dv">6</span>))</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The 1-day 99</span><span class="sc">% E</span><span class="st">S is:"</span>, <span class="bu">round</span>(sorted_returns[:<span class="dv">4</span>].<span class="bu">round</span>(<span class="dv">6</span>).mean(), <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>The 1-day 99% VaR is: -0.020817
-The 1-day 99% ES is: -0.025665</code></pre>
-</div>
-</div>
 </section>
-<section id="stressed-var-and-stressed-es" class="level3" data-number="8.2.2">
-<h3 data-number="8.2.2" class="anchored" data-anchor-id="stressed-var-and-stressed-es"><span class="header-section-number">8.2.2</span> Stressed VaR and Stressed ES</h3>
-<ul>
-<li>Historical simulation for calculating VaR and ES typically uses the most recent data, referred to as current VaR and current ES.</li>
-<li>Stressed VaR and ES, introduced by regulators, use data from a chosen 251-day period that’s particularly stressful for the current portfolio.</li>
-<li>The chosen period data creates 250 scenarios, each based on market variable changes between consecutive days.</li>
-<li>One-day 99% stressed VaR is the midpoint loss between the second and third worst scenarios, while one-day 99% ES is the average of the two worst losses.</li>
-</ul>
-</section>
-<section id="accuracy-of-var" class="level3" data-number="8.2.3">
-<h3 data-number="8.2.3" class="anchored" data-anchor-id="accuracy-of-var"><span class="header-section-number">8.2.3</span> Accuracy of VaR</h3>
-<ul>
-<li>The historical simulation approach to Value-at-Risk (VaR) estimates the distribution of portfolio changes from a finite number of observations, making it subject to error.</li>
-<li>The standard error of the estimate for the <span class="math inline">\(q\)</span>-percentile of the distribution, estimated as <span class="math inline">\(x\)</span>, is given by the formula:</li>
-</ul>
+<section id="accuracy-of-var" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="accuracy-of-var"><span class="header-section-number">8.2.2</span> Accuracy of VaR</h3>
+<p>The historical simulation method for Value at Risk (VaR) relies on a finite set of observations, introducing estimation error. The standard error for the <span class="math inline">\(q\)</span>-percentile of the distribution, estimated as <span class="math inline">\(x\)</span>, is given by:</p>
 <p><span class="math display">\[
 \text{Standard Error} = \frac{1}{f(x)} \sqrt{\frac{(1 - q)q}{n}}
 \]</span></p>
-<ul>
-<li>where <span class="math inline">\(n\)</span> is the number of observations and <span class="math inline">\(f(x)\)</span> is an estimate of the probability density function of the loss evaluated at <span class="math inline">\(x\)</span>.</li>
-<li>Standard error of a VaR estimated using historical simulation is typically high, decreasing with lower VaR confidence level or larger sample size.</li>
-<li>Losses typically have heavier tails than the normal distribution, so a Pareto distribution for <span class="math inline">\(f(x)\)</span> may provide better standard error estimates.</li>
-</ul>
-<section id="example" class="level4" data-number="8.2.3.1">
-<h4 data-number="8.2.3.1" class="anchored" data-anchor-id="example"><span class="header-section-number">8.2.3.1</span> Example</h4>
+<p>where <span class="math inline">\(n\)</span> is the sample size and <span class="math inline">\(f(x)\)</span> represents an estimate of the probability density at <span class="math inline">\(x\)</span>. Generally, the standard error for VaR estimates from historical simulation is high, decreasing as sample size grows or confidence level lowers. Loss distributions often have heavier tails than the normal distribution, so using a Pareto distribution for <span class="math inline">\(f(x)\)</span> can yield more accurate standard error estimates.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li>Suppose we want to estimate the 99th percentile of a loss distribution from 500 observations, so <span class="math inline">\(n = 500\)</span> and <span class="math inline">\(q = 0.99\)</span>.</li>
-<li>We assume a normal distribution with a mean of 0 and a standard deviation of $10 million.</li>
-<li>Using Excel, the 99th percentile is <span class="math inline">\(\text{NORMINV}(0.99,0,10) = 23.26\)</span>.</li>
-<li>The value of <span class="math inline">\(f(x)\)</span> is <span class="math inline">\(\text{NORMDIST}(23.26,0,10,\text{FALSE}) = 0.0027\)</span>.</li>
+<li>We aim to estimate the 99th percentile of a loss distribution using 500 observations, so <span class="math inline">\(n = 500\)</span> and <span class="math inline">\(q = 0.99\)</span>.</li>
+<li>Assuming a normal distribution with a mean of 0 and a standard deviation of $10 million.</li>
+<li>In Excel, the 99th percentile is calculated as <span class="math inline">\(\text{NORMINV}(0.99,0,10) = 23.26\)</span>.</li>
+<li>The density <span class="math inline">\(f(x)\)</span> at this point is <span class="math inline">\(\text{NORMDIST}(23.26,0,10,\text{FALSE}) = 0.0027\)</span>.</li>
 <li>The standard error of the estimate is:</li>
 </ol>
 <p><span class="math display">\[
 \frac{1}{0.0027} \times \sqrt{\frac{0.01 \times 0.99}{500}} = 1.67
 \]</span></p>
 <ol start="6" type="1">
-<li>If the estimate of the 99th percentile using historical simulation is $25 million, a 95% confidence interval is from <span class="math inline">\(25 - 1.96 \times 1.67\)</span> to <span class="math inline">\(25 + 1.96 \times 1.67\)</span>, or from $21.7 million to $28.3 million.</li>
+<li>If the historical simulation estimate of the 99th percentile is $25 million, a 95% confidence interval is calculated as:</li>
 </ol>
+<p><span class="math display">\[
+25 \pm 1.96 \times 1.67
+\]</span></p>
+<p>This results in an interval from $21.7 million to $28.3 million, providing an estimate range for the 99th percentile at a 95% confidence level.</p>
+</div>
+</div>
 </section>
-</section>
-<section id="extensions-and-computational-issues" class="level3" data-number="8.2.4">
-<h3 data-number="8.2.4" class="anchored" data-anchor-id="extensions-and-computational-issues"><span class="header-section-number">8.2.4</span> Extensions and Computational Issues</h3>
+<section id="extensions-and-computational-issues" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="extensions-and-computational-issues"><span class="header-section-number">8.2.3</span> Extensions and Computational Issues</h3>
+<p>VaR and ES calculations rely on recent historical data under the assumption that this provides a reliable forecast of future behavior. Traditional historical simulation assigns equal weight to each past observation, but there are ways to refine this approach:</p>
 <ul>
-<li><p>VaR and ES are calculated using recent historical data, assuming that this is a good guide to future behavior.</p></li>
-<li><p>The basic historical simulation approach gives equal weight to each day in the past.</p></li>
-<li><p><strong>Weighting of Observations</strong>: Recent observations could be weighted more heavily, reflecting current volatilities and macroeconomic conditions. Exponential weighting, where weights decline exponentially, is a natural choice.</p></li>
-<li><p><strong>Volatility Scaling for Market Variables</strong>: It is possible incorporating volatility estimates into historical simulation. A variation is to use the Exponentially Weighted Moving Average (EWMA) to monitor the standard deviation of the simulated losses.</p></li>
-<li><p><strong>Bootstrap Method</strong>: Creating many new similar data sets by sampling observations with replacement.</p></li>
-<li><p>Historical simulation is a method used to value the entire portfolio of a financial institution, often involving multiple simulations (e.g., 500 times).</p></li>
-<li><p>This approach can be computationally intensive, especially when certain instruments in the portfolio are valued using Monte Carlo simulation, leading to a “simulation within a simulation” problem.</p></li>
-<li><p>To reduce computation time, financial institutions sometimes use an approximation method based on the Taylor series expansion.</p></li>
+<li><strong>Weighting of Observations</strong>: Recent data can be weighted more heavily to reflect current volatility and macroeconomic conditions. Exponential weighting, where weights decay over time, is commonly used for this purpose.</li>
+<li><strong>Volatility Scaling for Market Variables</strong>: Incorporating volatility estimates into historical simulations provides additional accuracy. For instance, using the Exponentially Weighted Moving Average (EWMA) allows dynamic monitoring of the standard deviation of simulated losses.</li>
+<li><strong>Bootstrap Method</strong>: This involves creating multiple simulated datasets by sampling observations with replacement, providing a robust estimate of potential outcomes.</li>
 </ul>
+<p>Calculating VaR and ES through historical simulation requires revaluing the entire portfolio, often through multiple rounds of simulation (e.g., 500 runs), which can be computationally demanding. For portfolios with complex instruments valued via Monte Carlo simulation, this can lead to a “simulation within a simulation” scenario, further escalating computational load.</p>
+<p>To reduce processing time, financial institutions may employ an approximation technique using a Taylor series expansion, which simplifies the calculations while preserving accuracy.</p>
 </section>
-<section id="extreme-value-theory" class="level3" data-number="8.2.5">
-<h3 data-number="8.2.5" class="anchored" data-anchor-id="extreme-value-theory"><span class="header-section-number">8.2.5</span> Extreme Value Theory</h3>
-<ul>
-<li>Extreme Value Theory (EVT) is a scientific method used to estimate the tails of a distribution.</li>
-<li>EVT is based on the power law and can be used to improve Value at Risk (VaR) or Expected Shortfall (ES) estimates, particularly for very high confidence levels.</li>
-<li>EVT smooths and extrapolates the tails of an empirical distribution, providing better estimates of VaR and ES that reflect the entire shape of the tail.</li>
-<li>EVT can be applied to the probability distribution of portfolio daily changes derived from historical simulation, avoiding calculation uncertainties.</li>
-<li>Even with limited data (e.g., 500 days), EVT can provide estimates of VaR or ES for confidence levels as high as 99.9%.</li>
-</ul>
+<section id="extreme-value-theory" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="extreme-value-theory"><span class="header-section-number">8.2.4</span> Extreme Value Theory</h3>
+<p>Extreme Value Theory (EVT) is a method for estimating the tails of a distribution, based on the power law, which can enhance Value at Risk (VaR) or Expected Shortfall (ES) calculations, especially at high confidence levels. EVT works by smoothing and extrapolating the tails of an empirical distribution, yielding more accurate tail estimates that better reflect the distribution’s extreme values.</p>
+<p>Applying EVT to the probability distribution of daily portfolio changes derived from historical data mitigates calculation uncertainties. Even with limited datasets (e.g., 500 days), EVT can provide reliable VaR or ES estimates at very high confidence levels, such as 99.9%.</p>
 </section>
-<section id="advantages-of-historical-simulation-method" class="level3" data-number="8.2.6">
-<h3 data-number="8.2.6" class="anchored" data-anchor-id="advantages-of-historical-simulation-method"><span class="header-section-number">8.2.6</span> Advantages of Historical Simulation Method</h3>
+<section id="advantages-of-the-historical-simulation-method" class="level3" data-number="8.2.5">
+<h3 data-number="8.2.5" class="anchored" data-anchor-id="advantages-of-the-historical-simulation-method"><span class="header-section-number">8.2.5</span> Advantages of the Historical Simulation Method</h3>
 <ul>
-<li>The method is easy to understand and implement, as it relies on actual historical data to simulate possible future scenarios.</li>
-<li>Unlike other methods, historical simulation does not assume a specific parametric distribution (like normal distribution) for the returns, making it more robust in the presence of non-normal returns.</li>
-<li>By using actual historical data, this method naturally incorporates periods of high volatility, which can provide a more realistic estimate of VaR during turbulent times.</li>
-<li>The method is based on empirical evidence rather than theoretical assumptions, making it more reliable for estimating the risk of extreme events.</li>
-<li>Historical simulation can be easily modified to consider different time horizons, confidence levels, or other variations to suit specific risk management needs.</li>
-<li>As new historical data becomes available, it can be easily incorporated into the simulation, allowing the method to adapt to changing market conditions.</li>
-<li>It can accomodate options, unlike the parametric method.</li>
+<li><strong>Simplicity and Transparency</strong>: The method is intuitive and straightforward, relying on historical data to model potential future scenarios.</li>
+<li><strong>Non-Parametric Approach</strong>: Unlike parametric methods, historical simulation does not assume a specific distribution (e.g., normal) for returns, making it resilient to non-normal returns.</li>
+<li><strong>Captures Market Volatility</strong>: By using actual historical data, this method naturally incorporates periods of high volatility, producing realistic VaR estimates during turbulent times.</li>
+<li><strong>Empirical Foundation</strong>: Historical simulation relies on observed data rather than theoretical assumptions, offering a more grounded view of extreme event risk.</li>
+<li><strong>Flexibility</strong>: The approach can easily be adjusted to accommodate various time horizons, confidence levels, and other parameters as needed.</li>
+<li><strong>Adaptability to New Data</strong>: As new data becomes available, it can be seamlessly integrated into the model, allowing continuous updates to reflect evolving market conditions.</li>
+<li><strong>Capability with Options</strong>: Unlike parametric methods, historical simulation can account for options and other non-linear instruments, enhancing its applicability to a broader range of portfolios.</li>
 </ul>
 </section>
 </section>
 <section id="parametric-approach" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="parametric-approach"><span class="header-section-number">8.3</span> Parametric Approach</h2>
-<ul>
-<li>The parametric method, also known as the analytical, variance-covariance method or model-building approach, is an alternative to historical simulation for estimating risk measures like VaR and ES.</li>
-<li>The method assumes normal distribution for return distributions of portfolio risk factors.</li>
-<li>The normal distribution requires two parameters, expected value and standard deviation, to describe the distribution.</li>
-<li>Historical data is used to estimate these parameters, with adjustments to make them consistent with long-run values.</li>
-<li>It’s ideal when the portfolio’s value change is linearly dependent on market variable changes, and if these changes are assumed to be multivariate normal, it’s computationally faster than historical simulation.</li>
-<li>This approach extends Harry Markowitz’s portfolio theory.</li>
-<li>It is not suitable for portfolios with non-linear derivatives.</li>
-<li>Other distributions with additional parameters can be used, but they add complexity to VaR estimation.</li>
-<li>It is also possible to calculate Stressed Measures by selecting appropriate historical data for estimating volatilities and correlations.</li>
-</ul>
+<p>The parametric method, also known as the analytical or <strong>variance-covariance method</strong>, is an alternative to historical simulation for estimating risk measures like VaR and ES. It assumes that the return distributions of portfolio risk factors follow a <strong>normal distribution</strong>, requiring only the expected value and standard deviation as parameters, which are estimated using historical data and adjusted for consistency with long-term values.</p>
+<p>This approach is efficient when portfolio value changes are linearly dependent on market variable changes, and when these changes can be assumed to be multivariate normal, making it <strong>computationally faster than historical simulation</strong>. This method builds on Harry Markowitz’s portfolio theory but is not suitable for portfolios with non-linear derivatives. While other distributions can be used to capture more complex behaviors, they add computational complexity. It’s also possible to calculate stressed measures by choosing appropriate historical data to estimate volatilities and correlations.</p>
 <section id="the-basic-methodology" class="level3" data-number="8.3.1">
 <h3 data-number="8.3.1" class="anchored" data-anchor-id="the-basic-methodology"><span class="header-section-number">8.3.1</span> The Basic Methodology</h3>
-<ul>
-<li>Assuming a normal distribution of returns, VaR and ES are calculated using the equations from the previous chapter:</li>
-</ul>
+<p>Assuming a normal distribution of returns, VaR and ES can be calculated with the following equations:</p>
 <p><span class="math display">\[
 \text{VaR} = \mu + \sigma \times \sqrt{T} \times N^{-1}(X)
 \]</span></p>
 <p><span class="math display">\[
 \text{ES} = \mu + \sigma \times \sqrt{T} \times \frac{e^{-(Y^2/2)}}{\sqrt{2\pi} (1 - X)}
 \]</span></p>
+<p>where:</p>
 <ul>
-<li>Where:
-<ul>
-<li><span class="math inline">\(\mu\)</span> is the mean of losses, usually assumed as zero.</li>
-<li><span class="math inline">\(\sigma\)</span> is the standard deviation of losses.</li>
-<li><span class="math inline">\(X\)</span> is the confidence level.</li>
-<li><span class="math inline">\(N^{-1}(\cdot)\)</span> is the inverse cumulative normal distribution.</li>
-<li><span class="math inline">\(Y\)</span> is the <span class="math inline">\(X\)</span>th percentile point of the standard normal distribution.</li>
-<li><span class="math inline">\(T\)</span> is the time horizon in days, for longer time horizons it is better to use appriate return frequency directly.</li>
-</ul></li>
-<li>Standard deviation of multi-asset portfolio is calculated as follows:</li>
+<li><span class="math inline">\(\mu\)</span> is the mean of losses, typically assumed to be zero,</li>
+<li><span class="math inline">\(\sigma\)</span> is the standard deviation of losses,</li>
+<li><span class="math inline">\(X\)</span> is the confidence level,</li>
+<li><span class="math inline">\(N^{-1}(\cdot)\)</span> is the inverse cumulative normal distribution,</li>
+<li><span class="math inline">\(Y\)</span> is the <span class="math inline">\(X\)</span> th percentile of the standard normal distribution,</li>
+<li><span class="math inline">\(T\)</span> is the time horizon in days, where for extended horizons, using an appropriate return frequency is recommended.</li>
 </ul>
+<p>The standard deviation of a multi-asset portfolio is calculated by:</p>
 <p><span class="math display">\[
-\sigma_P = \sqrt{\sum_{i=1}^{n} \sum_{j=1}^{n} \rho_{ij} \delta_i \delta_j \sigma_i
-\sigma_j}
+\sigma_P = \sqrt{\sum_{i=1}^{n} \sum_{j=1}^{n} \rho_{ij} \delta_i \delta_j \sigma_i \sigma_j}
 \]</span></p>
-<ul>
-<li>This equation can also be written as:</li>
-</ul>
+<p>or equivalently:</p>
 <p><span class="math display">\[
-\sigma_P = \sqrt{\sum_{i=1}^n \delta^2 \sigma^2 + \sum_{i \neq j} \rho_{ij} \delta_i
-\delta_j \sigma_i \sigma_j}
+\sigma_P = \sqrt{\sum_{i=1}^n \delta_i^2 \sigma_i^2 + \sum_{i \neq j} \rho_{ij} \delta_i \delta_j \sigma_i \sigma_j}
 \]</span></p>
-<section id="asset-a" class="level4" data-number="8.3.1.1">
-<h4 data-number="8.3.1.1" class="anchored" data-anchor-id="asset-a"><span class="header-section-number">8.3.1.1</span> Asset A</h4>
+<p>where:</p>
 <ul>
-<li><p>Consider one-share portfolio of asset A valued at $10 million.</p></li>
-<li><p>Time horizon of 10 days and a 99% confidence level for VaR.</p></li>
-<li><p>Daily volatility is 2% ($200,0000).</p></li>
-<li><p>The expected change in a market variable over the considered time period is assumed to be zero in the model-building approach.</p></li>
-<li><p>Change in value is assumed to be normally distributed, with a standard deviation of $200,000 and a mean of zero.</p></li>
-<li><p>One-day 99% VaR is <span class="math inline">\(2.326 \times \$200,000 = \$465,300\)</span>.</p></li>
-<li><p>10-day 99% VaR is <span class="math inline">\(2.326 \times \$200,000 \times \sqrt{10} = \$1,471,300\)</span>.</p></li>
-<li><p>10-day 99% ES is:</p></li>
+<li><span class="math inline">\(\rho_{ij}\)</span> is the correlation between assets <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>,</li>
+<li><span class="math inline">\(\delta_i\)</span> is the weight of asset <span class="math inline">\(i\)</span> in the portfolio,</li>
+<li><span class="math inline">\(\sigma_i\)</span> is the standard deviation of asset <span class="math inline">\(i\)</span>’s returns.</li>
+</ul>
+<p>This approach efficiently computes portfolio risk in linear and normally distributed portfolios but is less accurate for portfolios with non-linear payoffs, such as those involving options.</p>
+</section>
+<section id="parametric-approach-example" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="parametric-approach-example"><span class="header-section-number">8.3.2</span> Parametric Approach Example</h3>
+<section id="asset-a" class="level4">
+<h4 class="anchored" data-anchor-id="asset-a">Asset A</h4>
+<p>Consider a portfolio consisting of one share of <strong>Asset A</strong> valued at $10 million, with a 10-day time horizon and a 99% confidence level for VaR. The assumptions are as follows:</p>
+<ul>
+<li><strong>Daily volatility</strong>: 2%, or $200,000.</li>
+<li><strong>Expected change</strong>: Assumed to be zero.</li>
+<li><strong>Distribution</strong>: Changes in value are assumed to be normally distributed with a mean of zero and a standard deviation of $200,000.</li>
+</ul>
+<p>Calculations:</p>
+<ul>
+<li><strong>One-day 99% VaR</strong>: <span class="math inline">\(2.326 \times \$200,000 = \$465,300\)</span>.</li>
+<li><strong>10-day 99% VaR</strong>: <span class="math inline">\(2.326 \times \$200,000 \times \sqrt{10} = \$1,471,300\)</span>.</li>
+<li><strong>10-day 99% ES</strong>:</li>
 </ul>
 <p><span class="math display">\[
-\text{ES} = \$200,000 \times \sqrt{10} \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} (1 -
-0.99)} = \$1,686,994
+\text{ES} = \$200,000 \times \sqrt{10} \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} \times (1 - 0.99)} = \$1,686,994
 \]</span></p>
 </section>
-<section id="asset-b" class="level4" data-number="8.3.1.2">
-<h4 data-number="8.3.1.2" class="anchored" data-anchor-id="asset-b"><span class="header-section-number">8.3.1.2</span> Asset B</h4>
+<section id="asset-b" class="level4">
+<h4 class="anchored" data-anchor-id="asset-b">Asset B</h4>
+<p>Now consider a portfolio with one share of <strong>Asset B</strong> valued at $5 million, using the same 10-day horizon and 99% confidence level. The parameters are:</p>
 <ul>
-<li><p>Consider one-share portfolio of asset B valued at $5 million.</p></li>
-<li><p>Time horizon of 10 days and a 99% confidence level for VaR.</p></li>
-<li><p>Daily volatility is 1% ($50,0000).</p></li>
-<li><p>The expected change in a market variable over the considered time period is assumed to be zero in the model-building approach.</p></li>
-<li><p>Change in value is assumed to be normally distributed, with a standard deviation of $50,000 and a mean of zero.</p></li>
-<li><p>One-day 99% VaR is <span class="math inline">\(2.326 \times \$50,000 = \$116,300\)</span>.</p></li>
-<li><p>10-day 99% VaR is <span class="math inline">\(2.326 \times \$50,000 \times \sqrt{10} = \$367,800\)</span>.</p></li>
-<li><p>10-day 99% ES is:</p></li>
+<li><strong>Daily volatility</strong>: 1%, or $50,000.</li>
+<li><strong>Expected change</strong>: Assumed to be zero.</li>
+<li><strong>Distribution</strong>: Changes in value are normally distributed, with a mean of zero and a standard deviation of $50,000.</li>
+</ul>
+<p>Calculations:</p>
+<ul>
+<li><strong>One-day 99% VaR</strong>: <span class="math inline">\(2.326 \times \$50,000 = \$116,300\)</span>.</li>
+<li><strong>10-day 99% VaR</strong>: <span class="math inline">\(2.326 \times \$50,000 \times \sqrt{10} = \$367,800\)</span>.</li>
+<li><strong>10-day 99% ES</strong>:</li>
 </ul>
 <p><span class="math display">\[
-\text{ES} = \$50,000 \times \sqrt{10} \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} (1 -
-0.99)} = \$421,400
+\text{ES} = \$50,000 \times \sqrt{10} \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} \times (1 - 0.99)} = \$421,400
 \]</span></p>
+<p>These examples illustrate the application of the parametric method for estimating VaR and ES, where the assumption of normality enables direct calculation based on volatility and confidence level.</p>
 </section>
-<section id="two-asset-case" class="level4" data-number="8.3.1.3">
-<h4 data-number="8.3.1.3" class="anchored" data-anchor-id="two-asset-case"><span class="header-section-number">8.3.1.3</span> Two-Asset Case</h4>
-<ul>
-<li>Assume a correlation of 0.3 between asset A and asset B.</li>
-<li>The standard deviation of the sum of two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, given their standard deviations (<span class="math inline">\(\sigma_X\)</span> and <span class="math inline">\(\sigma_Y\)</span>) and the coefficient of correlation between them (<span class="math inline">\(\rho\)</span>):</li>
-</ul>
+<section id="two-asset-case" class="level4">
+<h4 class="anchored" data-anchor-id="two-asset-case">Two-Asset Case</h4>
+<p>Assume a portfolio consisting of <strong>Asset A</strong> and <strong>Asset B</strong> with a correlation of 0.3. The combined standard deviation (<span class="math inline">\(\sigma_{X+Y}\)</span>) of two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, given their individual standard deviations (<span class="math inline">\(\sigma_X\)</span> and <span class="math inline">\(\sigma_Y\)</span>) and the correlation coefficient <span class="math inline">\(\rho\)</span>, is calculated as:</p>
 <p><span class="math display">\[
 \sigma_{X+Y} = \sqrt{\sigma_X^2 + \sigma_Y^2 + 2 \rho \sigma_X \sigma_Y}
 \]</span></p>
+<p>Using the values from the previous example for Asset A ($200,000) and Asset B ($50,000):</p>
+<p><span class="math display">\[
+\sigma_{A+B} = \sqrt{200,000^2 + 50,000^2 + 2 \times 0.3 \times 200,000 \times 50,000} = \$220,227
+\]</span></p>
+<p>Calculations:</p>
 <ul>
-<li>Using values from the previous example for asset A and asset B:</li>
+<li><strong>One-day 99% VaR</strong>: <span class="math inline">\(2.326 \times 220,227 = 512,300\)</span></li>
+<li><strong>10-day 99% VaR</strong>: <span class="math inline">\(512,300 \times \sqrt{10} = 1,620,100\)</span></li>
+<li><strong>10-day 99% ES</strong>:</li>
 </ul>
 <p><span class="math display">\[
-\sigma_{A+B} =\sqrt{200,000^2 + 50,000^2 + 2 \times 0.3 \times 200,000 \times 50,000} =
-\$220,227
+\text{ES} = 220,227 \times \sqrt{10} \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} \times (1 - 0.99)} = 1,856,100
 \]</span></p>
-<ul>
-<li>One-day 99% VaR is <span class="math inline">\(\$2.326 \times \$220,227 = \$512,300\)</span>.</li>
-<li>10-day 99% VaR is <span class="math inline">\(\$512,300 \times \sqrt{10} = \$1,620,100\)</span>.</li>
-<li>10-day 99% ES is: <span class="math display">\[
-\text{ES} = \$220,227 \times \sqrt{10} \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} (1 -
-0.99)} = \$1,856,100
-\]</span></li>
-</ul>
 </section>
-<section id="benefits-of-diversification" class="level4" data-number="8.3.1.4">
-<h4 data-number="8.3.1.4" class="anchored" data-anchor-id="benefits-of-diversification"><span class="header-section-number">8.3.1.4</span> Benefits of Diversification</h4>
+<section id="benefits-of-diversification" class="level4">
+<h4 class="anchored" data-anchor-id="benefits-of-diversification">Benefits of Diversification</h4>
 <ul>
-<li>The 10-day 99% VaR for the portfolio of asset A is $1,471,300.</li>
-<li>The 10-day 99% VaR for the portfolio of asset B is $367,800.</li>
-<li>The 10-day 99% VaR for the portfolio of both assets is $1,620,100.</li>
+<li><strong>10-day 99% VaR for Asset A</strong>: $1,471,300</li>
+<li><strong>10-day 99% VaR for Asset B</strong>: $367,800</li>
+<li><strong>10-day 99% VaR for both assets combined</strong>: $1,620,100</li>
 </ul>
+<p>The difference between the sum of individual VaRs and the combined VaR represents the diversification benefit:</p>
 <p><span class="math display">\[
-(\$1,471,300 + \$367,800) - \$1,620,100 = \$219,000
+(1,471,300 + 367,800) - 1,620,100 = 219,000
 \]</span></p>
-<ul>
-<li>The difference of $219,000 represents the benefits of diversification.</li>
-<li>If both assets were perfectly correlated, the VaR for the combined portfolio would equal the sum of the individual VaRs.</li>
-<li>Less than perfect correlation results in some risk being diversified away, true for both ES and VaR.</li>
-</ul>
+<p>Thus, $219,000 is the amount of risk diversified away due to the less-than-perfect correlation between the assets. If both assets were perfectly correlated, the combined VaR would equal the sum of the individual VaRs, with no diversification benefit. This benefit applies to both VaR and ES measures.</p>
 <blockquote class="blockquote">
-<p>For non-normal distributions, the VaR of two portfolios considered jointly can be greater than the sum of their VaRs. ES does not have this disadvantage.</p>
+<p>Note: For non-normal distributions, the VaR of a combined portfolio can sometimes exceed the sum of the individual VaRs. Expected Shortfall (ES) does not exhibit this limitation, making it a more robust measure under such conditions.</p>
 </blockquote>
 </section>
 </section>
-<section id="parametric-approach-vs.-historical-simulation" class="level3" data-number="8.3.2">
-<h3 data-number="8.3.2" class="anchored" data-anchor-id="parametric-approach-vs.-historical-simulation"><span class="header-section-number">8.3.2</span> Parametric Approach vs.&nbsp;Historical Simulation</h3>
+<section id="parametric-approach-vs.-historical-simulation" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="parametric-approach-vs.-historical-simulation"><span class="header-section-number">8.3.3</span> Parametric Approach vs.&nbsp;Historical Simulation</h3>
+<section id="advantages-of-parametric-approach" class="level4">
+<h4 class="anchored" data-anchor-id="advantages-of-parametric-approach">Advantages of Parametric Approach</h4>
 <ul>
-<li><strong>Advantages of Parametric Approach</strong>:
-<ul>
-<li>Results can be produced quickly.</li>
-<li>Can be used easily with volatility and correlation updating procedures.</li>
-<li>Volatility changes can be incorporated into the historical simulation approach, but in a more artificial way.</li>
-</ul></li>
-<li><strong>Disadvantages of Parametric Approach</strong>:
-<ul>
-<li>The change in the value of the portfolio is linearly related to the proportional or actual changes in the risk factors.</li>
-<li>The daily changes in the risk factors are assumed to have a multivariate normal distribution.</li>
-<li>Daily changes in risk factors often have distributions that differ from normal distribution.</li>
-<li>Parametric method is very sensitive to parameter estimates, particularly covariances (when assuming a portfolio).</li>
-<li>It is difficult to use when dealing with portfolios containing options due to their non-linear pay-off structure.</li>
-</ul></li>
+<li>Allows for rapid calculation of VaR and ES.</li>
+<li>Integrates easily with procedures for updating volatility and correlation, adapting quickly to changing market conditions.</li>
+<li>While volatility adjustments can be applied in historical simulation, they are more naturally incorporated in the parametric approach.</li>
 </ul>
+</section>
+<section id="disadvantages-of-parametric-approach" class="level4">
+<h4 class="anchored" data-anchor-id="disadvantages-of-parametric-approach">Disadvantages of Parametric Approach</h4>
+<ul>
+<li>Assumes that changes in portfolio value are linearly related to proportional or actual changes in risk factors, which may not hold in practice.</li>
+<li>Assumes that daily changes in risk factors follow a multivariate normal distribution, whereas real market distributions often deviate from normality, exhibiting heavier tails.</li>
+<li>Highly sensitive to parameter estimates, especially covariances in portfolios, which can lead to inaccuracies.</li>
+<li>Less suitable for portfolios containing options due to their non-linear payoff structures, which are challenging to model with a parametric approach.</li>
+</ul>
+</section>
 </section>
 </section>
 <section id="monte-carlo-simulation" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="monte-carlo-simulation"><span class="header-section-number">8.4</span> Monte Carlo Simulation</h2>
+<p>The Monte Carlo simulation method allows users to define custom assumptions about distribution statistics, generating random hypothetical returns to estimate a portfolio’s risk. It is widely used for pricing complex options and handling investments with multiple uncertain variables due to its flexibility in accommodating non-normal distributions.</p>
 <ul>
-<li>This method lets users develop their own assumptions about distribution statistics to generate random hypothetical returns for a portfolio.</li>
-<li>Widely used in various fields to estimate statistical distributions, especially for complex investments with uncertain variables or pricing complex options.</li>
-<li>Can handle portfolios with multiple assets, complex risk interactions, and doesn’t require normal distribution assumptions.</li>
-<li>Users must decide the number of random values to generate, with more values increasing reliability but taking more time.</li>
-<li>Monte Carlo simulation also requires accounting for the correlation between variables, so it can’t simply simulate two random variables independently.</li>
-<li>The method involves simulating the returns of risk factors, repricing portfolio exposures under a range of simulated returns, sorting these results, and then selecting a percentile as the VaR.</li>
-<li>The method’s flexibility allows it to accommodate any distribution, making it more accurate for option positions or bonds with embedded options compared to parametric methods.</li>
+<li><strong>Applicability to Complex Portfolios</strong>: Ideal for portfolios with multiple assets and complex risk interactions, Monte Carlo simulation does not rely on the normal distribution assumption.</li>
+<li><strong>Customizable Reliability</strong>: Users select the number of random values to simulate; a larger number increases the accuracy of results but requires more computational time.</li>
+<li><strong>Correlation Considerations</strong>: Simulations must account for correlations among variables to avoid independent, unrealistic scenarios.</li>
+<li><strong>Process</strong>: The method involves simulating risk factor returns, revaluing portfolio exposures under these returns, and then sorting the results to identify a percentile for VaR estimation.</li>
+<li><strong>Accuracy for Non-linear Instruments</strong>: The flexibility of Monte Carlo simulation allows it to handle any distribution, making it especially effective for portfolios containing options or bonds with embedded options, where parametric methods fall short.</li>
 </ul>
-<section id="numerical-example-in-python" class="level3" data-number="8.4.1">
-<h3 data-number="8.4.1" class="anchored" data-anchor-id="numerical-example-in-python"><span class="header-section-number">8.4.1</span> Numerical Example in Python</h3>
-<p><strong>General Approach:</strong></p>
+<p>Monte Carlo’s adaptability makes it a powerful tool for accurate risk estimation, though it demands significant computational resources, particularly for highly detailed simulations.</p>
+<section id="procedure-for-monte-carlo-simulation-to-calculate-var-and-es" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="procedure-for-monte-carlo-simulation-to-calculate-var-and-es"><span class="header-section-number">8.4.1</span> Procedure for Monte Carlo Simulation to Calculate VaR and ES</h3>
 <ol type="1">
-<li>Define the probability distribution of the returns of the asset. This is typically done by fitting the historical returns of the asset to a certain probability distribution (normal, lognormal, etc.).</li>
-<li>Generate a large number of random outcomes from the defined distribution. Each random outcome represents a possible future return of the asset.</li>
-<li>Reprice the asset using each random outcome and record the result. This will give a distribution of possible future asset values.</li>
-<li>Sort the recorded results from worst to best.</li>
-<li>Calculate VaR and ES.</li>
+<li><p><strong>Define Assumptions</strong>: Specify assumptions about the statistical distribution of returns for each risk factor in the portfolio (e.g., mean, volatility, skewness). Monte Carlo simulation allows for any distribution, making it suitable for complex portfolios and non-linear instruments like options.</p></li>
+<li><p><strong>Generate Random Scenarios</strong>: Decide on the number of random scenarios to simulate. Each scenario represents a possible outcome for the portfolio’s value. A higher number of scenarios improves accuracy but increases computation time.</p></li>
+<li><p><strong>Simulate Risk Factor Returns</strong>: For each scenario, generate random returns for all risk factors in the portfolio, ensuring the correct distribution characteristics and incorporating the correlations between risk factors.</p></li>
+<li><p><strong>Reprice Portfolio</strong>: For each simulated scenario, revalue the portfolio based on the simulated returns. This step may involve complex calculations, particularly for non-linear instruments, as it requires calculating how each risk factor affects portfolio value.</p></li>
+<li><p><strong>Calculate Portfolio Losses</strong>: Determine the portfolio’s loss or gain for each scenario by comparing its revalued amount to its original value. Sort these losses from largest to smallest.</p></li>
+<li><p><strong>Estimate VaR</strong>: Identify the loss at the desired percentile to estimate VaR. For example, for a 99% confidence level, VaR is the loss at the 1st percentile of sorted losses, meaning only 1% of simulated losses are expected to exceed this amount.</p></li>
+<li><p><strong>Calculate ES</strong>: Expected Shortfall is calculated by averaging the losses that exceed the VaR threshold. For a 99% confidence level, ES is the average of the worst 1% of simulated losses.</p></li>
 </ol>
-<div id="0197d761" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Download stock data</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>ticker <span class="op">=</span> <span class="st">"SPY"</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>stock_data <span class="op">=</span> yf.download(ticker, period<span class="op">=</span><span class="st">"3y"</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>price_data <span class="op">=</span> stock_data[<span class="st">"Adj Close"</span>]</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">## Calculate historical volatility and mean return</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>daily_returns <span class="op">=</span> price_data.pct_change().dropna()</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> daily_returns.std()</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> daily_returns.mean()</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Monte Carlo simulation</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>simulations <span class="op">=</span> <span class="dv">10000</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>initial_price <span class="op">=</span> price_data[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>random_shocks <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>, simulations)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Simplified Geomeetric Brownian motion (log-normal distribution)</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>simulated_prices <span class="op">=</span> initial_price <span class="op">*</span> np.exp(</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    (mu <span class="op">-</span> <span class="fl">0.5</span> <span class="op">*</span> sigma<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> sigma <span class="op">*</span> random_shocks</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate 1% VaR and ES</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>confidence_level <span class="op">=</span> <span class="dv">1</span>  <span class="co"># for 1% VaR and ES</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>percentile <span class="op">=</span> np.percentile(simulated_prices, confidence_level)</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>VaR <span class="op">=</span> initial_price <span class="op">-</span> percentile</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>below_VaR <span class="op">=</span> simulated_prices[simulated_prices <span class="op">&lt;=</span> percentile]</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>ES <span class="op">=</span> np.mean(initial_price <span class="op">-</span> below_VaR)</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"1-day 99% VaR is $</span><span class="sc">{</span>VaR<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"1-day 99% ES is $</span><span class="sc">{</span>ES<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>1-day 99% VaR is $14.49
-1-day 99% ES is $16.68</code></pre>
-</div>
-</div>
+<p>This procedure allows for robust risk estimation by accommodating any return distribution and accounting for complex interactions within the portfolio, making it particularly suited for portfolios with non-linear or path-dependent instruments.</p>
 </section>
 </section>
 <section id="practice-questions-and-problems" class="level2" data-number="8.5">
@@ -757,9 +662,9 @@ The 1-day 99% ES is: -0.025665</code></pre>
 <section id="historical-simulation-1" class="level3" data-number="8.5.1">
 <h3 data-number="8.5.1" class="anchored" data-anchor-id="historical-simulation-1"><span class="header-section-number">8.5.1</span> Historical Simulation</h3>
 <ol type="1">
-<li>What assumption is being made when VaR is calculated using the historical simulation approach and 500 days of data?</li>
-<li>Suppose we estimate the one-day 95% VaR from 1,000 observations (in millions of dollars) as 5. By fitting a standard distribution to the observations, the probability density function of the loss distribution at the 95% point is estimated to be 0.01. What is the standard error of the VaR estimate?</li>
-<li>Download the lates data for selected ETFs (e.g.&nbsp;S&amp;P 500, NASDAQ, Bonds, Gold) and calculate:
+<li><p>What assumption is being made when VaR is calculated using the historical simulation approach and 500 days of data?</p></li>
+<li><p>Suppose we estimate the one-day 95% VaR from 1,000 observations (in millions of dollars) as 5. By fitting a standard distribution to the observations, the probability density function of the loss distribution at the 95% point is estimated to be 0.01. What is the standard error of the VaR estimate?</p></li>
+<li><p>Download the lates data for selected ETFs (e.g.&nbsp;S&amp;P 500, NASDAQ, Bonds, Gold) and calculate:</p>
 <ul>
 <li><ol type="a">
 <li>the 95%, 97%, and 99% one-day VaR,</li>
@@ -779,36 +684,36 @@ The 1-day 99% ES is: -0.025665</code></pre>
 <section id="parametric-approach-1" class="level3" data-number="8.5.2">
 <h3 data-number="8.5.2" class="anchored" data-anchor-id="parametric-approach-1"><span class="header-section-number">8.5.2</span> Parametric Approach</h3>
 <ol type="1">
-<li>Consider a position consisting of a $100,000 investment in asset A and a $100,000 investment in asset B. Assume that the daily volatilities of both assets are 1% and that the coefficient of correlation between their returns is 0.3. What are the five-day 97% VaR and ES for the portfolio?</li>
-<li>A financial institution owns a portfolio of instruments dependent on the U.S. dollar–sterling exchange rate. The delta of the portfolio with respect to percentage changes in the exchange rate is 3.9. If the daily volatility of the exchange rate is 0.7% and a linear model is assumed, estimate the 10-day 99% VaR.</li>
-<li>Explain why the linear model can provide only approximate estimates of VaR for a portfolio containing options.</li>
+<li><p>Consider a position consisting of a $100,000 investment in asset A and a $100,000 investment in asset B. Assume that the daily volatilities of both assets are 1% and that the coefficient of correlation between their returns is 0.3. What are the five-day 97% VaR and ES for the portfolio?</p></li>
+<li><p>A financial institution owns a portfolio of instruments dependent on the U.S. dollar–sterling exchange rate. The delta of the portfolio with respect to percentage changes in the exchange rate is 3.9. If the daily volatility of the exchange rate is 0.7% and a linear model is assumed, estimate the 10-day 99% VaR.</p></li>
+<li><p>Explain why the linear model can provide only approximate estimates of VaR for a portfolio containing options.</p></li>
 </ol>
 </section>
 <section id="summary" class="level3" data-number="8.5.3">
 <h3 data-number="8.5.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.5.3</span> Summary</h3>
 <p>Use excel file ‘daily_returns.xlsx’ containing daily percentage returns in % for selected ETFs and calculate/show:</p>
 <ol type="1">
-<li>Show distribution of daily returns for each asset for the whole period.</li>
-<li>Use historical simulation approach:
+<li><p>Show distribution of daily returns for each asset for the whole period.</p></li>
+<li><p>Use historical simulation approach:</p>
 <ul>
 <li>Calculate 95% and 99% one-day VaR for the whole period.</li>
 <li>Calculate 95% and 99% one-day ES for the whole period.</li>
 <li>Convert VaR and ES to 10-day estimates.</li>
 <li>Repeat the calculations for the last 500 days.</li>
 </ul></li>
-<li>Use variance-covariance (parametric) approach:
+<li><p>Use variance-covariance (parametric) approach:</p>
 <ul>
 <li>Calculate 95% and 99% one-day VaR for the whole period.</li>
 <li>Calculate 95% and 99% one-day ES for the whole period.</li>
 <li>Convert VaR and ES to 10-day estimates.</li>
 <li>Repeat the calculations for the last 500 days.</li>
 </ul></li>
-<li>Create your own portfolio (combination of given assets):
+<li><p>Create your own portfolio (combination of given assets):</p>
 <ul>
 <li>Calculate 95% and 99% one-day VaR for the last 500 days.</li>
 <li>Calculate 95% and 99% one-day ES for the last 500 days.</li>
 </ul></li>
-<li><strong><em>Bonus.</em></strong> Try to find 95% stressed VaR and ES (251-days) for each asset.</li>
+<li><p><strong><em>Bonus.</em></strong> Try to find 95% stressed VaR and ES (251-days) for each asset.</p></li>
 </ol>
 
 
