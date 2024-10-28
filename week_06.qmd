@@ -2,6 +2,9 @@
 format:
   html:
     code-fold: true
+    toc: true
+    toc-depth: 2
+    number-depth: 3
 jupyter: python3
 ---
 
@@ -27,105 +30,122 @@ jupyter: python3
 
 ## Introduction
 
-- **Market risk** refers to the risk arising from changes in stock prices, interest
+::: {.callout-tip title="Definition"}
+Market risk refers to the risk associated with fluctuations in stock prices, interest
 rates, exchange rates, and commodity prices.
-- Risk management involves identifying and measuring risk and ensuring that it aligns
-with desired risk levels.
-- Effective risk management requires judgment, experience, and an understanding of model
-strengths and limitations.
-- Market risk is easier to analyze compared to other financial risks due to the
-availability of data and collective experience.
-- Estimating potential losses for market risk is challenging as they are unknown and
-based on historical data.
-- Risk management models blend historical data with forward-looking judgment to create a
-framework for testing and assessing risk.
-- **Value at Risk (VaR)** and **Expected Shortfall (ES)** are metrics that summarize
-total portfolio risk with a single number.
-- VaR was first introduced by JPMorgan and is now widely used by corporate treasurers,
-fund managers, and financial institutions.
-- Regulators have traditionally used VaR for capital requirement calculations, but have
-switched to ES for some market risk.
+:::
+
+Managing this risk involves identifying and measuring potential exposures and ensuring
+they align with an institution's risk tolerance. Effective management of market risk
+requires sound judgment, experience, and an understanding of the limitations and
+strengths of various risk models.
+
+Compared to other types of financial risk, market risk **is generally easier to
+analyze** due to the abundance of data and accumulated industry expertise. However,
+estimating potential losses remains challenging because they rely on historical data and
+probabilistic assessments of future conditions. Risk management models incorporate
+historical information alongside forward-looking judgments, establishing a framework to
+assess and test risk exposure.
+
+Key metrics such as **Value at Risk (VaR)** and **Expected Shortfall (ES)** are commonly
+used to quantify market risk in a single, interpretable measure. VaR, originally
+introduced by JPMorgan, has become a standard tool among corporate treasurers, fund
+managers, and financial institutions. Although regulators have traditionally relied on
+VaR for capital requirement calculations, recent shifts have seen a preference for ES in
+certain areas of market risk evaluation.
 
 ## Understanding Value at Risk (VaR)
 
-::: {.callout-tip}
-# Definition of VaR
-
-- Value at risk is the minimum loss that would be expected a certain percentage of the
-time over a certain period of time given the assumed market conditions.
-- E.g.: The 5% VaR of a portfolio is \$2.2 million over a one-day period.
-- Using the example given, it is correct to say any of the following:
-  - \$2.2 million is the minimum loss we would expect 5% of the time.
-  - 5% of the time, losses would be at least \$2.2 million.
-  - We would expect a loss of no more than \$2.2 million 95% of the time.
+::: {.callout-tip title="Definition"}
+**Value at Risk (VaR)** is a statistical measure that estimates the minimum expected
+loss of a portfolio over a specified time period and confidence level, under normal
+market conditions. 
 :::
 
-- Value at Risk (VaR) is an important risk measure in global financial markets.
-- VaR is defined as the minimum loss expected over a certain period of time with a
-specified level of confidence.
-- VaR can be expressed in currency units or as a percentage of portfolio value.
-- VaR is a minimum loss, not the total possible loss of the portfolio.
-- A VaR statement includes the frequency of losses and the time horizon over which they
-are expected to occur.
-- A 5% VaR implies a 95% level of confidence.
-- VaR statements can be rephrased to indicate the minimum loss expected or the maximum
-loss not expected to occur.
-- The concept of VaR is often illustrated using a probability distribution, such as the
-normal distribution, although other distributions may be more appropriate for financial
-market returns.
+VaR has become a critical risk measure in global financial markets, offering a
+quantifiable estimate of potential losses over a defined time horizon. It can be
+expressed in currency units or as a percentage of portfolio value. Importantly, VaR
+reflects a minimum expected loss, not the maximum potential loss of the portfolio.
+
+::: {.callout-note title="Example"}
+A portfolio with a 5% VaR of \$2.2 million over one day implies:
+
+- A minimum loss of \$2.2 million would be expected 5% of the time.
+- Losses would be at least \$2.2 million in 5% of cases.
+- 95% of the time, the loss would not exceed \$2.2 million.
+:::
+
+A typical VaR statement specifies both the frequency of losses and the time period over
+which they might occur, with a **5% VaR implying a 95% confidence level**. This means
+that in 95% of scenarios, losses should not surpass the VaR amount. While often
+illustrated with a normal distribution, VaR calculations may use other distributions
+better suited to the unique characteristics of financial market returns.
 
 ```{python}
-
 import numpy as np
-import matplotlib.pyplot as plt
+import plotly.graph_objects as go
 from scipy.stats import norm
 
 # Parameters
-mu = 0
-sigma = 1
+mu = 0  # Mean of the distribution
+sigma = 1  # Standard deviation of the distribution
+confidence_level = 0.95  # 95% confidence level
 x = np.linspace(-4, 4, 1000)
-confidence_level = 0.95
 
-# Calculate VaR
+# Calculate VaR at 5% level (inverse CDF for the normal distribution)
 VaR = norm.ppf(1 - confidence_level, mu, sigma)
 
-# Plot the normal distribution
-plt.plot(x, norm.pdf(x, mu, sigma), label="Normal distribution")
+# Probability density function values
+y = norm.pdf(x, mu, sigma)
 
-# Highlight the VaR area
+# Plot the normal distribution and VaR threshold in Plotly
+fig = go.Figure()
+
+# Normal distribution curve
+fig.add_trace(go.Scatter(x=x, y=y, mode='lines', name='Normal Distribution', line=dict(color='blue')))
+
+# Highlighting the VaR area (left tail of the distribution at 5% level)
 x_fill = np.linspace(-4, VaR, 1000)
-plt.fill_between(
-    x_fill,
-    norm.pdf(x_fill, mu, sigma),
-    color="blue",
-    alpha=0.5,
-    label=f"VaR (95% confidence)",
+y_fill = norm.pdf(x_fill, mu, sigma)
+
+fig.add_trace(go.Scatter(
+    x=np.append(x_fill, VaR), y=np.append(y_fill, 0),
+    mode='lines', name='VaR (95% confidence)', fill='tozeroy',
+    line=dict(color='blue'), fillcolor='rgba(0,0,255,0.3)'
+))
+
+# Update layout for the graph
+fig.update_layout(
+    title="Value at Risk (VaR) on a Normal Distribution",
+    xaxis_title="Value",
+    yaxis_title="Probability Density",
+    showlegend=True,
+    hovermode="x unified",
+    width=745,
+    height=600
 )
 
-# Add labels and legend
-plt.xlabel("Value")
-plt.ylabel("Probability Density")
-plt.legend()
-
-# Show the plot
-plt.show()
+fig.show()
 ```
 
 ### Simple VaR Calculations
 
-**Example 1**
+#### Example 1
+
 Suppose that the gain from a portfolio during six months is normally distributed with a
 mean of \$2 million and a standard deviation of \$10 million. How would you calculate
 the VaR for the portfolio with a time horizon of six months and confidence level of 99%,
 given the properties of the normal distribution?
 
-**Example 2**
+#### Example 2
+
 Suppose that for a one-year project all outcomes between a loss of \$50 million and a
 gain of \$50 million are considered equally likely, resulting in a uniform distribution
 extending from –\$50 million to +\$50 million. How would you determine the VaR with a
 one-year time horizon and a 99% confidence level for this project?
 
-**Example 3**
+#### Example 3
+
 A one-year project has a 98% chance of leading to a gain of \$2 million, a 1.5% chance
 of leading to a loss of \$4 million, and a 0.5% chance of leading to a loss of \$10
 million. How would you calculate the VaR with a confidence level of 99% and a one-year
@@ -135,179 +155,228 @@ time horizon for this project, given the cumulative loss distribution?
 
 ### Advantages of VaR
 
-- **Simple concept:** VaR is easy to understand, making it accessible to decision-makers
-without technical backgrounds by asking the question, "How bad can things get?".
-- **Easily communicated:** VaR consolidates a large amount of information into a single,
-significant number.
-- **Provides a basis for risk comparison:** VaR allows for the comparison of risks
-across different asset classes, portfolios, and trading units.
-- **Facilitates capital allocation decisions:** VaR provides a benchmark for capital
-allocation decisions across different trading units or portfolio positions.
-- **Can be used for performance evaluation:** VaR can be used for risk-adjusted
-performance measurement, which provides a more comprehensive view of profitability.
-- **Reliability can be verified:** VaR can be backtested, making it easier to check its
-reliability.
-- **Widely accepted by regulators:** VaR is commonly used and encouraged by regulators
-like the SEC, making it a common sight in annual reports of financial firms.
+- **Simple and intuitive:** VaR offers an easily understood concept that answers the
+essential question, “How bad can things get?” making it accessible for decision-makers
+without technical expertise.
+- **Clear communication tool:** By consolidating complex risk metrics into a single,
+interpretable number, VaR simplifies the communication of risk to stakeholders.
+- **Risk comparability:** VaR enables the comparison of risks across various asset
+classes, portfolios, and trading units, fostering informed decision-making across
+diverse financial contexts.
+- **Supports capital allocation:** VaR serves as a benchmark for allocating capital
+efficiently across different trading units or portfolio positions.
+- **Performance evaluation:** VaR facilitates risk-adjusted performance measurement,
+offering a more comprehensive understanding of profitability by adjusting for the
+inherent risk in portfolios.
+- **Backtesting capability:** The reliability of VaR can be validated through
+backtesting, allowing firms to assess the accuracy of their risk estimates based on
+historical data.
+- **Regulatory acceptance:** Widely endorsed by regulators, such as the SEC, VaR is
+frequently featured in financial institutions' risk disclosures, fostering industry
+consistency and compliance.
 
 ### Limitations of VaR
 
-- **Subjectivity:** The estimation of VaR involves a lot of subjective decisions, such
-as choosing the VaR cutoff, time horizon, and estimation method.
-- **Underestimating the frequency of extreme events:** VaR can underestimate the
-likelihood of extreme adverse events, often referred to as "left-tail events".
-- **Failure to take into account liquidity:** VaR can be understated in the case of
-relatively illiquid assets, particularly during major market downturns.
-- **Sensitivity to correlation risk:** VaR does not fully account for the fact that
-correlations among assets can rise significantly during times of market stress.
-- **Vulnerability to trending or volatility regimes:** VaR can lead to an
-underestimation of losses during periods of low volatility and may not fully capture the
-risk in trending markets.
-- **Misunderstanding the meaning of VaR:** VaR is not a worst-case scenario measure, and
-losses can exceed the VaR.
-- **Oversimplification:** While VaR is easy to communicate, it can also oversimplify the
-risk picture.
-- **Disregard of right-tail events:** VaR focuses on the left tail (losses), often
-ignoring the right tail (potential gains).
-- VaR can be misleading when used to limit a trader's risks. A trader can appear to meet
-a set VaR limit while taking on unacceptable risks.
-- For example, a trader can create a portfolio with a 99.1% chance of a daily loss under
-\$10 million, but a 0.9% chance of a \$500 million loss, meeting a bank's one-day 99%
-VaR limit of \$10 million.
-- Such skewed probability distributions, where large losses are more likely, are not
-uncommon. Trading strategies like writing out-of-the-money options often yield good
-returns but carry a small chance of huge losses.
-- Traders often seek high risks for high returns, and if they find ways to take high
-risks without violating risk limits, they will do so.
+- **Subjectivity in estimation:** Estimating VaR involves subjective choices, such as
+selecting the confidence level, time horizon, and estimation method, which can lead to
+inconsistency.
+- **Underestimates extreme events:** VaR may overlook the likelihood of severe adverse
+events or “left-tail events,” often underrepresenting risk during extreme market
+downturns.
+- **Ignores liquidity risk:** VaR may understate risk for illiquid assets, particularly
+during market stress when these assets are challenging to sell without substantial
+losses.
+- **Sensitivity to correlation shifts:** VaR assumes stable correlations among assets,
+which can be misleading as correlations often spike during market crises, compounding
+risk.
+- **Prone to regime shifts:** VaR may underestimate losses during low-volatility periods
+or trending markets, as it fails to account for shifts in volatility regimes.
+- **Misinterpreted as a worst-case measure:** VaR does not reflect the worst possible
+loss and can give a false sense of security, as losses beyond VaR are possible and
+potentially severe.
+- **Oversimplifies risk profiles:** While straightforward to communicate, VaR can
+obscure nuances of the underlying risk structure, providing an incomplete picture of
+potential outcomes.
+- **Neglects right-tail events:** VaR emphasizes losses (left-tail events) and
+disregards potential gains (right-tail events), missing opportunities for a full
+distributional view of outcomes.
+- **Risk of misleading compliance:** Traders can meet VaR limits without truly
+minimizing risk, as skewed strategies can fit within set limits but harbor large,
+unaccounted losses.
+
+::: {.callout-note title="Example"}
+A trader could structure a portfolio with a 99.1% chance of a loss under \$10 million
+but a 0.9% chance of a \$500 million loss, meeting a bank's one-day 99% VaR limit of
+\$10 million while masking potential catastrophic outcomes.
+:::
+
+- **Encourages high-risk strategies:** Some trading strategies, such as writing
+out-of-the-money options, offer high returns but carry a low probability of large
+losses, which can appear benign within VaR limits but introduce hidden risks.
+- **Incentive for risk-seeking behavior:** Traders motivated by returns may seek ways to
+engage in high-risk strategies that technically stay within VaR limits, thus exposing
+firms to heightened risk without breaching formal boundaries. 
 
 ### Extensions of VaR
 
-- No single risk model can answer all questions a risk manager may have, hence VaR has
-numerous variations, each providing additional information.
-- **Conditional VaR** (CVaR, Expected shortfall) estimates the average loss when VaR is
-exceeded.
-- **Incremental VaR** (IVaR) measures the change in portfolio VaR due to a change in
-position size.
-- **Marginal VaR** (MVaR) assesses the effect of a small change in position, useful for
-evaluating each asset's contribution to total VaR in diversified portfolios.
-- IVaR and MVaR help evaluate a trade's potential effect before execution.
-- **Relative VaR**, or ex ante tracking error, quantifies how much a portfolio's
-performance might deviate from its benchmark.
+No single risk model can address all of a risk manager's concerns, so several extensions
+of VaR provide additional insights into portfolio risk.
+
+- **Conditional VaR (CVaR, or Expected Shortfall):** CVaR estimates the average loss
+given that the loss has exceeded the VaR threshold, offering a more complete picture of
+potential extreme losses.
+- **Incremental VaR (IVaR):** This measures the change in the portfolio's VaR resulting
+from adjusting the size of a particular position, helping managers understand how
+modifications impact overall risk.
+- **Marginal VaR (MVaR):** MVaR evaluates the effect of a small position change on total
+portfolio VaR, providing insights into each asset’s contribution to overall risk within
+diversified portfolios.
+- **Relative VaR (or Ex Ante Tracking Error):** This extension quantifies the potential
+deviation of a portfolio's performance from its benchmark, allowing managers to gauge
+risk relative to specific performance targets.
+
+IVaR and MVaR are particularly valuable for assessing potential trades before execution,
+helping managers make proactive adjustments to maintain desired risk levels.
 
 ## Expected Shortfall
 
-- ES is also known as conditional value at risk, conditional tail expectation, or
-expected tail loss.
-- Expected Shortfall (ES) is an alternative risk measure to Value at Risk (VaR) that
-provides better incentives for traders.
-- It provides a more comprehensive view of risk than VaR by considering the magnitude of
-extreme losses.
-- ES is particularly useful for understanding the risk of rare but significant losses.
-- While VaR measures the maximum potential loss at a given confidence level, ES
-calculates the average loss beyond the VaR threshold.
-- To calculate ES, it is necessary to calculate VaR first. ES is the expected loss over
-time horizon T, given that the loss exceeds the VaR.
-- ES depends on two parameters: T (time horizon) and X (confidence level).
-- An example: If $X$ = 99, $T$ is 10 days, and the VaR is \$64 million, then ES is the
-average loss over 10 days when the loss is greater than \$64 million.
-- Setting ES limits for traders reduces risky position-taking.
-- ES has better properties than VaR as it always recognizes the benefits of diversification.
-- However, ES is not as straightforward as VaR and is harder to understand.
-- It is also more challenging to back-test a procedure for calculating ES compared to
-back-testing for VaR.
-- Other risk measures can be defined with different weightings, such as the exponential
-spectral risk measure (ES use equal-weights).
+::: {.callout-tip title="Definition"}
+**Expected Shortfall (ES)** is a risk measure that calculates the average loss in
+scenarios where losses exceed the Value at Risk (VaR) threshold, providing a more
+comprehensive view of potential extreme losses beyond the VaR estimate.
+:::
+
+Expected Shortfall (ES), also known as conditional Value at Risk, conditional tail
+expectation, or expected tail loss, is an alternative risk measure to Value at Risk
+(VaR) that offers improved incentives for traders by focusing on the severity of extreme
+losses. Unlike VaR, which estimates the maximum loss at a specified confidence level, ES
+provides a more comprehensive risk assessment by averaging losses that exceed the VaR
+threshold. This makes ES particularly valuable for understanding the risk of rare but
+significant losses.
+
+To compute ES, it is necessary to first determine VaR, as ES is the expected loss over a
+time horizon $T$ given that the loss exceeds the VaR. ES depends on two parameters: the
+time horizon $T$ and the confidence level $X$. For example, if $X = 99\%$, $T$ is 10
+days, and the VaR is \$64 million, then ES represents the average loss over those 10
+days when losses exceed \$64 million.
+
+Setting ES limits can reduce excessive risk-taking, as ES better captures the tail risks
+in a portfolio. It also has desirable mathematical properties, such as always
+acknowledging the benefits of diversification. However, ES can be more challenging to
+understand and implement compared to VaR, and back-testing procedures for ES are also
+more complex. 
+
+Alternative risk measures, such as the exponential spectral risk measure, adjust ES by
+using different weightings rather than equal weights across all extreme losses.
 
 ## Coherent Risk Measures
 
-- Coherent risk measures provide a robust and consistent framework for assessing risk.
-- They take into account the benefits of diversification and ensure that increasing the
-scale of a portfolio increases the risk measure proportionally.
-- One example of a coherent risk measure is the Expected Shortfall (ES).
-- Value at Risk (VaR) is not coherent as it does not always satisfy the subadditivity
-property.
-- It is characterized by the following four axioms:
+Coherent risk measures offer a consistent and reliable framework for assessing risk by
+incorporating the benefits of diversification and ensuring that scaling a portfolio
+proportionally adjusts the risk measure. Expected Shortfall (ES) is an example of a
+coherent risk measure, while Value at Risk (VaR) is not coherent as it does not satisfy
+all coherence properties, specifically subadditivity.
 
-1. **Monotonicity**: If portfolio $A$ always has returns greater than or equal to
-portfolio $B$, the risk measure for $A$ should be less than or equal to the risk measure
-for $B$.
-2. **Subadditivity**: The risk measure of the combined portfolio $A$ and $B$ should be
-less than or equal to the sum of the risk measures of $A$ and $B$ individually. This
-property ensures that diversification is rewarded.
-3. **Positive Homogeneity**: If a portfolio's holdings are scaled up by a positive
-factor $\lambda$, the risk measure should also scale up by the same factor.
-Mathematically, if $A$ is a portfolio and $\lambda > 0$, then the risk measure of
-$\lambda A$ should be $\lambda$ times the risk measure of $A$.
-4. **Translation Invariance**: If a risk-free asset with return $r$ is added to a
-portfolio, the risk measure should decrease by the amount $r$. Mathematically, if $A$ is
-a portfolio and $r$ is a risk-free return, the risk measure of $A + r$ should be the
-risk measure of $A$ minus $r$.
+A coherent risk measure is characterized by four fundamental axioms:
+
+1. **Monotonicity**: If portfolio $A$ consistently outperforms portfolio $B$, the risk
+measure for $A$ should be less than or equal to that of $B$.
+2. **Subadditivity**: The risk measure of a combined portfolio $A + B$ should be less
+than or equal to the sum of the individual risk measures of $A$ and $B$, rewarding
+diversification.
+3. **Positive Homogeneity**: Scaling a portfolio by a factor $\lambda$ proportionally
+scales the risk measure. Thus, the risk measure of $\lambda A$ is $\lambda$ times that
+of $A$ for any $\lambda > 0$.
+4. **Translation Invariance**: Adding a risk-free asset with return $r$ to a portfolio
+should decrease the risk measure by $r$. For portfolio $A$, the risk measure of $A + r$
+is the risk measure of $A$ minus $r$.
+
+These axioms ensure that coherent risk measures, such as ES, provide a robust assessment
+of risk, particularly in recognizing the advantages of diversification.
 
 ### Subadditivity Example
 
-- Each of two independent projects has a 2% probability of a \$10 million loss and a 98%
-probability of a \$1 million loss in one year.
+Consider two independent projects, each with a 2% probability of incurring a \$10
+million loss and a 98% probability of a \$1 million loss within one year.
+
 - The one-year 97.5% **VaR (Value at Risk)** for each project is \$1 million.
-- When combined into a portfolio, there is:
-  - a 0.04% probability of a \$20 million loss,
-  - 3.92% probability of an \$11 million loss, and
-  - 96.04% probability of a \$2 million loss.
-- The one-year 97.5% VaR for the portfolio is \$11 million, which is greater than the
-sum of the individual project VaRs (\$2 million) by \$9 million, **violating
-subadditivity**.
-- The **ES (Expected Shortfall)** for a single project at 97.5% confidence level
-considers 2% at \$10 million loss and 0.5% at \$1 million loss. This results in an
-expected loss of \$8.2 million.
-- When combined, the ES for the portfolio considers 0.04% at \$20 million loss and 2.46%
-at \$11 million loss, resulting in an expected loss of \$11.144 million.
-- The sum of individual project ES (\$16.4 million) is greater than the portfolio ES
-(\$11.144 million), **satisfying the subadditivity condition**.
+
+When these projects are combined into a portfolio, the loss distribution changes as
+follows:
+
+- A 0.04% probability of a \$20 million loss,
+- A 3.92% probability of an \$11 million loss,
+- A 96.04% probability of a \$2 million loss.
+
+In this combined portfolio, the one-year 97.5% VaR is \$11 million, exceeding the sum of
+the individual VaRs (\$2 million) by \$9 million, thereby **violating the subadditivity
+property**.
+
+For **Expected Shortfall (ES)**, each project’s 97.5% ES considers a 2% chance of a \$10
+million loss and a 0.5% chance of a \$1 million loss, leading to an expected loss of
+\$8.2 million per project. For the combined portfolio, the ES considers:
+
+- A 0.04% chance of a \$20 million loss,
+- A 2.46% chance of an \$11 million loss.
+
+This results in a portfolio ES of \$11.144 million. Here, the sum of the individual
+project ES values (\$16.4 million) is greater than the portfolio ES (\$11.144 million),
+thereby **satisfying the subadditivity property**.
 
 ## Choice of Parameters for VaR and ES
 
-- For both Value at Risk (VaR) and Expected Shortfall (ES), users must choose two
-parameters: the time horizon and the confidence level.
-- One assumption is that the change in the portfolio value at the time horizon is
-normally distributed, although this may not always be appropriate.
-- When the loss in the portfolio value has a mean of $\mu$ and a standard deviation of
-$\sigma$, VaR is given by:
+For both Value at Risk (VaR) and Expected Shortfall (ES), users must specify two key
+parameters: **the time horizon and the confidence level**. Typically, it is assumed that
+changes in portfolio value at the time horizon follow a normal distribution, though this
+assumption may not always hold.
+
+When the portfolio loss distribution has a mean $\mu$ and standard deviation $\sigma$,
+VaR at confidence level $X$ is calculated as:
 
 $$
 \text{VaR} = \mu + \sigma N^{-1}(X)
 $$
 
-- where $X$ is the confidence level, and $N^{-1}(\cdot)$ is the inverse cumulative
-normal distribution.
-- For short time horizons, $\mu$ is often assumed to be zero, making VaR for a
-particular confidence level proportional to $\sigma$.
-- When the loss is assumed to be normally distributed with mean $\mu$ and standard
-deviation $\sigma$, ES with a confidence level of $X$ is given by:
+where $N^{-1}(\cdot)$ denotes the inverse cumulative normal distribution. For short time
+horizons, $\mu$ is often assumed to be zero, simplifying VaR to be directly proportional
+to $\sigma$.
+
+Similarly, if the portfolio loss is normally distributed with mean $\mu$ and standard
+deviation $\sigma$, ES at confidence level $X$ is given by:
 
 $$
 \text{ES} = \mu + \sigma \frac{e^{-(Y^2/2)}}{\sqrt{2\pi} (1 - X)}
 $$
 
-- where $Y$ is the $X$th percentile point of the standard normal distribution.
-- **Example:** The loss from a portfolio over a 10-day horizon is normally distributed
-with a mean of zero and a standard deviation of \$20 million. The 10-day 99% VaR and ES
-are:
+where $Y$ is the $X$th percentile of the standard normal distribution.
+
+::: {.callout-note title="Example"}
+Assume the loss from a portfolio over a 10-day horizon is normally distributed with a
+mean of zero and a standard deviation of \$20 million. The calculations for 10-day 99%
+VaR and ES are:
 
 $$
-\text{VaR} = 20 N^{-1}(0.99) = \$46.5 \text{ million}
+\text{VaR} = 20 \times N^{-1}(0.99) = 20 \times 2.326 = \$46.5 \text{ million}
 $$
 
 $$
-\text{ES} = 20 \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} \times 0.01} = \$53.3 \text{ million}
+\text{ES} = 20 \times \frac{e^{-(2.326^2/2)}}{\sqrt{2\pi} \times 0.01} = \$53.3 \text{ million}
 $$
+
+These values provide a clearer assessment of potential losses, with VaR representing the
+threshold loss and ES giving the expected average loss in extreme scenarios.
+:::
 
 ### The Time Horizon
 
-- Depends on liquidity and trading frequency.
-- Short time horizons for liquid, actively-traded positions; long horizons for less
-liquid portfolios.
-- Portfolios with mixed liquidity can have tailored risk measures for each asset.
-- Analysts often start with a 1-day time horizon.
-- T-day VaR and T-day ES can be calculated from 1-day measures using the formulas:
+The choice of time horizon for VaR and ES depends on the liquidity and trading frequency
+of the assets in the portfolio. Liquid, actively traded positions typically use shorter
+time horizons, while less liquid portfolios may require longer horizons. For portfolios
+with assets of varying liquidity, analysts may apply tailored risk measures to each
+asset.
+
+A common starting point is a 1-day time horizon, from which T-day VaR and T-day ES can
+be calculated using the following formulas:
 
 $$
 \text{T-day VaR} = \text{1-day VaR} \times \sqrt{T}
@@ -317,138 +386,141 @@ $$
 \text{T-day ES} = \text{1-day ES} \times \sqrt{T}
 $$
 
-- These formulas are exactly true when daily changes in portfolio value have independent
-identical normal distributions with mean zero.
-- In other cases, these formulas are approximations.
+These formulas hold precisely when daily portfolio value changes are independently and
+identically normally distributed with a mean of zero. In other cases, these calculations
+serve as approximations.
 
 ### Impact of Autocorrelation
 
-- Changes in portfolio value aren't always independent. 
-- Higher autocorrelation of portfolio returns means higher underestimation of VaR and ES.
-- It is possible to adjust standard deviation ($\sigma$) to reflect autocorrelation when
-calculating VaR and ES.
-- The standard deviation of the sum of $T$ daily changes, considering autocorrelation,
-is given by:
+Portfolio value changes are not always independent. When portfolio returns exhibit
+higher autocorrelation, VaR and ES calculations may underestimate risk. To adjust for
+autocorrelation, the standard deviation $\sigma$ can be modified when calculating VaR
+and ES. The adjusted standard deviation for the sum of $T$ daily changes, considering
+autocorrelation, is given by:
 
 $$
-\sigma \sqrt{T + 2(T - 1)\rho^1 + 2(T - 2)\rho^2 + ... + 2\rho^{T-1}}
+\sigma \sqrt{T + 2(T - 1)\rho^1 + 2(T - 2)\rho^2 + \dots + 2\rho^{T-1}}
 $$
 
 ### Confidence Level
 
-- The choice depends on factors such as maintaining credit ratings.
-- A bank aiming for an AA rating might use a 99.98% confidence level for VaR to align
-with a 0.02% annual default chance.
-- It's tough to estimate VaR directly with very high confidence levels.
-- Extreme value theory can help to solve this issue. 
+The confidence level for VaR and ES depends on risk tolerance and objectives, such as
+maintaining a particular credit rating. For example, a bank aiming for an AA rating
+might select a 99.98% confidence level to match a 0.02% annual default probability.
+Estimating VaR directly at very high confidence levels can be challenging, but extreme
+value theory offers methods to improve accuracy in such cases.
 
 ### Back-Testing
 
-- Back-testing evaluates the performance of risk measure models, like VaR, using
-historical data.
-- It is relatively simple for VaR models.
-- The analysis focuses on "exceptions," where actual losses exceed the VaR prediction.
-- A high or low percentage of exceptions may indicate model weaknesses.
-- Statistical tests can assess whether a VaR model should be rejected based on
-exceptions.
-- Regulators may increase market risk capital requirements if back-testing results over
-250 days are unsatisfactory.
+Back-testing assesses the accuracy of VaR models by comparing model predictions with
+actual historical losses. This process is straightforward for VaR, as it relies on
+tracking “exceptions” where observed losses exceed the predicted VaR. A deviation from
+expected exception rates may reveal model weaknesses. Statistical tests help determine
+if a model should be adjusted or rejected based on these exceptions, and regulators may
+require increased market risk capital if back-testing results over a 250-day period are
+unsatisfactory.
 
 ## Additional Topics
 
 ### Interest Rate Risk
 
-- Financial institutions have exposures to different yield curves, requiring calculation
-of VaR and ES.
-- Two approaches for this: considering each rate as a separate risk factor or using
-principal components analysis.
-- Bank's net interest margin measures the excess of earned interest over paid interest;
-asset/liability management ensures constancy.
-- Duration is key in interest rate markets, measuring portfolio sensitivity to shifts in
-the zero-coupon yield curve.
-- Convexity of the portfolio adds precision for large parallel shifts, but not for
-nonparallel shifts.
-- Several duration or delta measures quantify different ways the yield curve can change.
-- Principal components analysis can be an alternative to multiple deltas, effectively
-hedging against standard shifts in yield curves.
+Financial institutions often have exposure to multiple yield curves, necessitating the
+calculation of VaR and ES to manage this risk. Two common approaches include treating
+each interest rate as a separate risk factor or applying principal components analysis
+(PCA). The bank’s net interest margin, which measures the difference between earned and
+paid interest, is a key focus of asset/liability management to maintain stability.
+
+Duration is a crucial measure, assessing portfolio sensitivity to shifts in the
+zero-coupon yield curve, while convexity adjustments add precision for large parallel
+shifts (but less so for nonparallel shifts). Multiple duration measures (or “deltas”)
+capture different potential yield curve changes. PCA can serve as an alternative to
+multiple deltas, effectively hedging against common yield curve shifts.
 
 ### Derivatives Risk
 
-- A trader monitors Greek letters (such as delta, gamma, vega) to keep them within
-specified limits.
-- Delta ($\Delta$) is the rate of change in portfolio value concerning the underlying
-asset's price; delta hedging aims to create a delta-neutral position.
-- Hedging involves taking a position of $-\Delta$ in the underlying asset, and complex
-portfolios require periodic rebalancing.
-- After achieving delta neutrality, traders often look at gamma (curvature of the
-relationship) and vega (rate of change with respect to volatility).
-- Gamma and vega can be altered by trading options on the asset.
-- Derivatives traders typically rebalance daily to maintain delta neutrality;
-maintaining gamma and vega neutrality regularly is usually infeasible.
-- Corrective action or trading curtailment may occur if gamma and vega measures get too
-large.
+In managing derivatives risk, traders monitor Greek letters such as delta, gamma, and
+vega to stay within risk limits. Delta ($\Delta$) represents the rate of change in
+portfolio value relative to changes in the underlying asset's price. Delta hedging, a
+fundamental practice, involves creating a delta-neutral position by taking an offsetting
+position of $-\Delta$ in the underlying asset. Complex portfolios require frequent
+rebalancing to maintain delta neutrality.
+
+Beyond delta, traders examine gamma (the rate of change of delta) and vega (sensitivity
+to volatility), which can be adjusted through options trading. Daily rebalancing is
+typical for delta neutrality, though maintaining gamma and vega neutrality is less
+feasible and is managed through corrective actions if these measures exceed limits.
 
 ### Scenario Analysis and Stress Testing
 
-- Stress testing is crucial in risk management, considering impacts of extreme scenarios
-usually ignored by VaR or ES analysis.
-- It allows understanding and mitigation of risks and can uncover potential systemic
-problems.
-- Scenarios generation methods include:
-  - Examining extreme movements in one market variable.
-  - Using historical market variables from extreme shock periods.
-  - A committee of senior management and economists generating plausible extremes.
-  - Reverse stress testing using algorithms to find large loss scenarios.
-- Scenarios should consider knock-on effects; market turmoil may lead to significant
-consequences like flight to quality or liquidity shortage.
-- Regulators in the US, EU, and UK develop stress scenarios for large financial
-institutions, possibly leading to capital raising requirements.
-- Integrating stress testing with VaR through subjective probabilities is an idea not
-widely adopted by financial institutions or regulators.
+Stress testing plays a critical role in risk management by evaluating the impacts of
+extreme scenarios typically beyond the scope of VaR and ES analysis. This approach can
+reveal potential systemic issues and aid in risk mitigation. Common scenario generation
+methods include:
+
+- Testing the impact of extreme movements in a single market variable,
+- Using historical data from periods of extreme market shocks,
+- Constructing plausible extremes through a committee of senior management and
+economists,
+- Reverse stress testing with algorithms to uncover large-loss scenarios.
+
+Scenario analysis also considers knock-on effects, such as market turmoil leading to a
+liquidity shortage or flight to quality. Regulators in the US, EU, and UK develop
+standardized stress scenarios for large financial institutions, which may prompt
+capital-raising measures. Integrating stress testing with VaR through subjective
+probability weighting remains largely unexplored by institutions and regulators.
 
 ## Practice Questions and Problems
 
 1. What is the difference between expected shortfall and VaR? What is the theoretical
 advantage of expected shortfall over VaR?
+
 2. A fund manager announces that the fund’s one-month 95% VaR is 6% of the size of the
 portfolio being managed. You have an investment of \$100,000 in the fund. How do you
 interpret the portfolio manager’s announcement?
+
 3. A fund manager announces that the fund’s one-month 95% expected shortfall is 6% of
 the size of the portfolio being managed. You have an investment of \$100,000 in the
 fund. How do you interpret the portfolio manager’s announcement?
+
 4. Suppose that each of two investments has a 0.9% chance of a loss of \$10 million and
 a 99.1% chance of a loss of \$1 million. The investments are independent of each other.
-    - What is the VaR for one of the investments when the confidence level is 99%? [1 mil.]
+    - What is the VaR for one of the investments when the confidence level is 99%?
     - What is the expected shortfall for one of the investments when the confidence
-    level is 99%? [9.1 mil]
+    level is 99%?
     - What is the VaR for a portfolio consisting of the two investments when the
-    confidence level is 99%? [11 mil.]
+    confidence level is 99%?
     - What is the expected shortfall for a portfolio consisting of the two investments
-    when the confidence level is 99%? [11.07 mil.]
+    when the confidence level is 99%?
     - Show that in this example VaR does not satisfy the subadditivity condition,
-    whereas expected shortfall does. [18.2 > 11.07]
+    whereas expected shortfall does.
+
 5. Suppose that the change in the value of a portfolio over a one-day time period is
 normal with a mean of zero and a standard deviation of \$2 million; what is (a) the
-one-day 97.5% VaR, (b) the five-day 97.5% VaR, and (c) the five-day 99% VaR? [a) 3.92 mil., b) 8.77 mil., c) 10.4 mil.]
+one-day 97.5% VaR, (b) the five-day 97.5% VaR, and (c) the five-day 99% VaR?
+
 6. What difference does it make to your answer to Problem 5 if there is first-order
-daily autocorrelation with a correlation parameter equal to 0.16? [a) the same, b) 9.96 mil., c) 11.82 mil.]
+daily autocorrelation with a correlation parameter equal to 0.16?
+
 7. The change in the value of a portfolio in one month is normally distributed with a
 mean of zero and a standard deviation of \$2 million. Calculate the VaR and ES for a
-confidence level of 98% and a time horizon of three months. [VaR = 7.11 mil., ES = 8.39 mil.]
+confidence level of 98% and a time horizon of three months.
+
 8. Suppose that each of two investments has a 4% chance of a loss of \$10 million, a 2%
 chance of a loss of \$1 million, and a 94% chance of a profit of \$1 million. They are
 independent of each other.
-    - What is the VaR for one of the investments when the confidence level is 95%? [-1 mil.]
-    - What is the expected shortfall when the confidence level is 95%? [8.2 mil.]
+    - What is the VaR for one of the investments when the confidence level is 95%?
+    - What is the expected shortfall when the confidence level is 95%?
     - What is the VaR for a portfolio consisting of the two investments when the
-    confidence level is 95%? [-9 mil.]
+    confidence level is 95%?
     - What is the expected shortfall for a portfolio consisting of the two investments
-    when the confidence level is 95%? [-9.96 mil.]
+    when the confidence level is 95%?
     - Show that, in this example, VaR does not satisfy the subadditivity condition,
-    whereas expected shortfall does. [-9 mil. > -2 mil.]
+    whereas expected shortfall does.
+
 9. Suppose the first-order autocorrelation for daily changes in the value of a portfolio
 is 0.12. The 10-day VaR, calculated by multiplying the one-day VaR by $\sqrt{10}$, is
 \$2 million. What is a better estimate of the VaR that takes account of autocorrelation?
+
 10. The change in the value of a portfolio in three months is normally distributed with
 a mean of \$500,000 and a standard deviation of $3 million. Calculate the VaR and ES for
 a confidence level of 99.5% and a time horizon of three months.
