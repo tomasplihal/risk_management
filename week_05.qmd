@@ -2,6 +2,9 @@
 format:
   html:
     code-fold: true
+    toc: true
+    toc-depth: 2
+    number-depth: 3
 jupyter: python3
 ---
 
@@ -25,776 +28,823 @@ jupyter: python3
 
 ## Volatility
 
-- Monitoring the volatilities of market variables such as exchange rates, equity prices,
-and commodity prices is crucial for a financial institution to manage the value of its
-portfolio.
-- The popular models are Exponentially Weighted Moving Average (EWMA), Autoregressive
-Conditional Heteroscedasticity (ARCH), and Generalized Autoregressive Conditional
-Heteroscedasticity (GARCH).
-- These models acknowledge that volatility is not constant and varies over time; it can
-be low during some periods and high during others.
+Monitoring the volatility of market variables like exchange rates, equity prices, and
+commodity prices is essential for financial institutions to manage portfolio value
+effectively. Common models for capturing volatility include the Exponentially Weighted
+Moving Average (EWMA), Autoregressive Conditional Heteroscedasticity (ARCH), and
+Generalized Autoregressive Conditional Heteroscedasticity (GARCH). These models
+recognize that volatility is dynamic, varying across time, with periods of low and high
+fluctuation.
 
-### Definition of Volatility
+::: {.callout-tip title="Definition"}
+Realized volatility, $\sigma$, measures how much an asset's price has moved over a
+certain time period. It is calculated using squared returns or the standard deviation of
+returns over shorter intervals, giving a clear picture of past price fluctuations.
+:::
 
-- The volatility, $\sigma$, is usually calculated as a standard deviation of daily
-returns.
-- When volatility is used for option pricing, the unit of time is usually one year.
-- When volatility is used for risk management, the unit of time is usually one day.
-- Volatility is usually much greater when the market is open than when it is closed.
-- For this reason time is usually measured in **trading days** not calendar days.
-- It is assumed that there are **252 trading days** in one year for most assets.
+- Volatility is typically measured annually for option pricing and daily for risk
+management.
+- Volatility is higher when the market is open, so time is measured in trading days (252
+per year) instead of calendar days.
 
-$$ \sigma_{year} = \sigma_{day} \times \sqrt{252} $$
+$$
+\sigma_{year} = \sigma_{day} \times \sqrt{252}
+$$
 
-$$ \sigma_{day} = \sigma_{year} \times \frac{1}{\sqrt{252}} $$
+$$
+\sigma_{day} = \sigma_{year} \times \frac{1}{\sqrt{252}}
+$$
 
 ### Implied Volatility
 
-- Volatility inferred from option prices is called the **implied volatility**.
-- The implied volatility of an option is the volatility for which the
-Black-Scholes-Merton price equals the market price.
-- The key advantage in using implied volatility is that it provides information
-regarding the market's perception of uncertainty going forward.
+::: {.callout-tip title="Definition"}
+Implied volatility is the market's forecast of a security's future price fluctuations,
+derived from the price of an option. It reflects the expected volatility over the life
+of the option, based on the assumption that the option's current price reflects market
+expectations.
+:::
+
+- Implied volatility is not directly observable and must be derived from market prices
+using an option pricing model.
+- It tends to rise during periods of market uncertainty or stress, reflecting increased
+expectations of future price swings.
+- Unlike historical volatility, which looks at past price movements, implied volatility
+is forward-looking and reflects the market's consensus on future price movements.
+- Different options on the same asset may have different implied volatilities, a
+phenomenon known as the "volatility smile" or "volatility skew."
 - [The VIX S&P 500 Volatility Index.](https://www.cboe.com/tradable_products/vix/)
 
 ```{python}
-
 import pandas as pd
 import yfinance as yf
-import matplotlib.pyplot as plt
+import plotly.graph_objects as go
 
 # Download historical data for VIX
 data = yf.download("^VIX", period="30y", progress=False)
 
-# Plot the closing price
-plt.figure(figsize=(10, 6))
-plt.plot(data["Close"])
-plt.title("VIX Index Plot")
-plt.xlabel("Date")
-plt.ylabel("Close Price")
-plt.grid(True)
-plt.show()
+# Create a plotly line chart
+fig = go.Figure()
+
+# Add trace for VIX closing prices
+fig.add_trace(go.Scatter(x=data.index, y=data["Close"], mode="lines", name="VIX Close"))
+
+# Update layout for better readability
+fig.update_layout(
+    title="VIX Index",
+    xaxis_title="Date",
+    yaxis_title="Close Price",
+    hovermode="x",
+    template="plotly_white",
+    width=745,
+    height=380,
+)
+
+# Display the chart
+fig.show()
 ```
 
 ### Are Daily Percentage Changes in Financial Variables Normal?
 
-- The following code tests if the daily returns AAPL are normally distributed.
-- Download daily data from Yahoo Finance, calculate log returns, and show descriptive
-statistics.
-
-```{python}
-
-import numpy as np
-import pandas as pd
-import yfinance as yf
-import matplotlib.pyplot as plt
-from scipy.stats import norm, kstest
-
-# Download historical data for AAPL
-data = yf.download("AAPL", period="20y", progress=False)
-
-# Calculate the daily returns
-data["Return"] = np.log(data["Close"] / data["Close"].shift(1)).dropna()
-
-# Show descriptive statistics
-desc = pd.DataFrame(data["Return"].describe())
-print("Descriptive Statistics:")
-print(desc)
-```
-
-- Plot the histogram of returns and fit a normal distribution to the data.
-- It is visible that AAPL returns are not normally distributed.
-- AAPL shows fat tails (heavy-tailed distribution) which means that large changes in the
-variable are more likely compared to normal distribution.
-
-```{python}
-
-# Plot the histogram of returns
-plt.figure(figsize=(9, 6))
-plt.hist(data["Return"], bins=100, density=True, alpha=0.6, color="g")
-
-# Fit a normal distribution to the data
-mu, std = norm.fit(data["Return"].dropna())
-
-# Plot the PDF
-xmin, xmax = plt.xlim()
-x = np.linspace(xmin, xmax, 100)
-p = norm.pdf(x, mu, std)
-plt.plot(x, p, "k", linewidth=2)
-title = "Fit results: mu = %.4f,  std = %.4f" % (mu, std)
-plt.title(title)
-
-plt.show()
-```
-
-- Use Kolmogorov-Smirnov test to check normality of the returns.
-- The Kolmogorov-Smirnov (K-S) test is a non-parametric test used to determine if a sample data set follows a specific distribution, such as the normal distribution. 
-- $H_0:$ The sample data follows the normal distribution.
-- $H_1:$ The sample data does not follow the normal distribution.
-- p-value in this example is extremely small, therfore, $H_0$ could be rejected.
-
-```{python}
-
-# Perform a Kolmogorov-Smirnov test
-ks_statistic, p_value = kstest(data["Return"].dropna(), "norm", args=(mu, std))
-
-print("KS Statistic:", ks_statistic)
-print("p-value:", p_value)
-```
-
-### The Exponentially Weighted Moving Average Model
-
-- The Exponentially Weighted Moving Average (EWMA) model for volatility is a method of
-measuring the volatility of financial returns where more weight is assigned to more
-recent returns.
-- This is in contrast to the simple moving average model, which assigns equal weight to
-all observations in the sample.
-- The idea behind giving more weight to recent returns is that they are more indicative
-of future volatility than older returns.
-- The EWMA model can be defined by the following equation:
-
-$$
-\sigma_{t}^{2} = \lambda \sigma_{t-1}^{2} + (1 - \lambda) r_{t-1}^{2}
-$$
-
-- Where: 
-  - $\sigma_{t}^{2}$ is the forecasted variance for time $t$, 
-  - $\sigma_{t-1}^{2}$ is the variance for time $t-1$,
-  - $r_{t-1}^{2}$ is the square of the return at time $t-1$, 
-  - and $\lambda$ is the decay factor, which determines the weights. 
-- In the EWMA model, $\lambda$ lies between 0 and 1.
-- A smaller $\lambda$ will assign more weight to recent returns.
-
-
-- Now let's implement a simple numerical example in Python.
-- In this example, we first download the historical closing prices for AAPL and compute
-the daily returns.
-- We then calculate the volatility series using the EWMA model, with a decay factor of
-0.94. 
-- Finally, we plot the volatility series.
+This section evaluates whether daily percentage changes in financial variables,
+specifically the SPY index, follow a normal distribution. Let's begin with a summary of
+the descriptive statistics for SPY daily returns.
 
 ```{python}
 import pandas as pd
-import yfinance as yf
-import numpy as np
-import matplotlib.pyplot as plt
+import yfinance as y
+from IPython.display import Markdown
+from tabulate import tabulate
 
-# Download historical data for AAPLpepe
-data = yf.download("AAPL", period="3y", progress=False)
+# Download historical data for SPY
+spy_data = yf.download("SPY", period="10y", progress=False)
 
-# Calculate the daily returns
-data["Return"] = np.log(data["Close"] / data["Close"].shift(1))
+# Calculate daily returns
+spy_data['Returns'] = spy_data['Close'].pct_change()
+spy_data = spy_data.dropna()
 
-# Drop missing values
-data = data.dropna().copy()
-
-# Set the decay factor
-lambda_factor = 0.94
-
-# Initialize the variance
-variance = data["Return"][0] ** 2
-
-# Initialize the volatility series with the first variance
-volatility_series = [np.sqrt(variance)]
-
-# Calculate the volatility series
-for t in range(1, len(data)):
-    variance = (
-        lambda_factor * variance + (1 - lambda_factor) * data["Return"].iloc[t - 1] ** 2
-    )
-    volatility_series.append(np.sqrt(variance))
-
-# Convert volatility series to pandas Series
-volatility_series = pd.Series(volatility_series, index=data.index)
-
-# Calculate the rolling 30-day standard deviation as volatility
-data["30D Std Dev"] = data["Return"].rolling(window=30).std()
-
-# Plot the volatility
-plt.figure(figsize=(10, 6))
-volatility_series.plot(label="EWMA Volatility")
-data["30D Std Dev"].plot(label="30-Day Rolling Std Dev", linestyle="--", alpha=0.7)
-plt.title("Volatility of AAPL")
-plt.xlabel("Date")
-plt.ylabel("Volatility")
-plt.legend()
-plt.grid(True)
-plt.show()
+# Calculate descriptive statistics
+desc_table = pd.DataFrame(spy_data['Returns'].describe())
+desc_table.reset_index(inplace=True)
+Markdown(tabulate(desc_table, headers=['Metric', 'Value'], floatfmt=".6f", showindex=False))
 ```
 
-### The GARCH(1,1) Model
-
-- The Generalized Autoregressive Conditional Heteroskedasticity (GARCH) model is a
-statistical model used to estimate the volatility of financial markets.
-- The GARCH(1,1) model is the most widely used GARCH variant, where "1,1" indicates that
-the model uses one lag of the squared residuals (ARCH term) and one lag of the
-conditional variance (GARCH term).
-- The model is specified as follows:
-
-$$
-\sigma_{t}^{2} = \omega + \alpha r_{t-1}^{2} + \beta \sigma_{t-1}^{2}
-$$
-
-- Where:
-  - $\sigma_{t}^{2}$ is the conditional variance at time $t$,
-  - $r_{t-1}^{2}$ is the square of the return at time $t-1$,
-  - $\sigma_{t-1}^{2}$ is the conditional variance at time $t-1$,
-  - $\omega$, $\alpha$, and $\beta$ are parameters to be estimated. $\alpha$ is the ARCH
-  parameter that determines the impact of the previous error, and $\beta$ is the GARCH
-  parameter that determines the impact of the previous period’s variance.
-- In a GARCH(1,1) model, the variance today depends on the weighted average of long-term
-variance ($\omega$), the impact of the return from the previous day ($\alpha$), and the
-variance observed the previous day ($\beta$).
-
-
-- We can estimate a GARCH(1,1) model in Python using the `arch` package.
-- Here's an example with real historical data for the Apple Inc. (AAPL) stock.
-- More information about the package available at
-<https://bashtage.github.io/arch/univariate/introduction.html>
+The data show that the mean daily return is close to zero, as expected for financial
+time series, while the standard deviation provides an indication of volatility. However,
+the presence of significant minimum and maximum values suggests potential deviations
+from normality. Next, we examine how frequently SPY daily returns exceed different
+standard deviation levels, comparing real data with theoretical normal and
+t-distributions (5 degrees of freedom).
 
 ```{python}
 import pandas as pd
 import numpy as np
-import yfinance as yf
-from arch import arch_model
-import matplotlib.pyplot as plt
+import scipy.stats as stats
+from IPython.display import Markdown
+from tabulate import tabulate
 
-# Download historical data for AAPL
-data = yf.download("AAPL", period="3y", progress=False)
+# Standard deviations levels
+std_devs = np.arange(1, 7)
 
-# Calculate the daily returns
-data["Return"] = np.log(data["Close"] / data["Close"].shift(1)) * 100
+# Theoretical probabilities for normal distribution in pct
+theoretical_probs = [2 * (1 - stats.norm.cdf(sd)) * 100 for sd in std_devs]
 
-# Drop missing values
-data = data.dropna()
+# Real SPY probabilities in pct
+real_probs = [(np.abs(spy_data['Returns']) > (spy_data['Returns'].std() * sd)).mean() * 100 for sd in std_devs]
 
-# Define the GARCH model
-model = arch_model(data["Return"], vol="Garch", p=1, q=1)
+# Estimate degrees of freedom from SPY data for t-distribution
+degrees_of_freedom = 5  # Example value, you can adjust based on fit or empirical estimation
 
-# Fit the model
-model_fit = model.fit(disp=False)
+# Theoretical probabilities for Student's t-distribution in pct
+t_dist_probs = [2 * (1 - stats.t.cdf(sd, df=degrees_of_freedom)) * 100 for sd in std_devs]
 
-# Print the summary of the model
-print(model_fit.summary())
+# Create a table combining all three distributions
+prob_table = pd.DataFrame({
+    'Normal Dist (%)': np.round(theoretical_probs, 6),
+    'T Dist (%)': np.round(t_dist_probs, 6),
+    'Real SPY Data (%)': np.round(real_probs, 6)
+}, index=std_devs)
 
-# Plot the conditional standard deviation
-model_fit.plot(annualize="D")
-plt.show()
+# Rename the index to 'Standard Deviation'
+prob_table.index.name = 'Std'
+
+# Display the adjusted table
+Markdown(tabulate(prob_table, headers="keys", floatfmt=".6f", numalign="center"))
 ```
 
-- In this script, we first download the historical closing prices for AAPL and compute
-the daily log returns (in percentage for model easier estimation).
-- We then define a GARCH(1,1) model and fit the model to the returns data.
-- The `arch_model` function is used to define the GARCH model, where `p=1` and `q=1`
-specify the GARCH(1,1) model.
-- Finally, we print the summary of the model fit, which includes the estimated
-parameters, and plot the conditional standard deviation.
-- The plot shows the evolution of the estimated volatility over time.
-- Please note that the code uses daily returns to fit the model, which may lead to
-extreme values in the estimation of the variance because of daily market noise. A
-solution could be to use longer periods (weekly, monthly), depending on the purpose of
-the analysis.
+The results indicate that the real SPY data exceed these standard deviation thresholds
+more frequently than predicted by the normal distribution, especially at higher levels.
+The t-distribution, with its heavier tails, provides a better fit for the real data,
+particularly for extreme events.
 
-### Choosing between the Models
+Next, we can check normality visually. The following figure presents a histogram of SPY
+daily returns with a normal distribution curve fitted as well.
 
-- GARCH(1,1) and EWMA models estimate financial market volatility.
-- GARCH(1,1) incorporates mean reversion, unlike EWMA.
-- Despite being complex, GARCH(1,1) is theoretically superior due to its consideration
-of mean reversion.
-- In GARCH(1,1), best-fit parameter estimation is critical. 
-- If $\omega$ is zero in GARCH(1,1), it reduces to EWMA.
-- If $\omega$ is negative, GARCH(1,1) is unstable and EWMA is preferred.
+```{python}
+import pandas as pd
+import plotly.graph_objs as go
+import numpy as np
+import scipy.stats as stats
+
+# Generate histogram data
+hist_data = np.histogram(spy_data['Returns'], bins=50, density=True)
+
+# Plotly figure for histogram
+fig = go.Figure()
+
+# Add histogram trace
+fig.add_trace(go.Bar(
+    x=hist_data[1][:-1], 
+    y=hist_data[0],
+    name="SPY Returns Histogram",
+    marker=dict(color='blue'),
+    opacity=0.75
+))
+
+# Mean and standard deviation of the returns
+mean, std_dev = spy_data['Returns'].mean(), spy_data['Returns'].std()
+
+# Generate data for the normal distribution curve
+x = np.linspace(min(spy_data['Returns']), max(spy_data['Returns']), 100)
+normal_dist_curve = stats.norm.pdf(x, mean, std_dev)
+
+# Add normal distribution curve trace
+fig.add_trace(go.Scatter(
+    x=x, 
+    y=normal_dist_curve, 
+    mode='lines', 
+    name='Normal Distribution',
+    line=dict(color='black', width=2)
+))
+
+# Update layout for better readability
+fig.update_layout(
+    title="Histogram of SPY Daily Returns with Normal Distribution Curve",
+    xaxis_title="Daily Returns",
+    yaxis_title="Density",
+    hovermode="x",
+    template="plotly_white",
+    legend=dict(
+        orientation="v",
+        yanchor="bottom",
+        y=0.15,
+        xanchor="center",
+        x=1
+    ),
+    width=745,
+    height=600
+)
+
+# Show plot
+fig.show()
+```
+
+The histogram shows a clear deviation from normality, particularly in the tails, where
+more extreme values occur more frequently than expected. The normal curve fails to
+capture this behavior, reinforcing the finding that SPY returns are not normally
+distributed.
+
+To formally assess normality, we apply two statistical tests: the Shapiro-Wilk test and
+the Kolmogorov-Smirnov test. The results are presented below:
+
+```{python}
+import pandas as pd
+from scipy.stats import shapiro, kstest, norm
+from IPython.display import Markdown
+from tabulate import tabulate
+
+# Shapiro-Wilk Test
+shapiro_stat, shapiro_p_value = shapiro(spy_data['Returns'].dropna())
+
+# Kolmogorov-Smirnov Test
+mean = spy_data['Returns'].mean()
+std = spy_data['Returns'].std()
+ks_stat, ks_p_value = kstest(spy_data['Returns'].dropna(), 'norm', args=(mean, std))
+
+# Compile results into a DataFrame
+normality_test_results = pd.DataFrame({
+    'Test': ['Shapiro-Wilk', 'Kolmogorov-Smirnov'],
+    'Statistic': [shapiro_stat, ks_stat],
+    'P-Value': [shapiro_p_value, ks_p_value]
+})
+
+# Display the results
+Markdown(tabulate(normality_test_results, headers="keys", floatfmt=".6f", showindex=False))
+```
+
+Both tests reject the null hypothesis of normality, with p-values far below the
+conventional threshold of 0.05. These findings further confirm that SPY daily returns do
+not follow a normal distribution, aligning with the visual evidence from the histogram
+and the probability table.
+
+The analysis shows that daily percentage changes in SPY returns deviate significantly
+from a normal distribution. Both visual inspection and formal tests indicate that
+financial variables like SPY exhibit fat tails and extreme events more frequently than
+the normal distribution predicts. A Student's t-distribution offers a better fit for the
+real data, highlighting the importance of using alternative models for risk management
+and pricing in financial markets.
+
+### Exponentially Weighted Moving Average (EWMA) Volatility Model
+
+::: {.callout-tip title="Definition"}
+The **Exponentially Weighted Moving Average (EWMA)** model is a time-series model used
+to estimate volatility. It assigns exponentially decreasing weights to historical
+observations, meaning that more recent returns have a greater influence on the
+volatility estimate than older returns.
+:::
+
+The EWMA model is frequently used in **Value at Risk (VaR)** calculations and **risk
+management** due to its simplicity and ability to reflect changing market conditions in
+real time. It is part of the **RiskMetrics** methodology developed by J.P. Morgan. The
+model is a good balance between responsiveness to new information and smoothness, making
+it a commonly used approach for tracking market volatility.
+
+The EWMA volatility at time $t$, denoted as $\sigma_t$, is calculated using the
+following recursive equation:
+
+$$
+\sigma_t^2 = \lambda \sigma_{t-1}^2 + (1 - \lambda) r_{t-1}^2
+$$
+
+Where:
+
+- $\sigma_t^2 \dots$ is the variance (or squared volatility) at time $t$.
+- $\lambda \dots$ the decay factor, which determines the weighting of past data,
+typically close to 1 (e.g., 0.94 for daily returns as recommended by RiskMetrics).
+- $r_{t-1} \dots$ the return at time $t-1$. The more extreme the return (e.g., a large
+price change), the greater its impact on the volatility estimate.
+- $\sigma_{t-1}^2 \dots$ the variance at time $t-1$.
+
+#### Properties of EWMA
+
+- **Recency Bias**: EWMA gives more weight to recent data, which allows it to adapt more
+quickly to changing market conditions.
+- **No Mean Reversion**: Unlike other models such as GARCH, EWMA does not assume that
+volatility will revert to a long-term mean.
+- **Simple to Implement**: It only requires one parameter (the decay factor) and is
+computationally straightforward.
+- **Stationarity**: EWMA does not assume stationarity of returns, allowing for changing
+volatility over time.
+- **Adaptability**: The model adjusts more quickly to large market events (e.g.,
+shocks), making it well-suited for capturing periods of volatility clustering.
+
+### ARCH Model
+
+The **ARCH** model was developed by Robert Engle in 1982 to model time-varying
+volatility by relating the current variance of a time series to the squared errors of
+previous periods. In an ARCH(1) model (the simplest form):
+
+$$
+\sigma_t^2 = \alpha_0 + \alpha_1 r_{t-1}^2
+$$
+
+Where:
+
+- $\sigma_t^2 \dots$ the variance at time $t$.
+- $r_{t-1} \dots$ the return at time $t-1$.
+- $\alpha_0 \dots$ a constant (long-term average variance).
+- $\alpha_1 \dots$ the coefficient applied to the lagged squared return.
+
+However, the ARCH model has a limitation in that it only relies on past squared returns,
+making it less flexible when volatility persistence needs to be captured over long
+periods.
+
+### GARCH Model
+
+The **Generalized Autoregressive Conditional Heteroskedasticity (GARCH)** model,
+developed by Tim Bollerslev in 1986, extends the ARCH model by incorporating both lagged
+squared returns and past variances. The most commonly used version is **GARCH(1,1)**,
+which takes the following form:
+
+$$
+\sigma_t^2 = \omega + \alpha r_{t-1}^2 + \beta \sigma_{t-1}^2
+$$
+
+Where:
+
+- $\sigma_t^2 \dots$ the variance at time $t$.
+- $\omega \dots$ is a constant (long-term average level of volatility).
+- $\alpha \dots$ is the coefficient applied to the lagged squared return ($r_{t-1}^2$,
+controls the impact of recent returns on volatility).
+- $\beta \dots$ is the coefficient applied to the lagged variance ($\sigma_{t-1}^2$,
+representing volatility persistence).
+
+The GARCH model is widely used for risk management, option pricing, and forecasting
+financial market volatility, making it a key tool for market participants who need to
+understand volatility dynamics in real time.
+
+#### Properties of GARCH
+
+- **Volatility Clustering**: GARCH captures the tendency for volatility to cluster, as
+seen in financial markets where volatility tends to remain high after market shocks.
+- **Mean Reversion**: The model assumes that volatility will eventually revert to a
+long-term mean, though it can remain elevated for some time following a market event.
+- **Leverage Effects**: GARCH can be extended to asymmetric models (e.g., GJR-GARCH,
+EGARCH) to capture the fact that negative returns often have a larger impact on
+volatility than positive returns.
+
+### Why Financial Institutions Still Use Traditional Models?
+
+Volatility is central to financial risk management as it measures the uncertainty of
+asset price movements. Financial institutions rely on volatility estimates for tasks
+like **Value at Risk (VaR)**, **capital allocation**, and **option pricing**. Accurate
+volatility modeling helps manage exposures, comply with regulations, and allocate
+capital efficiently.
+
+Despite the advancements in **machine learning** and **AI**, traditional models like
+**EWMA** and **GARCH** still dominate because:
+
+- **Simplicity**: These models are easy to implement and interpret, making them suitable
+for real-time risk management.
+- **Regulatory Acceptance**: Widely used and recognized by regulators, these models
+align with frameworks like **Basel III**.
+- **Efficiency**: They provide reliable volatility estimates with limited data and
+computational power.
+- **Stability**: EWMA and GARCH are less prone to overfitting and work well with limited
+historical data.
+
+While machine learning offers potential for improved volatility modeling, financial
+institutions continue to favor **EWMA** and **GARCH** due to their simplicity,
+regulatory compliance, and interpretability. For now, traditional models remain the
+standard, with AI techniques gradually integrating into risk management as regulatory
+acceptance grows.
 
 ## Correlations
 
-- Risk managers need to estimate not just volatilities, but also correlations between
-changes in market variables when assessing risk exposures.
-- Correlations can be monitored in a similar manner to volatilities.
+Risk managers must estimate both volatilities and correlations between changes in market
+variables to accurately assess risk exposures. Monitoring correlations is crucial, as it
+helps identify relationships between variables that can impact portfolio risk. Similar
+techniques used for monitoring volatilities, such as historical data analysis or time
+series models (EWMA, GARCH), can be applied to correlations.
 
-### Definition of Correlation
+::: {.callout-tip title="Definition"}
+The correlation between two variables, $V_1$ and $V_2$, is quantified by the correlation
+coefficient $\rho$, which measures the strength and direction of their linear
+relationship. 
+:::
 
-- Correlation between two variables, $V1$ and $V2$, is represented by the correlation
-coefficient $\rho$, calculated using the formula: 
+It is calculated as follows:
 
 $$
 \rho = \frac{E(V_1 V_2) - E(V_1) E(V_2)}{SD(V_1)SD(V_2)}
 $$ 
 
-- where $E(.)$ stands for expected value and $SD(.)$ for standard deviation.
-- No correlation exists when $E(V_1 V_2) = E(V_1)E(V_2)$, making $\rho = 0$.
-- If $V_1 = V_2$, $\rho$ equals 1.
-
-
-- Covariance between $V_1$ and $V_2$ is defined as: 
-
-$$
-\text{cov}(V_1, V_2) = E(V_1 V_2) - E(V_1)E(V_2)
-$$ 
-
-- This allows us to write the correlation as:
-
-$$
-\rho = \frac{\text{cov}(V_1, V_2)}{SD(V_1)SD(V_2)}
-$$
-
-- Though understanding correlation may be more intuitive, covariances prove to be
-fundamental in the analysis.
-
-
-- Two variables are statistically independent if knowing one doesn't affect the
-probability distribution for the other. Formal representation: 
-
-$$
-f(V_2|V_1 = x) = f(V_2)
-$$ 
-
-- for all $x$, where $f(.)$ represents the probability density function.
-- Zero correlation doesn't imply no dependence between variables. 
-- Correlation measures linear dependence, but there can be many other ways two variables
-can relate. These relationships can be visualized by plotting $E(V_2)$ against $V_1$.
-- In certain situations, the standard deviation of $V_2$ depends on the value of $V_1$,
-indicating another aspect of how $V_2$ depends on $V_1$.
+- Here, $E(.)$ represents the expected value, and $SD(.)$ stands for standard deviation.
+- If there is no linear relationship between $V_1$ and $V_2$, then $E(V_1 V_2) =
+E(V_1)E(V_2)$, resulting in $\rho = 0$.
+- A perfect positive correlation occurs when $V_1 = V_2$, yielding $\rho = 1$.
+  
+It is important to note that **zero correlation does not imply statistical
+independence**. Variables may still be dependent through non-linear relationships, which
+correlation does not capture. Correlation strictly measures linear dependence, but
+variables can exhibit other forms of dependence. 
 
 ```{python}
-
 import numpy as np
-import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 # Generate a range of x values
 x = np.linspace(-10, 10, 400)
 
 # Linear Relationship
 y_linear = 2 * x + 3
-plt.figure(figsize=(12, 4))
-plt.subplot(1, 3, 1)
-plt.plot(x, y_linear)
-plt.title("Linear Relationship")
 
 # Non-linear Relationship (Quadratic)
 y_nonlinear = x**2
-plt.subplot(1, 3, 2)
-plt.plot(x, y_nonlinear)
-plt.title("Non-Linear Relationship")
 
 # Absolute Value Function
 y_abs = np.abs(x)
-plt.subplot(1, 3, 3)
-plt.plot(x, y_abs)
-plt.title("Absolute Value Function")
 
-plt.tight_layout()
-plt.show()
+# Create subplots
+fig = make_subplots(rows=1, cols=3, subplot_titles=("Linear Relationship", "Non-Linear Relationship", "Absolute Value Function"))
+
+# Add the linear relationship plot
+fig.add_trace(go.Scatter(x=x, y=y_linear, mode='lines', name='Linear'), row=1, col=1)
+
+# Add the non-linear (quadratic) plot
+fig.add_trace(go.Scatter(x=x, y=y_nonlinear, mode='lines', name='Quadratic'), row=1, col=2)
+
+# Add the absolute value function plot
+fig.add_trace(go.Scatter(x=x, y=y_abs, mode='lines', name='Absolute Value'), row=1, col=3)
+
+# Update layout for aesthetics
+fig.update_layout(height=400, width=1000, showlegend=False)
+
+# Show the plot
+fig.show()
 ```
 
-### Monitoring Correlation
+### Covariance and Its Role in Correlation
 
-- It is common to work with variance-covariance matrices.
-- Similar approaches as Exponentially Weighted Moving Average (EWMA) and GARCH models
-can be used to monitor the covariance rate between two variables.
-- The returns on variables $X$ and $Y$ on day $i$ are:
+Covariance between two variables $V_1$ and $V_2$ is defined as:
 
 $$
-x_i = \frac{X_i - X_{i-1}}{X_{i-1}}
-$$
+\text{cov}(V_1, V_2) = E(V_1 V_2) - E(V_1)E(V_2)
+$$ 
+
+This provides a direct measure of the joint variability of $V_1$ and $V_2$ and can be
+used to express correlation:
 
 $$
-y_i = \frac{Y_i - Y_{i-1}}{Y_{i-1}}
+\rho = \frac{\text{cov}(V_1, V_2)}{SD(V_1)SD(V_2)}
 $$
 
-- The covariance rate between $X$ and $Y$ on day $n$ is:
-
-$$
-\text{cov}_n = E(x_n y_n) - E(x_n)E(y_n)
-$$
-
-- In practice, risk managers assume that expected daily returns are zero when
-calculating the covariance rate per day, hence the covariance rate per day between $X$
-and $Y$ on day $n$ is simplified to:
-
-$$
-\text{cov}_n = E(x_n y_n)
-$$
-
-- Using equal weights for the last $m$ observations on $x_i$ and $y_i$ gives the
-following:
-
-$$
-\text{cov}_{n} = \frac{1}{m} \sum_{i=1}^{m} x_{n-i} y_{n-i}
-$$
-
-$$
-\text{var}_{x,n} = \frac{1}{m} \sum_{i=1}^{m} x_{n-i}^{2}
-$$
-
-$$
-\text{var}_{y,n} = \frac{1}{m} \sum_{i=1}^{m} y_{n-i}^{2}
-$$
-
-$$
-\rho_n = \frac{\text{cov}_{n}}{\sqrt{\text{var}_{x,n} \text{var}_{y,n}}}
-$$
-
-- The Exponentially Weighted Moving Average (EWMA) model can be used to weight recent
-observations more heavily. The formula for updating a covariance estimate in the EWMA
-model is:
-
-$$
-\text{cov}_n = \lambda\text{cov}_{n-1} + (1 - \lambda)x_{n-1}y_{n-1}
-$$
-
-- The lower the value of $\lambda$, the greater the weight that is given to recent
-observations.
-- GARCH models can also be used for updating covariance rate estimates and forecasting
-the future level of covariance rates. The GARCH(1,1) model for updating a covariance
-rate between $X$ and $Y$ is:
-
-$$
-\text{cov}_n = \omega + \alpha x_{n-1}y_{n-1} + \beta\text{cov}_{n-1}
-$$
-
-- This formula gives some weight to a long-run average covariance, some to the most
-recent covariance estimate, and some to the most recent observation on covariance.
-- The long-term average covariance rate is $\omega / (1 - \alpha - \beta)$. 
-
-
-- Example of covariance between Apple and Microsoft from the past 5 years of daily returns:
-```{python}
-
-import yfinance as yf
-import numpy as np
-
-# Download daily closing prices of Apple and Microsoft from the past 5 years
-df = yf.download(["AAPL", "MSFT"], period="5y", progress=False)["Adj Close"]
-
-# Calculate daily returns
-df = df.pct_change().dropna()
-
-# Define decay factor and initialize covariance
-decay_factor = 0.94
-ewma_cov = df["AAPL"].iloc[0] * df["MSFT"].iloc[0]
-
-# Calculate EWMA covariance
-for i in range(1, len(df)):
-    ewma_cov = (
-        decay_factor * ewma_cov
-        + (1 - decay_factor) * df["AAPL"].iloc[i] * df["MSFT"].iloc[i]
-    )
-
-print(f"The EWMA covariance is: {ewma_cov}")
-```
+While correlation is a normalized measure (bounded between -1 and 1) and often more
+intuitive, covariance remains fundamental for deeper risk analysis. Covariance is
+crucial in risk management for understanding how assets co-vary and contribute to
+overall portfolio volatility. For example, covariance is used to compute portfolio
+variance, where each asset's contribution depends on its covariance with other assets.
 
 ## Copulas
 
-- This section introduces the concept of copulas, which define a correlation structure
-between two or more variables, regardless of the shapes of their probability
-distributions.
-- It illustrates how a copula can model default correlation for a portfolio of loans, a
-model that forms part of the Basel II capital requirements.
+::: {.callout-tip title="Definition"}
+A **copula** is a way to "link" or "couple" different events (or variables) and
+understand how they are connected—**even if they don't follow the same kind of
+distribution**. 
+:::
 
-### Introduction to Copulas
+- A copula links univariate marginal distributions to form a joint multivariate
+distribution.
+- By using copulas, risk managers can separately analyze the behavior of **individual
+risk factors** (via their marginal distributions) and **their dependencies** (via the
+copula function).
+- This separation is especially useful because it allows for the independent fitting of
+marginal distributions and dependency structures.
+- **Limits and Criticisms:** Despite their advantages, copulas have limitations. The use
+of Gaussian copulas in the 2007-2008 financial crisis was criticized because they failed
+to capture extreme tail dependence, leading to an underestimation of risk in
+mortgage-backed securities.
 
-- In risk management, copulas are statistical tools used to model and manage
-dependencies among different risk types or among different components within a risk
-type.
-- A copula is a function that links univariate marginal distributions to their joint
-multivariate distribution.
-- Copulas allow risk managers to separate the study of the behavior of individual risk
-factors (captured by the marginal distributions) from the study of the dependencies
-among these risk factors (captured by the copula).
-- This separation property is particularly useful in risk management because it allows
-practitioners to fit marginal distributions and dependency structures separately. 
+::: {.callout-note title="Example"}
+Let's say a bank holds both stocks and bonds. Normally, these two assets might not be
+closely related, meaning if stocks go down, bonds might stay steady. However, in a
+financial crisis, **both assets could drop sharply at the same time**. A **copula**
+model helps risk managers figure out how likely it is for extreme events to happen
+**together**, helping them prepare for scenarios where the usual diversification
+strategies might fail.
+:::
 
+### Applications in Risk Management
 
-Some key points:
+1. **Portfolio Risk Management:** Copulas model the dependence between assets, improving
+risk measures like Value-at-Risk (VaR) and Expected Shortfall (ES) by capturing extreme
+joint movements.
+2. **Credit Risk Management:** Widely used in pricing credit derivatives like CDOs,
+copulas model joint default probabilities (default correlations).
+3. **Operational Risk Management:** Copulas model dependencies among low-frequency,
+high-impact events (e.g., legal risks, fraud), enhancing the accuracy of capital
+requirements.
+4. **Insurance Risk Management:** Copulas model dependencies between claims across
+sectors or regions, helping insurers manage and diversify risk.
+5. **Stress Testing:** Copulas improve stress testing by capturing dependencies between
+risk factors, leading to more realistic extreme scenario modeling.
 
-1. **Multivariate distribution:** When dealing with multiple risk factors, it is often
-necessary to understand their joint behavior, which is described by their multivariate
-distribution. However, multivariate distributions can be difficult to estimate and work
-with directly.
-2. **Marginal distributions and copulas:** The copula approach decomposes the
-multivariate distribution into marginal distributions (one for each risk factor) and a
-copula that captures the dependencies among the risk factors.
-3. **Benefits:** The benefits of copulas include flexibility in modeling and the ability
-to capture a wide range of dependency structures. Different copula types can be used to
-model different types of dependencies (e.g., Gaussian copula, t-copula, etc.).
-4. **Applications:** In risk management, copulas are used in various applications, such
-as estimating portfolio credit risk, modeling the spread of contagion in financial
-networks, pricing complex derivatives, and more.
-5. **Limits and criticisms:** Despite their benefits, copulas also have limits. In
-particular, they have been criticized for their role in the financial crisis of
-2007-2008, where the widespread use of Gaussian copulas for modeling dependencies among
-mortgage-backed securities led to underestimation of risk due to the fact that Gaussian
-copulas do not capture tail dependence well. 
+### Common types of copulas
 
+1. **Gaussian Copula**: Constructs dependence structures based on the multivariate
+normal distribution. It assumes linear correlations between variables but does not model
+tail dependencies well.
 
-Applications in risk management:
+2. **t-Copula**: Similar to the Gaussian copula but incorporates tail dependencies,
+making it better suited for modeling extreme events in financial markets.
 
-1. **Portfolio Risk Management:** Copulas can model the dependence structure between
-different assets in a portfolio, separate from their individual behaviors. This allows
-for a more accurate computation of portfolio risk measures, such as Value-at-Risk (VaR)
-and Expected Shortfall (ES), by capturing the impact of extreme joint movements in asset
-prices.
-2. **Credit Risk Management:** Copulas are extensively used in the pricing and risk
-management of credit derivatives, especially Collateralized Debt Obligations (CDOs).
-They can model the likelihood of joint default events (default correlations) across
-different entities. The Gaussian copula was famously used in the pricing of CDOs in the
-run-up to the 2007-2008 financial crisis.
-3. **Operational Risk Management:** In operational risk, losses are usually due to a
-number of high impact, low frequency events (e.g., legal risks, risks of fraud, etc.).
-Copulas can be used to model the dependencies among these different types of operational
-risks, improving the accuracy of capital requirement calculations.
-4. **Insurance Risk Management:** Copulas can also be used to model dependencies in
-insurance claims from different sectors or regions, helping insurers to better manage
-their overall risk.
-5. **Stress Testing:** Copulas can be useful in stress testing scenarios. By defining
-the dependence structure between various risk factors, stress tests can be more
-accurately modeled to reflect extreme conditions.
+3. **Archimedean Copulas**: A family of copulas that are flexible and useful for
+modeling asymmetric dependence. Examples include:
+   - **Clayton Copula**: Captures asymmetric lower tail dependence, focusing on strong
+   joint downward movements.
+   - **Gumbel Copula**: Models asymmetric upper tail dependence, ideal for scenarios
+   with joint extreme upward movements.
+   - **Frank Copula**: Symmetric copula that does not emphasize tail dependence, often
+   used when the dependence structure is uniform across the distribution.
 
-### Gaussian Copula
-
-- A Gaussian copula is a specific type of copula used to model the dependency structure
-among various dimensions or variables.
-- It assumes that these dependencies follow a multivariate normal distribution.
-- To understand the Gaussian copula, consider a collection of random variables.
-- Each of these variables has its own individual (marginal) distribution, which
-describes its behavior.
-- The copula then describes how these variables interact or are correlated with each
-other.
-
-Simplified description of how a Gaussian copula is constructed:
-
-1. **Start with random variables:** Let's say we have a set of random variables, each
-following its own arbitrary distribution.
-2. **Transform to uniform:** Apply the cumulative distribution function (CDF) to each
-random variable. This transforms each variable into a uniform distribution on the
-interval [0, 1].
-3. **Apply inverse Gaussian CDF:** Take these uniform variables and apply the inverse of
-the cumulative distribution function of the multivariate normal distribution. This step
-ensures that the new variables have a multivariate normal distribution.
-4. **Correlation Matrix:** The Gaussian copula is parameterized by a correlation matrix,
-which captures the dependencies among the variables.
-
-- The Gaussian copula is popular due to its simplicity and the tractability of the
-Gaussian distribution.
-- However, it has limitations, particularly in modeling tail dependencies.
-- It was famously used in the pricing of collateralized debt obligations (CDOs) and was
-implicated in the mispricing of risk that contributed to the 2008 financial crisis.
+4. **Vine Copulas**: A more complex class of copulas that allow the construction of
+high-dimensional copulas by combining several bivariate copulas in a hierarchical
+structure. They are highly flexible and adaptable for modeling complex dependence
+structures across many variables, often used in finance and risk management.
 
 ```{python}
+#| echo: false
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm
 
-# Set the random seed for reproducibility
-np.random.seed(42)
+# Function to generate Gaussian copula samples
+def gaussian_copula(rho, n):
+    # Generate standard normal samples
+    u = np.random.randn(n)
+    v = np.random.randn(n)
+    # Apply correlation
+    v = rho * u + np.sqrt(1 - rho**2) * v
+    # Convert to uniform using CDF
+    u_uniform = norm.cdf(u)
+    v_uniform = norm.cdf(v)
+    return np.column_stack((u_uniform, v_uniform))
 
-# Generate independent data
-data_independent = np.random.normal(size=(1000, 2))
+# Function to generate Clayton copula samples
+def clayton_copula(theta, n):
+    u = np.random.rand(n)
+    v = np.random.rand(n)
+    # Apply Clayton transformation
+    v_clayton = (u**(-theta) * ((v**(-theta / (1 + theta))) - 1) + 1)**(-1 / theta)
+    return np.column_stack((u, v_clayton))
 
-# Generate correlated data
-correlated_mean = [0, 0]
-correlated_cov = [[1, 0.9], [0.9, 1]]
-data_correlated = np.random.multivariate_normal(
-    correlated_mean, correlated_cov, size=1000
-)
+# Function to generate independent samples
+def independent_copula(n):
+    u = np.random.rand(n)
+    v = np.random.rand(n)
+    return np.column_stack((u, v))
 
-# Gaussian Copula for independent data
-u_independent = norm.cdf(data_independent)
+# Parameters
+n = 1000
+rho_strong = 0.95  # Strong dependence for Gaussian copula
+theta_clayton_strong = 10  # Strong dependence for Clayton copula
 
-# Gaussian Copula for correlated data
-u_correlated = norm.cdf(data_correlated)
+# Generate samples for no dependence, strong Gaussian dependence, and strong Clayton dependence
+independent_samples = independent_copula(n)
+gaussian_strong_samples = gaussian_copula(rho_strong, n)
+clayton_strong_samples = clayton_copula(theta_clayton_strong, n)
 
-# Plotting both scatter plots side by side
-fig, axs = plt.subplots(1, 2, figsize=(10, 5))
+# Create scatter plots for independent, strong Gaussian, and strong Clayton copulas
+fig, axes = plt.subplots(1, 3, figsize=(15, 5))
 
-# Scatter plot for independent data
-axs[0].scatter(u_independent[:, 0], u_independent[:, 1], marker=".", alpha=0.5)
-axs[0].set_xlabel("U1")
-axs[0].set_ylabel("U2")
-axs[0].set_title("Gaussian Copula with Independent Variables")
+# No dependence (Independent)
+axes[0].scatter(independent_samples[:, 0], independent_samples[:, 1], alpha=0.5)
+axes[0].set_title("No Dependence (Independent)")
+axes[0].set_xlabel("U")
+axes[0].set_ylabel("V")
 
-# Scatter plot for correlated data
-axs[1].scatter(u_correlated[:, 0], u_correlated[:, 1], marker=".", alpha=0.5)
-axs[1].set_xlabel("U1")
-axs[1].set_ylabel("U2")
-axs[1].set_title("Gaussian Copula with Correlated Variables")
+# Strong dependence (Gaussian Copula)
+axes[1].scatter(gaussian_strong_samples[:, 0], gaussian_strong_samples[:, 1], alpha=0.5)
+axes[1].set_title("Strong Dependence (Gaussian Copula)")
+axes[1].set_xlabel("U")
+axes[1].set_ylabel("V")
+
+# Strong dependence (Clayton Copula)
+axes[2].scatter(clayton_strong_samples[:, 0], clayton_strong_samples[:, 1], alpha=0.5)
+axes[2].set_title("Strong Dependence (Clayton Copula)")
+axes[2].set_xlabel("U")
+axes[2].set_ylabel("V")
 
 plt.tight_layout()
 plt.show()
 ```
+
+### How to Calculate Copula
+
+1. **Transform Marginals to Uniform**: 
+   - You take the original data points of $X$ and $Y$ (which can come from any
+   univariate distribution, not necessarily the same), and apply their respective CDFs
+   (cumulative distribution function). This transforms them into uniform variables $U$
+   and $V$, both between 0 and 1.
+   
+2. **Apply the Copula**: 
+   - Once the data is in the uniform scale, you use the copula (e.g., Gaussian, t, or
+   Archimedean) to capture the dependency structure between the variables. The copula
+   function combines the uniform marginals to provide a joint distribution.
+
+3. **Interpret the Result**: 
+   - The result is a **multivariate joint distribution** that captures the dependency
+   between the original variables. This joint distribution retains the original marginal
+   distributions of $X$ and $Y$, but now you have modeled how these variables are
+   dependent on each other (e.g., correlated or exhibiting tail dependence).
 
 ### Gaussian Copula Example
 
-- In this example, we'll use historical data from two stocks to demonstrate the use of a
-Gaussian copula. 
-- First, we'll download the data and compute the daily returns for each stock.
+Assume $X$ follows a **standard normal distribution** $N(0, 1)$, and $Y$ follows an
+**exponential distribution** with a rate parameter $\lambda = 1$.
+
+Let’s use the following data points:
+
+- $X_1 = -0.5$, $X_2 = 0.8$ (from the standard normal distribution)
+- $Y_1 = 0.5$, $Y_2 = 1.5$ (from the exponential distribution)
+
+#### 1. Convert to uniform marginals using the CDF
+
+To apply a copula, we need to convert the values of $X$ and $Y$ to uniform marginals
+using their respective **cumulative distribution functions (CDFs)**.
+
+For $X$, which follows a standard normal distribution, the CDF is given by:
+
+$$
+F_X(x) = \Phi(x)
+$$
+
+where $\Phi(x)$ is the standard normal CDF. 
+
+$$
+U_1 = F_X(-0.5) = \Phi(-0.5) \approx 0.3085
+$$
+$$
+U_2 = F_X(0.8) = \Phi(0.8) \approx 0.7881
+$$
+
+It means that about 30.85% of the values in a standard normal distribution lie below
+$-0.5$ and 78.81% of values lie below $0.8$.
+
+For $Y_1 = 0.5$ and $Y_2 = 1.5$, where $Y$ follows an exponential distribution with rate
+parameter $\lambda = 1$, the CDF is:
+
+$$
+F_Y(y) = 1 - e^{-\lambda y}
+$$
+
+$$
+V_1 = F_Y(0.5) = 1 - e^{-0.5} \approx 0.3935
+$$
+$$
+V_2 = F_Y(1.5) = 1 - e^{-1.5} \approx 0.7769
+$$
+
+It means that about 39.35% of the values in the exponential distribution with $\lambda =
+1$ are below 0.5 and about 77.69% of values are below 1.5.
+
+Using Python, we can calculate the CDF for the given values of $X$ and $Y$:
 
 ```{python}
-
-import yfinance as yf
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from scipy.stats import norm, gaussian_kde
+from scipy.stats import norm, expon
 
-# Download historical data for desired stocks
-tickers = ["AAPL", "MSFT"]
+# Values for X and Y
+u1 = norm.cdf(-0.5)
+u2 = norm.cdf(0.8)
+v1 = expon.cdf(0.5)
+v2 = expon.cdf(1.5)
 
-data = yf.download(tickers, period="2y", progress=False)["Adj Close"]
-
-# Calculate the daily returns
-returns = data.pct_change().dropna()
+print(f"U1 = {u1}, U2 = {u2}")
+print(f"V1 = {v1}, V2 = {v2}")
 ```
 
-- Next, we'll transform these daily returns to be uniformly distributed by using the
-empirical cumulative distribution function.
+#### 2. Apply the copula to model dependence
+
+Let’s use a **Gaussian copula** to model the dependency between the variables, assuming
+a correlation $\rho = 0.5$. The Gaussian copula is defined as:
+
+$$
+C_\rho(U, V) = \Phi_\rho\left(\Phi^{-1}(U), \Phi^{-1}(V)\right)
+$$
+
+Where $\Phi^{-1}$ is the inverse CDF (quantile function) of the standard normal
+distribution, and $\Phi_\rho$ is the bivariate normal CDF.
+
+Use the inverse CDF of the standard normal distribution to transform $U_1$, $U_2$ and
+$V_1$, $V_2$ back into normal space.
+
+$$
+\Phi^{-1}(U_1) = \Phi^{-1}(0.3085) \approx -0.5
+$$
+$$
+\Phi^{-1}(U_2) = \Phi^{-1}(0.7881) \approx 0.8
+$$
+$$
+\Phi^{-1}(V_1) = \Phi^{-1}(0.3935) \approx -0.270
+$$
+$$
+\Phi^{-1}(V_2) = \Phi^{-1}(0.7769) \approx 0.762
+$$
 
 ```{python}
-
-# Calculate empirical cumulative distribution functions
-ecdf_aapl = returns["AAPL"].rank() / len(returns["AAPL"])
-ecdf_msft = returns["MSFT"].rank() / len(returns["MSFT"])
-```
-
-- Finally, we'll transform these uniform variables to be normally distributed and plot
-the joint distribution to see their dependence structure.
-
-```{python}
-
-# Transform to standard normal distribution
-norm_aapl = norm.ppf(ecdf_aapl)
-norm_msft = norm.ppf(ecdf_msft)
-
-# Create DataFrame for plotting
-df_norm = pd.DataFrame({"AAPL": norm_aapl, "MSFT": norm_msft})
-
-# Plot joint distribution
-sns.jointplot(data=df_norm, x="AAPL", y="MSFT", kind="kde")
-plt.show()
-```
-
-- The plot shows a smoothed estimate of the joint distribution of the transformed
-returns.
-- There is a clear linear pattern suggesting a strong dependence between the two stocks'
-returns.
-- Remember, in practice, you should check the appropriateness of the Gaussian copula for
-your data.
-- While it's a simple and popular choice, it might not always capture the dependence
-structure correctly, especially in the tails of the distribution.
-
-### Clayton Copula Example
-
-- **Tail Dependence**: The main difference between the Clayton and Gaussian copulas is
-how they model tail dependence. The Clayton copula is suitable for modeling lower tail
-dependence (correlation between extreme negative values), while the Gaussian copula can
-model both lower and upper tail dependence, but not as effectively for extreme values.
-- **Parameterization**: The Clayton copula uses a single parameter (the Clayton
-parameter) to determine the strength and direction of the dependence. In contrast, the
-Gaussian copula uses a correlation matrix to model the linear dependence between
-variables.
-- **Origins**: The Clayton copula is an Archimedean copula, while the Gaussian copula is
-derived from the multivariate normal distribution.
-
-
-- This example fetches historical stock data for two companies (e.g., Apple and
-Microsoft) and shows their tail dependence using the Clayton copula.
-- The plots show the lower tail dependence between the daily returns of Apple and
-Microsoft.
-- This can be helpful for analyzing the risk of simultaneous extreme losses in these two
-stocks.
-
-```{python}
-
 import numpy as np
-import matplotlib.pyplot as plt
-import yfinance as yf
-from copulas.univariate import GaussianKDE
-from copulas.bivariate import Clayton
-from scipy.stats import rankdata
+from scipy.stats import norm
 
-# Fetch historical stock data from Yahoo Finance
-stock_A = yf.download("AAPL", period="2y", progress=False)["Adj Close"]
-stock_B = yf.download("MSFT", period="2y", progress=False)["Adj Close"]
+# Values for X and Y
+u1_inv = norm.ppf(u1)
+u2_inv = norm.ppf(u2)
+v1_inv = norm.ppf(v1)
+v2_inv = norm.ppf(v2)
 
-# Calculate daily returns
-returns_A = stock_A.pct_change().dropna()
-returns_B = stock_B.pct_change().dropna()
-
-# Transform data to uniform marginals using rank transform
-u1 = rankdata(returns_A) / (len(returns_A) + 1)
-u2 = rankdata(returns_B) / (len(returns_B) + 1)
-
-# Fit a Clayton copula to the transformed data
-copula = Clayton()
-copula.fit(np.column_stack((u1, u2)))
-
-# Simulate data from the copula
-simulated_data = copula.sample(len(returns_A))
-
-# Plot the original and simulated data
-fig, axs = plt.subplots(1, 2, figsize=(10, 5))
-
-axs[0].scatter(u1, u2, marker=".", alpha=0.5)
-axs[0].set_xlabel("Apple Returns")
-axs[0].set_ylabel("Microsoft Returns")
-axs[0].set_title("Original Data")
-
-axs[1].scatter(simulated_data[:, 0], simulated_data[:, 1], marker=".", alpha=0.5)
-axs[1].set_xlabel("Apple Returns")
-axs[1].set_ylabel("Microsoft Returns")
-axs[1].set_title("Simulated Data from Clayton Copula")
-
-plt.tight_layout()
-plt.show()
+print(f"U1_inv = {u1_inv}, U2_inv = {u2_inv}")
+print(f"V1_inv = {v1_inv}, V2_inv = {v2_inv}")
 ```
+
+#### 3. Calculate the bivariate normal CDF
+
+Now, you would compute the CDF of the bivariate normal distribution with correlation
+$\rho = 0.5$. This can be done numerically in Python, using libraries like
+`scipy.stats`.
+
+$$
+C_\rho(U, V) = \Phi_\rho\left(\Phi^{-1}(U), \Phi^{-1}(V)\right)
+$$
+$$
+C_\rho(0.3085, 0.3935) \approx 0.194
+$$
+$$
+C_\rho(0.7881, 7769) \approx 0.663
+$$
+
+```{python}
+import numpy as np
+from scipy.stats import multivariate_normal
+
+rho = 0.5
+cov_matrix = [[1, rho], [rho, 1]]
+
+# Calculate joint probability using bivariate normal CDF
+copula_1 = multivariate_normal.cdf([u1_inv, v1_inv], cov=cov_matrix)
+copula_2 = multivariate_normal.cdf([u2_inv, v2_inv], cov=cov_matrix)
+print(f"Copula_1 = {copula_1}, Copula_2 = {copula_2}")
+```
+
+The result from the copula function gives the joint probability for the variables $X$
+and $Y$, adjusted for their dependency structure.
+
+- The **copula value of 0.194** for the pair $X_1 = -0.5$ and $Y_1 = 0.5$ reflects that
+there's a 19.4% chance that both variables simultaneously fall below these values.
+- The **copula value of 0.663** for the pair $X_2 = 0.8$ and $Y_2 = 1.5$ reflects a
+chance of 66.3% that both variables fall below these values.
 
 ## Valuation and Scenario Analysis
 
-- **Valuation and Scenario Analysis**: Both activities used by financial institutions,
-concerned with estimating future cash flows, but with different objectives.
-  - **Valuation**: Aims to estimate the present value of future cash flows. Calculates
-  expected values of future cash flows across all outcomes and discounts them to today.
-  - **Scenario Analysis**: Focuses on exploring the full range of future situations,
-  often emphasizing adverse outcomes to answer "How bad can things get?"
-- **Real-world vs Risk-Neutral Projections**:
-  - **Real-World Projections**: Underlie scenario analysis.
-  - **Risk-Neutral Projections**: Used for valuation, helpful for time-evolving
-  variables or when an outcome depends on a particular discrete event, such as a company
-  defaulting.
+**Valuation** estimates the current value of financial assets or liabilities, essential
+for assessing risk exposure. It is typically calculated as the present value of future
+cash flows, adjusted for risk factors.
+
+**Scenario analysis** assesses how hypothetical or historical events impact asset values
+and risk metrics, focusing on adverse outcomes to answer, "How bad can things get?"
+
+**Types of Scenarios**:
+
+- **Historical**: Based on real past events (e.g., the 2008 financial crisis).
+- **Hypothetical**: Extreme market shocks or stress events.
+- **Regulatory**: Scenarios required by regulators for stress testing.
+
+**Real-World vs. Risk-Neutral Projections**:
+
+- **Real-World Projections**: Used in scenario analysis to reflect actual risk and
+investor behavior.
+- **Risk-Neutral Projections**: Applied in valuation, especially for time-evolving
+variables or events like company defaults.
 
 ## Practice Questions and Problems
 
 ### Volatility
 
-1. The volatility of an asset is 2% per day. What is the standard deviation of the per-
-centage price change in three days?
+1. The volatility of an asset is 2% per day. What is the standard deviation of the
+percentage price change in three days?
 2. The volatility of an asset is 25% per annum. What is the standard deviation of the
 percentage price change in one trading day? Assuming a normal distribution with zero
 mean, estimate 95% confidence limits for the percentage price change in one day.
 3. What is implied volatility? What does it mean if different options on the same asset
 have different implied volatilities?
-4. Calculate daily volatility using the last 30 observations for selected asset.
-5. Test normality of daily returns for selected asset.
-6. Explain the exponentially weighted moving average (EWMA) model for estimating
+4. Explain the exponentially weighted moving average (EWMA) model for estimating
 volatility from historical data.
-7. What is the difference between the exponentially weighted moving average model and
+5. What is the difference between the exponentially weighted moving average model and
 the GARCH(1,1) model for updating volatilities?
-8. The most recent estimate of the daily volatility of an asset is 1.5% and the price of
-the asset at the close of trading yesterday was \$30.00. The parameter $\lambda$ in the EWMA
-model is 0.94. Suppose that the price of the asset at the close of trading today is
+6. The most recent estimate of the daily volatility of an asset is 1.5% and the price of
+the asset at the close of trading yesterday was \$30.00. The parameter $\lambda$ in the
+EWMA model is 0.94. Suppose that the price of the asset at the close of trading today is
 \$30.50. How will this cause the volatility to be updated by the EWMA model?
-9. A company uses an EWMA model for forecasting volatility. It decides to change the
+7. A company uses an EWMA model for forecasting volatility. It decides to change the
 parameter $\lambda$ from 0.95 to 0.85. Explain the likely impact on the forecasts.
-10. A company uses the GARCH(1,1) model for updating volatility. The three param- eters
-are $\omega$, $\alpha$, and $\beta$. Describe the impact of making a small increase in
-each of the parameters while keeping the others fixed.
-11. Assume that an index at close of trading yesterday was 1,040 and the daily
+8. Assume that an index at close of trading yesterday was 1,040 and the daily
 volatility of the index was estimated as 1% per day at that time. The parameters in a
 GARCH(1,1) model are $\omega$ = 0.000002, $\alpha$ = 0.06, and $\beta$ = 0.92. If the
 level of the index at close of trading today is 1,060, what is the new volatility
 estimate?
+9. A company uses the GARCH(1,1) model for updating volatility. The three param- eters
+are $\omega$, $\alpha$, and $\beta$. Describe the impact of making a small increase in
+each of the parameters while keeping the others fixed.
 
 ### Correlations and Copulas
 
@@ -805,20 +855,22 @@ $x$ is normally distributed with mean zero and standard deviation one. What is t
 correlation between $x$ and $y$?
 3. Explain what is meant by tail dependence. How can you vary tail dependence by the
 choice of copula?
-4. Calculate Clayton copula for selected asset and show appropriate graphs.
+4. Suppose that two variables $V_1$ and $V_2$ have uniform distributions where all
+values between 0 and 1 are equally likely. Use a Gaussian copula to define the
+correlation structure between $V_1$ and $V_2$ with a copula correlation of 0.3. Produce
+a table for all combinations of values of 0.25, 0.50, and 0.75 for $V_1$ and $V_2$.
 
 ### Valuation and Scenario Analysis
 
-1. What is the difference between *valuation* and *scenario analysis*?
-2. What is meant by risk-neutral valuation and the risk-neutral world?
-3. A stock price has an expected return of 12% and a volatility of 20%. It is currently
+1. A stock price has an expected return of 12% and a volatility of 20%. It is currently
 \$50. What is the probability that it will be greater than \$70 in two years?
-4. An analyst calculates the expected future value of a stock index in (a) the real
+2. Explain the principle of risk-neutral valuation.
+3. An analyst calculates the expected future value of a stock index in (a) the real
 world and (b) the risk-neutral world. Which would you expect to be higher? Why?
-5. The value of a derivative that pays off \$100 after one year if a company has
+4. The value of a derivative that pays off \$100 after one year if a company has
 defaulted during the year is \$3. The value of a derivative that pays off \$100 after
 one year if a company has not defaulted is \$95. What is the risk-free rate? What is the
 risk neutral probability of default?
-6. Explain why it is sometimes necessary to work in both the real world and the
-risk-neutral world when carrying out a scenario analysis to determine a confi- dence
+5. Explain why it is sometimes necessary to work in both the real world and the
+risk-neutral world when carrying out a scenario analysis to determine a confidence
 interval for the value of a portfolio in one year.
