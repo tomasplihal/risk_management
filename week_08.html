@@ -659,61 +659,20 @@ Example
 </section>
 <section id="practice-questions-and-problems" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="practice-questions-and-problems"><span class="header-section-number">8.5</span> Practice Questions and Problems</h2>
-<section id="historical-simulation-1" class="level3" data-number="8.5.1">
-<h3 data-number="8.5.1" class="anchored" data-anchor-id="historical-simulation-1"><span class="header-section-number">8.5.1</span> Historical Simulation</h3>
-<ol type="1">
-<li><p>What assumption is being made when VaR is calculated using the historical simulation approach and 500 days of data?</p></li>
-<li><p>Suppose we estimate the one-day 95% VaR from 1,000 observations (in millions of dollars) as 5. By fitting a standard distribution to the observations, the probability density function of the loss distribution at the 95% point is estimated to be 0.01. What is the standard error of the VaR estimate?</p></li>
-<li><p>Download the lates data for selected ETFs (e.g.&nbsp;S&amp;P 500, NASDAQ, Bonds, Gold) and calculate:</p>
-<ul>
-<li><ol type="a">
-<li>the 95%, 97%, and 99% one-day VaR,</li>
-</ol></li>
-<li><ol start="2" type="a">
-<li>the 95%, 97%, and 99% one-day ES,</li>
-</ol></li>
-<li><ol start="3" type="a">
-<li>repeat the (a) and (b) for 5-day VaR and ES</li>
-</ol></li>
-<li><ol start="4" type="a">
-<li>repeat (a), (b), (c) for a stock-bond portfolio (choose your allocation)</li>
-</ol></li>
-</ul></li>
-</ol>
-</section>
-<section id="parametric-approach-1" class="level3" data-number="8.5.2">
-<h3 data-number="8.5.2" class="anchored" data-anchor-id="parametric-approach-1"><span class="header-section-number">8.5.2</span> Parametric Approach</h3>
-<ol type="1">
-<li><p>Consider a position consisting of a $100,000 investment in asset A and a $100,000 investment in asset B. Assume that the daily volatilities of both assets are 1% and that the coefficient of correlation between their returns is 0.3. What are the five-day 97% VaR and ES for the portfolio?</p></li>
-<li><p>A financial institution owns a portfolio of instruments dependent on the U.S. dollar–sterling exchange rate. The delta of the portfolio with respect to percentage changes in the exchange rate is 3.9. If the daily volatility of the exchange rate is 0.7% and a linear model is assumed, estimate the 10-day 99% VaR.</p></li>
-<li><p>Explain why the linear model can provide only approximate estimates of VaR for a portfolio containing options.</p></li>
-</ol>
-</section>
-<section id="summary" class="level3" data-number="8.5.3">
-<h3 data-number="8.5.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.5.3</span> Summary</h3>
 <p>Use excel file ‘daily_returns.xlsx’ containing daily percentage returns in % for selected ETFs and calculate/show:</p>
 <ol type="1">
 <li><p>Show distribution of daily returns for each asset for the whole period.</p></li>
-<li><p>Use historical simulation approach:</p>
-<ul>
-<li>Calculate 95% and 99% one-day VaR for the whole period.</li>
-<li>Calculate 95% and 99% one-day ES for the whole period.</li>
-<li>Convert VaR and ES to 10-day estimates.</li>
-<li>Repeat the calculations for the last 500 days.</li>
-</ul></li>
-<li><p>Use variance-covariance (parametric) approach:</p>
-<ul>
-<li>Calculate 95% and 99% one-day VaR for the whole period.</li>
-<li>Calculate 95% and 99% one-day ES for the whole period.</li>
-<li>Convert VaR and ES to 10-day estimates.</li>
-<li>Repeat the calculations for the last 500 days.</li>
-</ul></li>
-<li><p>Create your own portfolio (combination of given assets):</p>
-<ul>
-<li>Calculate 95% and 99% one-day VaR for the last 500 days.</li>
-<li>Calculate 95% and 99% one-day ES for the last 500 days.</li>
-</ul></li>
-<li><p><strong><em>Bonus.</em></strong> Try to find 95% stressed VaR and ES (251-days) for each asset.</p></li>
+<li><p>Calculate 95% and 99% one-day <strong>VaR</strong> for the last 500 days using historical simulation and variance-covariance approach.</p></li>
+<li><p>Calculate 95% and 99% one-day <strong>ES</strong> for the last 500 days using historical simulation and variance-covariance approach.</p></li>
+<li><p>Convert VaR and ES to 10-day estimates.</p></li>
+<li><p>Find 95% stressed VaR (251-days) for each asset.</p></li>
+</ol>
+<section id="further-questions" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="further-questions"><span class="header-section-number">8.5.1</span> Further Questions</h3>
+<ol type="1">
+<li><p>What assumption is being made when VaR is calculated using the historical simulation approach and 500 days of data?</p></li>
+<li><p>Suppose we estimate the one-day 95% VaR from 1,000 observations (in millions of dollars) as 5. By fitting a standard distribution to the observations, the probability density function of the loss distribution at the 95% point is estimated to be 0.01. What is the standard error of the VaR estimate?</p></li>
+<li><p>Consider a position consisting of a $100,000 investment in asset A and a $100,000 investment in asset B. Assume that the daily volatilities of both assets are 1% and that the coefficient of correlation between their returns is 0.3. What are the five-day 97% VaR and ES for the portfolio?</p></li>
 </ol>
 
 
