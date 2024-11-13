@@ -467,7 +467,22 @@ particularly suited for portfolios with non-linear or path-dependent instruments
 
 ## Practice Questions and Problems
 
-### Historical Simulation
+Use excel file 'daily_returns.xlsx' containing daily percentage returns in % for
+selected ETFs and calculate/show:
+
+1. Show distribution of daily returns for each asset for the whole period.
+
+2. Calculate 95% and 99% one-day **VaR** for the last 500 days using historical
+simulation and variance-covariance approach.
+
+3. Calculate 95% and 99% one-day **ES** for the last 500 days using historical
+simulation and variance-covariance approach.
+
+4. Convert VaR and ES to 10-day estimates.
+
+5. Find 95% stressed VaR (251-days) for each asset. 
+
+### Further Questions
 
 1. What assumption is being made when VaR is calculated using the historical simulation
 approach and 500 days of data?
@@ -477,48 +492,7 @@ dollars) as 5. By fitting a standard distribution to the observations, the proba
 density function of the loss distribution at the 95\% point is estimated to be 0.01.
 What is the standard error of the VaR estimate?
 
-3. Download the lates data for selected ETFs (e.g. S\&P 500, NASDAQ, Bonds, Gold) and
-calculate:
-    - (a) the 95\%, 97\%, and 99\% one-day VaR, 
-    - (b) the 95\%, 97\%, and 99\% one-day ES, 
-    - (c) repeat the (a) and (b) for 5-day VaR and ES
-    - (d) repeat (a), (b), (c) for a stock-bond portfolio (choose your allocation)
-
-### Parametric Approach
-
-1. Consider a position consisting of a \$100,000 investment in asset A and a \$100,000
+3. Consider a position consisting of a \$100,000 investment in asset A and a \$100,000
 investment in asset B. Assume that the daily volatilities of both assets are 1\% and
 that the coefficient of correlation between their returns is 0.3. What are the five-day
 97\% VaR and ES for the portfolio?
-
-2. A financial institution owns a portfolio of instruments dependent on the U.S.
-dollar–sterling exchange rate. The delta of the portfolio with respect to percentage
-changes in the exchange rate is 3.9. If the daily volatility of the exchange rate is
-0.7\% and a linear model is assumed, estimate the 10-day 99\% VaR.
-
-3. Explain why the linear model can provide only approximate estimates of VaR for a
-portfolio containing options.
-
-### Summary
-
-Use excel file 'daily_returns.xlsx' containing daily percentage returns in % for selected ETFs and calculate/show:
-
-1. Show distribution of daily returns for each asset for the whole period.
-
-2. Use historical simulation approach:
-    - Calculate 95% and 99% one-day VaR for the whole period.
-    - Calculate 95% and 99% one-day ES for the whole period.
-    - Convert VaR and ES to 10-day estimates.
-    - Repeat the calculations for the last 500 days.
-
-3. Use variance-covariance (parametric) approach:
-    - Calculate 95% and 99% one-day VaR for the whole period.
-    - Calculate 95% and 99% one-day ES for the whole period.
-    - Convert VaR and ES to 10-day estimates.
-    - Repeat the calculations for the last 500 days.
-
-4. Create your own portfolio (combination of given assets):
-    - Calculate 95% and 99% one-day VaR for the last 500 days.
-    - Calculate 95% and 99% one-day ES for the last 500 days.
-
-5. ***Bonus.*** Try to find 95% stressed VaR and ES (251-days) for each asset. 
