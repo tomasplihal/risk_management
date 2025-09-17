@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Understanding VaR and ES – Risk Management and Financial Institutions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./week_04.html" rel="next">
+<link href="./week_02.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_03.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Understanding VaR and ES</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Risk Management and Financial Institutions</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Risk Management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Revision of Basic Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_03.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Understanding VaR and ES</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Calculating VaR and ES</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Risk and Implementation Reality</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Future of Risk Management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">week_07.html</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">week_08.html</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">week_09.html</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">week_10.html</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">week_11.html</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">week_12.html</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week_13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">week_13.html</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#traditional-vs.-coherent-risk-measures" id="toc-traditional-vs.-coherent-risk-measures" class="nav-link active" data-scroll-target="#traditional-vs.-coherent-risk-measures"><span class="header-section-number">3.1</span> Traditional vs.&nbsp;Coherent Risk Measures</a>
+  <ul class="collapse">
+  <li><a href="#why-we-need-risk-measures-in-modern-finance" id="toc-why-we-need-risk-measures-in-modern-finance" class="nav-link" data-scroll-target="#why-we-need-risk-measures-in-modern-finance"><span class="header-section-number">3.1.1</span> Why We Need Risk Measures in Modern Finance</a></li>
+  <li><a href="#the-journey-from-variance-to-var" id="toc-the-journey-from-variance-to-var" class="nav-link" data-scroll-target="#the-journey-from-variance-to-var"><span class="header-section-number">3.1.2</span> The Journey from Variance to VaR</a></li>
+  <li><a href="#the-pl-convention---setting-our-standard" id="toc-the-pl-convention---setting-our-standard" class="nav-link" data-scroll-target="#the-pl-convention---setting-our-standard"><span class="header-section-number">3.1.3</span> The P/L Convention - Setting Our Standard</a></li>
+  <li><a href="#value-at-risk-the-revolutionary-simple-answer" id="toc-value-at-risk-the-revolutionary-simple-answer" class="nav-link" data-scroll-target="#value-at-risk-the-revolutionary-simple-answer"><span class="header-section-number">3.1.4</span> Value-at-Risk: The Revolutionary Simple Answer</a></li>
+  <li><a href="#vars-dangerous-blind-spot" id="toc-vars-dangerous-blind-spot" class="nav-link" data-scroll-target="#vars-dangerous-blind-spot"><span class="header-section-number">3.1.5</span> VaR’s Dangerous Blind Spot</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways"><span class="header-section-number">3.1.6</span> Key Takeaways</a></li>
+  </ul></li>
+  <li><a href="#the-axiomatic-foundation-of-coherent-risk-measures" id="toc-the-axiomatic-foundation-of-coherent-risk-measures" class="nav-link" data-scroll-target="#the-axiomatic-foundation-of-coherent-risk-measures"><span class="header-section-number">3.2</span> The Axiomatic Foundation of Coherent Risk Measures</a>
+  <ul class="collapse">
+  <li><a href="#what-makes-a-good-risk-measure" id="toc-what-makes-a-good-risk-measure" class="nav-link" data-scroll-target="#what-makes-a-good-risk-measure"><span class="header-section-number">3.2.1</span> What Makes a “Good” Risk Measure?</a></li>
+  <li><a href="#understanding-each-axiom" id="toc-understanding-each-axiom" class="nav-link" data-scroll-target="#understanding-each-axiom"><span class="header-section-number">3.2.2</span> Understanding Each Axiom</a></li>
+  <li><a href="#vars-fatal-flaw-violation-of-subadditivity" id="toc-vars-fatal-flaw-violation-of-subadditivity" class="nav-link" data-scroll-target="#vars-fatal-flaw-violation-of-subadditivity"><span class="header-section-number">3.2.3</span> VaR’s Fatal Flaw: Violation of Subadditivity</a></li>
+  <li><a href="#the-search-for-better-measures" id="toc-the-search-for-better-measures" class="nav-link" data-scroll-target="#the-search-for-better-measures"><span class="header-section-number">3.2.4</span> The Search for Better Measures</a></li>
+  <li><a href="#key-takeaways-1" id="toc-key-takeaways-1" class="nav-link" data-scroll-target="#key-takeaways-1"><span class="header-section-number">3.2.5</span> Key Takeaways</a></li>
+  </ul></li>
+  <li><a href="#expected-shortfall-as-the-solution" id="toc-expected-shortfall-as-the-solution" class="nav-link" data-scroll-target="#expected-shortfall-as-the-solution"><span class="header-section-number">3.3</span> Expected Shortfall as the Solution</a>
+  <ul class="collapse">
+  <li><a href="#es-definition-and-intuition" id="toc-es-definition-and-intuition" class="nav-link" data-scroll-target="#es-definition-and-intuition"><span class="header-section-number">3.3.1</span> ES Definition and Intuition</a></li>
+  <li><a href="#mathematical-formulation" id="toc-mathematical-formulation" class="nav-link" data-scroll-target="#mathematical-formulation"><span class="header-section-number">3.3.2</span> Mathematical Formulation</a></li>
+  <li><a href="#why-es-is-coherent-proving-the-axioms" id="toc-why-es-is-coherent-proving-the-axioms" class="nav-link" data-scroll-target="#why-es-is-coherent-proving-the-axioms"><span class="header-section-number">3.3.3</span> Why ES is Coherent: Proving the Axioms</a></li>
+  <li><a href="#es-vs-var-comparative-analysis" id="toc-es-vs-var-comparative-analysis" class="nav-link" data-scroll-target="#es-vs-var-comparative-analysis"><span class="header-section-number">3.3.4</span> ES vs VaR: Comparative Analysis</a></li>
+  <li><a href="#spectral-risk-measures-the-general-framework" id="toc-spectral-risk-measures-the-general-framework" class="nav-link" data-scroll-target="#spectral-risk-measures-the-general-framework"><span class="header-section-number">3.3.5</span> Spectral Risk Measures: The General Framework</a></li>
+  <li><a href="#the-regulatory-shift-from-var-to-es" id="toc-the-regulatory-shift-from-var-to-es" class="nav-link" data-scroll-target="#the-regulatory-shift-from-var-to-es"><span class="header-section-number">3.3.6</span> The Regulatory Shift: From VaR to ES</a></li>
+  <li><a href="#key-takeaways-2" id="toc-key-takeaways-2" class="nav-link" data-scroll-target="#key-takeaways-2"><span class="header-section-number">3.3.7</span> Key Takeaways</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">3.4</span> References</a></li>
+  <li><a href="#practice-questions-and-problems" id="toc-practice-questions-and-problems" class="nav-link" data-scroll-target="#practice-questions-and-problems"><span class="header-section-number">3.5</span> Practice Questions and Problems</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Understanding VaR and ES</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-tip callout-titled" title="References">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+References
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+<ul>
+<li>Chapter 11 - Value at Risk and Expected Shortfall</li>
+<li>Chapter 12 - Historical Simulation and Extreme Value Theory</li>
+<li>Chapter 13 - Model-Building Approach</li>
+</ul></li>
+<li>Pirie, W. L., and M. P. Kritzman. 2017. Derivatives. CFA Institute Investment Series. - Chapter 6 - Risk Management</li>
+</ul>
+</div>
+</div>
+<p><strong>Learning Outcomes:</strong></p>
+<ul>
+<li>Calculate and interpret Value-at-Risk (VaR) and Expected Shortfall (ES)</li>
+<li>Evaluate whether a risk measure is coherent by testing the four axioms</li>
+<li>Explain why VaR fails subadditivity and demonstrate this failure</li>
+<li>Compare and contrast VaR and ES (tail risk capture, complexity, and regulations)</li>
+<li>Analyze the real-world implications of using non-coherent risk measures</li>
+<li>Justify the regulatory shift from VaR to ES in the Basel III/FRTB framework</li>
+</ul>
+<section id="traditional-vs.-coherent-risk-measures" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="traditional-vs.-coherent-risk-measures"><span class="header-section-number">3.1</span> Traditional vs.&nbsp;Coherent Risk Measures</h2>
+<section id="why-we-need-risk-measures-in-modern-finance" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="why-we-need-risk-measures-in-modern-finance"><span class="header-section-number">3.1.1</span> Why We Need Risk Measures in Modern Finance</h3>
+<p>Modern financial institutions manage portfolios of staggering complexity. A typical trading floor handles thousands of positions across global markets - equity derivatives in Tokyo, currency swaps in London, structured products in New York. When the chief risk officer asks “How much could we lose today?”, human intuition alone cannot provide the answer.</p>
+<p><strong>Core Challenges:</strong></p>
+<ul>
+<li>Portfolio complexity beyond human comprehension</li>
+<li>Need to aggregate diverse risks into actionable numbers</li>
+<li>Balance between risk-taking and risk control</li>
+<li>Regulatory requirements for quantitative risk reporting</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Key Insight:</strong> Risk management isn’t about avoiding losses - it’s about understanding what risks you’re taking and ensuring they’re intentional and compensated.</p>
+</div>
+</div>
+</section>
+<section id="the-journey-from-variance-to-var" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="the-journey-from-variance-to-var"><span class="header-section-number">3.1.2</span> The Journey from Variance to VaR</h3>
+<p>Harry Markowitz revolutionized finance in 1952 by making risk mathematically tractable. For the first time, risk wasn’t just a vague concept but something that could be calculated and optimized.</p>
+<section id="markowitzs-framework-modern-portfolio-theory" class="level4">
+<h4 class="anchored" data-anchor-id="markowitzs-framework-modern-portfolio-theory">Markowitz’s Framework (Modern Portfolio Theory)</h4>
+<ul>
+<li><strong>Risk measure:</strong> Variance <span class="math inline">\(\sigma^2\)</span> (or standard deviation <span class="math inline">\(\sigma\)</span>)</li>
+<li><strong>Key formula:</strong> Portfolio variance accounts for correlations</li>
+</ul>
+<p><span class="math display">\[
+\sigma_p^2 = \sum_i w_i^2\sigma_i^2 + \sum_i \sum_{j \neq i} w_iw_j\rho_{ij}\sigma_i\sigma_j
+\]</span></p>
+<ul>
+<li><strong>Main insight:</strong> Diversification reduces risk</li>
+<li><strong>Optimization:</strong> Maximize return/risk ratio (<span class="math inline">\(\mu_p/\sigma_p\)</span>)</li>
+</ul>
+</section>
+<section id="why-variance-failed-as-a-risk-measure" class="level4">
+<h4 class="anchored" data-anchor-id="why-variance-failed-as-a-risk-measure">Why Variance Failed as a Risk Measure</h4>
+<p><strong>Symmetry Problem:</strong></p>
+<ul>
+<li>Treats upside and downside equally</li>
+<li>50% gain = same “risk” as 50% loss</li>
+<li>Investors care more about losses than gains</li>
+</ul>
+<p><strong>Empirical Failures:</strong></p>
+<ul>
+<li>Financial returns exhibit “fat tails”</li>
+<li>Example: 1987 crash (-22% in one day)
+<ul>
+<li>Under normal distribution: Should occur once per billion years</li>
+<li>Reality: Happened in our lifetime</li>
+</ul></li>
+<li>Extreme events far more common than theory predicts</li>
+</ul>
+<p><strong>Derivatives Revolution (1980s):</strong></p>
+<ul>
+<li>Options have asymmetric payoffs</li>
+<li>Portfolio of options: Low variance but huge downside potential</li>
+<li>Variance cannot capture nonlinear risks</li>
+</ul>
+</section>
+</section>
+<section id="the-pl-convention---setting-our-standard" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="the-pl-convention---setting-our-standard"><span class="header-section-number">3.1.3</span> The P/L Convention - Setting Our Standard</h3>
+<p>One of the most persistent sources of confusion in risk management is whether to work with <strong>P/L</strong> (Profit and Loss) or <strong>L/P</strong> (Loss and Profit) data. This seemingly simple choice affects every formula, every interpretation, and every risk system. Different textbooks, papers, and systems use different conventions, often without clearly stating which they’ve chosen.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 42%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Characteristic</th>
+<th style="text-align: center;"><strong>P/L (Returns as-is)</strong></th>
+<th style="text-align: center;"><strong>L/P (Inverted)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Sign of Profits</strong></td>
+<td style="text-align: center;">Positive</td>
+<td style="text-align: center;">Negative</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Sign of Losses</strong></td>
+<td style="text-align: center;">Negative</td>
+<td style="text-align: center;">Positive</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Interpretation</strong></td>
+<td style="text-align: center;">+5% is good, -5% is bad</td>
+<td style="text-align: center;">+5% loss is bad, -5% loss (profit) is good</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>VaR/ES Focus</strong></td>
+<td style="text-align: center;">Left tail (negative returns)</td>
+<td style="text-align: center;">Right tail (positive losses)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Used By</strong></td>
+<td style="text-align: center;">Most trading systems, Bloomberg, many practitioners</td>
+<td style="text-align: center;">Many textbooks, Basel documents, some risk systems</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled" title="Our Course Standard">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Our Course Standard
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>For all future lectures, we will use the P/L convention</strong> for these reasons:</p>
+<ol type="1">
+<li><strong>Intuitive</strong>: Positive returns are good, negative are bad - matches human thinking</li>
+<li><strong>Industry Standard</strong>: Most trading and portfolio systems use P/L</li>
+<li><strong>Direct Interpretation</strong>: No mental sign-flipping when reading results</li>
+<li><strong>Consistency</strong>: P/L statements, risk reports, and models all align</li>
+</ol>
+<p><strong>Remember</strong>: VaR and ES are always reported as <strong>positive numbers</strong> representing potential losses, regardless of the convention used internally.</p>
+</div>
+</div>
+<p>The choice of convention doesn’t affect the risk measurement - a 5% loss is a 5% loss. But being consistent and clear about which convention you’re using is essential for correct implementation and interpretation. When reading any risk management material, always check: <strong>Are they using returns (P/L) or losses (L/P)?</strong></p>
+</section>
+<section id="value-at-risk-the-revolutionary-simple-answer" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="value-at-risk-the-revolutionary-simple-answer"><span class="header-section-number">3.1.4</span> Value-at-Risk: The Revolutionary Simple Answer</h3>
+<p>The breakthrough came from J.P. Morgan in the early 1990s. CEO Dennis Weatherstone’s daily request for a single risk number at 4:15 PM spawned an industry standard that would transform risk management globally.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="VaR Definition">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+VaR Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\text{VaR}_\alpha(L) = \inf\{l : F_L(l) \geq \alpha\}\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\text{VaR}_\alpha(L)\)</span> = Value-at-Risk at confidence level <span class="math inline">\(\alpha\)</span> for loss variable <span class="math inline">\(L\)</span></li>
+<li><span class="math inline">\(F_L(l)\)</span> = Cumulative distribution function of losses, i.e., <span class="math inline">\(P(L \leq l)\)</span></li>
+<li><span class="math inline">\(l\)</span> = A specific loss value</li>
+<li><span class="math inline">\(\inf\)</span> = Infimum (smallest value) of the set</li>
+</ul>
+<p><strong>Interpretation:</strong> “We are <span class="math inline">\(\alpha\)</span>% confident we won’t lose more than VaR over time horizon <span class="math inline">\(h\)</span>”</p>
+</div>
+</div>
+<p><strong>Three Essential Components:</strong></p>
+<ul>
+<li><strong>Confidence level (<span class="math inline">\(\alpha\)</span>):</strong> Typically 95% or 99%</li>
+<li><strong>Time horizon (<span class="math inline">\(h\)</span>):</strong> 1 day, 10 days, etc.</li>
+<li><strong>Loss amount:</strong> In currency units (USD, EUR, etc.)</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Portfolio value: $100 million</li>
+<li>Daily volatility: <span class="math inline">\(\sigma = 2\%\)</span></li>
+<li>Mean return: <span class="math inline">\(\mu = 0\)</span></li>
+<li>Assume normal distribution</li>
+</ul>
+<p><span class="math display">\[\text{VaR}_{95\%} = \$100M \times 0.02 \times 1.645 = \$3.29M\]</span> <span class="math display">\[\text{VaR}_{99\%} = \$100M \times 0.02 \times 2.326 = \$4.65M\]</span></p>
+<p>The <span class="math inline">\(\text{VaR}_{99\%}\)</span> indicates that we are 99% confident that the portfolio will not lose more than $4.65 million tomorrow.</p>
+</div>
+</div>
+<p><strong>Why VaR Conquered the Financial World:</strong></p>
+<ul>
+<li><strong>Intuitive:</strong> Speaks the language of senior management (dollars)</li>
+<li><strong>Universal:</strong> Same framework for any portfolio</li>
+<li><strong>Regulatory blessing:</strong> Basel II Market Risk Amendment (1996)</li>
+<li><strong>Flexible:</strong> Historical simulation, parametric, Monte Carlo methods</li>
+</ul>
+</section>
+<section id="vars-dangerous-blind-spot" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="vars-dangerous-blind-spot"><span class="header-section-number">3.1.5</span> VaR’s Dangerous Blind Spot</h3>
+<p>Despite its success, VaR harbors a fundamental flaw that would contribute to the 2008 financial crisis. It answers “what’s the minimum loss in bad scenarios?” but says nothing about the magnitude of losses beyond that point.</p>
+<section id="the-tail-risk-problem" class="level4">
+<h4 class="anchored" data-anchor-id="the-tail-risk-problem">The Tail Risk Problem</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Scenario</th>
+<th>Portfolio A</th>
+<th>Portfolio B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>99% VaR</td>
+<td>$10 million</td>
+<td>$10 million</td>
+</tr>
+<tr class="even">
+<td>Actual loss when VaR breached</td>
+<td>$11-12 million</td>
+<td>$100+ million</td>
+</tr>
+<tr class="odd">
+<td>VaR Assessment</td>
+<td>“Equal risk”</td>
+<td>“Equal risk”</td>
+</tr>
+<tr class="even">
+<td>Reality</td>
+<td>Manageable</td>
+<td>Catastrophic</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled" title="Real Trading Floor Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Real Trading Floor Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Strategy: Sell deep out-of-the-money options</li>
+<li>99% of days: Collect premium (looks great!)</li>
+<li>1% of days: Massive losses (firm-threatening)</li>
+<li>VaR perspective: Low risk strategy</li>
+<li>Reality: “Picking up nickels in front of a steamroller” (Joe Ritchie, CRT, 2002)</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="mathematical-failure-violation-of-subadditivity" class="level4">
+<h4 class="anchored" data-anchor-id="mathematical-failure-violation-of-subadditivity">Mathematical Failure: Violation of Subadditivity</h4>
+<p>VaR can suggest that diversification <em>increases</em> risk: <span class="math display">\[\text{VaR}(A + B) &gt; \text{VaR}(A) + \text{VaR}(B)\]</span></p>
+<p><strong>Consequences:</strong></p>
+<ul>
+<li>Banks could reduce regulatory capital by splitting into subsidiaries</li>
+<li>No real risk reduction, just regulatory arbitrage</li>
+<li>Incentivizes behavior that increases systemic risk</li>
+</ul>
+<p><strong>Evidence from Academic Literature:</strong></p>
+<ul>
+<li><span class="citation" data-cites="basak2001value">Basak and Shapiro (<a href="week_03.html#ref-basak2001value" role="doc-biblioref">2001</a>)</span>: VaR constraints may increase risk-taking</li>
+<li>Traders optimize to stay just within VaR limits</li>
+<li>Ignore severity of losses beyond VaR threshold</li>
+<li>Regulators care most about extreme losses - exactly what VaR ignores</li>
+</ul>
+</section>
+</section>
+<section id="key-takeaways" class="level3" data-number="3.1.6">
+<h3 data-number="3.1.6" class="anchored" data-anchor-id="key-takeaways"><span class="header-section-number">3.1.6</span> Key Takeaways</h3>
+<p>The evolution from variance to VaR solved real problems but created new ones:</p>
+<ul>
+<li><strong>Progress:</strong> From abstract variance to intuitive dollar losses</li>
+<li><strong>Success:</strong> Global adoption, regulatory standard</li>
+<li><strong>Failure:</strong> Blind to tail risk, mathematically incoherent</li>
+<li><strong>Next:</strong> Need coherent risk measures that capture extreme losses</li>
+</ul>
+</section>
+</section>
+<section id="the-axiomatic-foundation-of-coherent-risk-measures" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="the-axiomatic-foundation-of-coherent-risk-measures"><span class="header-section-number">3.2</span> The Axiomatic Foundation of Coherent Risk Measures</h2>
+<section id="what-makes-a-good-risk-measure" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="what-makes-a-good-risk-measure"><span class="header-section-number">3.2.1</span> What Makes a “Good” Risk Measure?</h3>
+<p>In 1999, Philippe Artzner <span class="citation" data-cites="artzner1999coherent">(<a href="week_03.html#ref-artzner1999coherent" role="doc-biblioref">Artzner et al. 1999</a>)</span> and his colleagues revolutionized risk management by asking a fundamental question: What mathematical properties should any sensible risk measure possess? Their answer wasn’t based on empirical observation or market practice, but on pure logical reasoning about what risk management should achieve. They proposed four axioms that any “coherent” risk measure must satisfy - creating a mathematical definition of common sense.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Coherent Risk Measure Axioms">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Coherent Risk Measure Axioms
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A risk measure <span class="math inline">\(R\)</span> is called <strong>coherent</strong> if it satisfies four axioms:</p>
+<ol type="1">
+<li><p><strong>Subadditivity</strong> (Diversification should reduce risk) <span class="math display">\[R(L_1 + L_2) \leq R(L_1) + R(L_2)\]</span></p></li>
+<li><p><strong>Positive Homogeneity</strong> (Scaling positions scales risk proportionally) <span class="math display">\[R(\lambda L) = \lambda R(L), \text{ for every } \lambda &gt; 0\]</span></p></li>
+<li><p><strong>Monotonicity</strong> (Bigger losses mean bigger risk) <span class="math display">\[R(L_1) \leq R(L_2) \text{ if } L_1 \leq L_2\]</span></p></li>
+<li><p><strong>Translation Invariance</strong> (Adding cash reduces risk by that amount) <span class="math display">\[R(L + a) = R(L) - a\]</span></p></li>
+</ol>
+</div>
+</div>
+<p><strong>Why These Axioms Matter:</strong></p>
+<ul>
+<li>They formalize intuitive risk management principles</li>
+<li>Provide mathematical consistency across an organization</li>
+<li>Enable decentralized risk management</li>
+<li>Prevent regulatory arbitrage</li>
+</ul>
+</section>
+<section id="understanding-each-axiom" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="understanding-each-axiom"><span class="header-section-number">3.2.2</span> Understanding Each Axiom</h3>
+<p>Let’s examine what each axiom means in practice, using concrete examples from a trading desk.</p>
+<section id="subadditivity---the-diversification-principle" class="level4">
+<h4 class="anchored" data-anchor-id="subadditivity---the-diversification-principle">Subadditivity - The Diversification Principle</h4>
+<p><em>Intuition:</em> Merging two portfolios shouldn’t increase risk</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Example: Why Subadditivity Matters">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Why Subadditivity Matters
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Trading Desk A: Risk = $10M</li>
+<li>Trading Desk B: Risk = $8M</li>
+<li>Combined Desks: Risk should be <span class="math inline">\(\leq \$18M\)</span></li>
+</ul>
+<p>If <span class="math inline">\(\text{Risk}(A+B) &gt; \$18M\)</span>, something is wrong with the risk measure!</p>
+</div>
+</div>
+<p><strong>Three Critical Implications <span class="citation" data-cites="mcneil2015quantitative">(<a href="week_03.html#ref-mcneil2015quantitative" role="doc-biblioref">McNeil, Frey, and Embrechts 2015</a>)</span>:</strong></p>
+<ul>
+<li><strong>Portfolio optimization:</strong> Non-subadditive measures may lead to concentrated, risky portfolios</li>
+<li><strong>Regulatory gaming:</strong> Banks could split into subsidiaries to reduce capital requirements</li>
+<li><strong>Decentralized management:</strong> Risk manager can allocate limits <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> to desks, knowing total risk <span class="math inline">\(\leq M_1 + M_2\)</span></li>
+</ul>
+</section>
+<section id="positive-homogeneity---the-scaling-property" class="level4">
+<h4 class="anchored" data-anchor-id="positive-homogeneity---the-scaling-property">Positive Homogeneity - The Scaling Property</h4>
+<p><em>Intuition:</em> Double the position, double the risk</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Example: Linear Scaling">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Linear Scaling
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Position: 1000 shares of Apple Risk: $50,000</li>
+<li>Position: 2000 shares of Apple Risk: Must be $100,000 (exactly <span class="math inline">\(2\times\)</span>)</li>
+</ul>
+<p><strong>Note:</strong> This assumes no liquidity effects or market impact</p>
+</div>
+</div>
+</section>
+<section id="monotonicity---worse-is-riskier" class="level4">
+<h4 class="anchored" data-anchor-id="monotonicity---worse-is-riskier">Monotonicity - Worse is Riskier</h4>
+<p><em>Intuition:</em> If one portfolio always loses more than another, it’s riskier</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Example: Comparing Portfolios">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Comparing Portfolios
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Portfolio X: Loses $5M in all bad scenarios</li>
+<li>Portfolio Y: Loses $10M in all bad scenarios</li>
+<li>Therefore: <span class="math inline">\(R(Y) \geq R(X)\)</span> must hold</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="translation-invariance---cash-reduces-risk" class="level4">
+<h4 class="anchored" data-anchor-id="translation-invariance---cash-reduces-risk">Translation Invariance - Cash Reduces Risk</h4>
+<p><em>Intuition:</em> Adding $1M cash reduces risk by exactly $1M</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Example: Cash Buffer">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Cash Buffer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Portfolio risk: $10M</li>
+<li>Add $3M cash to portfolio</li>
+<li>New risk: Must be $7M (= $10M - $3M)</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="vars-fatal-flaw-violation-of-subadditivity" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="vars-fatal-flaw-violation-of-subadditivity"><span class="header-section-number">3.2.3</span> VaR’s Fatal Flaw: Violation of Subadditivity</h3>
+<p>VaR satisfies three of the four coherence axioms. Its critical and fatal flaw is the violation of subadditivity - the principle that diversification should reduce risk. This single failure means VaR is not coherent, leading to situations where combining portfolios appears to increase risk and enabling regulatory capital arbitrage.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Classic Textbook Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Classic Textbook Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider two corporate bonds:</p>
+<ul>
+<li>Bond A: Default probability = 0.6%, Loss if default = $100M</li>
+<li>Bond B: Default probability = 0.6%, Loss if default = $100M</li>
+<li>Default correlation = 0 (independent)</li>
+</ul>
+<p><span class="math display">\[\text{VaR}_{99\%}(A) = \$0 \text{ (no default in 99\% of cases)}\]</span> <span class="math display">\[\text{VaR}_{99\%}(B) = \$0 \text{ (no default in 99\% of cases)}\]</span></p>
+<p>Combined portfolio:</p>
+<p><span class="math display">\[P(\text{at least one defaults}) = 0.6\% + 0.6\% - (0.6\% \times 0.6\%) \approx 1.2\%\]</span> <span class="math display">\[\text{VaR}_{99\%}(A+B) = \$100M \text{ (one default occurs)}\]</span></p>
+<p><strong>Violation:</strong> <span class="math display">\[\text{VaR}(A+B) &gt; \text{VaR}(A) + \text{VaR}(B)\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Key Insight:</strong> The fatter the tails, the more likely VaR violates subadditivity</p>
+</div>
+</div>
+<p>The mathematical failure of VaR coherence has profound practical implications that contributed to the 2008 financial crisis.</p>
+<ul>
+<li><strong>Regulatory Capital Arbitrage:</strong> Bank splits into subsidiaries, lower capital requirements with no real risk reduction</li>
+<li><strong>Perverse Portfolio Optimization:</strong> Traders sell deep OTM options: 99% VaR shows profit, but hidden 1% chance of HUGE loss</li>
+<li><strong>Systemic Risk Amplification:</strong> Pre-2008 - Banks created CDOs that passed VaR tests but concentrated extreme tail risk, contributing to system-wide crisis when tails materialized</li>
+</ul>
+</section>
+<section id="the-search-for-better-measures" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="the-search-for-better-measures"><span class="header-section-number">3.2.4</span> The Search for Better Measures</h3>
+<p>The failure of VaR to satisfy coherence requirements led to an urgent search for better risk measures. The requirements were clear:</p>
+<p><strong>Desired Properties:</strong></p>
+<ul>
+<li>Mathematically coherent (satisfy all four axioms)</li>
+<li>Capture tail risk severity</li>
+<li>Computationally tractable</li>
+<li>Intuitive interpretation</li>
+<li>Suitable for regulation</li>
+</ul>
+<p>This search led to Expected Shortfall (ES) and the broader class of spectral risk measures.</p>
+</section>
+<section id="key-takeaways-1" class="level3" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="key-takeaways-1"><span class="header-section-number">3.2.5</span> Key Takeaways</h3>
+<p>The axiomatic approach to risk measures revealed fundamental flaws in VaR:</p>
+<p><strong>Mathematical Foundation:</strong></p>
+<ul>
+<li>Four axioms define coherent risk measures</li>
+<li>VaR violates subadditivity - the diversification principle</li>
+<li>Violation more severe with fat-tailed distributions (i.e., real markets)</li>
+</ul>
+<p><strong>Practical Consequences:</strong></p>
+<ul>
+<li>Regulatory arbitrage opportunities</li>
+<li>Perverse incentives for traders</li>
+<li>Systemic risk accumulation</li>
+<li>Contributed to 2008 financial crisis</li>
+</ul>
+<p><strong>The Path Forward:</strong></p>
+<ul>
+<li>Need measures that are both coherent AND practical</li>
+<li>Expected Shortfall emerges as the solution</li>
+<li>Regulators moving from VaR to ES (Basel III/FRTB)</li>
+</ul>
+</section>
+</section>
+<section id="expected-shortfall-as-the-solution" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="expected-shortfall-as-the-solution"><span class="header-section-number">3.3</span> Expected Shortfall as the Solution</h2>
+<section id="es-definition-and-intuition" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="es-definition-and-intuition"><span class="header-section-number">3.3.1</span> ES Definition and Intuition</h3>
+<p>Expected Shortfall emerged from a simple yet profound question: If VaR tells us the minimum loss in bad scenarios, what about the average loss when things go really wrong? ES answers this by looking beyond the VaR threshold and calculating the expected loss in the tail. This seemingly modest adjustment fixes VaR’s mathematical flaws while providing risk managers with crucial information about extreme scenarios.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="ES Intuitive Definition">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ES Intuitive Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Expected Shortfall (ES):</strong> The average of all losses that exceed the VaR threshold</p>
+</div>
+</div>
+<p>Alternative Names (all referring to the same concept):</p>
+<ul>
+<li>Conditional Value-at-Risk (CVaR)</li>
+<li>Tail Conditional Expectation (TCE)</li>
+<li>Average Value-at-Risk (AVaR)</li>
+<li>Expected Tail Loss (ETL)</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Example: Simple Illustration">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Simple Illustration
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>100 daily loss scenarios, ranked from best to worst</li>
+<li>Losses: -2, -1, 0, 1, 2, …, 95, 96, 97, 120, 150 (in $millions)</li>
+</ul>
+<p><span class="math display">\[\text{VaR}_{95\%} = \$95M \text{ (the 95th worst loss)}\]</span> <span class="math display">\[\text{ES}_{95\%} = \frac{95+96+97+120+150}{5} = \$111.6M\]</span></p>
+<p><strong>Key insight:</strong> ES captures the $120M and $150M extreme losses that VaR ignores!</p>
+</div>
+</div>
+</section>
+<section id="mathematical-formulation" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="mathematical-formulation"><span class="header-section-number">3.3.2</span> Mathematical Formulation</h3>
+<p>The mathematical elegance of ES lies in its dual representation: as an integral of tail VaRs and as a conditional expectation. Both formulations provide different insights into why ES succeeds where VaR fails.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Formal Definition (Integral Form)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Formal Definition (Integral Form)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For a loss random variable <span class="math inline">\(L\)</span> with distribution function <span class="math inline">\(F_L\)</span> and confidence level <span class="math inline">\(\alpha \in (0,1)\)</span>:</p>
+<p><span class="math display">\[ES_\alpha = \frac{1}{1-\alpha} \int_\alpha^1 VaR_u(L) du\]</span></p>
+<p><strong>Interpretation:</strong> ES is the average of all VaR levels from <span class="math inline">\(\alpha\)</span> to 100%</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Conditional Expectation Form (for continuous distributions)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Conditional Expectation Form (for continuous distributions)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[ES_\alpha = E[L | L \geq VaR_\alpha(L)]\]</span></p>
+<p><strong>Interpretation:</strong> ES is the expected loss, given that the loss exceeds VaR</p>
+</div>
+</div>
+<p><strong>Computational Approach - “Tail VaR” Method:</strong></p>
+<ol type="1">
+<li>Slice the tail into <span class="math inline">\(n\)</span> equal-probability segments</li>
+<li>Calculate VaR for each segment</li>
+<li>Average these VaRs</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Example: Computing ES for Normal Distribution">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Computing ES for Normal Distribution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Distribution: Normal(<span class="math inline">\(\mu=0\)</span>, <span class="math inline">\(\sigma=1\)</span>)</li>
+<li>Confidence: 95%</li>
+</ul>
+<p>Calculation process:</p>
+<ul>
+<li>Step 1: 95% VaR = 1.645</li>
+<li>Step 2: Slice tail [95%, 100%] into segments</li>
+<li>Step 3: Calculate VaRs</li>
+</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Segment</th>
+<th style="text-align: center;">Confidence</th>
+<th style="text-align: center;">VaR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">95.5%</td>
+<td style="text-align: center;">1.695</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">96.0%</td>
+<td style="text-align: center;">1.751</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">96.5%</td>
+<td style="text-align: center;">1.812</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">97.0%</td>
+<td style="text-align: center;">1.881</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">97.5%</td>
+<td style="text-align: center;">1.960</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">98.0%</td>
+<td style="text-align: center;">2.054</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">98.5%</td>
+<td style="text-align: center;">2.170</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">99.0%</td>
+<td style="text-align: center;">2.326</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">99.5%</td>
+<td style="text-align: center;">2.576</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>95% ES <span class="math inline">\(\approx\)</span> Average = 2.025</li>
+<li>Exact value: 2.063</li>
+</ul>
+</div>
+</div>
+<p><strong>Key Properties of ES:</strong></p>
+<ul>
+<li>Always <span class="math inline">\(\geq\)</span> corresponding VaR (captures tail severity)</li>
+<li>Continuous in <span class="math inline">\(\alpha\)</span> (no “cliff effects”)</li>
+<li>Accounts for the shape of the entire tail</li>
+<li>Converges smoothly as more data becomes available</li>
+</ul>
+</section>
+<section id="why-es-is-coherent-proving-the-axioms" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="why-es-is-coherent-proving-the-axioms"><span class="header-section-number">3.3.3</span> Why ES is Coherent: Proving the Axioms</h3>
+<p>Expected Shortfall satisfies all four coherence axioms, making it mathematically consistent and economically sensible. Let’s verify each axiom.</p>
+<p><strong>1. Subadditivity ✓</strong></p>
+<p><span class="math display">\[ES(L_1 + L_2) \leq ES(L_1) + ES(L_2)\]</span></p>
+<p><em>Proof:</em> The average of combined tail losses cannot exceed the sum of individual average tail losses due to diversification effects.</p>
+<p><strong>2. Positive Homogeneity ✓</strong></p>
+<p><span class="math display">\[ES(\lambda L) = \lambda \cdot ES(L) \text{ for } \lambda &gt; 0\]</span></p>
+<p><em>Proof:</em> Scaling losses by <span class="math inline">\(\lambda\)</span> scales both the VaR threshold and all tail losses by <span class="math inline">\(\lambda\)</span></p>
+<p><strong>3. Monotonicity ✓</strong></p>
+<p><span class="math display">\[\text{If } L_1 \leq L_2 \text{ everywhere, then } ES(L_1) \leq ES(L_2)\]</span></p>
+<p><em>Proof:</em> If one portfolio always loses more, its average tail loss must be higher</p>
+<p><strong>4. Translation Invariance ✓</strong></p>
+<p><span class="math display">\[ES(L + c) = ES(L) + c\]</span></p>
+<p><em>Proof:</em> Adding constant <span class="math inline">\(c\)</span> to all losses shifts the entire distribution by <span class="math inline">\(c\)</span></p>
+</section>
+<section id="es-vs-var-comparative-analysis" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="es-vs-var-comparative-analysis"><span class="header-section-number">3.3.4</span> ES vs VaR: Comparative Analysis</h3>
+<p>While ES solves VaR’s theoretical problems, it comes with its own practical challenges. Understanding the trade-offs is essential for implementation.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Aspect</th>
+<th style="text-align: center;">VaR</th>
+<th style="text-align: center;">ES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Tail Risk</strong></td>
+<td style="text-align: center;">Ignores severity beyond threshold</td>
+<td style="text-align: center;">Captures full tail severity</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Coherence</strong></td>
+<td style="text-align: center;">Fails (not subadditive)</td>
+<td style="text-align: center;">Satisfies all axioms</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Interpretation</strong></td>
+<td style="text-align: center;">“Minimum loss in worst α% cases”</td>
+<td style="text-align: center;">“Average loss in worst α% cases”</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Backtesting</strong></td>
+<td style="text-align: center;">Simple (count violations)</td>
+<td style="text-align: center;">Complex (need loss magnitudes)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Data Requirements</strong></td>
+<td style="text-align: center;">Robust to outliers</td>
+<td style="text-align: center;">Sensitive to extreme observations</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Computational Cost</strong></td>
+<td style="text-align: center;">Fast</td>
+<td style="text-align: center;">Slower (need full tail)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Regulatory Status</strong></td>
+<td style="text-align: center;">Being phased out</td>
+<td style="text-align: center;">FRTB standard (Basel III)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>When to Use Each:</strong></p>
+<ul>
+<li><strong>Use VaR:</strong> For liquid markets, short horizons, robust systems</li>
+<li><strong>Use ES:</strong> For risk capital, stress testing, regulatory compliance</li>
+<li><strong>Use both:</strong> VaR for limits, ES for capital (common practice)</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Example: Comparing VaR and ES">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Comparing VaR and ES
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Portfolio analysis over 1000 days:</li>
+<li>Distribution: Heavy-tailed (Student-t with 4 df)</li>
+</ul>
+<p><span class="math display">\[\text{VaR}_{95\%} = \$4.2M\]</span> <span class="math display">\[\text{ES}_{95\%} = \$6.8M\]</span></p>
+<p>Interpretation:</p>
+<ul>
+<li><p>95% VaR: “95% confident won’t lose more than $4.2M”</p></li>
+<li><p>95% ES: “In the worst 5% of cases, average loss is $6.8M”</p></li>
+<li><p>ES/VaR ratio = 1.62 (indicates fat tails)</p></li>
+<li><p>For normal distribution: ES/VaR ≈ 1.25</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="spectral-risk-measures-the-general-framework" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="spectral-risk-measures-the-general-framework"><span class="header-section-number">3.3.5</span> Spectral Risk Measures: The General Framework</h3>
+<p>Expected Shortfall belongs to a broader class called spectral risk measures (SRMs), which allow for flexible weighting of different parts of the loss distribution. This generalization provides a unified framework for risk measurement.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Definition of Spectral Risk Measures">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition of Spectral Risk Measures
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[SRM = \int_0^1 \phi(p) \cdot VaR_p(L) dp\]</span></p>
+<p>where <span class="math inline">\(\phi(p)\)</span> is a weighting function satisfying:</p>
+<ul>
+<li><span class="math inline">\(\phi(p) \geq 0\)</span> (non-negative weights)</li>
+<li><span class="math inline">\(\int_0^1 \phi(p) dp = 1\)</span> (weights sum to 1)</li>
+<li><span class="math inline">\(\phi\)</span> is increasing (larger losses get more weight)</li>
+</ul>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 50%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Risk Measure</th>
+<th>Weight Function <span class="math inline">\(\phi(p)\)</span></th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VaR at level <span class="math inline">\(\alpha\)</span></td>
+<td><span class="math inline">\(\delta(p-\alpha)\)</span></td>
+<td>All weight at one point</td>
+</tr>
+<tr class="even">
+<td>ES at level <span class="math inline">\(\alpha\)</span></td>
+<td><span class="math inline">\(\frac{1}{1-\alpha} \cdot \mathbf{1}_{p \geq \alpha}\)</span></td>
+<td>Equal weight in tail</td>
+</tr>
+<tr class="odd">
+<td>Exponential spectral</td>
+<td><span class="math inline">\(\gamma e^{\gamma p}/(e^\gamma - 1)\)</span></td>
+<td>Exponentially increasing weight</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why Spectral Measures Matter:</strong></p>
+<ul>
+<li>Unifying framework for all coherent risk measures</li>
+<li>Can tailor risk aversion profile to institution’s preferences</li>
+<li>Smooth transition between different risk levels</li>
+<li>Avoid arbitrary confidence level choice</li>
+</ul>
+</section>
+<section id="the-regulatory-shift-from-var-to-es" class="level3" data-number="3.3.6">
+<h3 data-number="3.3.6" class="anchored" data-anchor-id="the-regulatory-shift-from-var-to-es"><span class="header-section-number">3.3.6</span> The Regulatory Shift: From VaR to ES</h3>
+<p>The 2008 financial crisis catalyzed a fundamental shift in regulatory thinking, culminating in the Fundamental Review of the Trading Book (FRTB).</p>
+<p><strong>Timeline of Transition:</strong></p>
+<ul>
+<li><strong>1996:</strong> Basel II adopts VaR for market risk</li>
+<li><strong>2008:</strong> Crisis reveals VaR’s tail blindness</li>
+<li><strong>2012:</strong> Basel Committee proposes move to ES</li>
+<li><strong>2016:</strong> FRTB finalized with ES as standard</li>
+<li><strong>2022:</strong> Full implementation begins globally</li>
+</ul>
+<p><strong>Key Changes in FRTB:</strong></p>
+<ul>
+<li>Replace 99% 10-day VaR with 97.5% 10-day ES</li>
+<li>Liquidity horizons: 10, 20, 40, 60, 120 days</li>
+<li>Stressed ES calibration</li>
+<li>Desk-level approval process</li>
+</ul>
+<p><strong>Why 97.5% ES <span class="math inline">\(\approx\)</span> 99% VaR:</strong></p>
+<ul>
+<li>Maintains similar capital levels</li>
+<li>ES at lower confidence more stable than VaR at high confidence</li>
+<li>Better captures tail risk while remaining practical</li>
+</ul>
+</section>
+<section id="key-takeaways-2" class="level3" data-number="3.3.7">
+<h3 data-number="3.3.7" class="anchored" data-anchor-id="key-takeaways-2"><span class="header-section-number">3.3.7</span> Key Takeaways</h3>
+<p>Expected Shortfall represents the evolution of risk measurement from ad-hoc to axiomatic:</p>
+<p><strong>Theoretical Victory:</strong></p>
+<ul>
+<li>Satisfies all coherence axioms</li>
+<li>Captures tail risk severity</li>
+<li>Provides consistent risk aggregation</li>
+</ul>
+<p><strong>Practical Reality:</strong></p>
+<ul>
+<li>More complex to implement and backtest</li>
+<li>Greater data sensitivity</li>
+<li>Computational challenges remain</li>
+</ul>
+<p><strong>The Future:</strong></p>
+<ul>
+<li>ES becoming global regulatory standard</li>
+<li>Spectral measures offer further refinement</li>
+<li>Integration with machine learning methods emerging</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Final Thought:</strong> ES isn’t perfect, but it’s mathematically sound and economically sensible - a vast improvement over VaR for capturing the risks that matter most.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="references" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="references"><span class="header-section-number">3.4</span> References</h2>
+
+
+</section>
+<section id="practice-questions-and-problems" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="practice-questions-and-problems"><span class="header-section-number">3.5</span> Practice Questions and Problems</h2>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./week_02.html" class="pagination-link" aria-label="Revision of Basic Concepts">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Revision of Basic Concepts</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./week_04.html" class="pagination-link" aria-label="Calculating VaR and ES">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Calculating VaR and ES</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
