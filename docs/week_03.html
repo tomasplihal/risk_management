@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Understanding VaR and ES – Risk Management and Financial Institutions</title>
+<title>3&nbsp; Value at Risk - Discovery Through Practice – Risk Management and Financial Institutions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -130,7 +110,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_03.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Understanding VaR and ES</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_03.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Value at Risk - Discovery Through Practice</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -198,19 +178,19 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_03.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Understanding VaR and ES</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Value at Risk - Discovery Through Practice</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Calculating VaR and ES</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Future of Risk Management</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model Risk and Implementation Reality</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Future of Risk Management</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -271,35 +251,32 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#traditional-vs.-coherent-risk-measures" id="toc-traditional-vs.-coherent-risk-measures" class="nav-link active" data-scroll-target="#traditional-vs.-coherent-risk-measures"><span class="header-section-number">3.1</span> Traditional vs.&nbsp;Coherent Risk Measures</a>
+  <li><a href="#block-a-what-risk-number-do-we-need" id="toc-block-a-what-risk-number-do-we-need" class="nav-link active" data-scroll-target="#block-a-what-risk-number-do-we-need">Block A: What Risk Number Do We Need?</a>
   <ul class="collapse">
-  <li><a href="#why-we-need-risk-measures-in-modern-finance" id="toc-why-we-need-risk-measures-in-modern-finance" class="nav-link" data-scroll-target="#why-we-need-risk-measures-in-modern-finance"><span class="header-section-number">3.1.1</span> Why We Need Risk Measures in Modern Finance</a></li>
-  <li><a href="#the-journey-from-variance-to-var" id="toc-the-journey-from-variance-to-var" class="nav-link" data-scroll-target="#the-journey-from-variance-to-var"><span class="header-section-number">3.1.2</span> The Journey from Variance to VaR</a></li>
-  <li><a href="#the-pl-convention---setting-our-standard" id="toc-the-pl-convention---setting-our-standard" class="nav-link" data-scroll-target="#the-pl-convention---setting-our-standard"><span class="header-section-number">3.1.3</span> The P/L Convention - Setting Our Standard</a></li>
-  <li><a href="#value-at-risk-the-revolutionary-simple-answer" id="toc-value-at-risk-the-revolutionary-simple-answer" class="nav-link" data-scroll-target="#value-at-risk-the-revolutionary-simple-answer"><span class="header-section-number">3.1.4</span> Value-at-Risk: The Revolutionary Simple Answer</a></li>
-  <li><a href="#vars-dangerous-blind-spot" id="toc-vars-dangerous-blind-spot" class="nav-link" data-scroll-target="#vars-dangerous-blind-spot"><span class="header-section-number">3.1.5</span> VaR’s Dangerous Blind Spot</a></li>
-  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways"><span class="header-section-number">3.1.6</span> Key Takeaways</a></li>
+  <li><a href="#activity-1-the-variance-approach" id="toc-activity-1-the-variance-approach" class="nav-link" data-scroll-target="#activity-1-the-variance-approach">Activity 1: The Variance Approach</a></li>
+  <li><a href="#activity-2-discovery-through-sorting" id="toc-activity-2-discovery-through-sorting" class="nav-link" data-scroll-target="#activity-2-discovery-through-sorting">Activity 2: Discovery Through Sorting</a></li>
+  <li><a href="#theory-formalizing-value-at-risk" id="toc-theory-formalizing-value-at-risk" class="nav-link" data-scroll-target="#theory-formalizing-value-at-risk">Theory: Formalizing Value-at-Risk</a></li>
+  <li><a href="#activity-3-quick-application" id="toc-activity-3-quick-application" class="nav-link" data-scroll-target="#activity-3-quick-application">Activity 3: Quick Application</a></li>
   </ul></li>
-  <li><a href="#the-axiomatic-foundation-of-coherent-risk-measures" id="toc-the-axiomatic-foundation-of-coherent-risk-measures" class="nav-link" data-scroll-target="#the-axiomatic-foundation-of-coherent-risk-measures"><span class="header-section-number">3.2</span> The Axiomatic Foundation of Coherent Risk Measures</a>
+  <li><a href="#block-b-two-ways-to-calculate-var" id="toc-block-b-two-ways-to-calculate-var" class="nav-link" data-scroll-target="#block-b-two-ways-to-calculate-var">Block B: Two Ways to Calculate VaR</a>
   <ul class="collapse">
-  <li><a href="#what-makes-a-good-risk-measure" id="toc-what-makes-a-good-risk-measure" class="nav-link" data-scroll-target="#what-makes-a-good-risk-measure"><span class="header-section-number">3.2.1</span> What Makes a “Good” Risk Measure?</a></li>
-  <li><a href="#understanding-each-axiom" id="toc-understanding-each-axiom" class="nav-link" data-scroll-target="#understanding-each-axiom"><span class="header-section-number">3.2.2</span> Understanding Each Axiom</a></li>
-  <li><a href="#vars-fatal-flaw-violation-of-subadditivity" id="toc-vars-fatal-flaw-violation-of-subadditivity" class="nav-link" data-scroll-target="#vars-fatal-flaw-violation-of-subadditivity"><span class="header-section-number">3.2.3</span> VaR’s Fatal Flaw: Violation of Subadditivity</a></li>
-  <li><a href="#the-search-for-better-measures" id="toc-the-search-for-better-measures" class="nav-link" data-scroll-target="#the-search-for-better-measures"><span class="header-section-number">3.2.4</span> The Search for Better Measures</a></li>
-  <li><a href="#key-takeaways-1" id="toc-key-takeaways-1" class="nav-link" data-scroll-target="#key-takeaways-1"><span class="header-section-number">3.2.5</span> Key Takeaways</a></li>
+  <li><a href="#theory-historical-simulation-vs.-parametric-approach" id="toc-theory-historical-simulation-vs.-parametric-approach" class="nav-link" data-scroll-target="#theory-historical-simulation-vs.-parametric-approach">Theory: Historical Simulation vs.&nbsp;Parametric Approach</a></li>
+  <li><a href="#activity-4-when-methods-diverge" id="toc-activity-4-when-methods-diverge" class="nav-link" data-scroll-target="#activity-4-when-methods-diverge">Activity 4: When Methods Diverge</a></li>
+  <li><a href="#theory-time-scaling-and-the-square-root-rule" id="toc-theory-time-scaling-and-the-square-root-rule" class="nav-link" data-scroll-target="#theory-time-scaling-and-the-square-root-rule">Theory: Time Scaling and the Square-Root Rule</a></li>
+  <li><a href="#activity-5-square-root-rule" id="toc-activity-5-square-root-rule" class="nav-link" data-scroll-target="#activity-5-square-root-rule">Activity 5: Square-Root Rule</a></li>
+  <li><a href="#activity-6-discussion" id="toc-activity-6-discussion" class="nav-link" data-scroll-target="#activity-6-discussion">Activity 6: Discussion</a></li>
   </ul></li>
-  <li><a href="#expected-shortfall-as-the-solution" id="toc-expected-shortfall-as-the-solution" class="nav-link" data-scroll-target="#expected-shortfall-as-the-solution"><span class="header-section-number">3.3</span> Expected Shortfall as the Solution</a>
+  <li><a href="#block-c-when-var-fails" id="toc-block-c-when-var-fails" class="nav-link" data-scroll-target="#block-c-when-var-fails">Block C: When VaR Fails</a>
   <ul class="collapse">
-  <li><a href="#es-definition-and-intuition" id="toc-es-definition-and-intuition" class="nav-link" data-scroll-target="#es-definition-and-intuition"><span class="header-section-number">3.3.1</span> ES Definition and Intuition</a></li>
-  <li><a href="#mathematical-formulation" id="toc-mathematical-formulation" class="nav-link" data-scroll-target="#mathematical-formulation"><span class="header-section-number">3.3.2</span> Mathematical Formulation</a></li>
-  <li><a href="#why-es-is-coherent-proving-the-axioms" id="toc-why-es-is-coherent-proving-the-axioms" class="nav-link" data-scroll-target="#why-es-is-coherent-proving-the-axioms"><span class="header-section-number">3.3.3</span> Why ES is Coherent: Proving the Axioms</a></li>
-  <li><a href="#es-vs-var-comparative-analysis" id="toc-es-vs-var-comparative-analysis" class="nav-link" data-scroll-target="#es-vs-var-comparative-analysis"><span class="header-section-number">3.3.4</span> ES vs VaR: Comparative Analysis</a></li>
-  <li><a href="#spectral-risk-measures-the-general-framework" id="toc-spectral-risk-measures-the-general-framework" class="nav-link" data-scroll-target="#spectral-risk-measures-the-general-framework"><span class="header-section-number">3.3.5</span> Spectral Risk Measures: The General Framework</a></li>
-  <li><a href="#the-regulatory-shift-from-var-to-es" id="toc-the-regulatory-shift-from-var-to-es" class="nav-link" data-scroll-target="#the-regulatory-shift-from-var-to-es"><span class="header-section-number">3.3.6</span> The Regulatory Shift: From VaR to ES</a></li>
-  <li><a href="#key-takeaways-2" id="toc-key-takeaways-2" class="nav-link" data-scroll-target="#key-takeaways-2"><span class="header-section-number">3.3.7</span> Key Takeaways</a></li>
+  <li><a href="#activity-7-the-diversification-paradox" id="toc-activity-7-the-diversification-paradox" class="nav-link" data-scroll-target="#activity-7-the-diversification-paradox">Activity 7: The Diversification Paradox</a></li>
+  <li><a href="#theory-coherent-risk-measure" id="toc-theory-coherent-risk-measure" class="nav-link" data-scroll-target="#theory-coherent-risk-measure">Theory: Coherent Risk Measure</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">3.4</span> References</a></li>
-  <li><a href="#practice-questions-and-problems" id="toc-practice-questions-and-problems" class="nav-link" data-scroll-target="#practice-questions-and-problems"><span class="header-section-number">3.5</span> Practice Questions and Problems</a></li>
+  <li><a href="#block-d-real-applications-and-limitations" id="toc-block-d-real-applications-and-limitations" class="nav-link" data-scroll-target="#block-d-real-applications-and-limitations">Block D: Real Applications and Limitations</a>
+  <ul class="collapse">
+  <li><a href="#activity-8-reflection-questions" id="toc-activity-8-reflection-questions" class="nav-link" data-scroll-target="#activity-8-reflection-questions">Activity 8: Reflection Questions</a></li>
+  <li><a href="#case-study-jp-morgans-london-whale-2012" id="toc-case-study-jp-morgans-london-whale-2012" class="nav-link" data-scroll-target="#case-study-jp-morgans-london-whale-2012">Case Study: JP Morgan’s London Whale (2012)</a></li>
+  </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
   </ul>
 </nav>
     </div>
@@ -308,7 +285,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Understanding VaR and ES</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Value at Risk - Discovery Through Practice</span></h1>
 </div>
 
 
@@ -348,151 +325,62 @@ References
 </div>
 <p><strong>Learning Outcomes:</strong></p>
 <ul>
-<li>Calculate and interpret Value-at-Risk (VaR) and Expected Shortfall (ES)</li>
-<li>Evaluate whether a risk measure is coherent by testing the four axioms</li>
-<li>Explain why VaR fails subadditivity and demonstrate this failure</li>
-<li>Compare and contrast VaR and ES (tail risk capture, complexity, and regulations)</li>
-<li>Analyze the real-world implications of using non-coherent risk measures</li>
-<li>Justify the regulatory shift from VaR to ES in the Basel III/FRTB framework</li>
+<li>Calculate VaR using historical simulation and parametric methods for real portfolio data</li>
+<li>Identify when VaR violates subadditivity and explain the risk management implications</li>
+<li>Apply the square-root rule for time scaling and recognize when this assumption breaks</li>
+<li>Interpret VaR numbers in practical contexts and communicate limitations to stakeholders</li>
+<li>Evaluate why VaR fails to capture tail risk severity through real-world examples</li>
 </ul>
-<section id="traditional-vs.-coherent-risk-measures" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="traditional-vs.-coherent-risk-measures"><span class="header-section-number">3.1</span> Traditional vs.&nbsp;Coherent Risk Measures</h2>
-<section id="why-we-need-risk-measures-in-modern-finance" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="why-we-need-risk-measures-in-modern-finance"><span class="header-section-number">3.1.1</span> Why We Need Risk Measures in Modern Finance</h3>
-<p>Modern financial institutions manage portfolios of staggering complexity. A typical trading floor handles thousands of positions across global markets - equity derivatives in Tokyo, currency swaps in London, structured products in New York. When the chief risk officer asks “How much could we lose today?”, human intuition alone cannot provide the answer.</p>
-<p><strong>Core Challenges:</strong></p>
-<ul>
-<li>Portfolio complexity beyond human comprehension</li>
-<li>Need to aggregate diverse risks into actionable numbers</li>
-<li>Balance between risk-taking and risk control</li>
-<li>Regulatory requirements for quantitative risk reporting</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
+<section id="block-a-what-risk-number-do-we-need" class="level2">
+<h2 class="anchored" data-anchor-id="block-a-what-risk-number-do-we-need">Block A: What Risk Number Do We Need?</h2>
+<p>You’ve just been hired as a risk analyst at an equity trading desk. Your manager hands you a CSV file with the last 250 days of S&amp;P 500 returns and says:</p>
+<blockquote class="blockquote">
+<p>The CEO will ask me tomorrow morning: ‘How much could we lose on our $100 million SPY position in a day?’ I need a single number by 4 PM.</p>
+</blockquote>
+<p><a href="data/SPY_returns_250.csv" download="" class="btn btn-primary"> <i class="bi bi-download"></i> Download Dataset (250 Days) </a></p>
+<section id="activity-1-the-variance-approach" class="level3">
+<h3 class="anchored" data-anchor-id="activity-1-the-variance-approach">Activity 1: The Variance Approach</h3>
+<p>Load the SPY returns data (<code>SPY_returns_250.csv</code>) - one year of daily returns, small enough to inspect in Excel:</p>
+<p><strong>Task 1.1:</strong> Calculate the standard deviation of all 250 returns. What is the daily volatility?</p>
+<p><strong>Task 1.2:</strong> If we define risk as “2-sigma events,” what loss level should we report for our $100M position?</p>
+<p><strong>Task 1.3:</strong> Find the best and worst daily returns in the dataset. Are they roughly symmetric around the mean? What does this tell you about using standard deviation for risk measurement?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="P/L Convention">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+P/L Convention
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Key Insight:</strong> Risk management isn’t about avoiding losses - it’s about understanding what risks you’re taking and ensuring they’re intentional and compensated.</p>
+<p><strong>We use Profit/Loss (P/L) data where:</strong></p>
+<ul>
+<li>Positive = profits (good)</li>
+<li>Negative = losses (bad)</li>
+</ul>
+<p>For a $100M position:</p>
+<ul>
+<li>A -2% return means we lost $2 million</li>
+<li>A +1.5% return means we gained $1.5 million</li>
+</ul>
+<p>This matches trader thinking and system reports.</p>
 </div>
 </div>
 </section>
-<section id="the-journey-from-variance-to-var" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="the-journey-from-variance-to-var"><span class="header-section-number">3.1.2</span> The Journey from Variance to VaR</h3>
-<p>Harry Markowitz revolutionized finance in 1952 by making risk mathematically tractable. For the first time, risk wasn’t just a vague concept but something that could be calculated and optimized.</p>
-<section id="markowitzs-framework-modern-portfolio-theory" class="level4">
-<h4 class="anchored" data-anchor-id="markowitzs-framework-modern-portfolio-theory">Markowitz’s Framework (Modern Portfolio Theory)</h4>
+<section id="activity-2-discovery-through-sorting" class="level3">
+<h3 class="anchored" data-anchor-id="activity-2-discovery-through-sorting">Activity 2: Discovery Through Sorting</h3>
+<p><strong>Task 2.1:</strong> Open <code>SPY_returns_250.csv</code> and sort the returns column from worst to best. What are the 5 worst daily returns?</p>
+<p><strong>Task 2.2:</strong> For 95% confidence with 250 observations:</p>
 <ul>
-<li><strong>Risk measure:</strong> Variance <span class="math inline">\(\sigma^2\)</span> (or standard deviation <span class="math inline">\(\sigma\)</span>)</li>
-<li><strong>Key formula:</strong> Portfolio variance accounts for correlations</li>
+<li>How many days would you allow as “exceptional bad days”?</li>
+<li>What loss value sits at this cutoff?</li>
+<li>For our $100M position, what dollar loss does this represent?</li>
 </ul>
-<p><span class="math display">\[
-\sigma_p^2 = \sum_i w_i^2\sigma_i^2 + \sum_i \sum_{j \neq i} w_iw_j\rho_{ij}\sigma_i\sigma_j
-\]</span></p>
-<ul>
-<li><strong>Main insight:</strong> Diversification reduces risk</li>
-<li><strong>Optimization:</strong> Maximize return/risk ratio (<span class="math inline">\(\mu_p/\sigma_p\)</span>)</li>
-</ul>
+<p><strong>Task 2.3:</strong> Compare your answer from Task 2.2 with the “2-sigma” approach from Task 1.2. Which gives a larger loss estimate? Why might they differ?</p>
 </section>
-<section id="why-variance-failed-as-a-risk-measure" class="level4">
-<h4 class="anchored" data-anchor-id="why-variance-failed-as-a-risk-measure">Why Variance Failed as a Risk Measure</h4>
-<p><strong>Symmetry Problem:</strong></p>
-<ul>
-<li>Treats upside and downside equally</li>
-<li>50% gain = same “risk” as 50% loss</li>
-<li>Investors care more about losses than gains</li>
-</ul>
-<p><strong>Empirical Failures:</strong></p>
-<ul>
-<li>Financial returns exhibit “fat tails”</li>
-<li>Example: 1987 crash (-22% in one day)
-<ul>
-<li>Under normal distribution: Should occur once per billion years</li>
-<li>Reality: Happened in our lifetime</li>
-</ul></li>
-<li>Extreme events far more common than theory predicts</li>
-</ul>
-<p><strong>Derivatives Revolution (1980s):</strong></p>
-<ul>
-<li>Options have asymmetric payoffs</li>
-<li>Portfolio of options: Low variance but huge downside potential</li>
-<li>Variance cannot capture nonlinear risks</li>
-</ul>
-</section>
-</section>
-<section id="the-pl-convention---setting-our-standard" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="the-pl-convention---setting-our-standard"><span class="header-section-number">3.1.3</span> The P/L Convention - Setting Our Standard</h3>
-<p>One of the most persistent sources of confusion in risk management is whether to work with <strong>P/L</strong> (Profit and Loss) or <strong>L/P</strong> (Loss and Profit) data. This seemingly simple choice affects every formula, every interpretation, and every risk system. Different textbooks, papers, and systems use different conventions, often without clearly stating which they’ve chosen.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 42%">
-<col style="width: 41%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Characteristic</th>
-<th style="text-align: center;"><strong>P/L (Returns as-is)</strong></th>
-<th style="text-align: center;"><strong>L/P (Inverted)</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><strong>Sign of Profits</strong></td>
-<td style="text-align: center;">Positive</td>
-<td style="text-align: center;">Negative</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>Sign of Losses</strong></td>
-<td style="text-align: center;">Negative</td>
-<td style="text-align: center;">Positive</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>Interpretation</strong></td>
-<td style="text-align: center;">+5% is good, -5% is bad</td>
-<td style="text-align: center;">+5% loss is bad, -5% loss (profit) is good</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>VaR/ES Focus</strong></td>
-<td style="text-align: center;">Left tail (negative returns)</td>
-<td style="text-align: center;">Right tail (positive losses)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>Used By</strong></td>
-<td style="text-align: center;">Most trading systems, Bloomberg, many practitioners</td>
-<td style="text-align: center;">Many textbooks, Basel documents, some risk systems</td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-default callout-important callout-titled" title="Our Course Standard">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Our Course Standard
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>For all future lectures, we will use the P/L convention</strong> for these reasons:</p>
-<ol type="1">
-<li><strong>Intuitive</strong>: Positive returns are good, negative are bad - matches human thinking</li>
-<li><strong>Industry Standard</strong>: Most trading and portfolio systems use P/L</li>
-<li><strong>Direct Interpretation</strong>: No mental sign-flipping when reading results</li>
-<li><strong>Consistency</strong>: P/L statements, risk reports, and models all align</li>
-</ol>
-<p><strong>Remember</strong>: VaR and ES are always reported as <strong>positive numbers</strong> representing potential losses, regardless of the convention used internally.</p>
-</div>
-</div>
-<p>The choice of convention doesn’t affect the risk measurement - a 5% loss is a 5% loss. But being consistent and clear about which convention you’re using is essential for correct implementation and interpretation. When reading any risk management material, always check: <strong>Are they using returns (P/L) or losses (L/P)?</strong></p>
-</section>
-<section id="value-at-risk-the-revolutionary-simple-answer" class="level3" data-number="3.1.4">
-<h3 data-number="3.1.4" class="anchored" data-anchor-id="value-at-risk-the-revolutionary-simple-answer"><span class="header-section-number">3.1.4</span> Value-at-Risk: The Revolutionary Simple Answer</h3>
-<p>The breakthrough came from J.P. Morgan in the early 1990s. CEO Dennis Weatherstone’s daily request for a single risk number at 4:15 PM spawned an industry standard that would transform risk management globally.</p>
+<section id="theory-formalizing-value-at-risk" class="level3">
+<h3 class="anchored" data-anchor-id="theory-formalizing-value-at-risk">Theory: Formalizing Value-at-Risk</h3>
 <div class="callout callout-style-default callout-tip callout-titled" title="VaR Definition">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -503,141 +391,244 @@ VaR Definition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><span class="math display">\[\text{VaR}_\alpha(L) = \inf\{l : F_L(l) \geq \alpha\}\]</span></p>
-<p>Where:</p>
-<ul>
-<li><span class="math inline">\(\text{VaR}_\alpha(L)\)</span> = Value-at-Risk at confidence level <span class="math inline">\(\alpha\)</span> for loss variable <span class="math inline">\(L\)</span></li>
-<li><span class="math inline">\(F_L(l)\)</span> = Cumulative distribution function of losses, i.e., <span class="math inline">\(P(L \leq l)\)</span></li>
-<li><span class="math inline">\(l\)</span> = A specific loss value</li>
-<li><span class="math inline">\(\inf\)</span> = Infimum (smallest value) of the set</li>
-</ul>
-<p><strong>Interpretation:</strong> “We are <span class="math inline">\(\alpha\)</span>% confident we won’t lose more than VaR over time horizon <span class="math inline">\(h\)</span>”</p>
+<p><strong>Value-at-Risk (VaR)</strong> is the loss threshold that will not be exceeded with <span class="math inline">\(\alpha\)</span>% probability over a specified time horizon <span class="math inline">\(h\)</span>.</p>
 </div>
 </div>
-<p><strong>Three Essential Components:</strong></p>
+<p><strong>Mathematical Definition:</strong></p>
+<p>For confidence level <span class="math inline">\(\alpha \in (0,1)\)</span> and loss random variable <span class="math inline">\(L\)</span>: <span class="math display">\[\text{VaR}_\alpha = \inf\{l \in \mathbb{R} : P(L &gt; l) \leq 1-\alpha\}\]</span></p>
+<blockquote class="blockquote">
+<p>VaR is the smallest loss value <span class="math inline">\(l\)</span> such that the probability of exceeding <span class="math inline">\(l\)</span> is at most <span class="math inline">\((1-\alpha)\)</span></p>
+</blockquote>
+<p>Equivalently, using the loss distribution’s quantile function: <span class="math display">\[\text{VaR}_\alpha = F_L^{-1}(1-\alpha)\]</span></p>
+<p>Where <span class="math inline">\(F_L^{-1}\)</span> is the inverse cumulative distribution function (CDF), also called the quantile function.</p>
+<blockquote class="blockquote">
+<p>VaR is the <span class="math inline">\((1-\alpha)\)</span>-quantile of the loss distribution</p>
+</blockquote>
+<p><strong>Three essential components:</strong></p>
+<ol type="1">
+<li>Confidence level (<span class="math inline">\(\alpha\)</span>): The probability that losses will not exceed VaR</li>
+<li>Time horizon (<span class="math inline">\(h\)</span>): The period over which losses are measured</li>
+<li>Loss amount: The monetary value at risk</li>
+</ol>
+<p><strong>Interpretation:</strong></p>
 <ul>
-<li><strong>Confidence level (<span class="math inline">\(\alpha\)</span>):</strong> Typically 95% or 99%</li>
-<li><strong>Time horizon (<span class="math inline">\(h\)</span>):</strong> 1 day, 10 days, etc.</li>
-<li><strong>Loss amount:</strong> In currency units (USD, EUR, etc.)</li>
+<li>“1-day 95% VaR = $X” means we expect to lose less than $X on 95% of days</li>
+<li>On 5% of days (about once per month), we expect to lose more than $X.</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled" title="Example">
+</section>
+<section id="activity-3-quick-application" class="level3">
+<h3 class="anchored" data-anchor-id="activity-3-quick-application">Activity 3: Quick Application</h3>
+<p><strong>Task 3.1:</strong> Interpretation Check:</p>
+<ul>
+<li>If your 1-day 99% VaR is $4M, how often do you expect to exceed this loss?</li>
+<li>Does VaR tell us the maximum possible loss?</li>
+<li>Why might the CEO prefer one number (VaR) rather than the full distribution?</li>
+</ul>
+<p><strong>Task 3.2:</strong> Using your sorted SPY returns, calculate the 99% VaR for the $100M position:</p>
+<ul>
+<li>Which observation should you use?</li>
+<li>What is the corresponding return?</li>
+<li>What is the VaR in dollars?</li>
+</ul>
+<p><strong>Task 3.3:</strong> Look at your 99% VaR calculation:</p>
+<ul>
+<li>Is this enough data to be confident about tail risk?</li>
+<li>What could go wrong with such limited tail observations?</li>
+</ul>
+</section>
+</section>
+<section id="block-b-two-ways-to-calculate-var" class="level2">
+<h2 class="anchored" data-anchor-id="block-b-two-ways-to-calculate-var">Block B: Two Ways to Calculate VaR</h2>
+<p>Now we’ll use 4 years of SPY data (<code>SPY_returns_1000.csv</code>) for a more robust analysis.</p>
+<p><a href="data/SPY_returns_1000.csv" download="" class="btn btn-primary"> <i class="bi bi-download"></i> Download Dataset (1000 Days) </a></p>
+<section id="theory-historical-simulation-vs.-parametric-approach" class="level3">
+<h3 class="anchored" data-anchor-id="theory-historical-simulation-vs.-parametric-approach">Theory: Historical Simulation vs.&nbsp;Parametric Approach</h3>
+<p>Let’s calculate VaR using the historical simulation method.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Historical Simulation">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example
+Historical Simulation
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p><strong>Step 1:</strong> Sort all daily returns from worst to best</p>
+<p><strong>Step 2:</strong> Determine the position for your chosen confidence level <span class="math inline">\(\alpha\)</span>%:</p>
 <ul>
-<li>Portfolio value: $100 million</li>
-<li>Daily volatility: <span class="math inline">\(\sigma = 2\%\)</span></li>
-<li>Mean return: <span class="math inline">\(\mu = 0\)</span></li>
-<li>Assume normal distribution</li>
+<li>Number of exceptions allowed: <span class="math inline">\(n \times (1-\alpha)\)</span></li>
+<li>Round conservatively to find the position <span class="math inline">\(k\)</span></li>
+<li>The <span class="math inline">\(k\)</span>-th worst observation is your VaR</li>
 </ul>
-<p><span class="math display">\[\text{VaR}_{95\%} = \$100M \times 0.02 \times 1.645 = \$3.29M\]</span> <span class="math display">\[\text{VaR}_{99\%} = \$100M \times 0.02 \times 2.326 = \$4.65M\]</span></p>
-<p>The <span class="math inline">\(\text{VaR}_{99\%}\)</span> indicates that we are 99% confident that the portfolio will not lose more than $4.65 million tomorrow.</p>
+<p><strong>Step 3:</strong> Convert the return to dollar loss for your portfolio value</p>
 </div>
 </div>
-<p><strong>Why VaR Conquered the Financial World:</strong></p>
+<p>Now let’s calculate VaR assuming returns follow a normal distribution.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Parametric Approach - Normal Distribution">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Parametric Approach - Normal Distribution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Step 1:</strong> Calculate the distribution parameters from your data:</p>
 <ul>
-<li><strong>Intuitive:</strong> Speaks the language of senior management (dollars)</li>
-<li><strong>Universal:</strong> Same framework for any portfolio</li>
-<li><strong>Regulatory blessing:</strong> Basel II Market Risk Amendment (1996)</li>
-<li><strong>Flexible:</strong> Historical simulation, parametric, Monte Carlo methods</li>
+<li>Sample mean: <span class="math inline">\(\mu = \frac{1}{n}\sum_{i=1}^{n} r_i\)</span></li>
+<li>Sample standard deviation: <span class="math inline">\(\sigma = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(r_i - \mu)^2}\)</span></li>
 </ul>
+<p><strong>Step 2:</strong> Apply the parametric VaR formula using the appropriate z-score: <span class="math display">\[\text{VaR}_\alpha = -(\mu + \sigma \times z_{1-\alpha})\]</span></p>
+<p>where <span class="math inline">\(z_{1-\alpha}\)</span> is the standard normal quantile</p>
+<p>To find <span class="math inline">\(z_{1-\alpha}\)</span>, you can use the Excel function <code>NORM.INV(1-α, 0, 1)</code></p>
+</div>
+</div>
 </section>
-<section id="vars-dangerous-blind-spot" class="level3" data-number="3.1.5">
-<h3 data-number="3.1.5" class="anchored" data-anchor-id="vars-dangerous-blind-spot"><span class="header-section-number">3.1.5</span> VaR’s Dangerous Blind Spot</h3>
-<p>Despite its success, VaR harbors a fundamental flaw that would contribute to the 2008 financial crisis. It answers “what’s the minimum loss in bad scenarios?” but says nothing about the magnitude of losses beyond that point.</p>
-<section id="the-tail-risk-problem" class="level4">
-<h4 class="anchored" data-anchor-id="the-tail-risk-problem">The Tail Risk Problem</h4>
+<section id="activity-4-when-methods-diverge" class="level3">
+<h3 class="anchored" data-anchor-id="activity-4-when-methods-diverge">Activity 4: When Methods Diverge</h3>
+<p>Let’s systematically compare the two main VaR approaches.</p>
+<p><strong>Task 4.1:</strong> Create a comparison table:</p>
+<ul>
+<li>Confidence levels = 90%, 95%, 97.5%, 99%, 99.9%</li>
+<li>Calculate VaR using historical simulation and parametric approach</li>
+</ul>
+<p><strong>Task 4.2:</strong> Discussion Questions</p>
+<ol type="1">
+<li>At which confidence levels do the methods diverge most?</li>
+<li>Does the parametric 99.9% VaR exceed the worst historical loss? What does this imply?</li>
+<li>Which method would you trust more for extreme events?</li>
+</ol>
+</section>
+<section id="theory-time-scaling-and-the-square-root-rule" class="level3">
+<h3 class="anchored" data-anchor-id="theory-time-scaling-and-the-square-root-rule">Theory: Time Scaling and the Square-Root Rule</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Scaling VaR Across Time Horizons">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Scaling VaR Across Time Horizons
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>The Square-Root Rule:</strong> Under specific assumptions, VaR scales with the square root of time:</p>
+<p><span class="math display">\[\text{VaR}_{h\text{-day}} = \text{VaR}_{1\text{-day}} \times \sqrt{h}\]</span></p>
+<p><strong>Required assumptions:</strong></p>
+<ol type="1">
+<li>Returns are independent across days (no autocorrelation)</li>
+<li>Returns are identically distributed (stable volatility)</li>
+<li>No mean reversion or momentum</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="activity-5-square-root-rule" class="level3">
+<h3 class="anchored" data-anchor-id="activity-5-square-root-rule">Activity 5: Square-Root Rule</h3>
+<p><strong>Task 5.1:</strong> Test the square-root rule with real data</p>
+<ul>
+<li>Calculate 10-day returns</li>
+<li>Calculate actual 10-day 99% VaR</li>
+<li>Calculate 10-day 99% VaR using the square-root rule from daily returns</li>
+<li>When might this scaling break down?</li>
+</ul>
+<p><strong>Task 5.2:</strong> A risk manager says:</p>
+<blockquote class="blockquote">
+<p>Our 1-day VaR is $5M, so our annual VaR is <span class="math inline">\(\$5M \times \sqrt{250} = \$79M\)</span>.</p>
+</blockquote>
+<ul>
+<li>What’s wrong with this logic?</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Key Insight">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The square-root rule is widely used but fragile. In crisis periods when you need VaR most, the independence assumption fails spectacularly as correlations spike and volatility clusters.</p>
+</div>
+</div>
+</section>
+<section id="activity-6-discussion" class="level3">
+<h3 class="anchored" data-anchor-id="activity-6-discussion">Activity 6: Discussion</h3>
+<p><strong>Task 6.1:</strong> You now have several VaR numbers from different methods. How do you decide which to report to the CEO?</p>
+<p><strong>Task 6.2:</strong> What key information is still missing from any VaR number?</p>
+</section>
+</section>
+<section id="block-c-when-var-fails" class="level2">
+<h2 class="anchored" data-anchor-id="block-c-when-var-fails">Block C: When VaR Fails</h2>
+<section id="activity-7-the-diversification-paradox" class="level3">
+<h3 class="anchored" data-anchor-id="activity-7-the-diversification-paradox">Activity 7: The Diversification Paradox</h3>
+<p>Consider two corporate bonds in your portfolio:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Scenario</th>
-<th>Portfolio A</th>
-<th>Portfolio B</th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Bond A</th>
+<th style="text-align: center;">Bond B</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>99% VaR</td>
-<td>$10 million</td>
-<td>$10 million</td>
+<td style="text-align: center;"><strong>Notional</strong></td>
+<td style="text-align: center;">$100M</td>
+<td style="text-align: center;">$100M</td>
 </tr>
 <tr class="even">
-<td>Actual loss when VaR breached</td>
-<td>$11-12 million</td>
-<td>$100+ million</td>
+<td style="text-align: center;"><strong>Default Probability</strong></td>
+<td style="text-align: center;">0.6%</td>
+<td style="text-align: center;">0.6%</td>
 </tr>
 <tr class="odd">
-<td>VaR Assessment</td>
-<td>“Equal risk”</td>
-<td>“Equal risk”</td>
+<td style="text-align: center;"><strong>Recovery if Default</strong></td>
+<td style="text-align: center;">$0</td>
+<td style="text-align: center;">$0</td>
 </tr>
 <tr class="even">
-<td>Reality</td>
-<td>Manageable</td>
-<td>Catastrophic</td>
+<td style="text-align: center;"><strong>Mutual Correlation</strong></td>
+<td style="text-align: center;">0 (independent)</td>
+<td style="text-align: center;">0 (independent)</td>
 </tr>
 </tbody>
 </table>
-<div class="callout callout-style-default callout-note callout-titled" title="Real Trading Floor Example">
+<p><strong>Task 7.1:</strong> Calculate 99% VaR for Bonds A and B separately</p>
+<ul>
+<li>In 99% of scenarios, what happens?</li>
+<li>In 1% of scenarios, what is the loss?</li>
+<li>What is the 99% VaR value?</li>
+</ul>
+<p><strong>Task 7.2:</strong> Calculate 99% VaR for the combined portfolio (A + B)</p>
+<ul>
+<li>Probability that neither defaults?</li>
+<li>Probability that at least one defaults?</li>
+<li>Probability that both default?</li>
+<li>What is the 99% VaR value?</li>
+</ul>
+<p><strong>Task 7.3:</strong> Compare your results</p>
+<p><strong>Task 7.4:</strong> Your bank could split the portfolio into two separate legal entities, each holding one bond. What happens to regulatory capital requirements if capital is based on VaR?</p>
+<p><strong>Task 7.5:</strong> A trader discovers that selling deep out-of-the-money options shows zero VaR most days. Should you be concerned? Why?</p>
+<p><strong>Task 7.6:</strong> You’re allocating risk limits to two trading desks. If Desk A has VaR limit of $10M and Desk B has $8M, can you be sure the combined risk is less than $18M?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Real-world consideration">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Real Trading Floor Example
+Real-world consideration
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>Strategy: Sell deep out-of-the-money options</li>
-<li>99% of days: Collect premium (looks great!)</li>
-<li>1% of days: Massive losses (firm-threatening)</li>
-<li>VaR perspective: Low risk strategy</li>
-<li>Reality: “Picking up nickels in front of a steamroller” (Joe Ritchie, CRT, 2002)</li>
-</ul>
+<p>This property contributed to the 2008 crisis. Banks created structures that minimized VaR while concentrating tail risk. When the “impossible” happened, multiple firms failed simultaneously.</p>
 </div>
 </div>
 </section>
-<section id="mathematical-failure-violation-of-subadditivity" class="level4">
-<h4 class="anchored" data-anchor-id="mathematical-failure-violation-of-subadditivity">Mathematical Failure: Violation of Subadditivity</h4>
-<p>VaR can suggest that diversification <em>increases</em> risk: <span class="math display">\[\text{VaR}(A + B) &gt; \text{VaR}(A) + \text{VaR}(B)\]</span></p>
-<p><strong>Consequences:</strong></p>
-<ul>
-<li>Banks could reduce regulatory capital by splitting into subsidiaries</li>
-<li>No real risk reduction, just regulatory arbitrage</li>
-<li>Incentivizes behavior that increases systemic risk</li>
-</ul>
-<p><strong>Evidence from Academic Literature:</strong></p>
-<ul>
-<li><span class="citation" data-cites="basak2001value">Basak and Shapiro (<a href="week_03.html#ref-basak2001value" role="doc-biblioref">2001</a>)</span>: VaR constraints may increase risk-taking</li>
-<li>Traders optimize to stay just within VaR limits</li>
-<li>Ignore severity of losses beyond VaR threshold</li>
-<li>Regulators care most about extreme losses - exactly what VaR ignores</li>
-</ul>
-</section>
-</section>
-<section id="key-takeaways" class="level3" data-number="3.1.6">
-<h3 data-number="3.1.6" class="anchored" data-anchor-id="key-takeaways"><span class="header-section-number">3.1.6</span> Key Takeaways</h3>
-<p>The evolution from variance to VaR solved real problems but created new ones:</p>
-<ul>
-<li><strong>Progress:</strong> From abstract variance to intuitive dollar losses</li>
-<li><strong>Success:</strong> Global adoption, regulatory standard</li>
-<li><strong>Failure:</strong> Blind to tail risk, mathematically incoherent</li>
-<li><strong>Next:</strong> Need coherent risk measures that capture extreme losses</li>
-</ul>
-</section>
-</section>
-<section id="the-axiomatic-foundation-of-coherent-risk-measures" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="the-axiomatic-foundation-of-coherent-risk-measures"><span class="header-section-number">3.2</span> The Axiomatic Foundation of Coherent Risk Measures</h2>
-<section id="what-makes-a-good-risk-measure" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="what-makes-a-good-risk-measure"><span class="header-section-number">3.2.1</span> What Makes a “Good” Risk Measure?</h3>
-<p>In 1999, Philippe Artzner <span class="citation" data-cites="artzner1999coherent">(<a href="week_03.html#ref-artzner1999coherent" role="doc-biblioref">Artzner et al. 1999</a>)</span> and his colleagues revolutionized risk management by asking a fundamental question: What mathematical properties should any sensible risk measure possess? Their answer wasn’t based on empirical observation or market practice, but on pure logical reasoning about what risk management should achieve. They proposed four axioms that any “coherent” risk measure must satisfy - creating a mathematical definition of common sense.</p>
+<section id="theory-coherent-risk-measure" class="level3">
+<h3 class="anchored" data-anchor-id="theory-coherent-risk-measure">Theory: Coherent Risk Measure</h3>
 <div class="callout callout-style-default callout-tip callout-titled" title="Coherent Risk Measure Axioms">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -657,593 +648,114 @@ Coherent Risk Measure Axioms
 </ol>
 </div>
 </div>
-<p><strong>Why These Axioms Matter:</strong></p>
+<p><strong>VaR violation:</strong> VaR can fail subadditivity, especially for:</p>
 <ul>
-<li>They formalize intuitive risk management principles</li>
-<li>Provide mathematical consistency across an organization</li>
-<li>Enable decentralized risk management</li>
-<li>Prevent regulatory arbitrage</li>
+<li>Portfolios with fat-tailed distributions</li>
+<li>Concentrated credit exposures</li>
+<li>Non-linear derivatives positions</li>
 </ul>
-</section>
-<section id="understanding-each-axiom" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="understanding-each-axiom"><span class="header-section-number">3.2.2</span> Understanding Each Axiom</h3>
-<p>Let’s examine what each axiom means in practice, using concrete examples from a trading desk.</p>
-<section id="subadditivity---the-diversification-principle" class="level4">
-<h4 class="anchored" data-anchor-id="subadditivity---the-diversification-principle">Subadditivity - The Diversification Principle</h4>
-<p><em>Intuition:</em> Merging two portfolios shouldn’t increase risk</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Example: Why Subadditivity Matters">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Example: Why Subadditivity Matters
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Trading Desk A: Risk = $10M</li>
-<li>Trading Desk B: Risk = $8M</li>
-<li>Combined Desks: Risk should be <span class="math inline">\(\leq \$18M\)</span></li>
-</ul>
-<p>If <span class="math inline">\(\text{Risk}(A+B) &gt; \$18M\)</span>, something is wrong with the risk measure!</p>
-</div>
-</div>
-<p><strong>Three Critical Implications <span class="citation" data-cites="mcneil2015quantitative">(<a href="week_03.html#ref-mcneil2015quantitative" role="doc-biblioref">McNeil, Frey, and Embrechts 2015</a>)</span>:</strong></p>
-<ul>
-<li><strong>Portfolio optimization:</strong> Non-subadditive measures may lead to concentrated, risky portfolios</li>
-<li><strong>Regulatory gaming:</strong> Banks could split into subsidiaries to reduce capital requirements</li>
-<li><strong>Decentralized management:</strong> Risk manager can allocate limits <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> to desks, knowing total risk <span class="math inline">\(\leq M_1 + M_2\)</span></li>
-</ul>
-</section>
-<section id="positive-homogeneity---the-scaling-property" class="level4">
-<h4 class="anchored" data-anchor-id="positive-homogeneity---the-scaling-property">Positive Homogeneity - The Scaling Property</h4>
-<p><em>Intuition:</em> Double the position, double the risk</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Example: Linear Scaling">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Example: Linear Scaling
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Position: 1000 shares of Apple Risk: $50,000</li>
-<li>Position: 2000 shares of Apple Risk: Must be $100,000 (exactly <span class="math inline">\(2\times\)</span>)</li>
-</ul>
-<p><strong>Note:</strong> This assumes no liquidity effects or market impact</p>
-</div>
-</div>
-</section>
-<section id="monotonicity---worse-is-riskier" class="level4">
-<h4 class="anchored" data-anchor-id="monotonicity---worse-is-riskier">Monotonicity - Worse is Riskier</h4>
-<p><em>Intuition:</em> If one portfolio always loses more than another, it’s riskier</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Example: Comparing Portfolios">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Example: Comparing Portfolios
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Portfolio X: Loses $5M in all bad scenarios</li>
-<li>Portfolio Y: Loses $10M in all bad scenarios</li>
-<li>Therefore: <span class="math inline">\(R(Y) \geq R(X)\)</span> must hold</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="translation-invariance---cash-reduces-risk" class="level4">
-<h4 class="anchored" data-anchor-id="translation-invariance---cash-reduces-risk">Translation Invariance - Cash Reduces Risk</h4>
-<p><em>Intuition:</em> Adding $1M cash reduces risk by exactly $1M</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Example: Cash Buffer">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Example: Cash Buffer
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Portfolio risk: $10M</li>
-<li>Add $3M cash to portfolio</li>
-<li>New risk: Must be $7M (= $10M - $3M)</li>
-</ul>
-</div>
-</div>
+<p><strong>Key insight:</strong> VaR satisfies only 3 of the 4 axioms. This single failure means VaR is not “coherent” in the mathematical sense.</p>
 </section>
 </section>
-<section id="vars-fatal-flaw-violation-of-subadditivity" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="vars-fatal-flaw-violation-of-subadditivity"><span class="header-section-number">3.2.3</span> VaR’s Fatal Flaw: Violation of Subadditivity</h3>
-<p>VaR satisfies three of the four coherence axioms. Its critical and fatal flaw is the violation of subadditivity - the principle that diversification should reduce risk. This single failure means VaR is not coherent, leading to situations where combining portfolios appears to increase risk and enabling regulatory capital arbitrage.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Classic Textbook Example">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Classic Textbook Example
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Consider two corporate bonds:</p>
-<ul>
-<li>Bond A: Default probability = 0.6%, Loss if default = $100M</li>
-<li>Bond B: Default probability = 0.6%, Loss if default = $100M</li>
-<li>Default correlation = 0 (independent)</li>
-</ul>
-<p><span class="math display">\[\text{VaR}_{99\%}(A) = \$0 \text{ (no default in 99\% of cases)}\]</span> <span class="math display">\[\text{VaR}_{99\%}(B) = \$0 \text{ (no default in 99\% of cases)}\]</span></p>
-<p>Combined portfolio:</p>
-<p><span class="math display">\[P(\text{at least one defaults}) = 0.6\% + 0.6\% - (0.6\% \times 0.6\%) \approx 1.2\%\]</span> <span class="math display">\[\text{VaR}_{99\%}(A+B) = \$100M \text{ (one default occurs)}\]</span></p>
-<p><strong>Violation:</strong> <span class="math display">\[\text{VaR}(A+B) &gt; \text{VaR}(A) + \text{VaR}(B)\]</span></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Key Insight:</strong> The fatter the tails, the more likely VaR violates subadditivity</p>
-</div>
-</div>
-<p>The mathematical failure of VaR coherence has profound practical implications that contributed to the 2008 financial crisis.</p>
-<ul>
-<li><strong>Regulatory Capital Arbitrage:</strong> Bank splits into subsidiaries, lower capital requirements with no real risk reduction</li>
-<li><strong>Perverse Portfolio Optimization:</strong> Traders sell deep OTM options: 99% VaR shows profit, but hidden 1% chance of HUGE loss</li>
-<li><strong>Systemic Risk Amplification:</strong> Pre-2008 - Banks created CDOs that passed VaR tests but concentrated extreme tail risk, contributing to system-wide crisis when tails materialized</li>
-</ul>
+<section id="block-d-real-applications-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="block-d-real-applications-and-limitations">Block D: Real Applications and Limitations</h2>
+<section id="activity-8-reflection-questions" class="level3">
+<h3 class="anchored" data-anchor-id="activity-8-reflection-questions">Activity 8: Reflection Questions</h3>
+<p><strong>Task 8.1:</strong> If VaR can show that diversification increases risk, should we still use it?</p>
+<p><strong>Task 8.2:</strong> How might traders “game” a VaR-based risk limit system?</p>
+<p><strong>Task 8.3:</strong> What additional information would you want beyond VaR?</p>
 </section>
-<section id="the-search-for-better-measures" class="level3" data-number="3.2.4">
-<h3 data-number="3.2.4" class="anchored" data-anchor-id="the-search-for-better-measures"><span class="header-section-number">3.2.4</span> The Search for Better Measures</h3>
-<p>The failure of VaR to satisfy coherence requirements led to an urgent search for better risk measures. The requirements were clear:</p>
-<p><strong>Desired Properties:</strong></p>
+<section id="case-study-jp-morgans-london-whale-2012" class="level3">
+<h3 class="anchored" data-anchor-id="case-study-jp-morgans-london-whale-2012">Case Study: JP Morgan’s London Whale (2012)</h3>
+<p>JP Morgan’s $6.2 billion loss illustrates how VaR model changes can mask growing risks.</p>
+<p><strong>Late 2011 - Original Model:</strong></p>
 <ul>
-<li>Mathematically coherent (satisfy all four axioms)</li>
-<li>Capture tail risk severity</li>
-<li>Computationally tractable</li>
-<li>Intuitive interpretation</li>
-<li>Suitable for regulation</li>
+<li>Historical simulation VaR using full dataset</li>
+<li>Result: VaR = $95-132 million</li>
+<li>Status: Approaching risk limits</li>
+<li>CIO position size: ~$157 billion notional</li>
 </ul>
-<p>This search led to Expected Shortfall (ES) and the broader class of spectral risk measures.</p>
-</section>
-<section id="key-takeaways-1" class="level3" data-number="3.2.5">
-<h3 data-number="3.2.5" class="anchored" data-anchor-id="key-takeaways-1"><span class="header-section-number">3.2.5</span> Key Takeaways</h3>
-<p>The axiomatic approach to risk measures revealed fundamental flaws in VaR:</p>
-<p><strong>Mathematical Foundation:</strong></p>
+<p><strong>January 2012 - New “Enhanced” Model:</strong></p>
 <ul>
-<li>Four axioms define coherent risk measures</li>
-<li>VaR violates subadditivity - the diversification principle</li>
-<li>Violation more severe with fat-tailed distributions (i.e., real markets)</li>
+<li>Switched to parametric (Gaussian) VaR approach</li>
+<li>Used shorter, calmer data window</li>
+<li>“Simplified” correlation calculations</li>
+<li>Result: VaR dropped to $54-67 million overnight</li>
+<li>Status: Comfortably within limits again</li>
 </ul>
-<p><strong>Practical Consequences:</strong></p>
-<ul>
-<li>Regulatory arbitrage opportunities</li>
-<li>Perverse incentives for traders</li>
-<li>Systemic risk accumulation</li>
-<li>Contributed to 2008 financial crisis</li>
-</ul>
-<p><strong>The Path Forward:</strong></p>
-<ul>
-<li>Need measures that are both coherent AND practical</li>
-<li>Expected Shortfall emerges as the solution</li>
-<li>Regulators moving from VaR to ES (Basel III/FRTB)</li>
-</ul>
-</section>
-</section>
-<section id="expected-shortfall-as-the-solution" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="expected-shortfall-as-the-solution"><span class="header-section-number">3.3</span> Expected Shortfall as the Solution</h2>
-<section id="es-definition-and-intuition" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="es-definition-and-intuition"><span class="header-section-number">3.3.1</span> ES Definition and Intuition</h3>
-<p>Expected Shortfall emerged from a simple yet profound question: If VaR tells us the minimum loss in bad scenarios, what about the average loss when things go really wrong? ES answers this by looking beyond the VaR threshold and calculating the expected loss in the tail. This seemingly modest adjustment fixes VaR’s mathematical flaws while providing risk managers with crucial information about extreme scenarios.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="ES Intuitive Definition">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-ES Intuitive Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Expected Shortfall (ES):</strong> The average of all losses that exceed the VaR threshold</p>
-</div>
-</div>
-<p>Alternative Names (all referring to the same concept):</p>
-<ul>
-<li>Conditional Value-at-Risk (CVaR)</li>
-<li>Tail Conditional Expectation (TCE)</li>
-<li>Average Value-at-Risk (AVaR)</li>
-<li>Expected Tail Loss (ETL)</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled" title="Example: Simple Illustration">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Example: Simple Illustration
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>100 daily loss scenarios, ranked from best to worst</li>
-<li>Losses: -2, -1, 0, 1, 2, …, 95, 96, 97, 120, 150 (in $millions)</li>
-</ul>
-<p><span class="math display">\[\text{VaR}_{95\%} = \$95M \text{ (the 95th worst loss)}\]</span> <span class="math display">\[\text{ES}_{95\%} = \frac{95+96+97+120+150}{5} = \$111.6M\]</span></p>
-<p><strong>Key insight:</strong> ES captures the $120M and $150M extreme losses that VaR ignores!</p>
-</div>
-</div>
-</section>
-<section id="mathematical-formulation" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="mathematical-formulation"><span class="header-section-number">3.3.2</span> Mathematical Formulation</h3>
-<p>The mathematical elegance of ES lies in its dual representation: as an integral of tail VaRs and as a conditional expectation. Both formulations provide different insights into why ES succeeds where VaR fails.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Formal Definition (Integral Form)">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Formal Definition (Integral Form)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For a loss random variable <span class="math inline">\(L\)</span> with distribution function <span class="math inline">\(F_L\)</span> and confidence level <span class="math inline">\(\alpha \in (0,1)\)</span>:</p>
-<p><span class="math display">\[ES_\alpha = \frac{1}{1-\alpha} \int_\alpha^1 VaR_u(L) du\]</span></p>
-<p><strong>Interpretation:</strong> ES is the average of all VaR levels from <span class="math inline">\(\alpha\)</span> to 100%</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Conditional Expectation Form (for continuous distributions)">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Conditional Expectation Form (for continuous distributions)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math display">\[ES_\alpha = E[L | L \geq VaR_\alpha(L)]\]</span></p>
-<p><strong>Interpretation:</strong> ES is the expected loss, given that the loss exceeds VaR</p>
-</div>
-</div>
-<p><strong>Computational Approach - “Tail VaR” Method:</strong></p>
-<ol type="1">
-<li>Slice the tail into <span class="math inline">\(n\)</span> equal-probability segments</li>
-<li>Calculate VaR for each segment</li>
-<li>Average these VaRs</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled" title="Example: Computing ES for Normal Distribution">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Example: Computing ES for Normal Distribution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Distribution: Normal(<span class="math inline">\(\mu=0\)</span>, <span class="math inline">\(\sigma=1\)</span>)</li>
-<li>Confidence: 95%</li>
-</ul>
-<p>Calculation process:</p>
-<ul>
-<li>Step 1: 95% VaR = 1.645</li>
-<li>Step 2: Slice tail [95%, 100%] into segments</li>
-<li>Step 3: Calculate VaRs</li>
-</ul>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Segment</th>
-<th style="text-align: center;">Confidence</th>
-<th style="text-align: center;">VaR</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">95.5%</td>
-<td style="text-align: center;">1.695</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">96.0%</td>
-<td style="text-align: center;">1.751</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">96.5%</td>
-<td style="text-align: center;">1.812</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">97.0%</td>
-<td style="text-align: center;">1.881</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">97.5%</td>
-<td style="text-align: center;">1.960</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">98.0%</td>
-<td style="text-align: center;">2.054</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">98.5%</td>
-<td style="text-align: center;">2.170</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">99.0%</td>
-<td style="text-align: center;">2.326</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9</td>
-<td style="text-align: center;">99.5%</td>
-<td style="text-align: center;">2.576</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>95% ES <span class="math inline">\(\approx\)</span> Average = 2.025</li>
-<li>Exact value: 2.063</li>
-</ul>
-</div>
-</div>
-<p><strong>Key Properties of ES:</strong></p>
-<ul>
-<li>Always <span class="math inline">\(\geq\)</span> corresponding VaR (captures tail severity)</li>
-<li>Continuous in <span class="math inline">\(\alpha\)</span> (no “cliff effects”)</li>
-<li>Accounts for the shape of the entire tail</li>
-<li>Converges smoothly as more data becomes available</li>
-</ul>
-</section>
-<section id="why-es-is-coherent-proving-the-axioms" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="why-es-is-coherent-proving-the-axioms"><span class="header-section-number">3.3.3</span> Why ES is Coherent: Proving the Axioms</h3>
-<p>Expected Shortfall satisfies all four coherence axioms, making it mathematically consistent and economically sensible. Let’s verify each axiom.</p>
-<p><strong>1. Subadditivity ✓</strong></p>
-<p><span class="math display">\[ES(L_1 + L_2) \leq ES(L_1) + ES(L_2)\]</span></p>
-<p><em>Proof:</em> The average of combined tail losses cannot exceed the sum of individual average tail losses due to diversification effects.</p>
-<p><strong>2. Positive Homogeneity ✓</strong></p>
-<p><span class="math display">\[ES(\lambda L) = \lambda \cdot ES(L) \text{ for } \lambda &gt; 0\]</span></p>
-<p><em>Proof:</em> Scaling losses by <span class="math inline">\(\lambda\)</span> scales both the VaR threshold and all tail losses by <span class="math inline">\(\lambda\)</span></p>
-<p><strong>3. Monotonicity ✓</strong></p>
-<p><span class="math display">\[\text{If } L_1 \leq L_2 \text{ everywhere, then } ES(L_1) \leq ES(L_2)\]</span></p>
-<p><em>Proof:</em> If one portfolio always loses more, its average tail loss must be higher</p>
-<p><strong>4. Translation Invariance ✓</strong></p>
-<p><span class="math display">\[ES(L + c) = ES(L) + c\]</span></p>
-<p><em>Proof:</em> Adding constant <span class="math inline">\(c\)</span> to all losses shifts the entire distribution by <span class="math inline">\(c\)</span></p>
-</section>
-<section id="es-vs-var-comparative-analysis" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="es-vs-var-comparative-analysis"><span class="header-section-number">3.3.4</span> ES vs VaR: Comparative Analysis</h3>
-<p>While ES solves VaR’s theoretical problems, it comes with its own practical challenges. Understanding the trade-offs is essential for implementation.</p>
+<p><strong>The Key Changes:</strong></p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 37%">
-<col style="width: 37%">
+<col style="width: 16%">
+<col style="width: 24%">
+<col style="width: 22%">
+<col style="width: 36%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Aspect</th>
-<th style="text-align: center;">VaR</th>
-<th style="text-align: center;">ES</th>
+<th style="text-align: center;">Old Model</th>
+<th style="text-align: center;">New Model</th>
+<th style="text-align: center;">Impact</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><strong>Tail Risk</strong></td>
-<td style="text-align: center;">Ignores severity beyond threshold</td>
-<td style="text-align: center;">Captures full tail severity</td>
+<td style="text-align: center;">Method</td>
+<td style="text-align: center;">Historical simulation</td>
+<td style="text-align: center;">Parametric/Gaussian</td>
+<td style="text-align: center;">Assumes normality</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><strong>Coherence</strong></td>
-<td style="text-align: center;">Fails (not subadditive)</td>
-<td style="text-align: center;">Satisfies all axioms</td>
+<td style="text-align: center;">Data period</td>
+<td style="text-align: center;">Multiple years</td>
+<td style="text-align: center;">Shorter, recent only</td>
+<td style="text-align: center;">Excluded crisis volatility</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><strong>Interpretation</strong></td>
-<td style="text-align: center;">“Minimum loss in worst α% cases”</td>
-<td style="text-align: center;">“Average loss in worst α% cases”</td>
+<td style="text-align: center;">Weighting</td>
+<td style="text-align: center;">Time-weighted</td>
+<td style="text-align: center;">Equal-weighted</td>
+<td style="text-align: center;">Reduced recent volatility impact</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><strong>Backtesting</strong></td>
-<td style="text-align: center;">Simple (count violations)</td>
-<td style="text-align: center;">Complex (need loss magnitudes)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>Data Requirements</strong></td>
-<td style="text-align: center;">Robust to outliers</td>
-<td style="text-align: center;">Sensitive to extreme observations</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>Computational Cost</strong></td>
-<td style="text-align: center;">Fast</td>
-<td style="text-align: center;">Slower (need full tail)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>Regulatory Status</strong></td>
-<td style="text-align: center;">Being phased out</td>
-<td style="text-align: center;">FRTB standard (Basel III)</td>
+<td style="text-align: center;">Implementation</td>
+<td style="text-align: center;">Established system</td>
+<td style="text-align: center;">Excel spreadsheet</td>
+<td style="text-align: center;">Introduced formula errors</td>
 </tr>
 </tbody>
 </table>
-<p><strong>When to Use Each:</strong></p>
+<p><strong>What Actually Happened:</strong></p>
 <ul>
-<li><strong>Use VaR:</strong> For liquid markets, short horizons, robust systems</li>
-<li><strong>Use ES:</strong> For risk capital, stress testing, regulatory compliance</li>
-<li><strong>Use both:</strong> VaR for limits, ES for capital (common practice)</li>
+<li><strong>The Excel error:</strong> Divided by sum instead of average of volatilities (understated risk by ~50%)</li>
+<li><strong>VaR breaches:</strong> The desk exceeded its VaR limit on 71 days in Q1 2012</li>
+<li><strong>Actual losses:</strong> Daily losses exceeded $200M multiple times (3x the reported VaR)</li>
+<li><strong>Model reversion:</strong> In April 2012, switched back to old model → VaR jumped to $129M</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled" title="Example: Comparing VaR and ES">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Example: Comparing VaR and ES
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p><strong>The Governance Failures:</strong></p>
 <ul>
-<li>Portfolio analysis over 1000 days:</li>
-<li>Distribution: Heavy-tailed (Student-t with 4 df)</li>
-</ul>
-<p><span class="math display">\[\text{VaR}_{95\%} = \$4.2M\]</span> <span class="math display">\[\text{ES}_{95\%} = \$6.8M\]</span></p>
-<p>Interpretation:</p>
-<ul>
-<li><p>95% VaR: “95% confident won’t lose more than $4.2M”</p></li>
-<li><p>95% ES: “In the worst 5% of cases, average loss is $6.8M”</p></li>
-<li><p>ES/VaR ratio = 1.62 (indicates fat tails)</p></li>
-<li><p>For normal distribution: ES/VaR ≈ 1.25</p></li>
-</ul>
-</div>
-</div>
-</section>
-<section id="spectral-risk-measures-the-general-framework" class="level3" data-number="3.3.5">
-<h3 data-number="3.3.5" class="anchored" data-anchor-id="spectral-risk-measures-the-general-framework"><span class="header-section-number">3.3.5</span> Spectral Risk Measures: The General Framework</h3>
-<p>Expected Shortfall belongs to a broader class called spectral risk measures (SRMs), which allow for flexible weighting of different parts of the loss distribution. This generalization provides a unified framework for risk measurement.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Definition of Spectral Risk Measures">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Definition of Spectral Risk Measures
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math display">\[SRM = \int_0^1 \phi(p) \cdot VaR_p(L) dp\]</span></p>
-<p>where <span class="math inline">\(\phi(p)\)</span> is a weighting function satisfying:</p>
-<ul>
-<li><span class="math inline">\(\phi(p) \geq 0\)</span> (non-negative weights)</li>
-<li><span class="math inline">\(\int_0^1 \phi(p) dp = 1\)</span> (weights sum to 1)</li>
-<li><span class="math inline">\(\phi\)</span> is increasing (larger losses get more weight)</li>
-</ul>
-</div>
-</div>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 50%">
-<col style="width: 29%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Risk Measure</th>
-<th>Weight Function <span class="math inline">\(\phi(p)\)</span></th>
-<th>Interpretation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>VaR at level <span class="math inline">\(\alpha\)</span></td>
-<td><span class="math inline">\(\delta(p-\alpha)\)</span></td>
-<td>All weight at one point</td>
-</tr>
-<tr class="even">
-<td>ES at level <span class="math inline">\(\alpha\)</span></td>
-<td><span class="math inline">\(\frac{1}{1-\alpha} \cdot \mathbf{1}_{p \geq \alpha}\)</span></td>
-<td>Equal weight in tail</td>
-</tr>
-<tr class="odd">
-<td>Exponential spectral</td>
-<td><span class="math inline">\(\gamma e^{\gamma p}/(e^\gamma - 1)\)</span></td>
-<td>Exponentially increasing weight</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Why Spectral Measures Matter:</strong></p>
-<ul>
-<li>Unifying framework for all coherent risk measures</li>
-<li>Can tailor risk aversion profile to institution’s preferences</li>
-<li>Smooth transition between different risk levels</li>
-<li>Avoid arbitrary confidence level choice</li>
+<li>Model change approved without proper validation</li>
+<li>Risk committee not informed of methodology change</li>
+<li>Breaches explained away as “technical” or “model issues”</li>
+<li>Traders influenced risk measurement process</li>
 </ul>
 </section>
-<section id="the-regulatory-shift-from-var-to-es" class="level3" data-number="3.3.6">
-<h3 data-number="3.3.6" class="anchored" data-anchor-id="the-regulatory-shift-from-var-to-es"><span class="header-section-number">3.3.6</span> The Regulatory Shift: From VaR to ES</h3>
-<p>The 2008 financial crisis catalyzed a fundamental shift in regulatory thinking, culminating in the Fundamental Review of the Trading Book (FRTB).</p>
-<p><strong>Timeline of Transition:</strong></p>
-<ul>
-<li><strong>1996:</strong> Basel II adopts VaR for market risk</li>
-<li><strong>2008:</strong> Crisis reveals VaR’s tail blindness</li>
-<li><strong>2012:</strong> Basel Committee proposes move to ES</li>
-<li><strong>2016:</strong> FRTB finalized with ES as standard</li>
-<li><strong>2022:</strong> Full implementation begins globally</li>
-</ul>
-<p><strong>Key Changes in FRTB:</strong></p>
-<ul>
-<li>Replace 99% 10-day VaR with 97.5% 10-day ES</li>
-<li>Liquidity horizons: 10, 20, 40, 60, 120 days</li>
-<li>Stressed ES calibration</li>
-<li>Desk-level approval process</li>
-</ul>
-<p><strong>Why 97.5% ES <span class="math inline">\(\approx\)</span> 99% VaR:</strong></p>
-<ul>
-<li>Maintains similar capital levels</li>
-<li>ES at lower confidence more stable than VaR at high confidence</li>
-<li>Better captures tail risk while remaining practical</li>
-</ul>
 </section>
-<section id="key-takeaways-2" class="level3" data-number="3.3.7">
-<h3 data-number="3.3.7" class="anchored" data-anchor-id="key-takeaways-2"><span class="header-section-number">3.3.7</span> Key Takeaways</h3>
-<p>Expected Shortfall represents the evolution of risk measurement from ad-hoc to axiomatic:</p>
-<p><strong>Theoretical Victory:</strong></p>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
 <ul>
-<li>Satisfies all coherence axioms</li>
-<li>Captures tail risk severity</li>
-<li>Provides consistent risk aggregation</li>
-</ul>
-<p><strong>Practical Reality:</strong></p>
+<li><p><strong>VaR is simple and intuitive</strong> but has critical limitations</p></li>
+<li><p><strong>Different stakeholders</strong> need different VaR parameters</p></li>
+<li><p><strong>VaR fails to capture</strong>:</p>
 <ul>
-<li>More complex to implement and backtest</li>
-<li>Greater data sensitivity</li>
-<li>Computational challenges remain</li>
+<li>Tail risk severity</li>
+<li>Liquidity risk</li>
+<li>Model risk</li>
+<li>Correlation breakdowns</li>
+</ul></li>
+<li><p><strong>Real failures</strong> (London Whale, 2008 crisis) show VaR’s limitations</p></li>
 </ul>
-<p><strong>The Future:</strong></p>
-<ul>
-<li>ES becoming global regulatory standard</li>
-<li>Spectral measures offer further refinement</li>
-<li>Integration with machine learning methods emerging</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Final Thought:</strong> ES isn’t perfect, but it’s mathematically sound and economically sensible - a vast improvement over VaR for capturing the risks that matter most.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="references" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="references"><span class="header-section-number">3.4</span> References</h2>
-
-
-</section>
-<section id="practice-questions-and-problems" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="practice-questions-and-problems"><span class="header-section-number">3.5</span> Practice Questions and Problems</h2>
 
 
 </section>
@@ -1676,8 +1188,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./week_04.html" class="pagination-link" aria-label="Calculating VaR and ES">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Calculating VaR and ES</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./week_04.html" class="pagination-link" aria-label="The Future of Risk Management">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Future of Risk Management</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
