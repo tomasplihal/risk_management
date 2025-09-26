@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; The Future of Risk Management – Risk Management and Financial Institutions</title>
+<title>4&nbsp; Market Risk II: Expected Shortfall – Risk Management and Financial Institutions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -81,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_04.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Future of Risk Management</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_04.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Market Risk II: Expected Shortfall</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,67 +178,67 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Value at Risk - Discovery Through Practice</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Market Risk I: Value at Risk</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_04.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Future of Risk Management</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Market Risk II: Expected Shortfall</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Future of Risk Management</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 05</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The Future of Risk Management</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 06</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">week_07.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 07</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">week_08.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 08</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">week_09.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Week 09</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">week_10.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 10</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">week_11.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 11</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">week_12.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Week 12</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_13.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">week_13.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Week 13</span></span></a>
   </div>
 </li>
     </ul>
@@ -217,15 +246,45 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#block-a-beyond-var---what-happens-in-the-tail" id="toc-block-a-beyond-var---what-happens-in-the-tail" class="nav-link active" data-scroll-target="#block-a-beyond-var---what-happens-in-the-tail">Block A: Beyond VaR - What Happens in the Tail?</a>
+  <ul class="collapse">
+  <li><a href="#activity-1-the-var-breach-investigation" id="toc-activity-1-the-var-breach-investigation" class="nav-link" data-scroll-target="#activity-1-the-var-breach-investigation">Activity 1: The VaR Breach Investigation</a></li>
+  <li><a href="#activity-2-tail-risk-discovery" id="toc-activity-2-tail-risk-discovery" class="nav-link" data-scroll-target="#activity-2-tail-risk-discovery">Activity 2: Tail Risk Discovery</a></li>
+  <li><a href="#theory-conditional-expectation-in-the-tail" id="toc-theory-conditional-expectation-in-the-tail" class="nav-link" data-scroll-target="#theory-conditional-expectation-in-the-tail">Theory: Conditional Expectation in the Tail</a></li>
+  </ul></li>
+  <li><a href="#block-b-expected-shortfall---measuring-tail-risk" id="toc-block-b-expected-shortfall---measuring-tail-risk" class="nav-link" data-scroll-target="#block-b-expected-shortfall---measuring-tail-risk">Block B: Expected Shortfall - Measuring Tail Risk</a>
+  <ul class="collapse">
+  <li><a href="#theory-calculating-expected-shortfall" id="toc-theory-calculating-expected-shortfall" class="nav-link" data-scroll-target="#theory-calculating-expected-shortfall">Theory: Calculating Expected Shortfall</a></li>
+  <li><a href="#activity-3-comparing-es-methods" id="toc-activity-3-comparing-es-methods" class="nav-link" data-scroll-target="#activity-3-comparing-es-methods">Activity 3: Comparing ES Methods</a></li>
+  <li><a href="#activity-4-the-coherence-property---subadditivity" id="toc-activity-4-the-coherence-property---subadditivity" class="nav-link" data-scroll-target="#activity-4-the-coherence-property---subadditivity">Activity 4: The Coherence Property - Subadditivity</a></li>
+  <li><a href="#theory-regulatory-context---from-var-to-es" id="toc-theory-regulatory-context---from-var-to-es" class="nav-link" data-scroll-target="#theory-regulatory-context---from-var-to-es">Theory: Regulatory Context - From VaR to ES</a></li>
+  <li><a href="#activity-5-practical-applications" id="toc-activity-5-practical-applications" class="nav-link" data-scroll-target="#activity-5-practical-applications">Activity 5: Practical Applications</a></li>
+  </ul></li>
+  <li><a href="#block-c-monte-carlo-simulation-for-risk-measurement" id="toc-block-c-monte-carlo-simulation-for-risk-measurement" class="nav-link" data-scroll-target="#block-c-monte-carlo-simulation-for-risk-measurement">Block C: Monte Carlo Simulation for Risk Measurement</a>
+  <ul class="collapse">
+  <li><a href="#theory-from-historical-data-to-simulated-futures" id="toc-theory-from-historical-data-to-simulated-futures" class="nav-link" data-scroll-target="#theory-from-historical-data-to-simulated-futures">Theory: From Historical Data to Simulated Futures</a></li>
+  <li><a href="#activity-6-basic-monte-carlo-in-excel" id="toc-activity-6-basic-monte-carlo-in-excel" class="nav-link" data-scroll-target="#activity-6-basic-monte-carlo-in-excel">Activity 6: Basic Monte Carlo in Excel</a></li>
+  <li><a href="#activity-7-convergence-and-stability" id="toc-activity-7-convergence-and-stability" class="nav-link" data-scroll-target="#activity-7-convergence-and-stability">Activity 7: Convergence and Stability</a></li>
+  </ul></li>
+  <li><a href="#block-d-case-study---ubs-and-the-2007-2008-financial-crisis" id="toc-block-d-case-study---ubs-and-the-2007-2008-financial-crisis" class="nav-link" data-scroll-target="#block-d-case-study---ubs-and-the-2007-2008-financial-crisis">Block D: Case Study - UBS and the 2007-2008 Financial Crisis</a>
+  <ul class="collapse">
+  <li><a href="#activity-8-discussion-questions" id="toc-activity-8-discussion-questions" class="nav-link" data-scroll-target="#activity-8-discussion-questions">Activity 8: Discussion Questions</a></li>
+  </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Future of Risk Management</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Market Risk II: Expected Shortfall</span></h1>
 </div>
 
 
@@ -242,8 +301,550 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="callout callout-style-default callout-tip callout-titled" title="References">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+References
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+<ul>
+<li>Chapter 11 - Value at Risk and Expected Shortfall</li>
+<li>Chapter 12 - Historical Simulation and Extreme Value Theory</li>
+<li>Chapter 13 - Model-Building Approach</li>
+</ul></li>
+<li>Pirie, W. L., and M. P. Kritzman. 2017. Derivatives. CFA Institute Investment Series. - Chapter 6 - Risk Management</li>
+</ul>
+</div>
+</div>
+<p><strong>Learning Outcomes:</strong></p>
+<ul>
+<li>Calculate Expected Shortfall using historical simulation, parametric, and Monte Carlo methods</li>
+<li>Demonstrate why ES satisfies coherence properties (subadditivity) and explain the risk management implications</li>
+<li>Generate and analyze Monte Carlo simulations with different distributions to assess tail risk</li>
+<li>Compare Basel II (VaR-based) and Basel III (ES-based) capital requirements and explain why regulators made this shift</li>
+<li>Evaluate real-world risk model failures through the UBS case study and identify when VaR dangerously underestimates tail risk</li>
+</ul>
+<section id="block-a-beyond-var---what-happens-in-the-tail" class="level2">
+<h2 class="anchored" data-anchor-id="block-a-beyond-var---what-happens-in-the-tail">Block A: Beyond VaR - What Happens in the Tail?</h2>
+<p>Last week, you reported to your CEO that the 1-day 99% VaR for your $100M SPY position was $4.2M. This morning, she calls:</p>
+<blockquote class="blockquote">
+<p>We just lost $8.7 million yesterday! You said we’d only exceed $4.2M once in 100 days. Should I fire you, or is this normal?</p>
+</blockquote>
+<section id="activity-1-the-var-breach-investigation" class="level3">
+<h3 class="anchored" data-anchor-id="activity-1-the-var-breach-investigation">Activity 1: The VaR Breach Investigation</h3>
+<p>Open your <code>SPY_returns_1000.csv</code> file from last week.</p>
+<p><a href="data/SPY_returns_1000.csv" download="" class="btn btn-primary"> <i class="bi bi-download"></i> Download Dataset (1000 Days) </a></p>
+<p><strong>Task 1.1:</strong> Find all daily returns worse than your 99% VaR threshold</p>
+<ul>
+<li>How many observations are there?</li>
+<li>List the worst return in your dataset?</li>
+<li>What’s the average loss on days when VaR is breached?</li>
+</ul>
+<p><strong>Task 1.2:</strong> Your colleague says:</p>
+<blockquote class="blockquote">
+<p>Don’t worry, VaR breaches are rare - only 1% of the time! The actual loss doesn’t matter.</p>
+</blockquote>
+<ul>
+<li>What critical information is your colleague missing?</li>
+</ul>
+<p><strong>Task 1.3:</strong> Two portfolios both have 1-day 99% VaR of $10M:</p>
+<ul>
+<li>Portfolio A: Government bonds</li>
+<li>Portfolio B: Written put options on SPY</li>
+<li>On a day when both breach their VaR, which likely loses more? Why?</li>
+</ul>
+</section>
+<section id="activity-2-tail-risk-discovery" class="level3">
+<h3 class="anchored" data-anchor-id="activity-2-tail-risk-discovery">Activity 2: Tail Risk Discovery</h3>
+<p>Let’s examine what happens “beyond VaR” using your SPY data.</p>
+<p><strong>Task 2.1:</strong> For the worst 5% of days:</p>
+<ul>
+<li>Calculate the minimum loss</li>
+<li>Calculate the maximum loss</li>
+<li>Calculate the average loss</li>
+<li>How does the average compare to your 95% VaR?</li>
+</ul>
+<p><strong>Task 2.2:</strong> Risk Reporting Dilemma</p>
+<p>You need to report risk to three stakeholders. Using your calculations:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 55%">
+<col style="width: 12%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Stakeholder</th>
+<th style="text-align: center;">Their Question</th>
+<th style="text-align: center;">VaR Answer</th>
+<th style="text-align: center;">What’s Missing?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">CEO</td>
+<td style="text-align: center;">“What’s our typical bad day loss?”</td>
+<td style="text-align: center;">$4.2M</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">CFO</td>
+<td style="text-align: center;">“If things go bad, how much cash do I need?”</td>
+<td style="text-align: center;">$4.2M</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Regulator</td>
+<td style="text-align: center;">“Can you survive a tail event?”</td>
+<td style="text-align: center;">$4.2M</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Task 2.3:</strong> VaR Breach Scenarios</p>
+<p>Your risk report for last year shows:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Bank A</th>
+<th style="text-align: center;">Bank B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>99% VaR</strong></td>
+<td style="text-align: center;">$10M</td>
+<td style="text-align: center;">$10M</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Breach 1</strong></td>
+<td style="text-align: center;">-$11M</td>
+<td style="text-align: center;">-$10.5M</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Breach 2</strong></td>
+<td style="text-align: center;">-$12M</td>
+<td style="text-align: center;">-$11M</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Breach 3</strong></td>
+<td style="text-align: center;">-$10.5M</td>
+<td style="text-align: center;">-$45M</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Is it acceptable for 99% confidence?</li>
+<li>Which bank had worse tail risk?</li>
+<li>What does this tell you about VaR as a risk measure?</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled" title="Key Insight">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>VaR tells you the <strong>frequency</strong> of bad events and the <strong>threshold</strong> but nothing about the <strong>severity</strong> when that threshold is breached.</p>
+<p>In crises, what kills firms isn’t the frequency of bad days—it’s the magnitude of losses on those days.</p>
+</div>
+</div>
+</section>
+<section id="theory-conditional-expectation-in-the-tail" class="level3">
+<h3 class="anchored" data-anchor-id="theory-conditional-expectation-in-the-tail">Theory: Conditional Expectation in the Tail</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Expected Shortfall Definition">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expected Shortfall Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Expected Shortfall (ES)</strong> measures the average loss during bad days when things go worse than your VaR threshold.</p>
+<p>Also called Conditional VaR (CVaR) or Expected Tail Loss (ETL), ES answers a critical question: When we have a really bad day that exceeds our VaR limit, how bad should we expect it to be?</p>
+<p>ES is always worse than (or equal to) VaR because it’s the average of all the losses in the tail, including the very worst outcomes.</p>
+</div>
+</div>
+<p>Mathematically, for confidence level <span class="math inline">\(\alpha\)</span>: <span class="math display">\[ES_\alpha = E[L \mid L \geq VaR_\alpha]\]</span></p>
+<p>This is the <strong>average of all losses in the worst <span class="math inline">\((1-\alpha)\)</span> portion of the distribution</strong>, including the VaR observation itself.</p>
+<p>More precisely for continuous distributions: <span class="math display">\[ES_\alpha = \frac{1}{1-\alpha} \int_{VaR_\alpha}^{\infty} L \cdot f(L) \, dL\]</span></p>
+<p>For discrete historical data with <span class="math inline">\(n\)</span> observations: <span class="math display">\[ES_\alpha = \frac{1}{k} \sum_{i=1}^{k} L_i\]</span> where:</p>
+<ul>
+<li><span class="math inline">\(k = \lceil n(1-\alpha) \rceil\)</span> is the number of worst losses to average</li>
+<li><span class="math inline">\(L_1 \geq L_2 \geq ... \geq L_k\)</span> are losses sorted from worst to best</li>
+<li><span class="math inline">\(L_k = VaR_\alpha\)</span> (the k-th worst loss is the VaR)</li>
+</ul>
+</section>
+</section>
+<section id="block-b-expected-shortfall---measuring-tail-risk" class="level2">
+<h2 class="anchored" data-anchor-id="block-b-expected-shortfall---measuring-tail-risk">Block B: Expected Shortfall - Measuring Tail Risk</h2>
+<section id="theory-calculating-expected-shortfall" class="level3">
+<h3 class="anchored" data-anchor-id="theory-calculating-expected-shortfall">Theory: Calculating Expected Shortfall</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Historical Simulation Method for ES">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Historical Simulation Method for ES
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Step 1:</strong> Sort all daily returns from worst to best</p>
+<p><strong>Step 2:</strong> Determine how many tail observations to include:</p>
+<p><span class="math display">\[k = \lceil n \times (1-\alpha) \rceil\]</span></p>
+<p><strong>Step 3:</strong> Calculate the average of these <span class="math inline">\(k\)</span> worst observations: <span class="math display">\[ES_\alpha = \frac{1}{k} \sum_{i=1}^{k} L_i\]</span></p>
+<p><strong>Step 4:</strong> Convert to dollar loss for your portfolio value</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Parametric Approach for ES (Normal Distribution)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Parametric Approach for ES (Normal Distribution)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For normally distributed returns:</p>
+<p><strong>Step 1:</strong> Calculate distribution parameters from your data:</p>
+<ul>
+<li>Sample mean: <span class="math inline">\(\mu\)</span></li>
+<li>Sample standard deviation: <span class="math inline">\(\sigma\)</span></li>
+</ul>
+<p><strong>Step 2:</strong> Apply the ES formula for normal distribution: <span class="math display">\[ES_\alpha = -(\mu + \sigma \times \frac{\phi(z_\alpha)}{1-\alpha})\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(z_\alpha\)</span> is the standard normal quantile at confidence <span class="math inline">\(\alpha\)</span></li>
+<li><span class="math inline">\(\phi(z_\alpha)\)</span> is the standard normal PDF evaluated at <span class="math inline">\(z_\alpha\)</span></li>
+</ul>
+<p>The PDF can be calculated as: <span class="math display">\[\phi(z_\alpha) = \frac{e^{-z_\alpha^2/2}}{\sqrt{2\pi}}\]</span></p>
+<p><strong>Excel implementation:</strong></p>
+<ul>
+<li>For PDF: <code>NORM.DIST(z_α, 0, 1, FALSE)</code></li>
+<li>For z-score: <code>NORM.INV(1-α, 0, 1)</code></li>
+<li>Complete ES formula: <code>=-1*(mean + stdev*NORM.DIST(NORM.INV(1-α,0,1),0,1,FALSE)/(1-α))</code></li>
+</ul>
+<p>Note: The negative sign converts P/L returns (where losses are negative) to positive loss values, matching our VaR convention.</p>
+<p><strong>Step 3:</strong> Convert to dollar loss for your portfolio value</p>
+</div>
+</div>
+</section>
+<section id="activity-3-comparing-es-methods" class="level3">
+<h3 class="anchored" data-anchor-id="activity-3-comparing-es-methods">Activity 3: Comparing ES Methods</h3>
+<p>Using your <code>SPY_returns_1000.csv</code> data, let’s compare ES calculation methods.</p>
+<p><strong>Task 3.1:</strong> Create a comprehensive risk comparison table with the following structure:</p>
+<ul>
+<li>Confidence levels = 90%, 95%, 97.5%, 99%, 99.9%</li>
+<li>Calculate ES using historical simulation and parametric approach</li>
+<li>ES/VaR ratio for each method</li>
+</ul>
+<p><strong>Task 3.2:</strong> Discussion Questions</p>
+<ol type="1">
+<li>At which confidence levels do the methods diverge most?</li>
+<li>How does the ES/VaR ratio change as confidence level increases?</li>
+<li>For 99.9% confidence, does parametric ES exceed the worst historical loss?</li>
+<li>Which method would you recommend for setting risk limits?</li>
+</ol>
+</section>
+<section id="activity-4-the-coherence-property---subadditivity" class="level3">
+<h3 class="anchored" data-anchor-id="activity-4-the-coherence-property---subadditivity">Activity 4: The Coherence Property - Subadditivity</h3>
+<p>Let’s verify that ES satisfies the subadditivity property that VaR violates.</p>
+<p>Consider two corporate bonds in your portfolio:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Bond A</th>
+<th style="text-align: center;">Bond B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Notional</strong></td>
+<td style="text-align: center;">$100M</td>
+<td style="text-align: center;">$100M</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Default Probability</strong></td>
+<td style="text-align: center;">0.6%</td>
+<td style="text-align: center;">0.6%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Recovery if Default</strong></td>
+<td style="text-align: center;">$0</td>
+<td style="text-align: center;">$0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Mutual Correlation</strong></td>
+<td style="text-align: center;">0 (independent)</td>
+<td style="text-align: center;">0 (independent)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Task 4.1:</strong> Calculate 99% ES for Bonds A and B separately</p>
+<ul>
+<li>In 99% of scenarios, what happens?</li>
+<li>In 1% of scenarios, what is the loss?</li>
+<li>What is the 99% ES value?</li>
+</ul>
+<p><strong>Task 4.2:</strong> Calculate 99% ES for the combined portfolio (A + B)</p>
+<ul>
+<li>Probability that neither defaults?</li>
+<li>Probability that at least one defaults?</li>
+<li>Probability that both default?</li>
+<li>What is the 99% ES value?</li>
+</ul>
+<p><strong>Task 4.3:</strong> Compare your results</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Real-world Implications">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Real-world Implications
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The subadditivity property matters because:</p>
+<ul>
+<li>It ensures diversification is always rewarded</li>
+<li>Risk limits can be allocated consistently across desks</li>
+<li>Portfolio risk is never understated when aggregating positions</li>
+<li>Capital requirements properly reflect risk reduction from diversification</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="theory-regulatory-context---from-var-to-es" class="level3">
+<h3 class="anchored" data-anchor-id="theory-regulatory-context---from-var-to-es">Theory: Regulatory Context - From VaR to ES</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Basel III's Shift to Expected Shortfall">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Basel III’s Shift to Expected Shortfall
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>The regulatory evolution:</strong></p>
+<ul>
+<li><strong>Basel II (until 2016):</strong> Market Risk Capital based on VaR(99%, 10-day) with multiplier of 3</li>
+<li><strong>Basel III (2016-present):</strong> Market Risk Capital based on ES(97.5%, stressed) with multiplier of 1.5</li>
+</ul>
+</div>
+</div>
+<p><strong>Key change:</strong> After the 2008 crisis, regulators switched from VaR to ES because:</p>
+<ul>
+<li>VaR missed tail severity (banks failed despite “acceptable” VaR)</li>
+<li>ES is mathematically coherent (rewards diversification)</li>
+<li>ES is harder to manipulate</li>
+</ul>
+<p><strong>Stressed calibration requirement:</strong></p>
+<p>Basel III requires banks to calculate ES using both:</p>
+<ul>
+<li><strong>Recent period:</strong> Last 250 trading days</li>
+<li><strong>Stressed period:</strong> The historical 250-day window that produces highest ES for current portfolio</li>
+</ul>
+<p><span class="math display">\[\text{Capital} = 1.5 \times \max(ES_{recent}, ES_{stressed})\]</span></p>
+<p>The stressed period is found by testing rolling 250-day windows across historical data (typically capturing crisis periods like 2008 or March 2020).</p>
+<p><em>Note: We’ll explore the full regulatory framework in detail in a later seminar. For now, these exercises demonstrate why regulators made this shift.</em> :::</p>
+</section>
+<section id="activity-5-practical-applications" class="level3">
+<h3 class="anchored" data-anchor-id="activity-5-practical-applications">Activity 5: Practical Applications</h3>
+<p><strong>Task 5.1:</strong> In 2016, Basel III shifted from VaR to ES for market risk capital. Using your SPY data, compare the old and new requirements:</p>
+<ul>
+<li>Calculate 99% VaR (old Basel II requirement)</li>
+<li>Calculate 97.5% ES (new Basel III requirement)</li>
+<li>Despite the lower confidence level, is the new requirement more or less conservative?</li>
+</ul>
+<p><strong>Task 5.2:</strong> Calculate 99% VaR and 97.5% ES for all 250-day rolling windows.</p>
+<ul>
+<li>Which 250-day window produces the highest VaR and ES?</li>
+<li>Compare the results with the most recent 250-day window.</li>
+<li>If you had to hold capital for the worst-case historical period, how much more would you need?</li>
+</ul>
+</section>
+</section>
+<section id="block-c-monte-carlo-simulation-for-risk-measurement" class="level2">
+<h2 class="anchored" data-anchor-id="block-c-monte-carlo-simulation-for-risk-measurement">Block C: Monte Carlo Simulation for Risk Measurement</h2>
+<section id="theory-from-historical-data-to-simulated-futures" class="level3">
+<h3 class="anchored" data-anchor-id="theory-from-historical-data-to-simulated-futures">Theory: From Historical Data to Simulated Futures</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Monte Carlo Methods in Risk Management">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Monte Carlo Methods in Risk Management
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Why simulate?</strong></p>
+<ul>
+<li>Historical data is limited (only one path of history)</li>
+<li>Need to stress test scenarios that haven’t happened yet</li>
+<li>Can incorporate complex dependencies and dynamics</li>
+</ul>
+<p><strong>Basic Monte Carlo for VaR/ES:</strong></p>
+<ol type="1">
+<li>Specify a distribution for returns (normal, student-t, etc.)</li>
+<li>Generate thousands of possible scenarios</li>
+<li>Calculate portfolio value for each scenario</li>
+<li>Extract VaR and ES from simulated distribution</li>
+</ol>
+<p><strong>Industry practice uses more sophisticated models:</strong></p>
+<ul>
+<li><strong>Stochastic Volatility:</strong> Volatility itself is random (GARCH, Heston)</li>
+<li><strong>Jump Diffusion:</strong> Sudden jumps in addition to normal movements</li>
+<li><strong>Regime Switching:</strong> Different distributions in calm vs stressed periods</li>
+<li><strong>Copulas:</strong> Complex dependency structures between assets</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="activity-6-basic-monte-carlo-in-excel" class="level3">
+<h3 class="anchored" data-anchor-id="activity-6-basic-monte-carlo-in-excel">Activity 6: Basic Monte Carlo in Excel</h3>
+<p><strong>Task 6.1:</strong> Create 5000 simulated daily returns for your SPY position:</p>
+<ul>
+<li>In Excel: <code>=NORM.INV(RAND(), mean, stdev)</code></li>
+<li>Use mean and stdev from your historical data</li>
+<li>Calculae 95%/99% VaR and ES using historical method</li>
+</ul>
+<p><strong>Task 6.2:</strong> Real returns have fatter tails than normal. Let’s use Student-t distribution and generate another 5000 simlated daily returns</p>
+<ul>
+<li><code>=T.INV(RAND(), degrees_of_freedom) * stdev + mean</code></li>
+<li>Use 5 degrees of freedom for fat tails</li>
+<li>Calculae 95%/99% VaR and ES using historical method</li>
+</ul>
+<p><strong>Task 6.3:</strong> Compare results from historical simulation (actual), parametric method (theoretical), and Monte Carlo simulations. Which methods give similar results? Why might they differ?</p>
+</section>
+<section id="activity-7-convergence-and-stability" class="level3">
+<h3 class="anchored" data-anchor-id="activity-7-convergence-and-stability">Activity 7: Convergence and Stability</h3>
+<p><strong>Task 7.1:</strong> Using Student-t distribution, calculate 97.5% ES with different numbers of scenarios:</p>
+<ul>
+<li>E.g., 200, 600, 1000, 2000, 5000, 10000 scenarios</li>
+<li>Plot ES estimate vs number of scenarios. At what point does it stabilize?</li>
+</ul>
+<p><strong>Task 7.2:</strong> Run your 1000-scenario simulation 5 times (press <code>F9</code> to recalculate) and write down the results for 99% VaR and 97.5% ES. How stable are your estimates? What does this imply for risk management?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Real-World Implementation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Real-World Implementation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Banks typically use:</p>
+<ul>
+<li>10,000+ scenarios minimum</li>
+<li>Multiple risk factors (not just single asset)</li>
+<li>Historical simulation with bootstrapping</li>
+<li>Filtered Historical Simulation (combining historical data with volatility models)</li>
+</ul>
+<p>The trade-off: More scenarios = more accuracy but slower calculation. For intraday risk, banks often use fewer scenarios for speed.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="block-d-case-study---ubs-and-the-2007-2008-financial-crisis" class="level2">
+<h2 class="anchored" data-anchor-id="block-d-case-study---ubs-and-the-2007-2008-financial-crisis">Block D: Case Study - UBS and the 2007-2008 Financial Crisis</h2>
+<p>UBS, Switzerland’s largest bank, suffered the biggest losses of any European bank during the 2007-2008 financial crisis. Despite sophisticated risk models and AAA-rated assets, the bank lost over $37 billion on mortgage-related securities. This case illustrates how VaR models can catastrophically fail and why Expected Shortfall matters.</p>
+<p><strong>Before the Crisis (2005-2007):</strong></p>
+<ul>
+<li>UBS held $50+ billion in “Super Senior” CDO tranches (the safest part of mortgage securities)</li>
+<li>These were rated AAA - supposedly safer than US government bonds</li>
+<li>Risk models (like VaR) showed minimal danger because:
+<ul>
+<li>Historical data (2003-2006) showed tiny default rates</li>
+<li>Mortgages across different regions were assumed independent</li>
+<li>The bank bought insurance from monoline insurers as protection</li>
+<li>Assumed normal distributions and stable correlations</li>
+</ul></li>
+</ul>
+<p><strong>During the Crisis (2007-2008):</strong></p>
+<ul>
+<li>October 2007: UBS announces $3.4 billion loss (first major bank to report)</li>
+<li>Full year 2007: $18.7 billion in writedowns</li>
+<li>Q1 2008: Another $19 billion in losses</li>
+<li>Stock price fell 70%, CEO and entire senior management resigned</li>
+</ul>
+<p><strong>Why Everything Failed:</strong></p>
+<ul>
+<li>US housing collapsed nationwide (not regionally as models assumed)</li>
+<li>AAA-rated securities became worthless</li>
+<li>Insurance companies failed (they insured the same mortgages)</li>
+<li>Market liquidity vanished - couldn’t sell at any price</li>
+<li>Losses exceeded any historical scenario by 10-20x</li>
+</ul>
+<section id="activity-8-discussion-questions" class="level3">
+<h3 class="anchored" data-anchor-id="activity-8-discussion-questions">Activity 8: Discussion Questions</h3>
+<p><strong>Task 8.1:</strong> Model Assumptions</p>
+<ul>
+<li>If historical data shows no defaults in AAA securities, what should your VaR be?</li>
+<li>Should risk models include events that have never happened?</li>
+<li>How do you model risk for new products with limited history?</li>
+</ul>
+<p><strong>Task 8.2:</strong> Risk Aggregation</p>
+<ul>
+<li>UBS claimed positions were “diversified” across different mortgages. What went wrong?</li>
+<li>If correlation changes from 0.2 to 0.9 in crisis, how does this affect portfolio risk?</li>
+<li>Can diversification make risk disappear, or just hide it?</li>
+</ul>
+<p><strong>Task 8.3:</strong> Lessons Learned</p>
+<ul>
+<li>Would higher capital requirements based on ES have prevented these losses?</li>
+<li>If everyone uses similar risk models, what systemic risks emerge?</li>
+<li>Why might a model that works for 99% of days still destroy a bank?</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled" title="The Key Lesson">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The Key Lesson
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>VaR’s blind spot:</strong> It tells you the threshold you won’t exceed 99% of the time, but nothing about what happens in that 1%.</p>
+<p><strong>UBS’s fate:</strong> The 1% tail event wasn’t just slightly worse than VaR - it was catastrophically worse. This is why regulators switched to Expected Shortfall after the crisis.</p>
+<p>Remember: Risk models work well in normal times. They fail precisely when you need them most - during crises when correlations spike, liquidity vanishes, and “impossible” events happen.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><p><strong>VaR’s fatal flaw:</strong> It tells you nothing about severity when breached—ES measures what actually happens in the tail</p></li>
+<li><p><strong>Coherence matters:</strong> ES always rewards diversification (subadditive), while VaR can punish it, leading to perverse incentives</p></li>
+<li><p><strong>Distribution choice is critical:</strong> Normal distributions underestimate tail risk; fat-tailed distributions (Student-t) better capture extreme events</p></li>
+<li><p><strong>Monte Carlo extends our toolkit:</strong> When historical data is limited, simulation helps explore scenarios that haven’t happened yet</p></li>
+<li><p><strong>Regulatory evolution has a reason:</strong> Basel III’s shift to ES wasn’t arbitrary—it directly addressed failures revealed in 2008</p></li>
+<li><p><strong>Models fail when you need them most:</strong> UBS lost $37B despite “safe” VaR—risk models work in normal times but break in crises when correlations spike and liquidity vanishes</p></li>
+<li><p><strong>The practical bottom line:</strong> Always ask “If things go bad, HOW bad?”—that’s ES, and it might save your firm</p></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -668,13 +1269,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./week_03.html" class="pagination-link" aria-label="Value at Risk - Discovery Through Practice">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Value at Risk - Discovery Through Practice</span></span>
+      <a href="./week_03.html" class="pagination-link" aria-label="Market Risk I: Value at Risk">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Market Risk I: Value at Risk</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./week_05.html" class="pagination-link" aria-label="The Future of Risk Management">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Future of Risk Management</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./week_05.html" class="pagination-link" aria-label="Week 05">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 05</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
