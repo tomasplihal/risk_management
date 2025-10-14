@@ -526,7 +526,7 @@ Parametric Approach for ES (Normal Distribution)
 <li>Sample mean: <span class="math inline">\(\mu\)</span></li>
 <li>Sample standard deviation: <span class="math inline">\(\sigma\)</span></li>
 </ul>
-<p><strong>Step 2:</strong> Apply the ES formula for normal distribution: <span class="math display">\[ES_\alpha = -(\mu + \sigma \times \frac{\phi(z_\alpha)}{1-\alpha})\]</span></p>
+<p><strong>Step 2:</strong> Apply the ES formula for normal distribution: <span class="math display">\[ES_\alpha = -(\mu - \sigma \times \frac{\phi(z_\alpha)}{1-\alpha})\]</span></p>
 <p>where:</p>
 <ul>
 <li><span class="math inline">\(z_\alpha\)</span> is the standard normal quantile at confidence <span class="math inline">\(\alpha\)</span></li>
@@ -537,7 +537,7 @@ Parametric Approach for ES (Normal Distribution)
 <ul>
 <li>For PDF: <code>NORM.DIST(z_α, 0, 1, FALSE)</code></li>
 <li>For z-score: <code>NORM.INV(1-α, 0, 1)</code></li>
-<li>Complete ES formula: <code>=-1*(mean + stdev*NORM.DIST(NORM.INV(1-α,0,1),0,1,FALSE)/(1-α))</code></li>
+<li>Complete ES formula: <code>=-1*(mean - stdev*NORM.DIST(NORM.INV(1-α,0,1),0,1,FALSE)/(1-α))</code></li>
 </ul>
 <p>Note: The negative sign converts P/L returns (where losses are negative) to positive loss values, matching our VaR convention.</p>
 <p><strong>Step 3:</strong> Convert to dollar loss for your portfolio value</p>
@@ -663,7 +663,7 @@ Basel III’s Shift to Expected Shortfall
 </ul>
 <p><span class="math display">\[\text{Capital} = 1.5 \times \max(ES_{recent}, ES_{stressed})\]</span></p>
 <p>The stressed period is found by testing rolling 250-day windows across historical data (typically capturing crisis periods like 2008 or March 2020).</p>
-<p><em>Note: We’ll explore the full regulatory framework in detail in a later seminar. For now, these exercises demonstrate why regulators made this shift.</em> :::</p>
+<p><em>Note: We’ll explore the full regulatory framework in detail in a later seminar. For now, these exercises demonstrate why regulators made this shift.</em></p>
 </section>
 <section id="activity-5-practical-applications" class="level3">
 <h3 class="anchored" data-anchor-id="activity-5-practical-applications">Activity 5: Practical Applications</h3>
