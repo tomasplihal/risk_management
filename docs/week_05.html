@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Week 05 – Risk Management and Financial Institutions</title>
+<title>5&nbsp; Market Risk III: Model Validation and Regulatory Capital – Risk Management and Financial Institutions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -81,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_05.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 05</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_05.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Market Risk III: Model Validation and Regulatory Capital</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -161,19 +190,19 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_05.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 05</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Market Risk III: Model Validation and Regulatory Capital</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 06</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test 1</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 07</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Reading Week</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -203,13 +232,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Week 12</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Test 2</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_13.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Week 13</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Final Exam</span></span></a>
   </div>
 </li>
     </ul>
@@ -217,15 +246,43 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#block-a-backtesting-var-models" id="toc-block-a-backtesting-var-models" class="nav-link active" data-scroll-target="#block-a-backtesting-var-models">Block A: Backtesting VaR Models</a>
+  <ul class="collapse">
+  <li><a href="#activity-1-testing-your-var-model" id="toc-activity-1-testing-your-var-model" class="nav-link" data-scroll-target="#activity-1-testing-your-var-model">Activity 1: Testing Your VaR Model</a></li>
+  <li><a href="#theory-the-backtesting-framework" id="toc-theory-the-backtesting-framework" class="nav-link" data-scroll-target="#theory-the-backtesting-framework">Theory: The Backtesting Framework</a></li>
+  <li><a href="#activity-2-basels-traffic-light-system" id="toc-activity-2-basels-traffic-light-system" class="nav-link" data-scroll-target="#activity-2-basels-traffic-light-system">Activity 2: Basel’s Traffic Light System</a></li>
+  <li><a href="#theory-the-binomial-test" id="toc-theory-the-binomial-test" class="nav-link" data-scroll-target="#theory-the-binomial-test">Theory: The Binomial Test</a></li>
+  <li><a href="#activity-3-var-violations-range" id="toc-activity-3-var-violations-range" class="nav-link" data-scroll-target="#activity-3-var-violations-range">Activity 3: VaR Violations Range</a></li>
+  <li><a href="#theory-the-kupiec-proportion-of-failures-test" id="toc-theory-the-kupiec-proportion-of-failures-test" class="nav-link" data-scroll-target="#theory-the-kupiec-proportion-of-failures-test">Theory: The Kupiec Proportion of Failures Test</a></li>
+  <li><a href="#activity-4-kupiecs-test-implementation" id="toc-activity-4-kupiecs-test-implementation" class="nav-link" data-scroll-target="#activity-4-kupiecs-test-implementation">Activity 4: Kupiec’s Test Implementation</a></li>
+  <li><a href="#activity-5-independence---are-violations-clustering" id="toc-activity-5-independence---are-violations-clustering" class="nav-link" data-scroll-target="#activity-5-independence---are-violations-clustering">Activity 5: Independence - Are Violations Clustering?</a></li>
+  </ul></li>
+  <li><a href="#block-b-the-es-backtesting-challenge" id="toc-block-b-the-es-backtesting-challenge" class="nav-link" data-scroll-target="#block-b-the-es-backtesting-challenge">Block B: The ES Backtesting Challenge</a>
+  <ul class="collapse">
+  <li><a href="#theory-why-es-backtesting-is-difficult" id="toc-theory-why-es-backtesting-is-difficult" class="nav-link" data-scroll-target="#theory-why-es-backtesting-is-difficult">Theory: Why ES Backtesting is Difficult</a></li>
+  <li><a href="#activity-6-comprehensive-backtesting---var-and-es" id="toc-activity-6-comprehensive-backtesting---var-and-es" class="nav-link" data-scroll-target="#activity-6-comprehensive-backtesting---var-and-es">Activity 6: Comprehensive Backtesting - VaR and ES</a></li>
+  </ul></li>
+  <li><a href="#block-c-stressed-risk-measures" id="toc-block-c-stressed-risk-measures" class="nav-link" data-scroll-target="#block-c-stressed-risk-measures">Block C: Stressed Risk Measures</a>
+  <ul class="collapse">
+  <li><a href="#theory-stressed-risk-measures" id="toc-theory-stressed-risk-measures" class="nav-link" data-scroll-target="#theory-stressed-risk-measures">Theory: Stressed Risk Measures</a></li>
+  <li><a href="#activity-7-stressed-period-and-capital-impact" id="toc-activity-7-stressed-period-and-capital-impact" class="nav-link" data-scroll-target="#activity-7-stressed-period-and-capital-impact">Activity 7: Stressed Period and Capital Impact</a></li>
+  </ul></li>
+  <li><a href="#case-study-archegos-capital-management-2021" id="toc-case-study-archegos-capital-management-2021" class="nav-link" data-scroll-target="#case-study-archegos-capital-management-2021">Case Study: Archegos Capital Management (2021)</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 05</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Market Risk III: Model Validation and Regulatory Capital</span></h1>
 </div>
 
 
@@ -242,8 +299,667 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="callout callout-style-default callout-tip callout-titled" title="References">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+References
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+<ul>
+<li>Chapter 11 - Value at Risk and Expected Shortfall</li>
+<li>Chapter 12 - Historical Simulation and Extreme Value Theory</li>
+<li>Chapter 13 - Model-Building Approach</li>
+</ul></li>
+<li>Pirie, W. L., and M. P. Kritzman. 2017. Derivatives. CFA Institute Investment Series. - Chapter 6 - Risk Management</li>
+</ul>
+</div>
+</div>
+<p><strong>Learning Outcomes:</strong></p>
+<ul>
+<li>Design and implement backtesting procedures for VaR models using the traffic light approach and statistical tests</li>
+<li>Evaluate the challenges of backtesting Expected Shortfall and apply practical solutions</li>
+<li>Calculate stressed VaR and stressed ES measures using historical crisis periods and explain their role in regulatory capital</li>
+<li>Compare Basel II, Basel 2.5, and Basel III market risk frameworks and analyze the impact on capital requirements</li>
+</ul>
+<section id="block-a-backtesting-var-models" class="level2">
+<h2 class="anchored" data-anchor-id="block-a-backtesting-var-models">Block A: Backtesting VaR Models</h2>
+<section id="activity-1-testing-your-var-model" class="level3">
+<h3 class="anchored" data-anchor-id="activity-1-testing-your-var-model">Activity 1: Testing Your VaR Model</h3>
+<p>Your risk committee asks:</p>
+<blockquote class="blockquote">
+<p>Are the VaR models we built last week actually working?</p>
+</blockquote>
+<p>Let’s use proper model validation with a train-test split.</p>
+<p>Using your <code>SPY_returns_1000.csv</code> file:</p>
+<p><a href="data/SPY_returns_1000.csv" download="" class="btn btn-primary"> <i class="bi bi-download"></i> Download Dataset (1000 Days) </a></p>
+<ul>
+<li><strong>Training period:</strong> Days 501-750 (250 days) - calculate VaR on this period</li>
+<li><strong>Testing period:</strong> Days 751-1000 (250 days) - backtest your model on this period</li>
+</ul>
+<p><strong>Task 1.1:</strong> Using only days 501-750 (training set):</p>
+<ul>
+<li>Calculate 95% and 99% VaR using historical simulation</li>
+<li>Calculate 95% and 99% VaR using parametric approach</li>
+</ul>
+<p><strong>Task 1.2:</strong> Apply your VaR thresholds to the test period (days 751-1000):</p>
+<ul>
+<li>Count how many days returns exceeded your 95% VaR</li>
+<li>Count how many days returns exceeded your 99% VaR</li>
+<li>Calculate the actual violation rates (violations/250)</li>
+<li>Compare to expected rates (5% and 1%)</li>
+</ul>
+</section>
+<section id="theory-the-backtesting-framework" class="level3">
+<h3 class="anchored" data-anchor-id="theory-the-backtesting-framework">Theory: The Backtesting Framework</h3>
+<p><strong>Backtesting</strong> is the statistical process of comparing predicted VaR with actual outcomes to validate model accuracy.</p>
+<p><strong>Key concept:</strong> If your <span class="math inline">\(\alpha\)</span>% VaR model is correctly calibrated:</p>
+<ul>
+<li>Expected exceptions = <span class="math inline">\(n \times (1 - \alpha)\)</span></li>
+<li>Violations should be independent (no clustering)</li>
+<li>Actual exceptions should follow <span class="math inline">\(\text{Binomial}(n, 1-\alpha)\)</span></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Basel Traffic Light Zones (250 days, 99% VaR)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Basel Traffic Light Zones (250 days, 99% VaR)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 57%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Zone</th>
+<th style="text-align: center;">Violations</th>
+<th style="text-align: center;">Multiplier</th>
+<th style="text-align: center;">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Green</td>
+<td style="text-align: center;">0-4</td>
+<td style="text-align: center;">3.00</td>
+<td style="text-align: center;">Model acceptable</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Yellow</td>
+<td style="text-align: center;">5-9</td>
+<td style="text-align: center;">3.40-3.85</td>
+<td style="text-align: center;">Potential problems, review required</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Red</td>
+<td style="text-align: center;">10+</td>
+<td style="text-align: center;">4.00</td>
+<td style="text-align: center;">Model inadequate</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="activity-2-basels-traffic-light-system" class="level3">
+<h3 class="anchored" data-anchor-id="activity-2-basels-traffic-light-system">Activity 2: Basel’s Traffic Light System</h3>
+<p><strong>Task 2.1:</strong> Using your violation counts from Activity 1, determine your zone:</p>
+<ul>
+<li>What zone are you in for 99% VaR?</li>
+<li>If your daily VaR is $10M, what’s your capital requirement at each zone?</li>
+<li>Why do you think Basel uses these specific cutoffs?</li>
+</ul>
+</section>
+<section id="theory-the-binomial-test" class="level3">
+<h3 class="anchored" data-anchor-id="theory-the-binomial-test">Theory: The Binomial Test</h3>
+<p>For 250 test observations with 95% VaR:</p>
+<ul>
+<li>Expected violations: <span class="math inline">\(250 \times 0.05 = 12.5\)</span></li>
+</ul>
+<p>We use a binomial distribution to calculate the acceptable range of violations. Choosing a 95% confidence level for our test:</p>
+<ul>
+<li>Lower bound: <code>=BINOM.INV(250, 0.05, 0.025)</code> = 6</li>
+<li>Upper bound: <code>=BINOM.INV(250, 0.05, 0.975)</code> = 20</li>
+<li>Acceptable range at 95% confidence: 6 to 20 violations</li>
+</ul>
+<p><em>Note: The 0.025 and 0.975 give us a two-tailed 95% confidence interval (2.5% in each tail).</em></p>
+</section>
+<section id="activity-3-var-violations-range" class="level3">
+<h3 class="anchored" data-anchor-id="activity-3-var-violations-range">Activity 3: VaR Violations Range</h3>
+<p><strong>Task 3.1:</strong> Answer the following questions</p>
+<ul>
+<li>Are your violations within the acceptable range?</li>
+<li>If you had 20 violations, what would this suggest about your model?</li>
+<li>If you had only 3 violations, is this good news or bad news?</li>
+<li>What would the acceptable range be if you used 99% confidence for your test?</li>
+</ul>
+</section>
+<section id="theory-the-kupiec-proportion-of-failures-test" class="level3">
+<h3 class="anchored" data-anchor-id="theory-the-kupiec-proportion-of-failures-test">Theory: The Kupiec Proportion of Failures Test</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Understanding the Kupiec Test">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Understanding the Kupiec Test
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Purpose:</strong> The Kupiec POF test (1995) formally tests whether the observed frequency of VaR violations is statistically consistent with the model’s confidence level.</p>
+<ul>
+<li><strong>Null Hypothesis (H₀):</strong> The model is correctly calibrated - violation rate equals expected rate (p)</li>
+<li><strong>Alternative Hypothesis (H₁):</strong> The model is misspecified - violation rate differs from p</li>
+</ul>
+</div>
+</div>
+<p><strong>The Test Statistic:</strong></p>
+<p>The test uses a likelihood ratio to compare the model’s promised violation rate against what actually occurred:</p>
+<p><span class="math display">\[LR_{POF} = -2 \ln\left(\frac{(1-p)^{n-v} \times p^v}{(1-\hat{p})^{n-v} \times \hat{p}^v}\right)\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(p\)</span> = expected violation rate (0.01 for 99% VaR, 0.05 for 95% VaR)</li>
+<li><span class="math inline">\(v\)</span> = observed violations</li>
+<li><span class="math inline">\(n\)</span> = total observations (250 in our case)</li>
+<li><span class="math inline">\(\hat{p} = v/n\)</span> (observed violation rate)</li>
+</ul>
+<p>This LR statistic follows a chi-squared distribution with 1 degree of freedom.</p>
+<p><strong>Decision Rule:</strong></p>
+<ul>
+<li>If <span class="math inline">\(LR_{POF} &gt; \chi^2_{0.95}(1) = 3.84\)</span>, reject the model at 5% significance (In Excel: <code>=CHISQ.INV(0.95,1)</code>)</li>
+<li>If <span class="math inline">\(LR_{POF} &gt; \chi^2_{0.99}(1) = 6.63\)</span>, reject the model at 1% significance (In Excel: <code>=CHISQ.INV(0.99,1)</code>)</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>The test is <strong>two-sided</strong>: rejects for both too many AND too few violations</li>
+<li><strong>Small sample problem</strong>: With few expected violations (like 2.5 for 99% VaR), the test has low statistical power - meaning it often fails to detect truly bad models</li>
+<li>The test assumes violations are <strong>independent</strong> - it only checks frequency, not clustering</li>
+</ul>
+<p><strong>Note:</strong> <em>More advanced tests like Christoffersen’s Conditional Coverage combine frequency and independence testing in one statistic.</em></p>
+</section>
+<section id="activity-4-kupiecs-test-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="activity-4-kupiecs-test-implementation">Activity 4: Kupiec’s Test Implementation</h3>
+<p><strong>Task 4.1:</strong> Calculate the Kupiec test statistic for your 99% VaR model.</p>
+<p><strong>Task 4.2:</strong> Test the sensitivity - calculate LR for different violation counts: 0, 2, 5, 7, and 10. What’s the minimum violations needed to reject? Maximum allowed?</p>
+<p><strong>Task 4.3:</strong> Repeat for your 95% VaR model. Which test is more conclusive? Why?</p>
+<p><strong>Task 4.4:</strong> Summary:</p>
+<ul>
+<li>Do Basel traffic lights and Kupiec test agree for your model?</li>
+<li>With only 2.5 expected violations, how useful is the Kupiec test for 99% VaR?</li>
+<li>Would you trust this model for setting trading limits?</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Key Insight">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Kupiec test often “passes” 99% VaR models even when they’re bad - you need 7+ violations (almost 3× expected) to reject! This is why banks also test at multiple confidence levels.</p>
+</div>
+</div>
+</section>
+<section id="activity-5-independence---are-violations-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="activity-5-independence---are-violations-clustering">Activity 5: Independence - Are Violations Clustering?</h3>
+<p><strong>Task 5.1:</strong> List the dates of your violations. Calculate days between consecutive violations. Are they evenly spread or clustered?</p>
+<p><strong>Task 5.2:</strong> For violation clustering, count:</p>
+<ul>
+<li>How many violations are followed by another violation next day?</li>
+<li>How many violations are followed by no violation?</li>
+<li>If you see several clustered violations, what does this suggest?</li>
+</ul>
+<p><strong>Task 5.3:</strong> What could cause violation clustering?</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Why This Matters">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why This Matters
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>During the 2008 crisis, banks saw weeks of consecutive VaR breaches. Models assuming independent violations drastically underestimated risk during stressed periods.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="block-b-the-es-backtesting-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="block-b-the-es-backtesting-challenge">Block B: The ES Backtesting Challenge</h2>
+<section id="theory-why-es-backtesting-is-difficult" class="level3">
+<h3 class="anchored" data-anchor-id="theory-why-es-backtesting-is-difficult">Theory: Why ES Backtesting is Difficult</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="The ES Backtesting Problem">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The ES Backtesting Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Unlike VaR (a single threshold), ES is the average of all tail losses. To test it properly, you need many tail observations - but tail events are rare by definition.</p>
+</div>
+</div>
+<p><strong>Key issues:</strong></p>
+<ol type="1">
+<li><strong>Few observations:</strong> At 97.5% confidence, expect only ~6 violations per year</li>
+<li><strong>Statistical power:</strong> Can’t reliably test if the average of 6 observations matches prediction</li>
+<li><strong>Not elicitable:</strong> ES lacks a simple scoring function that VaR has (binary: breach or not)</li>
+</ol>
+<p><strong>Two practical approaches:</strong></p>
+<ol type="1">
+<li><p><strong>Indirect validation:</strong> Test VaR at multiple confidence levels (90%, 95%, 97.5%)</p>
+<ul>
+<li>If all levels calibrated → ES likely correct</li>
+<li>More observations at lower confidence = better statistical power</li>
+</ul></li>
+<li><p><strong>Direct tests:</strong> Compare realized tail losses to predicted ES</p>
+<ul>
+<li>Acerbi-Székely test (2014, 2019)</li>
+<li>McNeil-Frey test (2000)</li>
+<li>But require strong assumptions and large samples</li>
+</ul></li>
+</ol>
+<p><strong>Regulatory stance:</strong> Basel III accepts indirect validation methods because direct ES backtesting remains statistically challenging even with sophisticated tests.</p>
+</section>
+<section id="activity-6-comprehensive-backtesting---var-and-es" class="level3">
+<h3 class="anchored" data-anchor-id="activity-6-comprehensive-backtesting---var-and-es">Activity 6: Comprehensive Backtesting - VaR and ES</h3>
+<p><strong>Task 6.1:</strong> Using your training period (days 1-750), calculate all risk measures you’ll need:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Confidence Level</th>
+<th style="text-align: center;">VaR</th>
+<th style="text-align: center;">ES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">90%</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92.5%</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">95%</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">97.5%</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">99%</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Task 6.2:</strong> Apply ALL thresholds to test period (days 751-1000):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Confidence</th>
+<th style="text-align: left;">Expected Violations</th>
+<th style="text-align: center;">Actual Violations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">90%</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">92.5%</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">95%</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">97.5%</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">99%</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Task 6.3:</strong> For each confidence level, calculate average loss on violation days:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 20%">
+<col style="width: 29%">
+<col style="width: 17%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Confidence</th>
+<th style="text-align: left;">Predicted ES</th>
+<th style="text-align: left;">Realized Avg Loss</th>
+<th style="text-align: left;">Difference</th>
+<th style="text-align: left;">Reliable?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">90%</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">92.5%</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">95%</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">97.5%</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">99%</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Task 6.4:</strong> Validation conclusions:</p>
+<ul>
+<li><strong>VaR validation:</strong> Which levels pass binomial test?</li>
+<li><strong>ES validation (direct):</strong> Can you trust ES given violation counts?</li>
+<li><strong>ES validation (indirect):</strong> If all VaR levels calibrated correctly, what about ES?</li>
+<li><strong>Overall assessment:</strong> Would you use this model for risk management?</li>
+</ul>
+</section>
+</section>
+<section id="block-c-stressed-risk-measures" class="level2">
+<h2 class="anchored" data-anchor-id="block-c-stressed-risk-measures">Block C: Stressed Risk Measures</h2>
+<section id="theory-stressed-risk-measures" class="level3">
+<h3 class="anchored" data-anchor-id="theory-stressed-risk-measures">Theory: Stressed Risk Measures</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Understanding Stressed Calibration">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Understanding Stressed Calibration
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Context:</strong> During the 2007-2008 crisis, banks’ VaR models showed low risk because they were calibrated to recent calm periods. When markets crashed, actual losses far exceeded predictions.</p>
+<p><strong>Regulatory Response:</strong></p>
+<ul>
+<li><strong>Basel 2.5 (2011):</strong> Introduced Stressed VaR (SVaR) alongside regular VaR</li>
+<li><strong>Basel III (2016):</strong> Extended concept to Stressed ES</li>
+</ul>
+</div>
+</div>
+<p><strong>How it works:</strong></p>
+<ol type="1">
+<li><strong>Regular measures:</strong> Calibrated to recent period (typically last 250 days)</li>
+<li><strong>Stressed measures:</strong> Calibrated to historical period with highest risk</li>
+<li><strong>Capital requirement:</strong> Based on both regular AND stressed measures</li>
+</ol>
+<p><strong>Finding the stressed period:</strong></p>
+<ul>
+<li>Test all rolling 250-day windows in your historical data</li>
+<li>Identify window producing highest VaR/ES for current portfolio</li>
+<li>This becomes your “stressed period”</li>
+</ul>
+<p><strong>Why it matters:</strong></p>
+<ul>
+<li>Forces banks to hold crisis-level capital even during calm periods</li>
+<li>Prevents procyclicality (risk models becoming optimistic just before crashes)</li>
+<li>Typical stressed measures are 2-4× higher than current measures</li>
+</ul>
+<p><strong>Formula evolution:</strong></p>
+<ul>
+<li>Basel II: Capital = 3 × VaR(99%, 10-day)</li>
+<li>Basel 2.5: Capital = 3 × VaR(99%, 10-day) + 3 × SVaR(99%, 10-day)</li>
+<li>Basel III: Capital = 1.5 × max(ES(97.5%, 10-day), Stressed ES(97.5%, 10-day))</li>
+</ul>
+</section>
+<section id="activity-7-stressed-period-and-capital-impact" class="level3">
+<h3 class="anchored" data-anchor-id="activity-7-stressed-period-and-capital-impact">Activity 7: Stressed Period and Capital Impact</h3>
+<p><a href="data/SPY_returns_2006_2012.csv" download="" class="btn btn-primary"> <i class="bi bi-download"></i> Download Dataset (2006-2012) </a></p>
+<p><strong>Task 7.1:</strong> For each possible 250-day window, calculate 99% VaR and 97.5% ES using historical simulation.</p>
+<p><strong>Task 7.2:</strong> Identify stressed periods:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 35%">
+<col style="width: 8%">
+<col style="width: 23%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Measure</th>
+<th style="text-align: center;">Worst 250-day Window</th>
+<th style="text-align: center;">Value</th>
+<th style="text-align: center;">Recent Window</th>
+<th style="text-align: center;">Value</th>
+<th style="text-align: center;">Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">99% VaR</td>
+<td style="text-align: center;">Dates ?-?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Dates ?-?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">97.5% ES</td>
+<td style="text-align: center;">Dates ?-?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Dates ?-?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Task 7.3:</strong> Calculate capital requirements for $100M portfolio:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 26%">
+<col style="width: 19%">
+<col style="width: 22%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Framework</th>
+<th style="text-align: left;">Formula</th>
+<th style="text-align: left;">Recent Period</th>
+<th style="text-align: left;">Stressed Period</th>
+<th style="text-align: left;">Total Capital</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Basel II</td>
+<td style="text-align: left;">3 × VaR(99%)</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Basel 2.5</td>
+<td style="text-align: left;">3 × VaR + 3 × SVaR</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Basel III</td>
+<td style="text-align: left;">1.5 × max(ES, SES)</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+<td style="text-align: left;">?</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>How much did capital increase from Basel II to 2.5?</li>
+<li>Why did Basel III reduce the multiplier but still maintain high capital?</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled" title="Limitation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Limitation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your dataset might not contain a true crisis period. Real stressed measures often use 2008 or March 2020 data, showing 3-5× higher risk than calm periods.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="case-study-archegos-capital-management-2021" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-archegos-capital-management-2021">Case Study: Archegos Capital Management (2021)</h2>
+<p><strong>Background:</strong> In March 2021, Archegos Capital, a family office managing $10 billion, collapsed in 48 hours, causing over $10 billion in losses to banks including Credit Suisse ($5.5B), Nomura ($2.85B), and Morgan Stanley ($911M).</p>
+<p><strong>The Hidden Leverage Strategy:</strong> Archegos used <strong>total return swaps</strong> to secretly build massive positions:</p>
+<ul>
+<li>Banks bought and held the shares, Archegos got profits/losses</li>
+<li>Archegos put up only 10-20% margin, controlled 5-8× more</li>
+<li>No disclosure required (banks owned shares, not Archegos)</li>
+<li>Same positions held at multiple banks - none knew about the others</li>
+</ul>
+<p><strong>The Systemic Blind Spot:</strong> Each bank thought they had manageable exposure:</p>
+<ul>
+<li>Credit Suisse: “We have $10B exposure, acceptable risk”</li>
+<li>Morgan Stanley: “We have $8B exposure, acceptable risk”</li>
+<li>Nomura: “We have $5B exposure, acceptable risk”</li>
+</ul>
+<p>Reality: $30B+ total street exposure to the same 8 stocks.</p>
+<p><strong>Why Risk Models Failed:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 49%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">What VaR Showed</th>
+<th style="text-align: center;">What Actually Happened</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Normal volatility in liquid stocks</td>
+<td style="text-align: center;">30% drop when all banks sold together</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">99% VaR &lt; $50M daily loss</td>
+<td style="text-align: center;">$5.5B loss in 2 days</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Adequate 15% margin</td>
+<td style="text-align: center;">Margin calls triggered death spiral</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Diversified prime brokerage business</td>
+<td style="text-align: center;">One client destroyed the quarter</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The Collapse:</strong></p>
+<ol type="1">
+<li>ViacomCBS announced share offering → stock dropped 10%</li>
+<li>Archegos couldn’t meet margin calls at ANY bank</li>
+<li>All banks started selling the same stocks simultaneously</li>
+<li>Fire sale drove stocks down 30-50%</li>
+<li>Banks discovered they all had the same positions</li>
+</ol>
+<p><strong>Discussion Questions:</strong></p>
+<ol type="1">
+<li>How would you modify VaR to capture hidden systemic exposure?</li>
+<li>Should banks be required to disclose large swap positions to each other?</li>
+<li>If your backtesting shows perfect results but you lose $5B overnight, what assumption was wrong?</li>
+<li>Could stressed VaR have caught this?</li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled" title="The Core Lesson">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The Core Lesson
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Individual models can be perfect and still fail systemically.</strong> Each bank’s VaR was “correct” for their known exposure. But swaps created hidden concentration risk across the entire street. When everyone sells the same positions simultaneously, historical correlations and liquidity assumptions collapse.</p>
+<p>This wasn’t a failure of math - it was a failure to see the whole picture.</p>
+</div>
+</div>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><p><strong>Backtesting VaR:</strong> Use train-test split, Basel traffic lights (0-4 green, 5-9 yellow, 10+ red), and Kupiec test - but 99% VaR needs 7+ violations to reject (nearly 3× expected)</p></li>
+<li><p><strong>ES Challenge:</strong> Can’t backtest ES directly with few tail events - use indirect validation via multiple VaR levels (90%, 95%, 97.5%)</p></li>
+<li><p><strong>Stressed Measures:</strong> Calculate risk using worst historical 250-day window - typically 2-4× higher than recent period, forcing crisis-level capital in calm times</p></li>
+<li><p><strong>Basel Evolution:</strong> Each crisis increased requirements: Basel II (3×VaR) → Basel 2.5 (3×VaR + 3×SVaR) → Basel III (1.5×max(ES, Stressed ES))</p></li>
+<li><p><strong>Critical Lesson:</strong> Models that pass all backtests can still fail catastrophically (Archegos) - individual models miss systemic risk, and new crisis types won’t match historical patterns</p></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -673,8 +1389,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./week_06.html" class="pagination-link" aria-label="Week 06">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 06</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./week_06.html" class="pagination-link" aria-label="Test 1">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
