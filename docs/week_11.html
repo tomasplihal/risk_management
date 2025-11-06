@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Week 11 – Risk Management and Financial Institutions</title>
+<title>11&nbsp; Bank Regulation, FRTB, and Economic Capital – Risk Management and Financial Institutions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -81,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_11.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 11</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_11.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bank Regulation, FRTB, and Economic Capital</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test 1: Market Risk Management</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -179,25 +208,25 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 08</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Liquidity Risk</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Week 09</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Credit Risk</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 10</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_11.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 11</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bank Regulation, FRTB, and Economic Capital</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -217,15 +246,59 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#block-a-the-evolution-of-bank-capital-regulation" id="toc-block-a-the-evolution-of-bank-capital-regulation" class="nav-link active" data-scroll-target="#block-a-the-evolution-of-bank-capital-regulation">Block A: The Evolution of Bank Capital Regulation</a>
+  <ul class="collapse">
+  <li><a href="#why-bank-regulation-evolved" id="toc-why-bank-regulation-evolved" class="nav-link" data-scroll-target="#why-bank-regulation-evolved">Why Bank Regulation Evolved</a></li>
+  <li><a href="#basel-i-the-foundation-and-its-flaws" id="toc-basel-i-the-foundation-and-its-flaws" class="nav-link" data-scroll-target="#basel-i-the-foundation-and-its-flaws">Basel I: The Foundation and Its Flaws</a></li>
+  <li><a href="#activity-a-basel-i-risk-weighted-assets-calculation" id="toc-activity-a-basel-i-risk-weighted-assets-calculation" class="nav-link" data-scroll-target="#activity-a-basel-i-risk-weighted-assets-calculation">Activity A: Basel I Risk-Weighted Assets Calculation</a></li>
+  </ul></li>
+  <li><a href="#block-b-fundamental-review-of-the-trading-book-frtb" id="toc-block-b-fundamental-review-of-the-trading-book-frtb" class="nav-link" data-scroll-target="#block-b-fundamental-review-of-the-trading-book-frtb">Block B: Fundamental Review of the Trading Book (FRTB)</a>
+  <ul class="collapse">
+  <li><a href="#from-var-to-expected-shortfall" id="toc-from-var-to-expected-shortfall" class="nav-link" data-scroll-target="#from-var-to-expected-shortfall">From VaR to Expected Shortfall</a></li>
+  <li><a href="#liquidity-horizons-the-key-frtb-innovation" id="toc-liquidity-horizons-the-key-frtb-innovation" class="nav-link" data-scroll-target="#liquidity-horizons-the-key-frtb-innovation">Liquidity Horizons: The Key FRTB Innovation</a></li>
+  <li><a href="#trading-book-vs.-banking-book" id="toc-trading-book-vs.-banking-book" class="nav-link" data-scroll-target="#trading-book-vs.-banking-book">Trading Book vs.&nbsp;Banking Book</a></li>
+  <li><a href="#activity-b-frtb-capital-calculation-with-liquidity-horizons" id="toc-activity-b-frtb-capital-calculation-with-liquidity-horizons" class="nav-link" data-scroll-target="#activity-b-frtb-capital-calculation-with-liquidity-horizons">Activity B: FRTB Capital Calculation with Liquidity Horizons</a></li>
+  </ul></li>
+  <li><a href="#block-c-basel-iii-capital-framework" id="toc-block-c-basel-iii-capital-framework" class="nav-link" data-scroll-target="#block-c-basel-iii-capital-framework">Block C: Basel III Capital Framework</a>
+  <ul class="collapse">
+  <li><a href="#capital-quality-and-quantity" id="toc-capital-quality-and-quantity" class="nav-link" data-scroll-target="#capital-quality-and-quantity">Capital Quality and Quantity</a></li>
+  <li><a href="#capital-buffers" id="toc-capital-buffers" class="nav-link" data-scroll-target="#capital-buffers">Capital Buffers</a></li>
+  <li><a href="#leverage-ratio" id="toc-leverage-ratio" class="nav-link" data-scroll-target="#leverage-ratio">Leverage Ratio</a></li>
+  <li><a href="#global-systemically-important-banks-g-sibs" id="toc-global-systemically-important-banks-g-sibs" class="nav-link" data-scroll-target="#global-systemically-important-banks-g-sibs">Global Systemically Important Banks (G-SIBs)</a></li>
+  <li><a href="#contingent-convertible-bonds-cocos" id="toc-contingent-convertible-bonds-cocos" class="nav-link" data-scroll-target="#contingent-convertible-bonds-cocos">Contingent Convertible Bonds (CoCos)</a></li>
+  <li><a href="#activity-c-basel-iii-capital-calculation" id="toc-activity-c-basel-iii-capital-calculation" class="nav-link" data-scroll-target="#activity-c-basel-iii-capital-calculation">Activity C: Basel III Capital Calculation</a></li>
+  </ul></li>
+  <li><a href="#block-d-economic-capital-and-raroc" id="toc-block-d-economic-capital-and-raroc" class="nav-link" data-scroll-target="#block-d-economic-capital-and-raroc">Block D: Economic Capital and RAROC</a>
+  <ul class="collapse">
+  <li><a href="#beyond-regulatory-minimum-economic-capital" id="toc-beyond-regulatory-minimum-economic-capital" class="nav-link" data-scroll-target="#beyond-regulatory-minimum-economic-capital">Beyond Regulatory Minimum: Economic Capital</a></li>
+  <li><a href="#components-of-economic-capital" id="toc-components-of-economic-capital" class="nav-link" data-scroll-target="#components-of-economic-capital">Components of Economic Capital</a></li>
+  <li><a href="#aggregating-economic-capital" id="toc-aggregating-economic-capital" class="nav-link" data-scroll-target="#aggregating-economic-capital">Aggregating Economic Capital</a></li>
+  <li><a href="#raroc-risk-adjusted-return-on-capital" id="toc-raroc-risk-adjusted-return-on-capital" class="nav-link" data-scroll-target="#raroc-risk-adjusted-return-on-capital">RAROC: Risk-Adjusted Return on Capital</a></li>
+  <li><a href="#activity-d-business-unit-raroc-analysis-and-strategic-decisions" id="toc-activity-d-business-unit-raroc-analysis-and-strategic-decisions" class="nav-link" data-scroll-target="#activity-d-business-unit-raroc-analysis-and-strategic-decisions">Activity D: Business Unit RAROC Analysis and Strategic Decisions</a></li>
+  </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a>
+  <ul class="collapse">
+  <li><a href="#regulatory-evolution" id="toc-regulatory-evolution" class="nav-link" data-scroll-target="#regulatory-evolution">Regulatory Evolution</a></li>
+  <li><a href="#frtb-key-innovations" id="toc-frtb-key-innovations" class="nav-link" data-scroll-target="#frtb-key-innovations">FRTB Key Innovations</a></li>
+  <li><a href="#basel-iii-capital-framework" id="toc-basel-iii-capital-framework" class="nav-link" data-scroll-target="#basel-iii-capital-framework">Basel III Capital Framework</a></li>
+  <li><a href="#economic-capital-and-raroc" id="toc-economic-capital-and-raroc" class="nav-link" data-scroll-target="#economic-capital-and-raroc">Economic Capital and RAROC</a></li>
+  <li><a href="#critical-connections" id="toc-critical-connections" class="nav-link" data-scroll-target="#critical-connections">Critical Connections</a></li>
+  <li><a href="#practical-implications" id="toc-practical-implications" class="nav-link" data-scroll-target="#practical-implications">Practical Implications</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 11</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bank Regulation, FRTB, and Economic Capital</span></h1>
 </div>
 
 
@@ -242,8 +315,903 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="callout callout-style-default callout-tip callout-titled" title="References">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+References
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+<ul>
+<li>Chapter 25 - Basel I, Basel II, and Solvency II</li>
+<li>Chapter 26 - Basel II.5, Basel III, and Other Post-Crisis Changes</li>
+<li>Chapter 27 - Fundamental Review of the Trading Book</li>
+<li>Chapter 28 - Economic Capital and RAROC</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p><strong>Learning Outcomes:</strong></p>
+<ul>
+<li>Trace the evolution of bank capital regulation from Basel I through Basel III</li>
+<li>Understand the Fundamental Review of the Trading Book (FRTB) and liquidity horizons</li>
+<li>Calculate Basel III capital requirements including CET1, buffers, and leverage ratio</li>
+<li>Explain G-SIBs, CoCo bonds, and their role in financial stability</li>
+<li>Apply RAROC methodology for business unit performance evaluation and strategic decisions</li>
+<li>Integrate market, credit, operational, and liquidity risk into economic capital framework</li>
+</ul>
+<section id="block-a-the-evolution-of-bank-capital-regulation" class="level2">
+<h2 class="anchored" data-anchor-id="block-a-the-evolution-of-bank-capital-regulation">Block A: The Evolution of Bank Capital Regulation</h2>
+<section id="why-bank-regulation-evolved" class="level3">
+<h3 class="anchored" data-anchor-id="why-bank-regulation-evolved">Why Bank Regulation Evolved</h3>
+<p>Bank regulation ensures financial institutions maintain adequate capital to manage risks and safeguard economic stability. Before 1988, countries applied inconsistent capital-to-asset ratios, creating competitive imbalances and failing to address risks from international lending and OTC derivatives. The 1988 Basel Accord (Basel I) introduced the first international risk-based standards, but its oversimplification led to regulatory arbitrage and inadequate risk capture.</p>
+<p>The 2007-2009 Global Financial Crisis exposed critical weaknesses in Basel II, which coincidentally was implemented just as the crisis began. Banks using internal models had underestimated risks, particularly in trading books. The crisis prompted a comprehensive regulatory overhaul: Basel II.5 (2011), Basel III (2010-2023), and the Fundamental Review of the Trading Book (FRTB).</p>
+<p><strong>Key timeline:</strong></p>
+<ul>
+<li><strong>1988</strong>: Basel I - First international capital standards (8% minimum, risk-weighted assets)</li>
+<li><strong>2007</strong>: Basel II - Three pillars (minimum capital, supervisory review, market discipline)</li>
+<li><strong>2008</strong>: Global Financial Crisis - Revealed Basel II weaknesses</li>
+<li><strong>2011</strong>: Basel II.5 - Stressed VaR, incremental risk charge</li>
+<li><strong>2010-2023</strong>: Basel III - Higher capital quality, liquidity requirements, leverage ratio</li>
+<li><strong>2019-TBD</strong>: FRTB - Expected Shortfall, liquidity horizons, stricter book boundaries</li>
+</ul>
+</section>
+<section id="basel-i-the-foundation-and-its-flaws" class="level3">
+<h3 class="anchored" data-anchor-id="basel-i-the-foundation-and-its-flaws">Basel I: The Foundation and Its Flaws</h3>
+<p>The 1988 BIS Accord introduced risk-weighted assets (RWA) with five risk weight categories (0%, 10%, 20%, 50%, 100%). While groundbreaking, it had significant limitations:</p>
+<p><strong>Risk-Weighted Assets Formula:</strong></p>
+<p><span class="math display">\[
+\text{RWA} = \sum_{i=1}^{N} w_i L_i
+\]</span></p>
+<p>where <span class="math inline">\(w_i\)</span> is the risk weight and <span class="math inline">\(L_i\)</span> is the principal amount.</p>
+<p><strong>Capital requirement</strong>: Banks must maintain capital ≥ 8% of total RWA, with at least 4% as Tier 1 (core) capital.</p>
+<p><strong>Critical flaws:</strong></p>
+<ol type="1">
+<li><strong>Crude risk buckets</strong>: All corporate loans = 100% risk weight regardless of credit quality (AAA same as B-rated)</li>
+<li><strong>No market risk</strong>: Only credit risk covered initially (1996 Amendment added market risk)</li>
+<li><strong>Regulatory arbitrage</strong>: Banks could structure transactions to minimize capital while maintaining risk exposure</li>
+<li><strong>No operational risk</strong>: Completely ignored</li>
+</ol>
+<p><strong>Example of regulatory arbitrage:</strong> A bank could securitize high-quality mortgages (50% risk weight) and retain low-quality ones, reducing regulatory capital while increasing actual risk.</p>
+</section>
+<section id="activity-a-basel-i-risk-weighted-assets-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="activity-a-basel-i-risk-weighted-assets-calculation">Activity A: Basel I Risk-Weighted Assets Calculation</h3>
+<p><strong>Scenario:</strong> You are analyzing a bank’s loan portfolio under Basel I rules. Calculate the total risk-weighted assets and minimum capital requirement.</p>
+<p><strong>Bank’s balance sheet:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Asset Type</th>
+<th style="text-align: center;">Principal ($ million)</th>
+<th style="text-align: center;">Basel I Risk Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Cash and reserves</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Government bonds (OECD)</td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">0%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Interbank loans</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">20%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Residential mortgages</td>
+<td style="text-align: center;">500</td>
+<td style="text-align: center;">50%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Corporate loans (AAA-rated)</td>
+<td style="text-align: center;">300</td>
+<td style="text-align: center;">100%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Corporate loans (B-rated)</td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">100%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Total assets</strong></td>
+<td style="text-align: center;"><strong>1,350</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Questions:</strong></p>
+<ol type="1">
+<li>Calculate total risk-weighted assets</li>
+<li>Calculate minimum total capital requirement (8% of RWA)</li>
+<li>Calculate minimum Tier 1 capital requirement (4% of RWA)</li>
+<li>Why is it problematic that AAA and B-rated corporate loans have the same risk weight?</li>
+<li>If the bank securitizes $200M of residential mortgages (moves off balance sheet), how does RWA change? Does risk actually decrease?</li>
+</ol>
+<p><strong>Discussion points:</strong></p>
+<ul>
+<li>How might a bank exploit these rules to reduce capital while maintaining (or increasing) risk?</li>
+<li>Why did Basel I fail to prevent the 2008 crisis?</li>
+<li>What improvements did Basel II introduce? (Internal ratings-based approach for credit risk)</li>
+</ul>
+</section>
+</section>
+<section id="block-b-fundamental-review-of-the-trading-book-frtb" class="level2">
+<h2 class="anchored" data-anchor-id="block-b-fundamental-review-of-the-trading-book-frtb">Block B: Fundamental Review of the Trading Book (FRTB)</h2>
+<section id="from-var-to-expected-shortfall" class="level3">
+<h3 class="anchored" data-anchor-id="from-var-to-expected-shortfall">From VaR to Expected Shortfall</h3>
+<p>You’ve already studied Value-at-Risk (VaR) and Expected Shortfall (ES) as risk measures. The FRTB represents the Basel Committee’s shift from VaR to ES for regulatory capital calculations, recognizing that VaR failed to capture tail risk during the 2007-2009 crisis.</p>
+<p><strong>Evolution of market risk capital:</strong></p>
+<ol type="1">
+<li><strong>Basel I (1996 Amendment)</strong>: 10-day VaR at 99% confidence</li>
+<li><strong>Basel II.5 (2011)</strong>: Added stressed VaR (VaR + sVaR) to capture crisis conditions</li>
+<li><strong>FRTB (2019)</strong>: Replaced VaR with Expected Shortfall at 97.5% confidence</li>
+</ol>
+<p><strong>Why Expected Shortfall?</strong></p>
+<ul>
+<li>VaR answers: “What is the maximum loss in 99% of cases?”</li>
+<li>ES answers: “What is the average loss in the worst 2.5% of cases?”</li>
+<li>ES is <strong>coherent</strong> (subadditive), captures tail risk, and provides information about extreme losses</li>
+</ul>
+</section>
+<section id="liquidity-horizons-the-key-frtb-innovation" class="level3">
+<h3 class="anchored" data-anchor-id="liquidity-horizons-the-key-frtb-innovation">Liquidity Horizons: The Key FRTB Innovation</h3>
+<p>The FRTB’s most significant innovation is <strong>liquidity horizons</strong> - the time required to exit or hedge a risk position in a stressed market. Different risk factors have different liquidity horizons, reflecting how quickly positions can be unwound without significant price impact.</p>
+<p><strong>FRTB liquidity horizon structure:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Risk Factor</th>
+<th style="text-align: center;">Liquidity Horizon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Large-cap equity, major FX, government bonds</td>
+<td style="text-align: center;">10 days</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Small-cap equity, corporate bonds (IG)</td>
+<td style="text-align: center;">20 days</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Volatility (equity, FX)</td>
+<td style="text-align: center;">20 days</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Corporate bonds (high-yield)</td>
+<td style="text-align: center;">40 days</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Structured credit products</td>
+<td style="text-align: center;">60 days</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Exotic products</td>
+<td style="text-align: center;">120 days</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Capital calculation under FRTB:</strong></p>
+<p><span class="math display">\[
+\text{ES}_{\text{total}} = \sqrt{\text{ES}_{10d}^2 + \text{ES}_{20d}^2 + \text{ES}_{40d}^2 + \text{ES}_{60d}^2 + \text{ES}_{120d}^2}
+\]</span></p>
+<p>where each <span class="math inline">\(\text{ES}\)</span> term represents risk factors within that liquidity horizon.</p>
+<p><strong>Practical implication:</strong> Illiquid positions (exotic derivatives, structured credit) now require significantly more capital than liquid positions (government bonds, major FX pairs), properly reflecting the higher risk of being unable to exit in stressed markets.</p>
+</section>
+<section id="trading-book-vs.-banking-book" class="level3">
+<h3 class="anchored" data-anchor-id="trading-book-vs.-banking-book">Trading Book vs.&nbsp;Banking Book</h3>
+<p>FRTB introduced stricter criteria to prevent regulatory arbitrage between books:</p>
+<ul>
+<li><strong>Trading book</strong>: Instruments held for short-term profit, marked-to-market daily, subject to <strong>market risk capital</strong> (ES-based)</li>
+<li><strong>Banking book</strong>: Instruments held to maturity, marked-to-model or amortized cost, subject to <strong>credit risk capital</strong> (probability of default-based)</li>
+</ul>
+<p><strong>Why this matters:</strong> Pre-FRTB, banks could shift positions between books to minimize capital. For example, moving illiquid credit instruments to the trading book (lower capital under Basel II.5) even though they couldn’t actually be traded.</p>
+<p><strong>FRTB restrictions:</strong></p>
+<ul>
+<li>Clear intent required for trading book classification</li>
+<li>Presumptive lists of instruments for each book</li>
+<li>Once assigned, transfers between books severely restricted</li>
+<li>Any capital benefit from transfer is disallowed</li>
+</ul>
+</section>
+<section id="activity-b-frtb-capital-calculation-with-liquidity-horizons" class="level3">
+<h3 class="anchored" data-anchor-id="activity-b-frtb-capital-calculation-with-liquidity-horizons">Activity B: FRTB Capital Calculation with Liquidity Horizons</h3>
+<p><strong>Scenario:</strong> A trading desk holds the following positions. Calculate the capital requirement under FRTB, considering liquidity horizons.</p>
+<p><strong>Risk factor exposures (10-day 97.5% ES):</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Risk Factor</th>
+<th style="text-align: center;">10-day ES ($M)</th>
+<th style="text-align: center;">Liquidity Horizon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">S&amp;P 500 equity</td>
+<td style="text-align: center;">5.0</td>
+<td style="text-align: center;">10 days</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">USD/EUR FX</td>
+<td style="text-align: center;">2.0</td>
+<td style="text-align: center;">10 days</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Investment-grade corporate bonds</td>
+<td style="text-align: center;">8.0</td>
+<td style="text-align: center;">20 days</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">High-yield corporate bonds</td>
+<td style="text-align: center;">12.0</td>
+<td style="text-align: center;">40 days</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Equity volatility (VIX)</td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;">20 days</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Collateralized loan obligations (CLOs)</td>
+<td style="text-align: center;">15.0</td>
+<td style="text-align: center;">60 days</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Questions:</strong></p>
+<ol type="1">
+<li><p>For risk factors with liquidity horizons &gt; 10 days, scale the ES appropriately:</p>
+<ul>
+<li>20-day ES = 10-day ES × √2</li>
+<li>40-day ES = 10-day ES × √4 = 10-day ES × 2</li>
+<li>60-day ES = 10-day ES × √6</li>
+</ul></li>
+<li><p>Group risk factors by liquidity horizon and sum ES within each group</p></li>
+<li><p>Calculate total ES using the formula: <span class="math display">\[\text{ES}_{\text{total}} = \sqrt{\sum_{h} \text{ES}_h^2}\]</span> where <span class="math inline">\(h\)</span> represents each liquidity horizon</p></li>
+<li><p>Compare to simple sum of 10-day ES values (old approach). What percentage reduction does the FRTB formula provide?</p></li>
+<li><p>Which position contributes most to capital? Why?</p></li>
+</ol>
+<p><strong>Discussion points:</strong></p>
+<ul>
+<li>A bank wants to classify a portfolio of BBB-rated corporate bonds as “trading book.” They claim they can sell them any time. Should the regulator allow this? What evidence would you require?</li>
+<li>How do liquidity horizons address the lesson from 2008 when “liquid” markets suddenly froze?</li>
+<li>What unintended consequences might FRTB create? (Hint: Will banks avoid illiquid products entirely?)</li>
+</ul>
+</section>
+</section>
+<section id="block-c-basel-iii-capital-framework" class="level2">
+<h2 class="anchored" data-anchor-id="block-c-basel-iii-capital-framework">Block C: Basel III Capital Framework</h2>
+<section id="capital-quality-and-quantity" class="level3">
+<h3 class="anchored" data-anchor-id="capital-quality-and-quantity">Capital Quality and Quantity</h3>
+<p>Basel III, finalized in 2017 and fully implemented in January 2023, dramatically increased both the quality and quantity of required capital. The framework eliminated Tier 3 capital and redefined capital tiers to ensure loss-absorbing capacity.</p>
+<p><strong>Capital tier definitions:</strong></p>
+<ol type="1">
+<li><strong>Common Equity Tier 1 (CET1)</strong> - Highest quality:
+<ul>
+<li>Share capital and retained earnings</li>
+<li><strong>Minus</strong> deductions: goodwill, intangible assets, deferred tax assets, pension deficits</li>
+<li><strong>Minimum</strong>: 4.5% of RWA</li>
+</ul></li>
+<li><strong>Additional Tier 1 (AT1)</strong>:
+<ul>
+<li>Non-cumulative perpetual preferred stock</li>
+<li>Contingent convertible bonds (CoCos) meeting strict criteria</li>
+<li><strong>Total Tier 1 minimum</strong>: CET1 + AT1 ≥ 6% of RWA</li>
+</ul></li>
+<li><strong>Tier 2</strong>:
+<ul>
+<li>Subordinated debt (minimum 5-year maturity)</li>
+<li><strong>Total capital minimum</strong>: Tier 1 + Tier 2 ≥ 8% of RWA</li>
+</ul></li>
+</ol>
+</section>
+<section id="capital-buffers" class="level3">
+<h3 class="anchored" data-anchor-id="capital-buffers">Capital Buffers</h3>
+<p>Beyond minimum requirements, Basel III introduced buffers to ensure banks can absorb losses during stress:</p>
+<p><strong>1. Capital Conservation Buffer (CCB):</strong></p>
+<ul>
+<li>Additional 2.5% of RWA in CET1 capital</li>
+<li>Brings effective CET1 minimum to 7% (4.5% + 2.5%)</li>
+<li>If breached, automatic restrictions on dividends, bonuses, and share buybacks</li>
+</ul>
+<p><strong>2. Countercyclical Buffer (CCyB):</strong></p>
+<ul>
+<li>0% to 2.5% of RWA, set by national regulators</li>
+<li>Activated during credit booms to build extra capital</li>
+<li>Released during downturns to allow lending</li>
+<li>Must be met with CET1 capital</li>
+</ul>
+<p><strong>Total CET1 requirement:</strong> 4.5% (minimum) + 2.5% (CCB) + 0-2.5% (CCyB) = <strong>7% to 9.5%</strong></p>
+</section>
+<section id="leverage-ratio" class="level3">
+<h3 class="anchored" data-anchor-id="leverage-ratio">Leverage Ratio</h3>
+<p>The leverage ratio provides a non-risk-weighted backstop to prevent excessive leverage:</p>
+<p><span class="math display">\[
+\text{Leverage Ratio} = \frac{\text{Tier 1 Capital}}{\text{Total Exposure}}
+\]</span></p>
+<ul>
+<li><strong>Minimum</strong>: 3% (some jurisdictions require higher)</li>
+<li><strong>Total Exposure</strong> includes: on-balance sheet assets, derivatives, securities financing, off-balance sheet commitments</li>
+<li><strong>Purpose</strong>: Prevents underestimation of risk-weighted assets and limits absolute leverage</li>
+</ul>
+<p><strong>Why both ratios matter:</strong> A bank can be compliant on RWA-based ratios but fail leverage ratio if it holds many low-risk-weight assets (e.g., government bonds). The binding constraint determines actual lending capacity.</p>
+</section>
+<section id="global-systemically-important-banks-g-sibs" class="level3">
+<h3 class="anchored" data-anchor-id="global-systemically-important-banks-g-sibs">Global Systemically Important Banks (G-SIBs)</h3>
+<p><strong>G-SIBs</strong> are banks whose failure could destabilize the global financial system. Designation is based on size, interconnectedness, substitutability, complexity, and cross-jurisdictional activity.</p>
+<p><strong>G-SIB capital surcharges:</strong></p>
+<ul>
+<li>Bucket 1: +1.0% CET1</li>
+<li>Bucket 2: +1.5% CET1</li>
+<li>Bucket 3: +2.0% CET1</li>
+<li>Bucket 4: +2.5% CET1</li>
+<li>Bucket 5: +3.5% CET1</li>
+</ul>
+<p><strong>Current G-SIBs:</strong> The Financial Stability Board (FSB) publishes an annual list at <a href="https://www.fsb.org/work-of-the-fsb/market-and-institutional-resilience/post-2008-financial-crisis-reforms/ending-too-big-to-fail/global-systemically-important-financial-institutions-g-sifis/">www.fsb.org</a>. As of 2023, approximately 30 banks are designated as G-SIBs, including JPMorgan Chase, HSBC, Bank of America, Citigroup, and others.</p>
+</section>
+<section id="contingent-convertible-bonds-cocos" class="level3">
+<h3 class="anchored" data-anchor-id="contingent-convertible-bonds-cocos">Contingent Convertible Bonds (CoCos)</h3>
+<p><strong>CoCos</strong> are hybrid debt instruments that convert to equity or are written down when a bank’s capital falls below a trigger level. They provide automatic recapitalization during stress.</p>
+<p><strong>Key features:</strong></p>
+<ul>
+<li>Higher interest rates than regular debt (compensates for conversion risk)</li>
+<li><strong>Trigger event</strong>: Typically CET1 ratio falling below 5.125% or 7%</li>
+<li><strong>Conversion mechanism</strong>: Convert to equity (diluting shareholders) or write-down (investors lose principal)</li>
+<li>Can count as AT1 capital if meeting Basel III criteria</li>
+</ul>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li><strong>For banks</strong>: Enhances equity during stress while offering cheaper funding during normal times</li>
+<li><strong>For regulators</strong>: Automatic recapitalization reduces need for taxpayer bailouts</li>
+<li><strong>For investors</strong>: Higher yield compensates for tail risk</li>
+</ul>
+<p><strong>Notable example:</strong> Credit Suisse CoCos were completely written down to zero during its 2023 rescue by UBS, while equity holders received some value - a controversial inversion of typical capital hierarchy.</p>
+</section>
+<section id="activity-c-basel-iii-capital-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="activity-c-basel-iii-capital-calculation">Activity C: Basel III Capital Calculation</h3>
+<p><strong>Scenario:</strong> You are a bank analyst evaluating whether a regional bank meets Basel III requirements.</p>
+<p><strong>Bank’s capital structure ($ million):</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Capital Component</th>
+<th style="text-align: center;">Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Common stock</td>
+<td style="text-align: center;">500</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Retained earnings</td>
+<td style="text-align: center;">300</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Goodwill</td>
+<td style="text-align: center;">(50)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Deferred tax assets</td>
+<td style="text-align: center;">(30)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Non-cumulative perpetual preferred stock</td>
+<td style="text-align: center;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">CoCo bonds (qualifying AT1)</td>
+<td style="text-align: center;">80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Subordinated debt (7-year maturity)</td>
+<td style="text-align: center;">150</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bank’s exposure:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 22%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Exposure Type</th>
+<th style="text-align: center;">Amount</th>
+<th style="text-align: center;">Risk Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Government bonds</td>
+<td style="text-align: center;">2,000</td>
+<td style="text-align: center;">0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Residential mortgages</td>
+<td style="text-align: center;">4,000</td>
+<td style="text-align: center;">35%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Corporate loans</td>
+<td style="text-align: center;">5,000</td>
+<td style="text-align: center;">100%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Total balance sheet</td>
+<td style="text-align: center;">11,000</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Off-balance sheet commitments</td>
+<td style="text-align: center;">1,000</td>
+<td style="text-align: center;">50% (credit conversion factor)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Leverage ratio exposure</strong>: $12,000M (includes derivatives and securities financing)</p>
+<p><strong>Regulatory parameters:</strong></p>
+<ul>
+<li>Countercyclical buffer: 1.0%</li>
+<li>Bank is NOT a G-SIB</li>
+</ul>
+<p><strong>Questions:</strong></p>
+<ol type="1">
+<li><p>Calculate CET1, Total Tier 1, and Total Capital amounts</p></li>
+<li><p>Calculate risk-weighted assets (RWA)</p></li>
+<li><p>Calculate CET1 ratio, Tier 1 ratio, and Total Capital ratio</p></li>
+<li><p>Calculate leverage ratio</p></li>
+<li><p>Check compliance with:</p>
+<ul>
+<li>Minimum CET1: 4.5%</li>
+<li>Minimum Tier 1: 6%</li>
+<li>Minimum Total Capital: 8%</li>
+<li>Capital Conservation Buffer: 2.5% (CET1)</li>
+<li>Countercyclical Buffer: 1.0% (CET1)</li>
+<li>Leverage Ratio: 3%</li>
+</ul></li>
+<li><p>What is the bank’s <strong>binding constraint</strong> - RWA-based ratios or leverage ratio?</p></li>
+<li><p>If the bank wants to increase lending by $1,000M (100% risk weight), how much additional CET1 capital is needed?</p></li>
+<li><p>The bank holds $2,000M in government bonds (0% risk weight). If it replaces these with corporate loans (100% risk weight), how do the ratios change?</p></li>
+</ol>
+<p><strong>Discussion points:</strong></p>
+<ul>
+<li>Why might a bank with high capital ratios still be risky? (Hint: What risks don’t RWA capture?)</li>
+<li>Should CoCo bondholders have been wiped out before equity in Credit Suisse? Why or why not?</li>
+<li>A bank CEO argues: “We should hold only high-risk-weight assets since the leverage ratio is binding anyway.” Is this rational? What are the implications?</li>
+</ul>
+</section>
+</section>
+<section id="block-d-economic-capital-and-raroc" class="level2">
+<h2 class="anchored" data-anchor-id="block-d-economic-capital-and-raroc">Block D: Economic Capital and RAROC</h2>
+<section id="beyond-regulatory-minimum-economic-capital" class="level3">
+<h3 class="anchored" data-anchor-id="beyond-regulatory-minimum-economic-capital">Beyond Regulatory Minimum: Economic Capital</h3>
+<p><strong>Economic capital</strong> represents an internal estimate of capital needed to absorb unexpected losses over a one-year horizon at a confidence level aligned with the institution’s target credit rating. Unlike regulatory capital (compliance-driven), economic capital reflects the bank’s actual risk profile.</p>
+<p><strong>Key distinction:</strong></p>
+<ul>
+<li><strong>Regulatory capital</strong>: “What regulators require us to hold” (Basel III rules)</li>
+<li><strong>Economic capital</strong>: “What we actually need to hold” (internal risk models)</li>
+</ul>
+<p>A well-managed bank should ensure economic capital ≥ regulatory capital. If economic capital &lt; regulatory capital, the firm is taking less risk than regulators assume. If economic capital &gt; regulatory capital, the firm may be undercapitalized despite regulatory compliance.</p>
+<p><strong>Confidence level and credit rating:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Target Rating</th>
+<th style="text-align: center;">Default Probability</th>
+<th style="text-align: center;">Confidence Level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">AAA</td>
+<td style="text-align: center;">0.01%</td>
+<td style="text-align: center;">99.99%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">AA</td>
+<td style="text-align: center;">0.02%</td>
+<td style="text-align: center;">99.98%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">0.05%</td>
+<td style="text-align: center;">99.95%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">BBB</td>
+<td style="text-align: center;">0.20%</td>
+<td style="text-align: center;">99.80%</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="components-of-economic-capital" class="level3">
+<h3 class="anchored" data-anchor-id="components-of-economic-capital">Components of Economic Capital</h3>
+<p>Economic capital must cover all risk types, integrating the concepts from previous weeks:</p>
+<p><strong>1. Market Risk</strong> (Weeks 5-6): - Assessed using 1-year horizon VaR or ES at target confidence level - Derived from daily VaR scaled: <span class="math inline">\(\text{VaR}_{1\text{year}} = \text{VaR}_{1\text{day}} \times \sqrt{250}\)</span></p>
+<p><strong>2. Credit Risk</strong> (Week 9): - Models: CreditMetrics, Credit Risk+, KMV - Captures default risk and credit migration risk - Can be cycle-specific (conditional) or cycle-neutral (unconditional)</p>
+<p><strong>3. Operational Risk</strong> (Week 10): - Loss distribution approach - Captures frequency and severity of operational losses - Highly skewed distribution (many small losses, few catastrophic)</p>
+<p><strong>4. Liquidity Risk</strong> (Week 8): - Cost of emergency funding during stress - Often embedded in other risk types or handled separately</p>
+<p><strong>5. Business Risk</strong>: - Strategic risk, reputational risk, competitive pressures - Difficult to quantify but important for strategic initiatives</p>
+<p><strong>Loss distribution characteristics:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Risk Type</th>
+<th style="text-align: center;">Standard Deviation</th>
+<th style="text-align: center;">Skewness</th>
+<th style="text-align: center;">Kurtosis</th>
+<th style="text-align: center;">Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Market Risk</td>
+<td style="text-align: center;">High</td>
+<td style="text-align: center;">Zero (normal)</td>
+<td style="text-align: center;">Low</td>
+<td style="text-align: center;">VaR ≈ ES</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Credit Risk</td>
+<td style="text-align: center;">Moderate</td>
+<td style="text-align: center;">Moderate</td>
+<td style="text-align: center;">Moderate</td>
+<td style="text-align: center;">Some tail risk</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Operational Risk</td>
+<td style="text-align: center;">Low</td>
+<td style="text-align: center;">High</td>
+<td style="text-align: center;">High</td>
+<td style="text-align: center;">Fat tails matter</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="aggregating-economic-capital" class="level3">
+<h3 class="anchored" data-anchor-id="aggregating-economic-capital">Aggregating Economic Capital</h3>
+<p>Simply summing economic capital across risk types assumes perfect correlation (overly conservative):</p>
+<p><span class="math display">\[E_{\text{total}} = \sum_{i=1}^{n} E_i\]</span></p>
+<p>This overestimates by ~40% in practice.</p>
+<p><strong>Correlation-based aggregation (hybrid approach):</strong></p>
+<p><span class="math display">\[
+E_{\text{total}} = \sqrt{\sum_{i=1}^{n} \sum_{j=1}^{n} E_i E_j \rho_{ij}}
+\]</span></p>
+<p>where <span class="math inline">\(\rho_{ij}\)</span> is the correlation between risk types <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>.</p>
+<p><strong>Typical correlations:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Market</th>
+<th style="text-align: center;">Credit</th>
+<th style="text-align: center;">Operational</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Market</td>
+<td style="text-align: center;">1.00</td>
+<td style="text-align: center;">0.30</td>
+<td style="text-align: center;">0.10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Credit</td>
+<td style="text-align: center;">0.30</td>
+<td style="text-align: center;">1.00</td>
+<td style="text-align: center;">0.10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Operational</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">1.00</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Advanced approach: Copulas</strong></p>
+<ul>
+<li>Maps each risk type’s loss distribution to a standard distribution</li>
+<li>Applies correlation structure using copula function</li>
+<li>Gaussian copula is simplest; t-copula captures tail dependence</li>
+</ul>
+</section>
+<section id="raroc-risk-adjusted-return-on-capital" class="level3">
+<h3 class="anchored" data-anchor-id="raroc-risk-adjusted-return-on-capital">RAROC: Risk-Adjusted Return on Capital</h3>
+<p><strong>RAROC</strong> measures risk-adjusted profitability, enabling capital allocation and performance evaluation:</p>
+<p><span class="math display">\[
+\text{RAROC} = \frac{\text{Revenues} - \text{Costs} - \text{Expected Losses}}{\text{Economic Capital}}
+\]</span></p>
+<p><strong>Components:</strong></p>
+<ul>
+<li><strong>Revenues</strong>: Interest income, fees, trading profits</li>
+<li><strong>Costs</strong>: Operating expenses, funding costs</li>
+<li><strong>Expected Losses (EL)</strong>: Average losses over time (e.g., credit loss provisions)</li>
+<li><strong>Economic Capital (EC)</strong>: Capital required for unexpected losses</li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>RAROC &gt; Cost of Equity → Business creates value</li>
+<li>RAROC &lt; Cost of Equity → Business destroys value</li>
+<li>Compare RAROC across business units to allocate capital efficiently</li>
+</ul>
+<p><strong>Applications:</strong></p>
+<ol type="1">
+<li><strong>Ex-ante (forward-looking)</strong>: Should we expand this business? Enter this market?</li>
+<li><strong>Ex-post (backward-looking)</strong>: How did each business unit perform? Bonus allocation?</li>
+<li><strong>Pricing</strong>: What interest rate should we charge on this loan to achieve target RAROC?</li>
+</ol>
+<p><strong>Example:</strong> A trading desk generates $200M revenue, $80M costs, $10M expected losses, and requires $800M economic capital:</p>
+<p><span class="math display">\[
+\text{RAROC} = \frac{200 - 80 - 10}{800} = \frac{110}{800} = 13.75\%
+\]</span></p>
+<p>If the bank’s cost of equity is 12%, this desk creates value.</p>
+</section>
+<section id="activity-d-business-unit-raroc-analysis-and-strategic-decisions" class="level3">
+<h3 class="anchored" data-anchor-id="activity-d-business-unit-raroc-analysis-and-strategic-decisions">Activity D: Business Unit RAROC Analysis and Strategic Decisions</h3>
+<p><strong>Scenario:</strong> You are the CFO of a diversified financial institution. The firm has $3 billion in economic capital to allocate across business units. Your cost of equity is 12%, and target is AA rating (99.98% confidence).</p>
+<p><strong>Business Unit Performance (all figures $ millions):</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 11%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Business Unit</th>
+<th style="text-align: center;">Revenues</th>
+<th style="text-align: center;">Operating Costs</th>
+<th style="text-align: center;">Expected Losses</th>
+<th style="text-align: center;">Economic Capital (Current)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Corporate Lending</strong></td>
+<td style="text-align: center;">240</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">1,000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Trading Desk</strong></td>
+<td style="text-align: center;">320</td>
+<td style="text-align: center;">140</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">1,200</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Retail Banking</strong></td>
+<td style="text-align: center;">180</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">600</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Asset Management</strong></td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">200</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Total</strong></td>
+<td style="text-align: center;">820</td>
+<td style="text-align: center;">340</td>
+<td style="text-align: center;">95</td>
+<td style="text-align: center;">3,000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Part 1: Current Performance Analysis</strong></p>
+<ol type="1">
+<li><p>Calculate RAROC for each business unit</p></li>
+<li><p>Rank business units by RAROC</p></li>
+<li><p>Which units create value (RAROC &gt; 12%)? Which destroy value?</p></li>
+<li><p>Calculate total firm RAROC</p></li>
+</ol>
+<p><strong>Part 2: Strategic Decisions</strong></p>
+<p>You are considering four strategic initiatives. Analyze each using RAROC:</p>
+<p><strong>Option A: Expand Corporate Lending</strong></p>
+<ul>
+<li>Increase loans by 20% → Increase EC by $200M</li>
+<li>Expected incremental revenues: +$50M</li>
+<li>Expected incremental costs: +$18M</li>
+<li>Expected incremental losses: +$8M</li>
+</ul>
+<p><strong>Option B: Grow Asset Management</strong></p>
+<ul>
+<li>Launch new funds → Increase EC by $100M (operational risk)</li>
+<li>Expected incremental revenues: +$25M</li>
+<li>Expected incremental costs: +$10M</li>
+<li>Expected incremental losses: +$2M</li>
+</ul>
+<p><strong>Option C: Reduce Trading Desk Size</strong></p>
+<ul>
+<li>Cut illiquid positions → Reduce EC by $300M</li>
+<li>Expected revenue reduction: -$60M</li>
+<li>Expected cost reduction: -$25M</li>
+<li>Expected loss reduction: -$5M</li>
+</ul>
+<p><strong>Option D: Exit Retail Banking (Divest)</strong></p>
+<ul>
+<li>Sell retail division → Release $600M EC for other uses</li>
+<li>One-time gain on sale: $50M</li>
+</ul>
+<p>Questions:</p>
+<ol start="5" type="1">
+<li><p>Calculate RAROC for each initiative (Options A-C)</p></li>
+<li><p>Which initiative has the highest RAROC?</p></li>
+<li><p>If you could implement only one initiative, which would you choose and why?</p></li>
+<li><p>For Option D: If you reinvest the $600M freed capital into Corporate Lending (at current RAROC), what is the net impact on firm profits?</p></li>
+</ol>
+<p><strong>Part 3: Risk Aggregation</strong></p>
+<p>Assume the business units have the following correlations:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Corp Lending</th>
+<th>Trading</th>
+<th>Retail</th>
+<th>Asset Mgmt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Corp Lending</td>
+<td>1.00</td>
+<td>0.40</td>
+<td>0.50</td>
+<td>0.20</td>
+</tr>
+<tr class="even">
+<td>Trading</td>
+<td>0.40</td>
+<td>1.00</td>
+<td>0.30</td>
+<td>0.15</td>
+</tr>
+<tr class="odd">
+<td>Retail</td>
+<td>0.50</td>
+<td>0.30</td>
+<td>1.00</td>
+<td>0.25</td>
+</tr>
+<tr class="even">
+<td>Asset Mgmt</td>
+<td>0.20</td>
+<td>0.15</td>
+<td>0.25</td>
+<td>1.00</td>
+</tr>
+</tbody>
+</table>
+<ol start="9" type="1">
+<li>Using the correlation-based aggregation formula, calculate the diversified total economic capital:</li>
+</ol>
+<p><span class="math display">\[
+EC_{\text{total}} = \sqrt{\sum_{i=1}^{4} \sum_{j=1}^{4} EC_i \cdot EC_j \cdot \rho_{ij}}
+\]</span></p>
+<ol start="10" type="1">
+<li><p>Compare to the simple sum ($3,000M). What is the diversification benefit?</p></li>
+<li><p>If the firm is subject to Basel III CET1 requirement of 7% on $40B RWA = $2,800M, which is binding - regulatory capital or economic capital?</p></li>
+</ol>
+<p><strong>Part 4: Integration with Previous Weeks</strong></p>
+<ol start="12" type="1">
+<li><p>The trading desk’s EC comes from:</p>
+<ul>
+<li>Market risk (VaR): $800M</li>
+<li>Credit risk (CVA): $200M</li>
+<li>Operational risk: $200M</li>
+</ul>
+<p>If FRTB increases market risk capital by 50% due to liquidity horizons, what happens to trading desk RAROC?</p></li>
+<li><p>Retail banking faces a potential operational risk loss (data breach) with:</p>
+<ul>
+<li>Expected loss: $30M (already included above)</li>
+<li>99.98% VaR: $150M</li>
+</ul>
+<p>Is the current EC allocation ($600M) sufficient? If not, how should it change?</p></li>
+<li><p>Corporate lending portfolio:</p>
+<ul>
+<li>Average loan: $10M</li>
+<li>Number of loans: 500</li>
+<li>Average PD: 2%</li>
+<li>LGD: 40%</li>
+<li>Correlation between borrowers: 0.25</li>
+</ul>
+<p>Using the Vasicek formula from Week 9, estimate economic capital for credit risk. Does it match the $1,000M allocation?</p></li>
+</ol>
+<p><strong>Discussion Points:</strong></p>
+<ul>
+<li>A business unit has the highest absolute profit but lowest RAROC. Should bonuses be based on profit or RAROC? Why?</li>
+<li>Your trading desk argues: “FRTB penalizes illiquid products too much. Competitors will take this business.” How do you respond?</li>
+<li>Economic capital shows the bank needs $3.5B, but Basel III requires only $2.8B. Should you hold the higher amount? What if shareholders demand capital return?</li>
+<li>How would you explain RAROC to a business unit head who believes their high revenues justify any risk-taking?</li>
+<li>Compare regulatory capital (rules-based, public) vs.&nbsp;economic capital (model-based, private). Which matters more for: (a) preventing bank failures, (b) creating shareholder value?</li>
+</ul>
+</section>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<section id="regulatory-evolution" class="level3">
+<h3 class="anchored" data-anchor-id="regulatory-evolution">Regulatory Evolution</h3>
+<ul>
+<li>Basel I (1988) introduced risk-weighted assets but was overly simplistic and enabled regulatory arbitrage</li>
+<li>Basel II (2007) improved risk sensitivity but was implemented just as the crisis revealed its weaknesses</li>
+<li>Basel II.5 (2011) added stressed VaR and incremental risk charge for trading books</li>
+<li>Basel III (2023) increased capital quality (CET1) and quantity (buffers), added leverage ratio and liquidity requirements</li>
+<li>FRTB (ongoing) replaces VaR with Expected Shortfall and introduces liquidity horizons</li>
+</ul>
+</section>
+<section id="frtb-key-innovations" class="level3">
+<h3 class="anchored" data-anchor-id="frtb-key-innovations">FRTB Key Innovations</h3>
+<ul>
+<li><strong>Expected Shortfall</strong> at 97.5% captures tail risk better than VaR at 99%</li>
+<li><strong>Liquidity horizons</strong> (10 to 120 days) reflect true time to exit positions in stress</li>
+<li>Stricter <strong>trading vs.&nbsp;banking book</strong> boundaries prevent regulatory arbitrage</li>
+<li>Capital requirements for illiquid products increased significantly</li>
+</ul>
+</section>
+<section id="basel-iii-capital-framework" class="level3">
+<h3 class="anchored" data-anchor-id="basel-iii-capital-framework">Basel III Capital Framework</h3>
+<ul>
+<li><strong>CET1</strong> (4.5%) + <strong>Capital Conservation Buffer</strong> (2.5%) + <strong>Countercyclical Buffer</strong> (0-2.5%) = 7-9.5% total CET1 requirement</li>
+<li><strong>Leverage ratio</strong> (3%) provides non-risk-weighted backstop</li>
+<li><strong>G-SIBs</strong> face additional 1-3.5% CET1 surcharge (FSB publishes annual list)</li>
+<li><strong>CoCo bonds</strong> automatically recapitalize banks when CET1 falls below trigger</li>
+</ul>
+</section>
+<section id="economic-capital-and-raroc" class="level3">
+<h3 class="anchored" data-anchor-id="economic-capital-and-raroc">Economic Capital and RAROC</h3>
+<ul>
+<li><strong>Economic capital</strong> is internal estimate based on target rating; <strong>regulatory capital</strong> is compliance minimum</li>
+<li>Aggregate risks using correlations to capture diversification benefits</li>
+<li><strong>RAROC</strong> measures risk-adjusted performance: <span class="math inline">\(\text{RAROC} = \frac{\text{Rev} - \text{Cost} - \text{EL}}{\text{EC}}\)</span></li>
+<li>Use RAROC for capital allocation, pricing, performance evaluation, and strategic decisions</li>
+<li>Integrate market, credit, operational, and liquidity risk into unified framework</li>
+</ul>
+</section>
+<section id="critical-connections" class="level3">
+<h3 class="anchored" data-anchor-id="critical-connections">Critical Connections</h3>
+<ul>
+<li>FRTB liquidity horizons reflect lessons from Week 8 (liquidity risk freezing in 2008)</li>
+<li>Economic capital aggregates Week 5-6 (market), Week 8 (liquidity), Week 9 (credit), and Week 10 (operational) risks</li>
+<li>Binding constraint (RWA vs.&nbsp;leverage ratio) determines actual lending capacity</li>
+<li>Economic capital &gt; Regulatory capital → Bank may be undercapitalized despite compliance</li>
+</ul>
+</section>
+<section id="practical-implications" class="level3">
+<h3 class="anchored" data-anchor-id="practical-implications">Practical Implications</h3>
+<ul>
+<li>Banks must satisfy both RWA-based ratios AND leverage ratio (dual constraint)</li>
+<li>FRTB makes illiquid trading strategies much more expensive (liquidity horizons)</li>
+<li>RAROC enables comparing business units with different risk profiles</li>
+<li>G-SIB designation adds 1-3.5% capital requirement but also provides funding advantages (“too big to fail” perception)</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -668,8 +1636,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./week_10.html" class="pagination-link" aria-label="Week 10">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 10</span></span>
+      <a href="./week_10.html" class="pagination-link" aria-label="Operational Risk">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

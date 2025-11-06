@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Week 08 – Risk Management and Financial Institutions</title>
+<title>8&nbsp; Liquidity Risk – Risk Management and Financial Institutions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -81,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_08.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 08</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_08.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Liquidity Risk</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test 1: Market Risk Management</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -179,25 +208,25 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_08.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 08</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Liquidity Risk</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Week 09</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Credit Risk</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 10</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 11</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bank Regulation, FRTB, and Economic Capital</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -217,15 +246,41 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#block-a-understanding-liquidity-risk" id="toc-block-a-understanding-liquidity-risk" class="nav-link active" data-scroll-target="#block-a-understanding-liquidity-risk">Block A: Understanding Liquidity Risk</a>
+  <ul class="collapse">
+  <li><a href="#activity-1-discovering-the-two-faces-of-liquidity" id="toc-activity-1-discovering-the-two-faces-of-liquidity" class="nav-link" data-scroll-target="#activity-1-discovering-the-two-faces-of-liquidity">Activity 1: Discovering the Two Faces of Liquidity</a></li>
+  <li><a href="#theory-the-two-faces-of-liquidity-risk" id="toc-theory-the-two-faces-of-liquidity-risk" class="nav-link" data-scroll-target="#theory-the-two-faces-of-liquidity-risk">Theory: The Two Faces of Liquidity Risk</a></li>
+  </ul></li>
+  <li><a href="#block-b-time-horizons-and-liquidation-strategies" id="toc-block-b-time-horizons-and-liquidation-strategies" class="nav-link" data-scroll-target="#block-b-time-horizons-and-liquidation-strategies">Block B: Time Horizons and Liquidation Strategies</a>
+  <ul class="collapse">
+  <li><a href="#activity-2-the-liquidation-tradeoff" id="toc-activity-2-the-liquidation-tradeoff" class="nav-link" data-scroll-target="#activity-2-the-liquidation-tradeoff">Activity 2: The Liquidation Tradeoff</a></li>
+  <li><a href="#theory-the-liquidation-timeline-framework" id="toc-theory-the-liquidation-timeline-framework" class="nav-link" data-scroll-target="#theory-the-liquidation-timeline-framework">Theory: The Liquidation Timeline Framework</a></li>
+  </ul></li>
+  <li><a href="#block-c-funding-liquidity-risk-and-the-liquidity-coverage-ratio-lcr" id="toc-block-c-funding-liquidity-risk-and-the-liquidity-coverage-ratio-lcr" class="nav-link" data-scroll-target="#block-c-funding-liquidity-risk-and-the-liquidity-coverage-ratio-lcr">Block C: Funding Liquidity Risk and the Liquidity Coverage Ratio (LCR)</a>
+  <ul class="collapse">
+  <li><a href="#activity-3-computing-the-liquidity-coverage-ratio" id="toc-activity-3-computing-the-liquidity-coverage-ratio" class="nav-link" data-scroll-target="#activity-3-computing-the-liquidity-coverage-ratio">Activity 3: Computing the Liquidity Coverage Ratio</a></li>
+  <li><a href="#theory-funding-liquidity-risk-and-basel-iii-lcr" id="toc-theory-funding-liquidity-risk-and-basel-iii-lcr" class="nav-link" data-scroll-target="#theory-funding-liquidity-risk-and-basel-iii-lcr">Theory: Funding Liquidity Risk and Basel III LCR</a></li>
+  </ul></li>
+  <li><a href="#block-d-case-study---the-gamestop-short-squeeze-january-2021" id="toc-block-d-case-study---the-gamestop-short-squeeze-january-2021" class="nav-link" data-scroll-target="#block-d-case-study---the-gamestop-short-squeeze-january-2021">Block D: Case Study - The GameStop Short Squeeze (January 2021)</a>
+  <ul class="collapse">
+  <li><a href="#activity-4-analyzing-the-gamestop-liquidity-crisis" id="toc-activity-4-analyzing-the-gamestop-liquidity-crisis" class="nav-link" data-scroll-target="#activity-4-analyzing-the-gamestop-liquidity-crisis">Activity 4: Analyzing the GameStop Liquidity Crisis</a></li>
+  <li><a href="#theory-systemic-liquidity-concepts" id="toc-theory-systemic-liquidity-concepts" class="nav-link" data-scroll-target="#theory-systemic-liquidity-concepts">Theory: Systemic Liquidity Concepts</a></li>
+  </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 08</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Liquidity Risk</span></h1>
 </div>
 
 
@@ -242,8 +297,461 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="callout callout-style-default callout-tip callout-titled" title="References">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+References
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+<ul>
+<li>Chapter 21 - Liquidity Risk</li>
+</ul></li>
+<li>Pirie, W. L., and M. P. Kritzman. 2017. Derivatives. CFA Institute Investment Series. - Chapter 6 - Risk Management</li>
+</ul>
+</div>
+</div>
+<p><strong>Learning Outcomes:</strong></p>
+<ul>
+<li>Distinguish exogenous vs endogenous liquidity risk and quantify liquidation costs from bid-ask spreads and market impact relative to position size</li>
+<li>Evaluate liquidation strategies by comparing patient versus immediate liquidation tradeoffs between liquidity costs and market risk exposure</li>
+<li>Calculate Basel III Liquidity Coverage Ratio (LCR) including HQLA haircuts, stressed cash outflows, and differentiate asset versus funding liquidity risk</li>
+<li>Analyze systemic liquidity crises including margin call mechanics, forced liquidation under leverage, liquidity spirals, and wrong-way risk amplification</li>
+</ul>
+<section id="block-a-understanding-liquidity-risk" class="level2">
+<h2 class="anchored" data-anchor-id="block-a-understanding-liquidity-risk">Block A: Understanding Liquidity Risk</h2>
+<p>You manage a $500M equity portfolio for a mid-sized hedge fund. This morning, you need to liquidate positions in three stocks. The Excel file contains full order books (10 bid levels, 5 ask levels) for three stocks with different liquidity characteristics:</p>
+<p><a href="data/Liquidity_Risk_Order_Books.xlsx" download="" class="btn btn-primary"> <i class="bi bi-download"></i> Download Order Book Data </a></p>
+<ul>
+<li><strong>TechCorp:</strong> 200,000 share position, 5,000,000 daily volume (highly liquid blue-chip)</li>
+<li><strong>RegionalBank:</strong> 500,000 share position, 1,200,000 daily volume (moderately liquid mid-cap)</li>
+<li><strong>BioStartup:</strong> 100,000 share position, 150,000 daily volume (illiquid small-cap)</li>
+</ul>
+<section id="activity-1-discovering-the-two-faces-of-liquidity" class="level3">
+<h3 class="anchored" data-anchor-id="activity-1-discovering-the-two-faces-of-liquidity">Activity 1: Discovering the Two Faces of Liquidity</h3>
+<p><strong>Task 1.1: Small Trade Analysis</strong></p>
+<p>Sell <strong>10,000 shares</strong> of each stock at the best available bid price. For each stock, calculate:</p>
+<ul>
+<li>Proceeds from the sale</li>
+<li>Total liquidity cost in $ and % (compared to mid-price)</li>
+<li>Which stock has the highest percentage liquidity cost for this small trade? Why?</li>
+</ul>
+<p><strong>Task 1.2: Full Position Liquidation</strong></p>
+<p>Now liquidate your <strong>entire position</strong> in each stock by selling at market (hitting successive bid levels in the order book). For each stock, calculate:</p>
+<ul>
+<li>Average execution price</li>
+<li>Total proceeds</li>
+<li>Total liquidity cost in $ and % (compared to mid-price)</li>
+<li>Position size as % of daily volume</li>
+</ul>
+<p><strong>Task 1.3: Analysis and Reflection</strong></p>
+<p>Compare and analyze your results from Tasks 1.1 and 1.2:</p>
+<ul>
+<li>Rank the three stocks by liquidity cost (%) for both small trades and full liquidation. Did the ranking change? Why?</li>
+<li>For each stock, how did your liquidity cost (%) change when you went from 10,000 shares to your full position? Which stock saw the biggest increase?</li>
+<li>What pattern emerges between position size (as % of daily volume) and total liquidity cost?</li>
+</ul>
+<p><strong>Task 1.4: Decomposing Liquidity Cost</strong></p>
+<p>Now quantify the two sources of liquidity cost. For each stock, separate your total liquidity cost into:</p>
+<ul>
+<li><strong>Spread Cost (Exogenous):</strong> The cost if you could execute your entire position at the best bid price</li>
+<li><strong>Market Impact Cost (Endogenous):</strong> The additional cost from walking down the order book</li>
+<li>Does this decomposition confirm your insights from Task 1.3? How?</li>
+</ul>
+</section>
+<section id="theory-the-two-faces-of-liquidity-risk" class="level3">
+<h3 class="anchored" data-anchor-id="theory-the-two-faces-of-liquidity-risk">Theory: The Two Faces of Liquidity Risk</h3>
+<p>Let’s formalize what you discovered: <strong>exogenous</strong> (market-driven) and <strong>endogenous</strong> (position-driven) liquidity risk.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Liquidity Risk">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Liquidity Risk
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><strong>Exogenous Liquidity Risk (Market-Driven):</strong> The liquidity conditions that exist in the market <em>regardless</em> of your actions.</p>
+<ul>
+<li>Bid-ask spread (tightness)</li>
+<li>Market depth at best quotes</li>
+<li>Daily trading volume</li>
+</ul></li>
+<li><p><strong>Endogenous Liquidity Risk (Position-Driven):</strong> The liquidity impact <em>caused by</em> your own position size.</p>
+<ul>
+<li>Price impact beyond the spread</li>
+<li>Your position as % of daily volume</li>
+<li>Market depth consumption</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p><span class="math display">\[
+\text{Total Liquidity Cost} = \text{Spread Cost} + \text{Market Impact Cost}
+\]</span></p>
+<ul>
+<li><strong>Spread Cost</strong> = Exogenous (market-driven, constant per share)</li>
+<li><strong>Market Impact Cost</strong> = Endogenous (position-driven, increasing in position size)</li>
+</ul>
+<p><span class="math display">\[
+\text{Market Impact Cost} = f\!\left(\frac{\text{Position Size}}{\text{Market Depth}}\right)
+\]</span></p>
+<p><strong>Risk Management Implications:</strong> Never assume you can exit at current market prices—the market is a participant, not a vending machine.</p>
+<p><strong>Key Takeaway:</strong> Small trades face the market as it is (exogenous), while large trades change the market itself (endogenous). The pattern you observed—cost increasing non-linearly with position size relative to daily volume—is the fundamental reality of liquidity risk.</p>
+</section>
+</section>
+<section id="block-b-time-horizons-and-liquidation-strategies" class="level2">
+<h2 class="anchored" data-anchor-id="block-b-time-horizons-and-liquidation-strategies">Block B: Time Horizons and Liquidation Strategies</h2>
+<p>Using the same three positions from Block A, you now need to analyze different liquidation strategies. Your risk manager has given you a constraint: <strong>maximum daily participation cannot exceed 20% of normal daily volume</strong> to avoid market disruption.</p>
+<section id="activity-2-the-liquidation-tradeoff" class="level3">
+<h3 class="anchored" data-anchor-id="activity-2-the-liquidation-tradeoff">Activity 2: The Liquidation Tradeoff</h3>
+<p><strong>Task 2.1: Minimum Liquidation Time</strong></p>
+<p>Calculate the minimum number of days needed to liquidate each position under the 20% participation constraint. What does this tell you about position sizing in illiquid markets?</p>
+<p><strong>Task 2.2: Patient Liquidation Cost</strong></p>
+<p>Assume you use sophisticated execution algorithms that allow the order book to refresh to its normal levels each day. You will liquidate up to 20% of daily volume per day.</p>
+<ul>
+<li>Use the Block A order book to calculate total cost over liquidation period</li>
+<li>How does total liquidity cost compare with immediate liquidation (Block A Task 1.2)?</li>
+</ul>
+<blockquote class="blockquote">
+<p><em>Note: This “refresh” assumption is optimistic but helps isolate the benefit of patient liquidation. In reality, the market may react to your selling, which is why execution algorithms and careful timing matter.</em></p>
+</blockquote>
+<p><strong>Task 2.3: Downside Risk During Liquidation</strong></p>
+<p>Risk managers must consider worst-case scenarios. If market volatility is 2% daily for all three stocks, calculate the potential downside risk (1 std dev) from holding positions during gradual liquidation.</p>
+<p>For each stock:</p>
+<p><span class="math display">\[
+\text{Downside Risk (1 std dev)} = \text{Position Value} \times \sigma_{\text{daily}} \times \sqrt{\text{Liquidation Days}}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\text{Position Value} = \text{Position Size} \times \text{Mid Price (from Block A)}
+\]</span></p>
+<p>This represents the potential loss if the market moves <strong>against you</strong> during the liquidation period (note: markets can also move in your favor, but prudent risk management focuses on downside protection).</p>
+<p>Calculate:</p>
+<ul>
+<li>Downside risk exposure for each stock</li>
+<li>Liquidity cost savings from patient liquidation: (Block A Task 1.2 cost) - (Block B Task 2.2 cost)</li>
+<li>Risk-adjusted benefit: Cost Savings - Downside Risk (if positive, patient liquidation remains beneficial even in the worst-case scenario)</li>
+</ul>
+<p><strong>Task 2.4: Analysis - The Liquidation Tradeoff</strong></p>
+<p>Compare your results from Tasks 2.1, 2.2, and 2.3:</p>
+<ul>
+<li>Which stock has the largest liquidity cost savings from patient liquidation (in absolute $ and % terms)?</li>
+<li>For which stock(s) is the risk-adjusted benefit positive? For which is it negative? What does this tell you about when patient liquidation makes sense?</li>
+<li>If you were the portfolio manager facing potential adverse market movements, which liquidation strategy (immediate vs patient) would you choose for each stock and why?</li>
+<li>How do your Block A findings (exogenous vs endogenous costs from Task 1.4) explain why patient liquidation’s risk-adjusted benefit varies across stocks? (Hint: Which type of cost is reduced by patient liquidation?)</li>
+</ul>
+</section>
+<section id="theory-the-liquidation-timeline-framework" class="level3">
+<h3 class="anchored" data-anchor-id="theory-the-liquidation-timeline-framework">Theory: The Liquidation Timeline Framework</h3>
+<ul>
+<li><p><strong>Immediate Liquidation:</strong> Eliminates market risk quickly — but incurs maximum liquidity costs (spread + severe market impact).</p></li>
+<li><p><strong>Gradual Liquidation:</strong> Reduces market impact — but increases exposure to adverse price movements over the liquidation horizon.</p></li>
+</ul>
+<p><span class="math display">\[
+\text{Minimum Liquidation Time} = \frac{\text{Position Size}}{\text{Daily Volume} \times \text{Max Participation Rate}}
+\]</span></p>
+<p><strong>Practical Guidelines</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Participation Rate</th>
+<th style="text-align: center;">Market Signal</th>
+<th style="text-align: center;">Typical Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">&lt; 5%</td>
+<td style="text-align: center;">Invisible</td>
+<td style="text-align: center;">Minimal</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5-10%</td>
+<td style="text-align: center;">Normal trading</td>
+<td style="text-align: center;">Slight</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">10-20%</td>
+<td style="text-align: center;">Large player</td>
+<td style="text-align: center;">Noticeable</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">20-30%</td>
+<td style="text-align: center;">Market mover</td>
+<td style="text-align: center;">Significant</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">&gt; 30%</td>
+<td style="text-align: center;">Distressed seller</td>
+<td style="text-align: center;">Severe</td>
+</tr>
+</tbody>
+</table>
+<p><strong>During market stress:</strong></p>
+<ul>
+<li>Daily volumes can drop 50-70%</li>
+<li>Bid-ask spreads widen 3-10x</li>
+<li>Market depth evaporates</li>
+<li><strong>Result:</strong> A 2-day liquidation becomes a 2-week ordeal</li>
+</ul>
+<p><strong>Key Insight:</strong> Liquidity risk is non-linear and procyclical - it’s minimal when you don’t need it and severe when you do.</p>
+<section id="liquidity-adjusted-var" class="level4">
+<h4 class="anchored" data-anchor-id="liquidity-adjusted-var">Liquidity-Adjusted VaR</h4>
+<p>Traditional VaR assumes positions can be liquidated instantaneously at market prices. Liquidity-adjusted VaR (LVaR) incorporates the cost of unwinding positions over a realistic time horizon:</p>
+<p><span class="math display">\[\text{LVaR} = \text{VaR} + \text{Liquidation Cost}\]</span></p>
+<p>Banks use internal models to estimate liquidation costs based on historical bid-ask spreads, market depth, and trading volumes. These models typically:</p>
+<ol type="1">
+<li><strong>Assess position size relative to market liquidity</strong> - larger positions relative to daily volume face higher market impact</li>
+<li><strong>Determine realistic liquidation horizon</strong> - the time needed to unwind without excessive market disruption (often capped at 10-20% daily participation rate)</li>
+<li><strong>Estimate total execution cost</strong> - combining immediate spread costs with projected market impact over the liquidation period</li>
+</ol>
+<p>The liquidation cost component in LVaR reflects the expected cost under the chosen liquidation strategy (immediate vs gradual), calibrated to historical market conditions and stressed scenarios.</p>
+<p><strong>Key insight:</strong> A portfolio may have acceptable VaR but unacceptable LVaR if positions are large relative to market liquidity. Liquidity risk dominates market risk for illiquid positions.</p>
+</section>
+</section>
+</section>
+<section id="block-c-funding-liquidity-risk-and-the-liquidity-coverage-ratio-lcr" class="level2">
+<h2 class="anchored" data-anchor-id="block-c-funding-liquidity-risk-and-the-liquidity-coverage-ratio-lcr">Block C: Funding Liquidity Risk and the Liquidity Coverage Ratio (LCR)</h2>
+<p>So far, we’ve focused on <strong>asset liquidity</strong> - can you sell assets without major price impact? Now we turn to <strong>funding liquidity</strong> - can you meet cash obligations as they come due?</p>
+<p>Banks face a unique challenge: liabilities (deposits) can flee rapidly during stress, but assets (loans) cannot be recalled quickly. If depositors demand $10B in withdrawals today, you cannot say “wait 30 years for these mortgages to mature.” You need liquid assets - a buffer - to meet sudden outflows.</p>
+<p>The 2008 financial crisis revealed that many banks held insufficient liquid assets relative to their unstable funding. Within days, wholesale funding markets froze, and banks faced severe funding runs. In response, Basel III introduced the <strong>Liquidity Coverage Ratio (LCR)</strong> to ensure banks maintain adequate high-quality liquid assets to survive a 30-day acute stress scenario.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Key Concepts for This Activity">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Concepts for This Activity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>High-Quality Liquid Assets (HQLA):</strong> Assets that can be quickly converted to cash with minimal loss of value, even during market stress.</p>
+<ul>
+<li><strong>Level 1 (0% haircut):</strong> Cash, central bank reserves, government bonds - the most liquid, can be sold at full value even in crisis</li>
+<li><strong>Level 2A (15% haircut):</strong> High-quality corporate bonds - liquid but might sell at 85 cents on the dollar in stress</li>
+</ul>
+<p><strong>Haircuts:</strong> Percentage reduction in market value to reflect stressed liquidation conditions. A 15% haircut means a $100 bond counts as only $85 of available liquidity.</p>
+<p><strong>Liquidity Coverage Ratio (LCR):</strong> Basel III requirement that banks hold sufficient HQLA to cover 30 days of stressed net cash outflows:</p>
+<p><span class="math display">\[\text{LCR} = \frac{\text{HQLA}}{\text{Net Cash Outflows over 30 days}} \times 100\% \geq 100\%\]</span></p>
+<p><strong>Stressed Cash Outflows:</strong> Basel III assumes liability outflow rates calibrated to the 2008 crisis - stable retail deposits are sticky (5% outflow), but wholesale funding runs immediately (100% outflow).</p>
+</div>
+</div>
+<section id="activity-3-computing-the-liquidity-coverage-ratio" class="level3">
+<h3 class="anchored" data-anchor-id="activity-3-computing-the-liquidity-coverage-ratio">Activity 3: Computing the Liquidity Coverage Ratio</h3>
+<p>You’re the treasurer of MidSize Bank. Your simplified balance sheet shows:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 48%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Assets</th>
+<th style="text-align: right;">Liabilities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Cash &amp; Central Bank Reserves: $5B</td>
+<td style="text-align: right;">Stable Retail Deposits: $60B</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Government Bonds (AAA): $15B</td>
+<td style="text-align: right;">Less Stable Retail Deposits: $20B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Corporate Bonds (Investment Grade): $20B</td>
+<td style="text-align: right;">Corporate Deposits (operational): $15B</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Corporate Loans: $50B</td>
+<td style="text-align: right;">Corporate Deposits (non-operational): $10B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Retail Mortgages: $40B</td>
+<td style="text-align: right;">Wholesale Funding (&lt; 30 days): $25B</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Task 3.1: Calculate High-Quality Liquid Assets (HQLA)</strong></p>
+<p>Calculate the total HQLA by applying the appropriate haircuts to the balance sheet assets.</p>
+<p><strong>Task 3.2: Calculate 30-Day Stressed Cash Outflows</strong></p>
+<p>Calculate expected cash outflows over 30 days using these outflow rates:</p>
+<ul>
+<li>Stable Retail Deposits: 5%</li>
+<li>Less Stable Retail: 10%</li>
+<li>Corporate Operational: 25%</li>
+<li>Corporate Non-operational: 40%</li>
+<li>Wholesale Funding: 100%</li>
+</ul>
+<p><strong>Task 3.3: Calculate the LCR</strong></p>
+<p>Calculate MidSize Bank’s LCR and determine:</p>
+<ul>
+<li>Does it meet the regulatory minimum of 100%?</li>
+<li>What is the buffer (or shortfall)?</li>
+</ul>
+<p><strong>Task 3.4: Crisis Stress Test</strong></p>
+<p>Now assume a severe market crisis occurs:</p>
+<ul>
+<li>Government bonds lose 10% of market value</li>
+<li>Corporate bond haircuts increase from 15% to 50%</li>
+</ul>
+<p>Recalculate:</p>
+<ul>
+<li>New HQLA value</li>
+<li>New LCR</li>
+<li>If LCR &lt; 100%, what is the funding gap in dollars?</li>
+</ul>
+<p><strong>Task 3.5: Funding Liquidity vs Asset Liquidity</strong></p>
+<p>Compare your Block C findings with Blocks A and B:</p>
+<ul>
+<li>How does funding liquidity risk (Block C) differ from asset liquidity risk (Blocks A &amp; B)?</li>
+<li>In Task 3.4, which asset class deterioration caused the biggest HQLA decline? Why does this matter for bank risk management?</li>
+<li>MidSize Bank has $25B in wholesale funding (19% of liabilities). How is reliance on wholesale funding similar to holding large illiquid positions (like BioStartup in Block A)?</li>
+<li>Can a bank have good asset liquidity but still fail from funding liquidity crisis? Explain using your findings.</li>
+</ul>
+</section>
+<section id="theory-funding-liquidity-risk-and-basel-iii-lcr" class="level3">
+<h3 class="anchored" data-anchor-id="theory-funding-liquidity-risk-and-basel-iii-lcr">Theory: Funding Liquidity Risk and Basel III LCR</h3>
+<section id="funding-liquidity-vs-asset-liquidity" class="level4">
+<h4 class="anchored" data-anchor-id="funding-liquidity-vs-asset-liquidity">Funding Liquidity vs Asset Liquidity</h4>
+<p><strong>Asset Liquidity</strong> (Blocks A &amp; B)</p>
+<ul>
+<li>Can I sell my assets without major price impact?</li>
+<li>Focus: Bid-ask spreads, market depth, position size</li>
+</ul>
+<p><strong>Funding Liquidity</strong> (Block C)</p>
+<ul>
+<li>Can I meet my cash obligations as they come due?</li>
+<li>Focus: Liability stability, rollover risk</li>
+</ul>
+<p><strong>The Connection:</strong> Funding stress forces asset fire sales (selling at Block A prices with high market impact), which depletes HQLA, which triggers more funding stress.</p>
+</section>
+<section id="liquidity-metrics" class="level4">
+<h4 class="anchored" data-anchor-id="liquidity-metrics">Liquidity Metrics</h4>
+<p><span class="math display">\[
+\mathrm{LCR} = \frac{\mathrm{HQLA}}{\text{Net Cash Outflows over 30 days}} \times 100\% \ge 100\%
+\]</span></p>
+<p>The LCR ensures banks can survive acute stress for 30 days. Basel III also requires the <strong>Net Stable Funding Ratio (NSFR)</strong> for long-term structural stability:</p>
+<p><span class="math display">\[\text{NSFR} = \frac{\text{Available Stable Funding}}{\text{Required Stable Funding}} \geq 100\%\]</span></p>
+<p><strong>Two dimensions of funding liquidity:</strong></p>
+<ul>
+<li><strong>LCR:</strong> Can you survive a 30-day crisis? (Short-term shock absorption)</li>
+<li><strong>NSFR:</strong> Is your funding stable for your asset maturity? (Long-term structural stability)</li>
+</ul>
+<p>A bank might pass LCR but fail NSFR if it funds long-term assets (e.g., 30-year mortgages) with short-term liabilities (e.g., overnight wholesale funding). LCR helps survive the crisis; NSFR helps avoid the crisis.</p>
+</section>
+<section id="hqla-hierarchy" class="level4">
+<h4 class="anchored" data-anchor-id="hqla-hierarchy">HQLA Hierarchy</h4>
+<ul>
+<li><strong>Level 1:</strong> Cash, central bank reserves, sovereigns (0% haircut)</li>
+<li><strong>Level 2A:</strong> High-rated corporates, covered bonds (15% haircut)</li>
+<li><strong>Level 2B:</strong> Lower-rated corporates, equities (25-50% haircut)</li>
+</ul>
+</section>
+<section id="the-death-spiral" class="level4">
+<h4 class="anchored" data-anchor-id="the-death-spiral">The Death Spiral</h4>
+<ol type="1">
+<li><strong>Rumors of problems</strong> → Wholesale funding dries up</li>
+<li><strong>Sell liquid assets</strong> → HQLA depletes</li>
+<li><strong>Fire sale illiquid assets</strong> → Losses mount</li>
+<li><strong>More rumors</strong> → Retail deposit run</li>
+<li><strong>Bank failure</strong></li>
+</ol>
+<p><strong>Key Insight:</strong> Banks don’t fail from bad loans (that takes years). They fail from funding runs (that takes days). Your Task 3.4 stress test showed how quickly this can happen—HQLA evaporates when you need it most.</p>
+</section>
+</section>
+</section>
+<section id="block-d-case-study---the-gamestop-short-squeeze-january-2021" class="level2">
+<h2 class="anchored" data-anchor-id="block-d-case-study---the-gamestop-short-squeeze-january-2021">Block D: Case Study - The GameStop Short Squeeze (January 2021)</h2>
+<p>In January 2021, GameStop (GME) became the center of an unprecedented liquidity crisis that combined all the elements you’ve studied: asset liquidity evaporation, funding liquidity stress, forced liquidation, and systemic feedback loops.</p>
+<p><strong>The Setup:</strong> GameStop, a struggling video game retailer, had become heavily shorted by hedge funds—short interest exceeded 100% of the available shares. Retail traders on Reddit’s WallStreetBets forum coordinated buying, triggering a massive short squeeze. Between January 13-28, the stock surged from $20 to $483.</p>
+<p><strong>What happened to liquidity?</strong> As the price soared, multiple liquidity crises unfolded simultaneously:</p>
+<ul>
+<li><p><strong>Asset liquidity vanished:</strong> Bid-ask spreads that were normally $0.01-0.05 widened to $10-50 during peak volatility. Market makers stepped back, and trading volume that was normally 7 million shares/day spiked to over 175 million shares/day—yet liquidity actually decreased as spreads exploded.</p></li>
+<li><p><strong>Funding liquidity crisis:</strong> Robinhood, the popular trading app used by retail traders, faced a liquidity crisis when the Depository Trust &amp; Clearing Corporation (DTCC) increased margin requirements from $700 million to $3 billion overnight. Unable to meet this demand immediately, Robinhood restricted trading, triggering outrage and congressional hearings.</p></li>
+<li><p><strong>Hedge fund forced liquidation:</strong> Short sellers like Melvin Capital faced catastrophic losses and margin calls. To close their short positions, they had to <strong>buy</strong> shares—but each purchase pushed the price higher, triggering more margin calls. They couldn’t use patient liquidation because <strong>margin calls demanded immediate action</strong>.</p></li>
+</ul>
+<section id="activity-4-analyzing-the-gamestop-liquidity-crisis" class="level3">
+<h3 class="anchored" data-anchor-id="activity-4-analyzing-the-gamestop-liquidity-crisis">Activity 4: Analyzing the GameStop Liquidity Crisis</h3>
+<p>Reflect on the GameStop case and connect it to your learnings from Blocks A, B, and C:</p>
+<p><strong>Task 4.1: Asset Liquidity Breakdown (Block A Connection)</strong></p>
+<ul>
+<li>During normal times, GME had tight spreads and reasonable depth. During the squeeze, spreads widened 100-1000x and depth evaporated. Which type of liquidity risk dominated initially (exogenous or endogenous)? How did it change as hedge funds were forced to cover shorts?</li>
+</ul>
+<p><strong>Task 4.2: The Impossible Liquidation Timeline (Block B Connection)</strong></p>
+<ul>
+<li><p>In Block B, you learned that patient liquidation reduces costs but exposes you to market risk. Why couldn’t short sellers use patient liquidation for GME? What happens to the Block B tradeoff when you face margin calls?</p></li>
+<li><p>The squeeze lasted about 2 weeks. If short sellers had time to liquidate over 30 days at 20% of daily volume (Block B constraint), would this have prevented the crisis? Why or why not?</p></li>
+</ul>
+<p><strong>Task 4.3: Funding Liquidity Crisis (Block C Connection)</strong></p>
+<ul>
+<li><p>Robinhood faced a “margin call” when DTCC increased requirements from $700M to $3B. How is this similar to a bank failing to meet its LCR requirement (Block C)? What was Robinhood’s equivalent of HQLA?</p></li>
+<li><p>DTCC’s margin requirements are procyclical—they increased precisely when volatility spiked. How does this compare to the haircut increases in Block C Task 3.4? What does this reveal about liquidity stress in the financial system?</p></li>
+</ul>
+<p><strong>Task 4.4: Liquidity Wrong-Way Risk and Black Holes</strong></p>
+<ul>
+<li><p>Short sellers needed to BUY to close positions, but each purchase pushed prices higher, triggering more margin calls and more forced buying. Trace this feedback loop and explain why this is the perfect example of liquidity wrong-way risk.</p></li>
+<li><p>At the peak, GME became a “liquidity black hole”—normal price discovery broke down, spreads were enormous, and market makers couldn’t provide continuous pricing. What could have broken this cycle? What actually did break it?</p></li>
+</ul>
+</section>
+<section id="theory-systemic-liquidity-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="theory-systemic-liquidity-concepts">Theory: Systemic Liquidity Concepts</h3>
+<section id="liquidity-wrong-way-risk" class="level4">
+<h4 class="anchored" data-anchor-id="liquidity-wrong-way-risk">Liquidity Wrong-Way Risk</h4>
+<p>Wrong-way risk occurs when liquidity needs increase precisely when asset liquidity deteriorates. The GameStop short squeeze is a textbook example:</p>
+<ul>
+<li><strong>Funding needs spiked:</strong> Short sellers faced massive margin calls requiring immediate cash</li>
+<li><strong>Asset liquidity vanished:</strong> Bid-ask spreads exploded, market makers stepped back</li>
+<li><strong>Timing correlation:</strong> Those who needed to buy the most faced the worst execution costs</li>
+<li><strong>Feedback loop:</strong> Each forced purchase made the problem worse for remaining shorts</li>
+</ul>
+<p>This adverse correlation amplifies losses beyond what separate funding and market risk models would predict.</p>
+</section>
+<section id="liquidity-black-holes" class="level4">
+<h4 class="anchored" data-anchor-id="liquidity-black-holes">Liquidity Black Holes</h4>
+<p>A liquidity black hole is an extreme state where market liquidity completely evaporates:</p>
+<ul>
+<li><strong>No continuous pricing:</strong> During GME’s peak, normal bid-ask quotes disappeared for seconds or minutes at a time</li>
+<li><strong>Self-reinforcing dynamics:</strong> Each forced purchase triggered more margin calls, creating more forced purchases</li>
+<li><strong>Market freeze:</strong> Normal price discovery broke down—prices jumped in $50-100 increments rather than pennies</li>
+</ul>
+<p>Historical examples: October 1987 crash, September 2008 (Lehman), March 2020 (COVID panic), <strong>January 2021 (GameStop)</strong>. Once triggered, standard risk measures become unreliable because they assume continuous markets and normal liquidity.</p>
+</section>
+<section id="the-gamestop-lesson" class="level4">
+<h4 class="anchored" data-anchor-id="the-gamestop-lesson">The GameStop Lesson</h4>
+<p>The GameStop crisis revealed several crucial insights:</p>
+<ol type="1">
+<li><strong>Position limits matter:</strong> Short interest &gt;100% of float created structural vulnerability</li>
+<li><strong>Procyclical margin requirements:</strong> DTCC’s margin increases amplified the crisis</li>
+<li><strong>Concentration risk:</strong> Retail flow concentrated through few platforms (Robinhood) created single points of failure</li>
+<li><strong>Social media coordination:</strong> New dynamics in market manipulation and coordination</li>
+<li><strong>Liquidity is not continuous:</strong> Even major stocks can become illiquid under stress</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<p>This module revealed how liquidity crises unfold through three interconnected dimensions, culminating in the GameStop short squeeze—a real-world laboratory for liquidity risk.</p>
+<p><strong>The Three Dimensions of Liquidity:</strong></p>
+<ul>
+<li><p><strong>Asset Liquidity (Blocks A &amp; B):</strong> Markets can become illiquid from external conditions (exogenous risk) or from your own trades (endogenous risk). Time is a luxury—patient liquidation only works when you face no margin calls.</p></li>
+<li><p><strong>Funding Liquidity (Block C):</strong> Banks survive on stable funding, not just assets. LCR measures whether you can survive 30 days of stress. The death spiral: rumors → funding dries up → forced asset sales → more rumors → failure.</p></li>
+<li><p><strong>Systemic Liquidity (Block D):</strong> The GameStop case showed how all three dimensions interact catastrophically. Short sellers faced wrong-way risk (needed to buy when liquidity vanished), procyclical margins (DTCC requirements tripled overnight), and a liquidity black hole (spreads widened 1000x, price discovery failed).</p></li>
+</ul>
+<p><strong>The Bottom Line:</strong> Liquidity risk is not about having assets—it’s about converting them to cash when you need it most, which is precisely when markets least want to provide it.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -673,8 +1181,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./week_09.html" class="pagination-link" aria-label="Week 09">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Week 09</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./week_09.html" class="pagination-link" aria-label="Credit Risk">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Credit Risk</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

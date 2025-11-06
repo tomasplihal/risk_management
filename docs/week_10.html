@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Week 10 – Risk Management and Financial Institutions</title>
+<title>10&nbsp; Operational Risk – Risk Management and Financial Institutions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -81,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_10.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 10</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week_10.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test 1: Market Risk Management</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -179,25 +208,25 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 08</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Liquidity Risk</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Week 09</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Credit Risk</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_10.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 10</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./week_11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 11</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bank Regulation, FRTB, and Economic Capital</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -217,15 +246,42 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#block-a-understanding-operational-loss-patterns" id="toc-block-a-understanding-operational-loss-patterns" class="nav-link active" data-scroll-target="#block-a-understanding-operational-loss-patterns">Block A: Understanding Operational Loss Patterns</a>
+  <ul class="collapse">
+  <li><a href="#theory-operational-risk-definition" id="toc-theory-operational-risk-definition" class="nav-link" data-scroll-target="#theory-operational-risk-definition">Theory: Operational Risk Definition</a></li>
+  <li><a href="#activity-1-loss-data-analysis" id="toc-activity-1-loss-data-analysis" class="nav-link" data-scroll-target="#activity-1-loss-data-analysis">Activity 1: Loss Data Analysis</a></li>
+  <li><a href="#theory-loss-frequency-and-severity-distributions" id="toc-theory-loss-frequency-and-severity-distributions" class="nav-link" data-scroll-target="#theory-loss-frequency-and-severity-distributions">Theory: Loss Frequency and Severity Distributions</a></li>
+  </ul></li>
+  <li><a href="#block-b-calculating-regulatory-capital-under-sma" id="toc-block-b-calculating-regulatory-capital-under-sma" class="nav-link" data-scroll-target="#block-b-calculating-regulatory-capital-under-sma">Block B: Calculating Regulatory Capital under SMA</a>
+  <ul class="collapse">
+  <li><a href="#theory-the-standardized-measurement-approach-sma" id="toc-theory-the-standardized-measurement-approach-sma" class="nav-link" data-scroll-target="#theory-the-standardized-measurement-approach-sma">Theory: The Standardized Measurement Approach (SMA)</a></li>
+  <li><a href="#activity-2-sma-capital-calculation" id="toc-activity-2-sma-capital-calculation" class="nav-link" data-scroll-target="#activity-2-sma-capital-calculation">Activity 2: SMA Capital Calculation</a></li>
+  </ul></li>
+  <li><a href="#block-c-preventing-operational-risk-losses" id="toc-block-c-preventing-operational-risk-losses" class="nav-link" data-scroll-target="#block-c-preventing-operational-risk-losses">Block C: Preventing Operational Risk Losses</a>
+  <ul class="collapse">
+  <li><a href="#activity-3-designing-risk-controls-and-kris" id="toc-activity-3-designing-risk-controls-and-kris" class="nav-link" data-scroll-target="#activity-3-designing-risk-controls-and-kris">Activity 3: Designing Risk Controls and KRIs</a></li>
+  <li><a href="#theory-block-c-risk-control-and-self-assessment-rcsa" id="toc-theory-block-c-risk-control-and-self-assessment-rcsa" class="nav-link" data-scroll-target="#theory-block-c-risk-control-and-self-assessment-rcsa">Theory Block C: Risk Control and Self-Assessment (RCSA)</a></li>
+  </ul></li>
+  <li><a href="#block-d-operational-risk-in-action" id="toc-block-d-operational-risk-in-action" class="nav-link" data-scroll-target="#block-d-operational-risk-in-action">Block D: Operational Risk in Action</a>
+  <ul class="collapse">
+  <li><a href="#activity-4-case-study-analysis" id="toc-activity-4-case-study-analysis" class="nav-link" data-scroll-target="#activity-4-case-study-analysis">Activity 4: Case Study Analysis</a></li>
+  <li><a href="#theory-block-d-operational-risk-as-a-systemic-amplifier" id="toc-theory-block-d-operational-risk-as-a-systemic-amplifier" class="nav-link" data-scroll-target="#theory-block-d-operational-risk-as-a-systemic-amplifier">Theory Block D: Operational Risk as a Systemic Amplifier</a></li>
+  </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 10</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Operational Risk</span></h1>
 </div>
 
 
@@ -242,8 +298,582 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="callout callout-style-default callout-tip callout-titled" title="References">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+References
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Hull, J. C. 2023. Risk Management and Financial Institutions. Wiley Finance.
+<ul>
+<li>Chapter 22 - Credit Risk</li>
+</ul></li>
+<li>Basel Committee on Banking Supervision. 2017. Basel III: Finalising post-crisis reforms.</li>
+</ul>
+</div>
+</div>
+<p><strong>Learning Outcomes:</strong></p>
+<ul>
+<li>Categorize operational losses using Basel’s framework</li>
+<li>Calculate Standardized Measurement Approach (SMA) capital requirements</li>
+<li>Design Key Risk Indicators (KRIs) for early warning systems</li>
+<li>Analyze real-world operational risk cases and their systemic implications</li>
+</ul>
+<section id="block-a-understanding-operational-loss-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="block-a-understanding-operational-loss-patterns">Block A: Understanding Operational Loss Patterns</h2>
+<section id="theory-operational-risk-definition" class="level3">
+<h3 class="anchored" data-anchor-id="theory-operational-risk-definition">Theory: Operational Risk Definition</h3>
+<p>Operational risk refers to potential losses from failed internal processes, human errors, system failures, or external events. Unlike credit or market risk, operational risk is challenging to quantify due to its diverse and unpredictable nature.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Basel Definition">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Basel Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>“The risk of loss resulting from inadequate or failed internal processes, people, and systems, or from external events.”</em></p>
+<ul>
+<li><strong>Includes</strong>: Legal risk (lawsuits, regulatory penalties)</li>
+<li><strong>Excludes</strong>: Reputation risk, strategic decision risks</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="activity-1-loss-data-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="activity-1-loss-data-analysis">Activity 1: Loss Data Analysis</h3>
+<p>You are a newly appointed operational risk analyst at a major European bank. Your risk committee has asked you to analyze the bank’s operational loss history over the past decade.</p>
+<p><a href="data/week_10_operational_risk.xlsx" download="" class="btn btn-primary"> <i class="bi bi-download"></i> Download Operational Risk Data </a></p>
+<p>Open the Excel file and navigate to <strong>Activity_1_Loss_Data</strong> sheet.</p>
+<p><strong>Task 1.1</strong>: Categorize each of the 30 operational losses using Basel’s seven categories (reference table provided in the sheet). Enter your category number (1-7) in the “Basel_Category” column.</p>
+<p><strong>Task 1.2</strong>: Create a summary table showing:</p>
+<ul>
+<li>Total losses (EUR millions) for each category</li>
+<li>Number of loss events for each category</li>
+<li>Average loss size for each category</li>
+</ul>
+<p><strong>Task 1.3</strong>: Based on your analysis, identify:</p>
+<ul>
+<li>Which categories are <strong>high-frequency, low-severity</strong>?</li>
+<li>Which categories are <strong>low-frequency, high-severity</strong>?</li>
+<li>What implications do these patterns have for risk management?</li>
+</ul>
+<p><strong>Task 1.4</strong> Discussion: Looking at the distribution of loss amounts, how would you describe the shape of this distribution? What statistical challenges does this create for modeling operational risk?</p>
+</section>
+<section id="theory-loss-frequency-and-severity-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="theory-loss-frequency-and-severity-distributions">Theory: Loss Frequency and Severity Distributions</h3>
+<p>Your analysis in Activity 1 revealed a fundamental characteristic of operational risk: losses are <strong>not normally distributed</strong>. Most losses are small, but a few are catastrophic—this is known as a <strong>heavy-tailed distribution</strong>.</p>
+<section id="the-seven-basel-categories" class="level4">
+<h4 class="anchored" data-anchor-id="the-seven-basel-categories">The Seven Basel Categories</h4>
+<p>Basel III classified operational risks into seven distinct types:</p>
+<ol type="1">
+<li><p><strong>Internal Fraud</strong>: Intentional acts by employees to deceive or circumvent laws</p>
+<ul>
+<li>Examples: Rogue trading, insider trading, embezzlement</li>
+</ul></li>
+<li><p><strong>External Fraud</strong>: Fraudulent activities by third parties</p>
+<ul>
+<li>Examples: Cyber attacks, phishing, robbery</li>
+</ul></li>
+<li><p><strong>Employment Practices and Workplace Safety</strong>: Violations of employment laws</p>
+<ul>
+<li>Examples: Discrimination lawsuits, wrongful termination, workplace injuries</li>
+</ul></li>
+<li><p><strong>Clients, Products, and Business Practices</strong>: Failures to meet obligations or ethical standards</p>
+<ul>
+<li>Examples: Fiduciary breaches, data leaks, money laundering</li>
+</ul></li>
+<li><p><strong>Damage to Physical Assets</strong>: Losses from external events damaging tangible assets</p>
+<ul>
+<li>Examples: Fires, floods, earthquakes, terrorism</li>
+</ul></li>
+<li><p><strong>Business Disruption and System Failures</strong>: Disruptions due to technological failures</p>
+<ul>
+<li>Examples: Server outages, hardware malfunctions, power failures</li>
+</ul></li>
+<li><p><strong>Execution, Delivery, and Process Management</strong>: Transaction processing failures</p>
+<ul>
+<li>Examples: Settlement errors, missed deadlines, documentation failures</li>
+</ul></li>
+</ol>
+</section>
+<section id="modeling-loss-frequency" class="level4">
+<h4 class="anchored" data-anchor-id="modeling-loss-frequency">Modeling Loss Frequency</h4>
+<p>The number of loss events in a given time period (typically one year) is commonly modeled using the <strong>Poisson distribution</strong>:</p>
+<p><span class="math display">\[
+P(n) = e^{-\lambda T} \frac{(\lambda T)^n}{n!}
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(P(n)\)</span> = Probability of observing <span class="math inline">\(n\)</span> losses in time period <span class="math inline">\(T\)</span></li>
+<li><span class="math inline">\(\lambda\)</span> = Average annual frequency of losses</li>
+<li><span class="math inline">\(T\)</span> = Time period (usually <span class="math inline">\(T = 1\)</span> year)</li>
+</ul>
+<p><strong>Interpretation</strong>: If a bank historically experiences <span class="math inline">\(\lambda = 5\)</span> internal fraud events per year, the Poisson distribution tells us the probability of experiencing exactly 3, 7, or 10 events next year.</p>
+</section>
+<section id="modeling-loss-severity" class="level4">
+<h4 class="anchored" data-anchor-id="modeling-loss-severity">Modeling Loss Severity</h4>
+<p>Given that a loss occurs, its magnitude is often modeled using the <strong>lognormal distribution</strong>, which naturally captures:</p>
+<ul>
+<li>Positive values only (losses cannot be negative)</li>
+<li>Right-skewed shape (many small losses, few large ones)</li>
+<li>Heavy tail (extreme losses are rare but possible)</li>
+</ul>
+</section>
+<section id="monte-carlo-simulation" class="level4">
+<h4 class="anchored" data-anchor-id="monte-carlo-simulation">Monte Carlo Simulation</h4>
+<p>To estimate the <strong>total annual operational risk loss</strong>, banks combine these distributions through simulation:</p>
+<ol type="1">
+<li><strong>Simulate frequency</strong>: Draw <span class="math inline">\(n\)</span> from Poisson(<span class="math inline">\(\lambda\)</span>) → “How many losses this year?”</li>
+<li><strong>Simulate severity</strong>: For each of the <span class="math inline">\(n\)</span> losses, draw loss amount from lognormal distribution</li>
+<li><strong>Aggregate</strong>: Sum all simulated losses to get total annual loss</li>
+<li><strong>Repeat</strong>: Run 10,000+ scenarios to build the total loss distribution</li>
+</ol>
+<p><strong>Key Challenge</strong>: Banks have limited internal loss data, especially for rare but severe events. This necessitates:</p>
+<ul>
+<li><strong>External data</strong>: Industry consortium databases (but must be scaled to institution size)</li>
+<li><strong>Scenario analysis</strong>: Expert judgment for events that haven’t occurred but could</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="block-b-calculating-regulatory-capital-under-sma" class="level2">
+<h2 class="anchored" data-anchor-id="block-b-calculating-regulatory-capital-under-sma">Block B: Calculating Regulatory Capital under SMA</h2>
+<section id="theory-the-standardized-measurement-approach-sma" class="level3">
+<h3 class="anchored" data-anchor-id="theory-the-standardized-measurement-approach-sma">Theory: The Standardized Measurement Approach (SMA)</h3>
+<p>Regulators require banks to hold capital against potential operational losses. The <strong>Standardized Measurement Approach (SMA)</strong> is Basel’s methodology for calculating this capital requirement. Introduced in December 2017 and implemented in January 2023, the SMA replaced earlier approaches (including the Advanced Measurement Approach, or AMA) with a single, consistent methodology applicable to all banks.</p>
+<section id="overview-of-the-sma-framework" class="level4">
+<h4 class="anchored" data-anchor-id="overview-of-the-sma-framework">Overview of the SMA Framework</h4>
+<p>The SMA combines two elements:</p>
+<ol type="1">
+<li><strong>Size-based capital</strong>: The Business Indicator Component (BIC) scales with bank size and complexity</li>
+<li><strong>Loss-based adjustment</strong>: The Internal Loss Multiplier (ILM) adjusts capital based on actual loss experience</li>
+</ol>
+<p><span class="math display">\[
+\text{Operational Risk Capital} = \text{BIC} \times \text{ILM}
+\]</span></p>
+<p>For small banks (Business Indicator &lt; €1 billion), capital equals BIC without adjustment (ILM = 1).</p>
+<p>Let’s examine each component systematically.</p>
+</section>
+<section id="component-1-the-business-indicator-bi" class="level4">
+<h4 class="anchored" data-anchor-id="component-1-the-business-indicator-bi">Component 1: The Business Indicator (BI)</h4>
+<p>The <strong>Business Indicator</strong> measures bank size and operational complexity through three categories of financial activity:</p>
+<p><span class="math display">\[
+\text{BI} = \text{ILDC} + \text{SC} + \text{FC}
+\]</span></p>
+<p>where:</p>
+<p><strong>ILDC (Interest, Leases, Dividend Component)</strong>:</p>
+<p><span class="math display">\[
+\text{ILDC} = |\text{Interest Income} - \text{Interest Expense}| + \text{Dividend Income}
+\]</span></p>
+<p><strong>SC (Services Component)</strong>:</p>
+<p><span class="math display">\[
+\text{SC} = \text{Fee Income} + \text{Other Service Income}
+\]</span></p>
+<p><strong>FC (Financial Component)</strong>:</p>
+<p><span class="math display">\[
+\text{FC} = |\text{Trading Gains/Losses}| + |\text{Investment Gains/Losses}|
+\]</span></p>
+<p><strong>Key principle</strong>: Absolute values (| |) ensure that losses don’t artificially reduce the BI. A bank with large trading losses has high operational complexity and should not receive lower capital requirements.</p>
+<p><strong>Interpretation</strong>: The BI captures the scale of a bank’s operations across lending, service provision, and trading activities. Larger BI indicates greater operational exposure.</p>
+</section>
+<section id="component-2-the-business-indicator-component-bic" class="level4">
+<h4 class="anchored" data-anchor-id="component-2-the-business-indicator-component-bic">Component 2: The Business Indicator Component (BIC)</h4>
+<p>The <strong>Business Indicator Component</strong> converts the BI into a baseline capital requirement using a <strong>progressive three-tier structure</strong>:</p>
+<p><strong>Small banks</strong> (BI &lt; €1 billion):</p>
+<p><span class="math display">\[
+\text{BIC} = 0.12 \times \text{BI}
+\]</span></p>
+<p><strong>Medium banks</strong> (€1 billion ≤ BI &lt; €30 billion):</p>
+<p><span class="math display">\[
+\text{BIC} = 0.12 + 0.15 \times (\text{BI} - 1)
+\]</span></p>
+<p><strong>Large banks</strong> (BI ≥ €30 billion):</p>
+<p><span class="math display">\[
+\text{BIC} = 4.47 + 0.18 \times (\text{BI} - 30)
+\]</span></p>
+<p><strong>Understanding the coefficients</strong>:</p>
+<ul>
+<li>Small banks: 12% of BI</li>
+<li>Medium banks: €120M base + 15% marginal rate on amounts above €1 billion</li>
+<li>Large banks: €4.47 billion base + 18% marginal rate on amounts above €30 billion</li>
+</ul>
+<p><strong>Why progressive rates?</strong> Operational risk doesn’t scale linearly with size. Larger banks face disproportionately higher risks due to:</p>
+<ul>
+<li>Greater organizational complexity</li>
+<li>More interconnected systems</li>
+<li>Higher systemic importance</li>
+<li>More extensive regulatory obligations</li>
+<li>Increased reputational exposure</li>
+</ul>
+<p>The increasing marginal rates (12% → 15% → 18%) reflect this nonlinear relationship.</p>
+</section>
+<section id="component-3-historical-loss-data" class="level4">
+<h4 class="anchored" data-anchor-id="component-3-historical-loss-data">Component 3: Historical Loss Data</h4>
+<p>Banks must collect all operational loss events over a <strong>rolling 10-year period</strong>. This includes losses from all seven Basel categories, regardless of amount (though small losses below €20,000 may be excluded).</p>
+<p><strong>Average Annual Loss</strong> = (Sum of 10 years of losses) ÷ 10</p>
+<p>This average captures the bank’s actual loss experience, providing a backward-looking measure of operational risk profile.</p>
+</section>
+<section id="component-4-the-loss-component-lc" class="level4">
+<h4 class="anchored" data-anchor-id="component-4-the-loss-component-lc">Component 4: The Loss Component (LC)</h4>
+<p>The <strong>Loss Component</strong> scales historical losses to reflect the capital needed for extreme outcomes:</p>
+<p><span class="math display">\[
+\text{LC} = 15 \times \text{Average Annual Loss (past 10 years)}
+\]</span></p>
+<p><strong>Why multiply by 15?</strong></p>
+<p>The multiplier of 15 reflects several principles:</p>
+<ul>
+<li><strong>Confidence level</strong>: Targets approximately 99.9% confidence over a one-year horizon</li>
+<li><strong>Historical calibration</strong>: Derived from empirical analysis of industry-wide loss distributions</li>
+<li><strong>Expected + Unexpected losses</strong>: The 10-year average captures “normal” years; multiplying by 15 provides a buffer for rare but severe events</li>
+<li><strong>Industry standard</strong>: All banks apply the same multiplier, ensuring consistency</li>
+</ul>
+<p><strong>Interpretation</strong>: If a bank averaged €10 million in annual losses over the past decade, LC = €150 million represents the capital needed to absorb a bad year (at 99.9% confidence).</p>
+</section>
+<section id="component-5-the-internal-loss-multiplier-ilm" class="level4">
+<h4 class="anchored" data-anchor-id="component-5-the-internal-loss-multiplier-ilm">Component 5: The Internal Loss Multiplier (ILM)</h4>
+<p>The <strong>Internal Loss Multiplier</strong> adjusts baseline capital (BIC) based on how the bank’s loss experience compares to its size:</p>
+<p><strong>Small banks</strong> (BI &lt; €1 billion):</p>
+<p><span class="math display">\[
+\text{ILM} = 1
+\]</span></p>
+<p>Small banks don’t receive adjustments—their capital equals BIC regardless of loss history.</p>
+<p><strong>Other banks</strong> (BI ≥ €1 billion):</p>
+<p><span class="math display">\[
+\text{ILM} = \ln \left[ e - 1 + \left( \frac{\text{LC}}{\text{BIC}} \right)^{0.8} \right]
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(e\)</span> = Euler’s constant (≈ 2.718)</li>
+<li><span class="math inline">\(\ln\)</span> = Natural logarithm</li>
+</ul>
+<p><strong>Understanding ILM behavior</strong>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 17%">
+<col style="width: 14%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Scenario</th>
+<th>LC/BIC Ratio</th>
+<th>ILM Value</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Average performance</td>
+<td>LC = BIC</td>
+<td>ILM = 1.0</td>
+<td>No adjustment to capital</td>
+</tr>
+<tr class="even">
+<td>Better than average</td>
+<td>LC &lt; BIC</td>
+<td>ILM &lt; 1.0</td>
+<td>Capital reward (reduction)</td>
+</tr>
+<tr class="odd">
+<td>Worse than average</td>
+<td>LC &gt; BIC</td>
+<td>ILM &gt; 1.0</td>
+<td>Capital penalty (increase)</td>
+</tr>
+<tr class="even">
+<td>Perfect record</td>
+<td>LC = 0</td>
+<td>ILM ≈ 0.54</td>
+<td>Maximum 46% capital reduction</td>
+</tr>
+<tr class="odd">
+<td>Very poor record</td>
+<td>LC &gt;&gt; BIC</td>
+<td>ILM &gt;&gt; 1.0</td>
+<td>Unbounded penalty</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why this formula?</strong> The logarithmic structure ensures:</p>
+<ul>
+<li><strong>Diminishing returns</strong>: Banks with excellent records can’t reduce capital too much (floor at ILM ≈ 0.54)</li>
+<li><strong>Escalating penalties</strong>: Banks with poor records face increasing penalties (no ceiling on ILM)</li>
+<li><strong>Smooth transitions</strong>: The function is continuous and mathematically stable</li>
+<li><strong>Incentive alignment</strong>: Small improvements in loss performance yield tangible capital relief</li>
+</ul>
+</section>
+<section id="component-6-final-capital-requirement" class="level4">
+<h4 class="anchored" data-anchor-id="component-6-final-capital-requirement">Component 6: Final Capital Requirement</h4>
+<p>The SMA capital requirement combines BIC and ILM:</p>
+<p><strong>Small banks</strong> (BI &lt; €1 billion):</p>
+<p><span class="math display">\[
+\text{Operational Risk Capital} = \text{BIC}
+\]</span></p>
+<p><strong>Other banks</strong> (BI ≥ €1 billion):</p>
+<p><span class="math display">\[
+\text{Operational Risk Capital} = \text{BIC} \times \text{ILM}
+\]</span></p>
+<p><strong>Interpretation</strong>:</p>
+<ul>
+<li>Small banks cannot reduce capital below BIC, even with excellent loss history</li>
+<li>Medium and large banks can earn capital reductions (ILM &lt; 1) or face penalties (ILM &gt; 1) based on performance</li>
+<li>This structure rewards institutions that invest in operational risk management</li>
+</ul>
+</section>
+</section>
+<section id="activity-2-sma-capital-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="activity-2-sma-capital-calculation">Activity 2: SMA Capital Calculation</h3>
+<p>Navigate to <strong>Activity_2_SMA_Calculator</strong> sheet in your Excel file.</p>
+<p>You have data for two banks:</p>
+<ul>
+<li><strong>Bank A</strong>: Small regional bank</li>
+<li><strong>Bank B</strong>: Large international bank</li>
+</ul>
+<p><strong>Task 2.1</strong>: Calculate the <strong>complete SMA capital requirement</strong> for both banks by working through all components:</p>
+<ul>
+<li><strong>Business Indicator (BI)</strong>: Using the “Income Components” table, calculate ILDC, SC, and FC, then sum to get BI. Classify the bank by size (small/medium/large).</li>
+<li><strong>Business Indicator Component (BIC)</strong>: Apply the appropriate formula based on bank size classification.</li>
+<li><strong>Loss Component (LC)</strong>: Using the “Historical Operational Losses” table, calculate the 10-year average annual loss and multiply by 15.</li>
+<li><strong>Internal Loss Multiplier (ILM)</strong>: For small banks, record ILM = 1. For other banks, apply the ILM formula showing intermediate steps.</li>
+<li><strong>Final Operational Risk Capital</strong>: Apply the appropriate formula based on bank size.</li>
+</ul>
+<p><strong>Task 2.2</strong>: Answer the following questions based on your calculations:</p>
+<ul>
+<li>Which bank holds more operational risk capital in absolute terms (EUR millions)?</li>
+<li>Which bank holds more operational risk capital as a percentage of its Business Indicator?</li>
+</ul>
+<p><strong>Task 2.3</strong>: Explore how historical loss performance affects capital of Bank B:</p>
+<ul>
+<li>What is Bank B’s ILM with its actual loss history?</li>
+<li>If LC = BIC (average performance), what would ILM be? What would capital be?</li>
+<li>If Bank B’s losses doubled (LC = 2 × BIC), what would ILM and capital be?</li>
+<li>If Bank B had zero losses over 10 years (LC = 0), what would ILM and capital be?</li>
+<li>Based on these scenarios, explain the economic incentive created by the ILM structure. How does it encourage better risk management?</li>
+<li>Why does Bank A not receive any adjustment for its loss performance, even if it has an excellent record?</li>
+</ul>
+</section>
+</section>
+<section id="block-c-preventing-operational-risk-losses" class="level2">
+<h2 class="anchored" data-anchor-id="block-c-preventing-operational-risk-losses">Block C: Preventing Operational Risk Losses</h2>
+<p>While capital protects against losses, <strong>prevention</strong> is far more valuable. Let’s explore how banks proactively manage operational risk.</p>
+<section id="activity-3-designing-risk-controls-and-kris" class="level3">
+<h3 class="anchored" data-anchor-id="activity-3-designing-risk-controls-and-kris">Activity 3: Designing Risk Controls and KRIs</h3>
+<p><strong>Scenario</strong>: Your bank recently experienced an operational loss event:</p>
+<p><em>A trader in the commodities desk accumulated unauthorized positions over six months, resulting in a €42 million loss when market prices moved adversely. The trader concealed the positions by exploiting a gap in the trade confirmation system. The fraud was only discovered when the trader took sick leave and a colleague reviewed the portfolio.</em></p>
+<p><strong>Task 3.1</strong>: Which of Basel’s seven categories does this loss fall under?</p>
+<p><strong>Task 3.2</strong>: Identify at least <strong>three root causes</strong> that enabled this loss to occur. Consider:</p>
+<ul>
+<li>Process failures (what controls were missing?)</li>
+<li>System failures (what technology gaps existed?)</li>
+<li>People failures (what behavioral red flags were missed?)</li>
+</ul>
+<p><strong>Task 3.3</strong>: Design <strong>four Key Risk Indicators (KRIs)</strong> that could have provided early warning of this unauthorized trading. For each KRI:</p>
+<ul>
+<li>Define the metric clearly</li>
+<li>Specify a threshold that would trigger investigation</li>
+<li>Explain why this metric would detect similar problems</li>
+</ul>
+<p><strong>Task 3.4</strong> Your risk committee proposes three responses:</p>
+<ol type="1">
+<li><strong>Invest in prevention</strong>: Upgrade trade monitoring system (€5M upfront cost)</li>
+<li><strong>Accept and insure</strong>: Purchase operational risk insurance with €10M deductible (€2M annual premium)</li>
+<li><strong>Hold capital only</strong>: Allocate SMA capital but no additional controls</li>
+</ol>
+<p>Discuss the advantages and disadvantages of each approach. When might each be appropriate?</p>
+</section>
+<section id="theory-block-c-risk-control-and-self-assessment-rcsa" class="level3">
+<h3 class="anchored" data-anchor-id="theory-block-c-risk-control-and-self-assessment-rcsa">Theory Block C: Risk Control and Self-Assessment (RCSA)</h3>
+<p><strong>Risk Control and Self-Assessment (RCSA)</strong> is a structured process where business units:</p>
+<ol type="1">
+<li><strong>Identify risks</strong>: Map processes and identify failure points</li>
+<li><strong>Assess impact</strong>: Estimate potential loss frequency and severity</li>
+<li><strong>Evaluate controls</strong>: Review existing safeguards</li>
+<li><strong>Close gaps</strong>: Implement additional controls where needed</li>
+<li><strong>Monitor</strong>: Track effectiveness over time</li>
+</ol>
+<p>Key Risk Indicators (KRIs) serve as <strong>early warning signals</strong> for emerging operational risks. Effective KRIs have these characteristics:</p>
+<ul>
+<li><strong>Forward-looking</strong>: Predict problems before they materialize</li>
+<li><strong>Measurable</strong>: Objective, quantifiable metrics</li>
+<li><strong>Actionable</strong>: Clear threshold triggers investigation</li>
+<li><strong>Relevant</strong>: Directly linked to specific risk types</li>
+</ul>
+<p><strong>Common KRI Examples</strong>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 60%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Risk Type</th>
+<th style="text-align: center;">KRI Example</th>
+<th style="text-align: center;">Warning Threshold</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Internal Fraud</td>
+<td style="text-align: center;">% employees not taking 10+ consecutive leave days</td>
+<td style="text-align: center;">&gt; 15%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">System Failures</td>
+<td style="text-align: center;">System downtime hours per month</td>
+<td style="text-align: center;">&gt; 8 hours</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Process Errors</td>
+<td style="text-align: center;">Failed transaction rate</td>
+<td style="text-align: center;">&gt; 0.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Cyber Risk</td>
+<td style="text-align: center;">Phishing click rate in training</td>
+<td style="text-align: center;">&gt; 10%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Turnover Risk</td>
+<td style="text-align: center;">Staff turnover in critical functions</td>
+<td style="text-align: center;">&gt; 20% annually</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Oversight Risk</td>
+<td style="text-align: center;">Supervisor-to-staff ratio</td>
+<td style="text-align: center;">&lt; 1:12</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="block-d-operational-risk-in-action" class="level2">
+<h2 class="anchored" data-anchor-id="block-d-operational-risk-in-action">Block D: Operational Risk in Action</h2>
+<p>Let’s examine how operational risk manifests in real crises and interacts with other risk types.</p>
+<section id="activity-4-case-study-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="activity-4-case-study-analysis">Activity 4: Case Study Analysis</h3>
+<p><strong>Instructions</strong>: Navigate to <strong>Activity_4_Case_Study</strong> sheet in your Excel file.</p>
+<p><strong>Background</strong>: In September 2023, GlobalBank International announced a €1,850 million loss from unauthorized trading activities. A senior trader had built large, hidden positions in equity derivatives over 18 months. When discovered, the bank was forced to unwind positions rapidly in adverse market conditions.</p>
+<p>Review the case study data in the Excel sheet.</p>
+<p><strong>Task 4.1</strong>: Calculate the impact on GlobalBank’s SMA capital:</p>
+<ul>
+<li>What was the bank’s pre-loss ILM? (Use pre-loss average annual losses)</li>
+<li>What is the new average annual loss including this event?</li>
+<li>What is the new ILM and capital requirement?</li>
+<li>By how much (EUR millions) did the capital requirement increase?</li>
+</ul>
+<p><strong>Task 4.2</strong>: This single loss was classified as “Internal Fraud” (Basel Category 1). But identify at least <strong>three other risk types</strong> that were affected or amplified by this operational failure:</p>
+<ul>
+<li>Consider market risk, liquidity risk, credit risk, reputation risk</li>
+<li>Explain the connection for each</li>
+</ul>
+<p><strong>Task 4.3</strong>: The trader exploited gaps in the trade confirmation system and supervisory oversight. Which of the following would have been most effective at preventing this loss?</p>
+<ul>
+<li>Higher capital requirements</li>
+<li>Better Key Risk Indicators</li>
+<li>Operational risk insurance</li>
+<li>Mandatory rotation of traders</li>
+<li>Real-time position monitoring system</li>
+</ul>
+<p><strong>Task 4.4</strong> (Discussion): After major operational losses, regulators often increase capital requirements for the entire industry (not just the affected bank). Is this fair? What is the regulatory logic?</p>
+</section>
+<section id="theory-block-d-operational-risk-as-a-systemic-amplifier" class="level3">
+<h3 class="anchored" data-anchor-id="theory-block-d-operational-risk-as-a-systemic-amplifier">Theory Block D: Operational Risk as a Systemic Amplifier</h3>
+<p>Your analysis of the GlobalBank case revealed a critical insight: <strong>operational risk rarely exists in isolation</strong>. It amplifies other risk types and can trigger systemic crises.</p>
+<section id="wrong-way-risk-connections" class="level4">
+<h4 class="anchored" data-anchor-id="wrong-way-risk-connections">Wrong-Way Risk Connections</h4>
+<p><strong>Operational → Market Risk</strong>:</p>
+<ul>
+<li>Trading system failure during volatile markets</li>
+<li>Inability to execute hedges when most needed</li>
+<li>Forced liquidation of positions (as in GlobalBank case)</li>
+</ul>
+<p><strong>Operational → Liquidity Risk</strong>:</p>
+<ul>
+<li>Cyber attack disrupts payment systems → funding crisis</li>
+<li>System failure prevents access to central bank facilities</li>
+<li>Reputation damage → depositor flight</li>
+</ul>
+<p><strong>Operational → Credit Risk</strong>:</p>
+<ul>
+<li>Data breach reveals weak controls → credit rating downgrade</li>
+<li>Processing failure causes client defaults</li>
+<li>Loss of key personnel → deteriorating underwriting</li>
+</ul>
+</section>
+<section id="the-cyber-risk-challenge" class="level4">
+<h4 class="anchored" data-anchor-id="the-cyber-risk-challenge">The Cyber Risk Challenge</h4>
+<p>Cyber risk has emerged as the fastest-growing operational risk category:</p>
+<p><strong>Distinctive characteristics</strong>:</p>
+<ul>
+<li><strong>Rapidly evolving</strong>: Attack methods change constantly</li>
+<li><strong>Asymmetric threat</strong>: Low-cost attacks can cause massive losses</li>
+<li><strong>Interconnected</strong>: One bank’s breach can affect the entire system</li>
+<li><strong>Hard to insure</strong>: Correlated losses make diversification difficult</li>
+</ul>
+<p><strong>Management approaches</strong>:</p>
+<ul>
+<li>Continuous employee education (humans are the weakest link)</li>
+<li>Multi-layered technical defenses</li>
+<li>Incident response planning</li>
+<li>Industry information sharing</li>
+<li>Regulatory stress testing (e.g., ECB cyber resilience tests)</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Key Insight">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Unlike credit or market risk, operational risk cannot be diversified away or hedged. It must be <strong>prevented, monitored, and capitalized</strong>. This makes operational risk management fundamentally about <strong>organizational culture, processes, and systems</strong>—not just quantitative models.</p>
+</div>
+</div>
+</section>
+<section id="capital-allocation-and-incentives" class="level4">
+<h4 class="anchored" data-anchor-id="capital-allocation-and-incentives">Capital Allocation and Incentives</h4>
+<p>Operational risk capital must be allocated to business units strategically:</p>
+<p><strong>Good allocation principles</strong>:</p>
+<ul>
+<li>Reducing operational risk → Lower allocated capital → Higher ROE for the unit</li>
+<li>Units bear the cost of their operational risk profile</li>
+<li>Encourages investment in prevention when cost-effective</li>
+</ul>
+<p><strong>Governance requirements</strong> (Basel Committee):</p>
+<ul>
+<li>Active board oversight of operational risk program</li>
+<li>Regular review of loss events and lessons learned</li>
+<li>Independent operational risk function</li>
+<li>Clear accountability for risk owners</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<p>After completing this week’s activities, you should understand these core principles:</p>
+<ol type="1">
+<li><p><strong>Operational risk is heterogeneous</strong>: Seven distinct categories with different frequency/severity profiles require tailored management approaches.</p></li>
+<li><p><strong>Heavy-tailed distributions</strong>: Most operational losses are small, but extreme losses drive capital requirements. This challenges traditional statistical methods.</p></li>
+<li><p><strong>SMA combines size and experience</strong>: Larger banks hold more capital (BIC), adjusted by historical loss performance (ILM). This rewards good risk management.</p></li>
+<li><p><strong>Prevention beats capital</strong>: While capital protects against losses, early detection through KRIs and strong controls is far more valuable.</p></li>
+<li><p><strong>Operational risk amplifies other risks</strong>: Failures rarely occur in isolation—they trigger market, liquidity, and credit consequences, making operational risk systemically important.</p></li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -668,13 +1298,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./week_09.html" class="pagination-link" aria-label="Week 09">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Week 09</span></span>
+      <a href="./week_09.html" class="pagination-link" aria-label="Credit Risk">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Credit Risk</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./week_11.html" class="pagination-link" aria-label="Week 11">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 11</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./week_11.html" class="pagination-link" aria-label="Bank Regulation, FRTB, and Economic Capital">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bank Regulation, FRTB, and Economic Capital</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
