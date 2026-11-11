@@ -336,7 +336,7 @@ References
 <blockquote class="blockquote">
 <p>Are the VaR models we built last week actually working?</p>
 </blockquote>
-<p>Let’s use proper model validation with a train-test split.</p>
+<p>A 99% VaR is a promise: the loss should exceed it on only 1% of days. To check the promise fairly, we estimate VaR on one period and test it on a later period that the model has never seen (a train-test split).</p>
 <p>Using your <code>SPY_returns_1000.csv</code> file:</p>
 <p><a href="data/SPY_returns_1000.csv" download="" class="btn btn-primary"> <i class="bi bi-download"></i> Download Dataset (1000 Days) </a></p>
 <ul>
@@ -345,26 +345,37 @@ References
 </ul>
 <p><strong>Task 1.1:</strong> Using only days 501-750 (training set):</p>
 <ul>
-<li>Calculate 95% and 99% VaR using historical simulation</li>
-<li>Calculate 95% and 99% VaR using parametric approach</li>
+<li>Calculate 95% and 99% VaR using historical simulation (the <span class="math inline">\(k\)</span>-th worst return, as in Week 3)</li>
+<li>Calculate the 99% historical VaR a second way, with Excel’s percentile function</li>
+<li>Calculate 95% and 99% VaR using the parametric approach</li>
 </ul>
 <p><strong>Task 1.2:</strong> Apply your VaR thresholds to the test period (days 751-1000):</p>
 <ul>
-<li>Count how many days returns exceeded your 95% VaR</li>
-<li>Count how many days returns exceeded your 99% VaR</li>
+<li>Count the days on which the loss exceeded your 95% VaR</li>
+<li>Count the days on which the loss exceeded your 99% VaR</li>
 <li>Calculate the actual violation rates (violations/250)</li>
-<li>Compare to expected rates (5% and 1%)</li>
+<li>Compare to the expected rates (5% and 1%)</li>
 </ul>
 </section>
 <section id="theory-the-backtesting-framework" class="level3">
 <h3 class="anchored" data-anchor-id="theory-the-backtesting-framework">Theory: The Backtesting Framework</h3>
-<p><strong>Backtesting</strong> is the statistical process of comparing predicted VaR with actual outcomes to validate model accuracy.</p>
+<p><strong>Backtesting</strong> compares the VaR a model predicted with the losses that actually followed. A day on which the loss exceeds VaR is a <strong>violation</strong> (also called an exception or a breach).</p>
 <p><strong>Key concept:</strong> If your <span class="math inline">\(\alpha\)</span>% VaR model is correctly calibrated:</p>
 <ul>
-<li>Expected exceptions = <span class="math inline">\(n \times (1 - \alpha)\)</span></li>
+<li>Expected violations = <span class="math inline">\(n \times (1 - \alpha)\)</span></li>
 <li>Violations should be independent (no clustering)</li>
-<li>Actual exceptions should follow <span class="math inline">\(\text{Binomial}(n, 1-\alpha)\)</span></li>
+<li>The number of violations should follow <span class="math inline">\(\text{Binomial}(n, 1-\alpha)\)</span></li>
 </ul>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(n\)</span> = number of days in the test period</li>
+<li><span class="math inline">\(\alpha\)</span> = confidence level of the VaR</li>
+</ul>
+<p>Over 250 days, a 99% VaR should be violated about 2.5 times and a 95% VaR about 12.5 times. No model hits these numbers exactly, so a backtest asks two questions:</p>
+<ol type="1">
+<li><strong>Frequency:</strong> Are there too many (or too few) violations to be explained by chance?</li>
+<li><strong>Independence:</strong> Are the violations spread evenly, or do they come in clusters?</li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled" title="Basel Traffic Light Zones (250 days, 99% VaR)">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -413,34 +424,158 @@ Basel Traffic Light Zones (250 days, 99% VaR)
 </table>
 </div>
 </div>
+<p>The traffic light is a ready-made rule. The regulator has already done the statistics, so the bank only counts its violations and reads off the zone. More violations mean a higher multiplier, and a higher multiplier means more capital.</p>
 </section>
 <section id="activity-2-basels-traffic-light-system" class="level3">
 <h3 class="anchored" data-anchor-id="activity-2-basels-traffic-light-system">Activity 2: Basel’s Traffic Light System</h3>
 <p><strong>Task 2.1:</strong> Using your violation counts from Activity 1, determine your zone:</p>
 <ul>
 <li>What zone are you in for 99% VaR?</li>
-<li>If your daily VaR is $10M, what’s your capital requirement at each zone?</li>
+<li>If your daily VaR is $10M, what’s your capital requirement at each zone? (Simplified: capital = multiplier × VaR)</li>
 <li>Why do you think Basel uses these specific cutoffs?</li>
 </ul>
 </section>
 <section id="theory-the-binomial-test" class="level3">
 <h3 class="anchored" data-anchor-id="theory-the-binomial-test">Theory: The Binomial Test</h3>
-<p>For 250 test observations with 95% VaR:</p>
+<p>Think of each test day as a coin flip with a small chance of landing on “violation”: 1% for a 99% VaR. Over 250 days we expect 2.5 violations, but chance alone can give 1, 4 or even 6. The binomial distribution tells us how likely each count is <strong>if the model is correct</strong>.</p>
+<p><strong>Step 1: How likely is each count?</strong> For 250 days and a 99% VaR:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Violations</th>
+<th style="text-align: center;">Exactly this many</th>
+<th style="text-align: center;">This many or more</th>
+<th style="text-align: center;">Basel zone</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">8.1%</td>
+<td style="text-align: center;">100.0%</td>
+<td style="text-align: center;">Green</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">20.5%</td>
+<td style="text-align: center;">91.9%</td>
+<td style="text-align: center;">Green</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">25.7%</td>
+<td style="text-align: center;">71.4%</td>
+<td style="text-align: center;">Green</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">21.5%</td>
+<td style="text-align: center;">45.7%</td>
+<td style="text-align: center;">Green</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">13.4%</td>
+<td style="text-align: center;">24.2%</td>
+<td style="text-align: center;">Green</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6.7%</td>
+<td style="text-align: center;">10.8%</td>
+<td style="text-align: center;">Yellow</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">2.7%</td>
+<td style="text-align: center;">4.1%</td>
+<td style="text-align: center;">Yellow</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">1.0%</td>
+<td style="text-align: center;">1.4%</td>
+<td style="text-align: center;">Yellow</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">0.3%</td>
+<td style="text-align: center;">0.4%</td>
+<td style="text-align: center;">Yellow</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">0.1%</td>
+<td style="text-align: center;">0.1%</td>
+<td style="text-align: center;">Yellow</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">0.02%</td>
+<td style="text-align: center;">0.03%</td>
+<td style="text-align: center;">Red</td>
+</tr>
+</tbody>
+</table>
+<p>In Excel, for <span class="math inline">\(k\)</span> violations:</p>
 <ul>
-<li>Expected violations: <span class="math inline">\(250 \times 0.05 = 12.5\)</span></li>
+<li>Exactly <span class="math inline">\(k\)</span>: <code>=BINOM.DIST(k,250,0.01,FALSE)</code></li>
+<li><span class="math inline">\(k\)</span> or more: <code>=1-BINOM.DIST(k-1,250,0.01,TRUE)</code></li>
 </ul>
-<p>We use a binomial distribution to calculate the acceptable range of violations. Choosing a 95% confidence level for our test:</p>
+<p>How to read the table:</p>
 <ul>
-<li>Lower bound: <code>=BINOM.INV(250, 0.05, 0.025)</code> = 6</li>
-<li>Upper bound: <code>=BINOM.INV(250, 0.05, 0.975)</code> = 20</li>
-<li>Acceptable range at 95% confidence: 6 to 20 violations</li>
+<li>A correct model has 5 or more violations in 10.8% of years, about one year in nine. The yellow zone therefore catches some good models by bad luck.</li>
+<li>A correct model has 10 or more violations in only 0.03% of years. In the red zone, bad luck is no longer a believable excuse.</li>
 </ul>
+<p><strong>Step 2: The acceptable range.</strong> We reject the model when its violation count is so far from the expected value that a correct model would rarely produce it. <code>BINOM.INV</code> gives the range that covers the central 95% of outcomes:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 49%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">95% VaR (<span class="math inline">\(p = 0.05\)</span>)</th>
+<th style="text-align: center;">99% VaR (<span class="math inline">\(p = 0.01\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Expected violations</td>
+<td style="text-align: center;">12.5</td>
+<td style="text-align: center;">2.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lower bound: <code>=BINOM.INV(250,p,0.025)</code></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Upper bound: <code>=BINOM.INV(250,p,0.975)</code></td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Acceptable range at 95% confidence</td>
+<td style="text-align: center;">6 to 20</td>
+<td style="text-align: center;">0 to 6</td>
+</tr>
+</tbody>
+</table>
 <p><em>Note: The 0.025 and 0.975 give us a two-tailed 95% confidence interval (2.5% in each tail).</em></p>
+<p><strong>Step 3: The verdict.</strong></p>
+<ul>
+<li><strong>Count outside the range:</strong> reject the model at the 5% significance level. A correct model would give such a result less than 5% of the time.</li>
+<li><strong>Count inside the range:</strong> do not reject the model. This is not proof that the model is right. It only means the data cannot tell it apart from a correct model.</li>
+</ul>
 </section>
 <section id="activity-3-var-violations-range" class="level3">
 <h3 class="anchored" data-anchor-id="activity-3-var-violations-range">Activity 3: VaR Violations Range</h3>
 <p><strong>Task 3.1:</strong> Answer the following questions</p>
 <ul>
+<li>How likely is your number of 99% violations (or more) if the model is correct?</li>
 <li>Are your violations within the acceptable range?</li>
 <li>If you had 20 violations, what would this suggest about your model?</li>
 <li>If you had only 3 violations, is this good news or bad news?</li>
@@ -459,15 +594,20 @@ Understanding the Kupiec Test
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Purpose:</strong> The Kupiec POF test (1995) formally tests whether the observed frequency of VaR violations is statistically consistent with the model’s confidence level.</p>
+<p><strong>Purpose:</strong> The Kupiec POF test (1995) asks the same question as the binomial test: is the observed frequency of VaR violations consistent with the model’s confidence level? It answers with a single number that is compared with a fixed cutoff.</p>
 <ul>
-<li><strong>Null Hypothesis (H₀):</strong> The model is correctly calibrated - violation rate equals expected rate (p)</li>
-<li><strong>Alternative Hypothesis (H₁):</strong> The model is misspecified - violation rate differs from p</li>
+<li><strong>Null Hypothesis (<span class="math inline">\(H_0\)</span>):</strong> The model is correctly calibrated - violation rate equals expected rate (<span class="math inline">\(p\)</span>)</li>
+<li><strong>Alternative Hypothesis (<span class="math inline">\(H_1\)</span>):</strong> The model is misspecified - violation rate differs from <span class="math inline">\(p\)</span></li>
 </ul>
 </div>
 </div>
+<p><strong>The idea:</strong> The test compares two explanations of the data:</p>
+<ul>
+<li>the <strong>promised rate</strong> <span class="math inline">\(p\)</span> (1% for a 99% VaR), and</li>
+<li>the <strong>observed rate</strong> <span class="math inline">\(\hat{p} = v/n\)</span>.</li>
+</ul>
+<p>The observed rate always explains the data at least as well as the promised rate. The test statistic measures how much better. If the model is correct, the two rates are close and the statistic is near zero. The further apart they are, the larger the statistic.</p>
 <p><strong>The Test Statistic:</strong></p>
-<p>The test uses a likelihood ratio to compare the model’s promised violation rate against what actually occurred:</p>
 <p><span class="math display">\[LR_{POF} = -2 \ln\left(\frac{(1-p)^{n-v} \times p^v}{(1-\hat{p})^{n-v} \times \hat{p}^v}\right)\]</span></p>
 <p>Where:</p>
 <ul>
@@ -476,17 +616,36 @@ Understanding the Kupiec Test
 <li><span class="math inline">\(n\)</span> = total observations (250 in our case)</li>
 <li><span class="math inline">\(\hat{p} = v/n\)</span> (observed violation rate)</li>
 </ul>
-<p>This LR statistic follows a chi-squared distribution with 1 degree of freedom.</p>
+<p>In Excel it is easier to calculate the statistic in three parts:</p>
+<p><span class="math display">\[\ln L_0 = (n-v)\ln(1-p) + v\ln(p)\]</span></p>
+<p><span class="math display">\[\ln L_1 = (n-v)\ln(1-\hat{p}) + v\ln(\hat{p})\]</span></p>
+<p><span class="math display">\[LR_{POF} = -2\,(\ln L_0 - \ln L_1)\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\ln L_0\)</span> = log-likelihood of the data under the promised rate <span class="math inline">\(p\)</span></li>
+<li><span class="math inline">\(\ln L_1\)</span> = log-likelihood of the data under the observed rate <span class="math inline">\(\hat{p}\)</span></li>
+</ul>
+<p>If the model is correct, this LR statistic follows a chi-squared distribution with 1 degree of freedom.</p>
 <p><strong>Decision Rule:</strong></p>
 <ul>
 <li>If <span class="math inline">\(LR_{POF} &gt; \chi^2_{0.95}(1) = 3.84\)</span>, reject the model at 5% significance (In Excel: <code>=CHISQ.INV(0.95,1)</code>)</li>
 <li>If <span class="math inline">\(LR_{POF} &gt; \chi^2_{0.99}(1) = 6.63\)</span>, reject the model at 1% significance (In Excel: <code>=CHISQ.INV(0.99,1)</code>)</li>
+<li>The p-value <code>=CHISQ.DIST.RT(LR,1)</code> is the probability of an LR this large or larger when the model is correct. A p-value below 5% leads to the same rejection.</li>
 </ul>
+<p><strong>Worked example:</strong> A 99% VaR model has <span class="math inline">\(v = 8\)</span> violations in <span class="math inline">\(n = 250\)</span> days.</p>
+<ol type="1">
+<li>Observed rate: <span class="math inline">\(\hat{p} = 8/250 = 3.2\%\)</span></li>
+<li>Promised rate: <span class="math inline">\(\ln L_0 = 242 \times \ln(0.99) + 8 \times \ln(0.01) = -39.27\)</span></li>
+<li>Observed rate: <span class="math inline">\(\ln L_1 = 242 \times \ln(0.968) + 8 \times \ln(0.032) = -35.41\)</span></li>
+<li>Statistic: <span class="math inline">\(LR_{POF} = -2 \times (-39.27 + 35.41) = 7.73\)</span></li>
+<li>Verdict: <span class="math inline">\(7.73 &gt; 3.84\)</span>, so the model is rejected at 5% significance (p-value 0.5%)</li>
+</ol>
 <p><strong>Interpretation:</strong></p>
 <ul>
 <li>The test is <strong>two-sided</strong>: rejects for both too many AND too few violations</li>
 <li><strong>Small sample problem</strong>: With few expected violations (like 2.5 for 99% VaR), the test has low statistical power - meaning it often fails to detect truly bad models</li>
 <li>The test assumes violations are <strong>independent</strong> - it only checks frequency, not clustering</li>
+<li>With <strong>zero violations</strong> the Excel formula fails, because <span class="math inline">\(\ln(0)\)</span> is not defined. Use <span class="math inline">\(LR_{POF} = -2\,n\ln(1-p)\)</span> instead</li>
 </ul>
 <p><strong>Note:</strong> <em>More advanced tests like Christoffersen’s Conditional Coverage combine frequency and independence testing in one statistic.</em></p>
 </section>
@@ -495,7 +654,13 @@ Understanding the Kupiec Test
 <p><strong>Task 4.1:</strong> Calculate the Kupiec test statistic for your 99% VaR model.</p>
 <p><strong>Task 4.2:</strong> Test the sensitivity - calculate LR for different violation counts: 0, 2, 5, 7, and 10. What’s the minimum violations needed to reject? Maximum allowed?</p>
 <p><strong>Task 4.3:</strong> Repeat for your 95% VaR model. Which test is more conclusive? Why?</p>
-<p><strong>Task 4.4:</strong> Summary:</p>
+<p><strong>Task 4.4:</strong> In Activity 1 you calculated the 99% historical VaR in two ways: with the 3rd worst return and with the percentile function. Both are standard. Compare their backtest results:</p>
+<ul>
+<li>How much do the two VaR figures differ?</li>
+<li>What happens to the violation count, the Basel zone, the binomial test and the Kupiec test?</li>
+<li>Which verdict is the “correct” one?</li>
+</ul>
+<p><strong>Task 4.5:</strong> Summary:</p>
 <ul>
 <li>Do Basel traffic lights and Kupiec test agree for your model?</li>
 <li>With only 2.5 expected violations, how useful is the Kupiec test for 99% VaR?</li>
@@ -511,7 +676,7 @@ Key Insight
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The Kupiec test often “passes” 99% VaR models even when they’re bad - you need 7+ violations (almost 3× expected) to reject! This is why banks also test at multiple confidence levels.</p>
+<p>The Kupiec test often “passes” 99% VaR models even when they’re bad - you need 7+ violations (almost 3× expected) to reject! With so few expected violations, a single day can also change the verdict. This is why banks also test at multiple confidence levels.</p>
 </div>
 </div>
 </section>
@@ -554,14 +719,14 @@ The ES Backtesting Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Unlike VaR (a single threshold), ES is the average of all tail losses. To test it properly, you need many tail observations - but tail events are rare by definition.</p>
+<p>Backtesting VaR is a yes-or-no check on every day: was VaR violated or not? ES is the <strong>average loss on the days when VaR is violated</strong>. To test it properly, you need many violation days - but violations are rare by definition.</p>
 </div>
 </div>
 <p><strong>Key issues:</strong></p>
 <ol type="1">
 <li><strong>Few observations:</strong> At 97.5% confidence, expect only ~6 violations per year</li>
 <li><strong>Statistical power:</strong> Can’t reliably test if the average of 6 observations matches prediction</li>
-<li><strong>Not elicitable:</strong> ES lacks a simple scoring function that VaR has (binary: breach or not)</li>
+<li><strong>No simple daily check:</strong> A VaR violation is visible on the day it happens. An average of tail losses has no equally simple daily score (in technical terms, ES is not <em>elicitable</em>)</li>
 </ol>
 <p><strong>Two practical approaches:</strong></p>
 <ol type="1">
@@ -577,32 +742,47 @@ The ES Backtesting Problem
 <li>But require strong assumptions and large samples</li>
 </ul></li>
 </ol>
+<p><strong>A simple direct check:</strong> Compare the predicted ES with the average loss on the violation days of the test period:</p>
+<p><span class="math display">\[\text{Ratio} = \frac{\text{Realized average loss on violation days}}{\text{Predicted ES}}\]</span></p>
+<ul>
+<li><strong>Ratio close to 1:</strong> when VaR is violated, losses are about as large as predicted</li>
+<li><strong>Ratio well above 1:</strong> when VaR is violated, losses are larger than the model said</li>
+<li>With only a few violation days, treat the ratio as a warning sign, not as proof</li>
+</ul>
 <p><strong>Regulatory stance:</strong> Basel III accepts indirect validation methods because direct ES backtesting remains statistically challenging even with sophisticated tests.</p>
 </section>
 <section id="activity-6-comprehensive-backtesting---var-and-es" class="level3">
 <h3 class="anchored" data-anchor-id="activity-6-comprehensive-backtesting---var-and-es">Activity 6: Comprehensive Backtesting - VaR and ES</h3>
-<p><strong>Task 6.1:</strong> Using your training period (days 1-750), calculate all risk measures you’ll need:</p>
+<p>Use the same split as in Activity 1 (training: days 501-750, testing: days 751-1000) and historical simulation.</p>
+<p><strong>Task 6.1:</strong> Complete the table:</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 5%">
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 23%">
+<col style="width: 24%">
+<col style="width: 9%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Confidence Level</th>
+<th style="text-align: center;">Level</th>
 <th style="text-align: center;">VaR</th>
-<th style="text-align: center;">ES</th>
+<th style="text-align: center;">Expected</th>
+<th style="text-align: center;">Actual</th>
+<th style="text-align: center;">Predicted ES</th>
+<th style="text-align: center;">Realized Loss</th>
+<th style="text-align: center;">Ratio</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">90%</td>
-<td style="text-align: center;">?</td>
-<td style="text-align: center;">?</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">92.5%</td>
-<td style="text-align: center;">?</td>
-<td style="text-align: center;">?</td>
-</tr>
-<tr class="odd">
 <td style="text-align: center;">95%</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
 <td style="text-align: center;">?</td>
 <td style="text-align: center;">?</td>
 </tr>
@@ -610,108 +790,41 @@ The ES Backtesting Problem
 <td style="text-align: center;">97.5%</td>
 <td style="text-align: center;">?</td>
 <td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">99%</td>
 <td style="text-align: center;">?</td>
 <td style="text-align: center;">?</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Task 6.2:</strong> Apply ALL thresholds to test period (days 751-1000):</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Confidence</th>
-<th style="text-align: left;">Expected Violations</th>
-<th style="text-align: center;">Actual Violations</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">90%</td>
-<td style="text-align: left;">?</td>
 <td style="text-align: center;">?</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">92.5%</td>
-<td style="text-align: left;">?</td>
 <td style="text-align: center;">?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">95%</td>
-<td style="text-align: left;">?</td>
 <td style="text-align: center;">?</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">97.5%</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: center;">?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">99%</td>
-<td style="text-align: left;">?</td>
 <td style="text-align: center;">?</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Task 6.3:</strong> For each confidence level, calculate average loss on violation days:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 17%">
-<col style="width: 20%">
-<col style="width: 29%">
-<col style="width: 17%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Confidence</th>
-<th style="text-align: left;">Predicted ES</th>
-<th style="text-align: left;">Realized Avg Loss</th>
-<th style="text-align: left;">Difference</th>
-<th style="text-align: left;">Reliable?</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">90%</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">92.5%</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">95%</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">97.5%</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">99%</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-<td style="text-align: left;">?</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Task 6.4:</strong> Validation conclusions:</p>
+<p><em>Expected and Actual are numbers of violations in the test period. Realized Loss is the average loss on the violation days.</em></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Excel Hints">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Excel Hints
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>With your VaR in cell <code>F6</code>:</p>
+<ul>
+<li>Predicted ES (average of the training losses at or beyond VaR): <code>=-AVERAGEIF(B502:B751,"&lt;="&amp;-F6)</code></li>
+<li>Realized average loss on violation days: <code>=-AVERAGEIF(B752:B1001,"&lt;"&amp;-F6)</code></li>
+</ul>
+</div>
+</div>
+<p><strong>Task 6.2:</strong> Validation conclusions:</p>
 <ul>
 <li><strong>VaR validation:</strong> Which levels pass binomial test?</li>
 <li><strong>ES validation (direct):</strong> Can you trust ES given violation counts?</li>
@@ -953,7 +1066,8 @@ The Core Lesson
 <h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
 <ul>
 <li><p><strong>Backtesting VaR:</strong> Use train-test split, Basel traffic lights (0-4 green, 5-9 yellow, 10+ red), and Kupiec test - but 99% VaR needs 7+ violations to reject (nearly 3× expected)</p></li>
-<li><p><strong>ES Challenge:</strong> Can’t backtest ES directly with few tail events - use indirect validation via multiple VaR levels (90%, 95%, 97.5%)</p></li>
+<li><p><strong>Reading a Backtest:</strong> “Not rejected” does not mean “correct” - with one year of data a single violation can change the verdict, so also check clustering and the size of the losses</p></li>
+<li><p><strong>ES Challenge:</strong> Can’t backtest ES directly with few tail events - use indirect validation via multiple VaR levels (90%, 95%, 97.5%) and compare realized tail losses with predicted ES</p></li>
 <li><p><strong>Stressed Measures:</strong> Calculate risk using worst historical 250-day window - typically 2-4× higher than recent period, forcing crisis-level capital in calm times</p></li>
 <li><p><strong>Basel Evolution:</strong> Each crisis increased requirements: Basel II (3×VaR) → Basel 2.5 (3×VaR + 3×SVaR) → Basel III (1.5×max(ES, Stressed ES))</p></li>
 <li><p><strong>Critical Lesson:</strong> Models that pass all backtests can still fail catastrophically (Archegos) - individual models miss systemic risk, and new crisis types won’t match historical patterns</p></li>
